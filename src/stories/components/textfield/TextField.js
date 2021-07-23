@@ -8,7 +8,16 @@ export const TEXTFIELD_TYPES = ['input', 'textarea']
 /**
  * This is used to get text input from the user
  */
-export const TextField = ({ type, label, icon, disabled, placeholder, readOnly, ...props }) => {
+export const TextField = ({
+  type,
+  label,
+  icon,
+  disabled,
+  placeholder,
+  readOnly,
+  className,
+  ...props
+}) => {
   return (
     <div className="sg contacto-input-wrapper">
       {label && (
@@ -17,7 +26,11 @@ export const TextField = ({ type, label, icon, disabled, placeholder, readOnly, 
         </div>
       )}
       <Input
-        className={`contacto-input ${readOnly ? 'contacto-input--readonly' : ''}`}
+        className={[
+          'contacto-input',
+          `${readOnly ? 'contacto-input--readonly' : ''}`,
+          className,
+        ].join(' ')}
         disabled={readOnly || disabled}
         placeholder={placeholder}
         {...props}
@@ -36,6 +49,7 @@ TextField.propTypes = {
    * This indicates the type of textfield
    */
   type: PropTypes.oneOf(TEXTFIELD_TYPES),
+  className: PropTypes.string,
   /**
    * How large should the textfield be?
    */

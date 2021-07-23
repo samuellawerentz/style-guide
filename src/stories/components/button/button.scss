@@ -124,4 +124,16 @@
   .contacto-icon {
     margin-right: 8px
   }
+
+  &--only-icon {
+    padding: 8px;
+    min-width: auto;
+    width: auto;
+    .contacto-icon {
+      margin-right: 0;
+      &.small {
+        font-size: 20px;
+      }
+    }
+  }
 }

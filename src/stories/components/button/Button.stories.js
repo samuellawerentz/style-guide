@@ -34,6 +34,13 @@ WithIcon.args = {
   icon: 'group_add',
 }
 
+export const OnlyIcon = Template.bind({})
+OnlyIcon.args = {
+  type: 'primary',
+  size: 'default',
+  icon: 'group_add',
+}
+
 export const LoadingState = Template.bind({})
 LoadingState.args = {
   type: 'primary',

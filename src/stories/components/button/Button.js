@@ -2,11 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button as AntButton } from 'antd'
 import './button.scss'
-export const BUTTON_TYPES = ['primary', 'secondary', 'danger-primary', 'danger-secondary', 'link']
+export const BUTTON_TYPES = [
+  'primary',
+  'secondary',
+  'danger-primary',
+  'danger-secondary',
+  'link',
+  'link-danger',
+]
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ type, size, label, icon, loading, ...props }) => {
+export const Button = ({ type, size, label, icon, loading, className, ...props }) => {
   return (
     <AntButton
       className={[
@@ -15,6 +22,8 @@ export const Button = ({ type, size, label, icon, loading, ...props }) => {
         `contacto-button--${type}`,
         `contacto-button--${size}`,
         icon ? `contacto-button--with-icon` : '',
+        !label && icon ? 'contacto-button--only-icon' : '',
+        className,
       ].join(' ')}
       icon={icon ? <span className={'material-icons contacto-icon ' + size}>group_add</span> : null}
       loading={loading}
@@ -30,6 +39,7 @@ Button.propTypes = {
    * This indicates what type of button should be rendered
    */
   type: PropTypes.oneOf(BUTTON_TYPES),
+  className: PropTypes.string,
   /**
    * How large should the button be?
    */
@@ -37,7 +47,7 @@ Button.propTypes = {
   /**
    * Button Text
    */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
 
   /**
    * Material UI icon name taken from https://fonts.google.com/icons
@@ -56,5 +66,4 @@ Button.propTypes = {
 Button.defaultProps = {
   size: 'default',
   type: 'primary',
-  label: 'Button',
 }

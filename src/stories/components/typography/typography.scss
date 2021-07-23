@@ -1,9 +1,67 @@
-.contacto-typography--caption {
+.caption {
     font-size: 12px;
     line-height: 18px;
 }
 
-.contacto-typography--caption-bold {
-    @extend .contacto-typography--caption;
-    font-weight: 600;
+.sg.contacto-typography {
+    &--large-title {
+        font-size: 26px;
+        line-height: 38px;
+        font-weight: 400;
+    }
+
+    &--title-1 {
+        font-size: 22px;
+        line-height: 32px;
+        font-weight: 400;
+    }
+
+    &--title-2 {
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 400;
+    }
+
+    &--title-3 {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+    }
+
+    &--headline {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 600;
+    }
+
+    &--subtitle {
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: 500;
+    }
+
+    &--body {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+    }
+
+    &--caption {
+        @extend .caption;
+    }
+
+    &--caption-bold {
+        @extend .caption;
+        font-weight: 600;
+    }
+
+    &--caption-italic {
+        @extend .caption;
+        font-style: italic;
+    }
+
+    &--caption-capital {
+        @extend .caption;
+        text-transform: uppercase;
+    }
 }
