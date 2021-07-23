@@ -1,0 +1,9 @@
+.contacto-typography--caption {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.contacto-typography--caption-bold {
+    @extend .contacto-typography--caption;
+    font-weight: 600;
+}

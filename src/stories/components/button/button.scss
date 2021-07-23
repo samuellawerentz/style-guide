@@ -1,0 +1,127 @@
+.sg.contacto-button {
+  min-width: 80px;
+  padding: 8px 16px;
+  height: 36px;
+  line-height: 18px;
+  border: 0;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+
+  &--primary {
+    background: var(--primary-color);
+    color: var(--white);
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--white);
+      background: var(--primary-color-5);
+    }
+
+    &[disabled], &[disabled]:hover {
+      color: var(--white);
+      background: var(--primary-color-2);
+    }
+  }
+
+  &--secondary {
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--primary-color);
+      background: var(--dark-bg);
+      border: 1px solid var(--primary-color);
+    }
+
+    &[disabled], &[disabled]:hover {
+      color: var(--primary-color-2);
+      background: var(--white);
+      border: 1px solid var(--primary-color-2);
+    }
+  }
+
+  &--danger {
+    &-primary {
+      color: var(--white);
+      background: var(--danger-color);
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--white);
+        background: var(--danger-color-5);
+      }
+
+      &[disabled], &[disabled]:hover {
+        color: var(--white);
+        background: var(--danger-color-2);
+      }
+    }
+
+    &-secondary {
+      color:var(--danger-color);
+      border: 1px solid var(--danger-color);
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--danger-color);
+        background: var(--danger-color-4);
+        border: 1px solid var(--danger-color);
+      }
+
+      &[disabled], &[disabled]:hover {
+        color: var(--danger-color-2);
+        border: 1px solid var(--danger-color-2);
+        background: var(--white)
+      }
+    }
+  }
+
+  &--link {
+    color: var(--primary-color);
+    font-weight: 600;
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--primary-color-5);
+    }
+
+    &[disabled], &[disabled]:hover {
+      color: var(--primary-color-2);
+      background: var(--white);
+    }
+  }
+
+  &--link-danger {
+    color: var(--danger-color);
+    font-weight: 600;
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--danger-color-5);
+    }
+
+    &[disabled], &[disabled]:hover {
+      color: var(--danger-color-2);
+      background: var(--white);
+    }
+  }
+
+  &--small {
+    height: 28px;
+    padding: 4px 8px;
+  }
+
+  &--with-icon {
+    padding-left: 8px;
+  }
+
+  .contacto-icon {
+    margin-right: 8px
+  }
+}

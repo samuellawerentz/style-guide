@@ -1,0 +1,37 @@
+@import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import './style/variables.scss';
+@import '~material-design-icons/iconfont/material-icons.css';
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Poppins', sans-serif;
+}
+
+.contacto-icon{
+  &.small {
+    font-size: 18px;
+  }
+  &.default {
+    font-size: 20px;
+  }
+  &--input-prefix {
+    color: var(--gray-1);
+    font-size: 20px;
+    margin-right: 4px;
+  }
+}
