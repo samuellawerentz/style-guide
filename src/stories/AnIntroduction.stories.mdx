@@ -1,12 +1,5 @@
-import { Meta } from '@storybook/addon-docs';
-import Code from './assets/code-brackets.svg';
-import Colors from './assets/colors.svg';
-import Comments from './assets/comments.svg';
-import Direction from './assets/direction.svg';
-import Flow from './assets/flow.svg';
-import Plugin from './assets/plugin.svg';
-import Repo from './assets/repo.svg';
-import StackAlt from './assets/stackalt.svg';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import {All} from './components/typography/Typography.stories.js'
 
 <Meta title="Introduction" />
 
@@ -14,9 +7,9 @@ import StackAlt from './assets/stackalt.svg';
   .subheading {
     --mediumdark: '#999999';
     font-weight: 900;
-    font-size: 13px;
-    color: #999;
-    letter-spacing: 6px;
+    font-size: 15px;
+    color: black;
+    letter-spacing: 3px;
     line-height: 24px;
     text-transform: uppercase;
     margin-bottom: 12px;
@@ -119,89 +112,44 @@ import StackAlt from './assets/stackalt.svg';
 Storybook helps you build UI components in isolation from our app's business logic, data, and context.
 That makes it easy to develop hard-to-reach states. These **stories** are different states of a component which can be independantly developed and tested.
 
-<div className="subheading">Configure</div>
+<div className="subheading">Components</div>
+The following are the common components that are built. Each of them, has stories, which define their UI states. You can play with it and use it as you wish.
 
-<div className="link-list">
-  <a
-    className="link-item"
-    href="https://storybook.js.org/docs/react/addons/addon-types"
-    target="_blank"
-  >
-    <img src={Plugin} alt="plugin" />
-    <span>
-      <strong>Presets for popular tools</strong>
-      Easy setup for TypeScript, SCSS and more.
-    </span>
-  </a>
-  <a
-    className="link-item"
-    href="https://storybook.js.org/docs/react/configure/webpack"
-    target="_blank"
-  >
-    <img src={StackAlt} alt="Build" />
-    <span>
-      <strong>Build configuration</strong>
-      How to customize webpack and Babel
-    </span>
-  </a>
-  <a
-    className="link-item"
-    href="https://storybook.js.org/docs/react/configure/styling-and-css"
-    target="_blank"
-  >
-    <img src={Colors} alt="colors" />
-    <span>
-      <strong>Styling</strong>
-      How to load and configure CSS libraries
-    </span>
-  </a>
-  <a
-    className="link-item"
-    href="https://storybook.js.org/docs/react/get-started/setup#configure-storybook-for-your-stack"
-    target="_blank"
-  >
-    <img src={Flow} alt="flow" />
-    <span>
-      <strong>Data</strong>
-      Providers and mocking for data libraries
-    </span>
-  </a>
-</div>
+1. [Buttons](?path=/docs/components-button--primary)
+2. [Checkbox](?path=/docs/components-checkbox--default)
+3. [Radio](?path=/docs/components-radio--default)
+4. [Select](?path=/docs/components-select--default)
+5. [TextField](?path=/docs/components-textfield--default)
 
-<div className="subheading">Learn</div>
+<div className="subheading">How to use?</div>
 
-<div className="link-list">
-  <a className="link-item" href="https://storybook.js.org/docs" target="_blank">
-    <img src={Repo} alt="repo" />
-    <span>
-      <strong>Storybook documentation</strong>
-      Configure, customize, and extend
-    </span>
-  </a>
-  <a className="link-item" href="https://storybook.js.org/tutorials/" target="_blank">
-    <img src={Direction} alt="direction" />
-    <span>
-      <strong>In-depth guides</strong>
-      Best practices from leading teams
-    </span>
-  </a>
-  <a className="link-item" href="https://github.com/storybookjs/storybook" target="_blank">
-    <img src={Code} alt="code" />
-    <span>
-      <strong>GitHub project</strong>
-      View the source and add issues
-    </span>
-  </a>
-  <a className="link-item" href="https://discord.gg/storybook" target="_blank">
-    <img src={Comments} alt="comments" />
-    <span>
-      <strong>Discord chat</strong>
-      Chat with maintainers and the community
-    </span>
-  </a>
-</div>
+1. Import the component that is required.
+2. Visit the particular component page.
+3. Navigate to your required story.
+4. Copy the code and modify the `props` as required.
+5. Since all the components are wrapper components upon antd. Please visit their docs for additional information.
 
-<div className="tip-wrapper">
-  <span className="tip">Tip</span>Edit the Markdown in{' '}
-  <code>src/stories/Introduction.stories.mdx</code>
-</div>
+<div className="subheading">Technical Requirements</div>
+
+For the compoenents to work properly, make sure the consumer project has these dependencies installed. The following are the peer dependencies for this component library.
+
+```json
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "prop-types": "^15.7.2",
+    "antd": "^4.16.8"
+  }
+```
+
+<div className="subheading">Typography</div>
+
+The following are the text styles that are used in the application. Each has a specific font weight and font size.
+The font that is used is Poppins. See the full list of options [here](?path=/docs/typography-text--all).
+
+<Canvas><Story id="typography-text--all"/></Canvas>
+
+<div className="subheading">Colors</div>
+
+The various colors that are part of the styleguide are given as easy to search and copy here. The variable names are based on the names that is used in CSS. You can search for a color and copy the corresponding color.
+- [Colors used in Contacto](?path=/docs/colors--page)

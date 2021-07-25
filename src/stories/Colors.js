@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { TextField } from './components/textfield/TextField'
+// import Radio from './components/Radio/index'
 
 const colors = {
   'primary-color': '#193fc2',
@@ -82,15 +83,26 @@ const colors = {
 
 export const ColorBox = (props) => {
   const [searchTerm, setSearchTerm] = useState('')
+  //   const [cssVar, setCssVar] = useState('css')
   return (
     <div>
-      <div className="search-bar" style={{ width: 280 }}>
+      <div
+        className="search-bar"
+        style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+      >
         <TextField
           placeholder="Search by hex code/name"
           icon="search"
           label="Search"
+          style={{ width: 280 }}
           onChange={({ target }) => setSearchTerm(target.value)}
         />
+        {/* <div className="var-type">
+          <Radio.Group value={cssVar} onChange={(e) => setCssVar(e.target.value)}>
+            <Radio value="css">CSS</Radio>
+            <Radio value="scss">SCSS</Radio>
+          </Radio.Group>
+        </div> */}
       </div>
       <div className="color-grid">
         {Object.keys(colors)
