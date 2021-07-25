@@ -1,34 +1,14 @@
 import { Meta } from '@storybook/addon-docs';
-import {ColorBox} from './Colors.js'
+/* eslint import/no-webpack-loader-syntax: off */
+import css from '!!raw-loader!../style/variables.scss';
 
-<Meta title="Colors" />
+<Meta title="Colors/Css Variable List" />
 
-<style>{`
-  .color-grid {
-  display: grid;
-  margin-top: 32px;
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  }
+# CSS Variables for Contacto Colors
 
-  .color{
-    height: 100px;
-        border-radius: 4px
-  }
-  .color-name {
-    text-align: center;
-  }
-.color-code{
-  color: gray;
-  font-size: 12px;
-  text-align: center;
-}
-  
-`}</style>
+While using this style guide, make sure that you import this variable file so that the colors stay constant.
 
-# Contacto Colors
+You can copy this file and save it as variables.css and import it in your `App.css` on the top - 
+```@import './style/variables.css';```
 
-This is a list of colors that would be used in the application. Each has their own name. You can copy the values and the names from here.
-
-<ColorBox/>
+<pre><code className="language-css">{`//variables.css\n\n${css}`}</code></pre>

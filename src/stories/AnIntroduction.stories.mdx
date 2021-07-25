@@ -120,6 +120,8 @@ The following are the common components that are built. Each of them, has storie
 3. [Radio](?path=/docs/components-radio--default)
 4. [Select](?path=/docs/components-select--default)
 5. [TextField](?path=/docs/components-textfield--default)
+6. [Tag](?path=/docs/components-tag--default)
+7. [Card](?path=/story/layout-card--card-with-title)
 
 <div className="subheading">How to use?</div>
 
@@ -131,6 +133,8 @@ The following are the common components that are built. Each of them, has storie
 
 <div className="subheading">Technical Requirements</div>
 
+#### Dependencies
+
 For the compoenents to work properly, make sure the consumer project has these dependencies installed. The following are the peer dependencies for this component library.
 
 ```json
@@ -138,10 +142,23 @@ For the compoenents to work properly, make sure the consumer project has these d
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "prop-types": "^15.7.2",
-    "antd": "^4.16.8"
+    "antd": "^4.16.8",
+    "material-design-icons": "^3.0.1"
   }
 ```
 
+#### CSS variables
+
+This style guide completely depends on CSS variables that are commonly defined by the design team. Make sure that the variables are included on the top for the style guide to work properly.
+- [CSS Variable list](?path=/story/colors-css-variable-list--page)
+
+#### Icons
+
+The icons used are taken from the material icon package. So for icons to work properly, make sure material-icon package is included.
+
+```css
+@import '~material-design-icons/iconfont/material-icons.css';
+```
 <div className="subheading">Typography</div>
 
 The following are the text styles that are used in the application. Each has a specific font weight and font size.

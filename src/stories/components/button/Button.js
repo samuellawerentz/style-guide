@@ -25,7 +25,7 @@ export const Button = ({ type, size, label, icon, loading, className, ...props }
         !label && icon ? 'contacto-button--only-icon' : '',
         className,
       ].join(' ')}
-      icon={icon ? <span className={'material-icons contacto-icon ' + size}>group_add</span> : null}
+      icon={icon ? <span className={'material-icons contacto-icon ' + size}>{icon}</span> : null}
       loading={loading}
       {...props}
     >
