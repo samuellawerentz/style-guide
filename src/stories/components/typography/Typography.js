@@ -19,10 +19,16 @@ export const TEXT_TYPES = [
 /**
  * Typography for Contacto Apps
  */
-export const Text = ({ type, children, className, ...props }) => {
+export const Text = ({ type, children, className, variant, ...props }) => {
   return (
     <Typography.Text
-      className={['sg', 'contacto-typography', 'contacto-typography--' + type, className].join(' ')}
+      className={[
+        'sg',
+        'contacto-typography',
+        'contacto-typography--' + type,
+        'contacto-typography--' + variant,
+        className,
+      ].join(' ')}
       {...props}
     >
       {children}
@@ -41,6 +47,10 @@ Text.propTypes = {
   children: PropTypes.any,
 
   className: PropTypes.string,
+  /**
+   * This indicates whether the text is primary or secondary.
+   */
+  variant: PropTypes.string,
 }
 
 Text.defaultProps = {

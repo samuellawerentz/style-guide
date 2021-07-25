@@ -63,5 +63,14 @@
     &--caption-capital {
         @extend .caption;
         text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    &--primary {
+        color: var(--primary-color);
+    }
+
+    &--secondary {
+        color: var(--secondary-text-color);
     }
 }

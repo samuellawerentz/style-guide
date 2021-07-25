@@ -1,0 +1,27 @@
+.sg.contacto-tag { 
+    padding: 4px 8px;
+    border: none;
+    .ant-typography {
+        color: inherit;
+    }
+    &--default {
+        background-color: var(--primary-color-4);
+        color: var(--primary-color);
+    }
+    &--success {
+        background-color: var(--success-color-4);
+        color: var(--success-color);
+    }
+    &--danger {
+        background-color: var(--danger-color-4);
+        color: var(--danger-color);
+    }
+    &--progress {
+        background-color: var(--primary-color-3);
+        color: var(--primary-color);
+    }
+    &--disabled {
+        background-color: var(--gray-5);
+        color: var(--secondary-text-color);
+    }
+}
