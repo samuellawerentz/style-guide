@@ -29,7 +29,7 @@ export const Group = (args) => {
   return <Checkbox.Group options={args.options} defaultValue={['Apple']} />
 }
 Group.args = {
-  options: ['Apple', 'Pear', 'Orange'],
+  options: ['Apple', 'Pear', 'Green'],
 }
 
 export const GroupWithChildren = () => {

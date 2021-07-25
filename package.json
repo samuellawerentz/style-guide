@@ -1,20 +1,23 @@
 {
   "name": "@samuellawerentz/contacto-style-guide",
   "publishConfig": {
-      "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
   "repository": "git://github.com/samuellawerentz/style-guide",
   "version": "0.1.0",
   "main": "build/index.js",
   "module": "build/index.es.js",
-  "files": [ "build" ],
+  "files": [
+    "build"
+  ],
   "dependencies": {},
   "scripts": {
     "build": "rollup -c",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s dist",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=b366e708e279"
   },
   "eslintConfig": {
     "extends": [
@@ -59,6 +62,7 @@
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.5",
     "antd": "^4.16.8",
+    "chromatic": "^5.10.0-canary.0",
     "cross-env": "^7.0.3",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
