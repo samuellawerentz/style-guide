@@ -30,6 +30,13 @@
             background-color:var(--gray-6);
             color: var(--primary-text-color);
         }
+        &.contacto-input--small {
+            height: 28px;
+        }
+        &.contacto-input--search-box {
+            box-shadow: none;
+            padding-left: 8px;
+        }
     }
     .contacto-input-label-wrapper{
         margin-bottom: 4px;

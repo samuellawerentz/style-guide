@@ -1,37 +1,17 @@
 import React, { useEffect, useRef } from 'react'
 import './styles.scss'
 import PropTypes from 'prop-types'
-import { Space, Table, Row } from 'antd'
+import { Space, Row } from 'antd'
+import { Table } from '../Table/index'
 
 /**
  * A common table layout
  *
- * ToDo:
- *
- * 1. Handle if pagination is not available
- *
- * 2. Update table component
- *
- * 3. Update SearchBar
  */
 export const TableLayout = ({ className, tableProps, searchBar, actionButtons }) => {
   const tableLayoutRef = useRef(null)
   const paginationContainerRef = useRef(null)
-  const { pagination, ...tProps } = tableProps
-  const modifiedPagination = {
-    ...pagination,
-    showSizeChanger: false,
-    showTotal(total, range) {
-      return `${range[0]}-${range[1]} of ${total}`
-    },
-    itemRender(page, type, comp) {
-      if (type === 'prev' || type === 'next') {
-        return (
-          <span className="material-icons">{`navigate_${type === 'prev' ? 'before' : type}`}</span>
-        )
-      }
-    },
-  }
+
   useEffect(() => {
     const paginationContainer = tableLayoutRef.current.querySelector(
       'ul.ant-pagination.ant-table-pagination',
@@ -40,8 +20,8 @@ export const TableLayout = ({ className, tableProps, searchBar, actionButtons })
   }, [])
   return (
     <div className={[className].join(' ')} ref={tableLayoutRef}>
-      <Row justify="space-between">
-        <Space direction="horizontal" size={16} className="contacto-table-layout--controls">
+      <Row justify="space-between" className="contacto-table-layout--controls">
+        <Space direction="horizontal" size={16}>
           <div className="contacto-table-layout--search-bar">{searchBar}</div>
           {!!actionButtons?.length &&
             actionButtons.map((actionButtons, i) => (
@@ -50,10 +30,13 @@ export const TableLayout = ({ className, tableProps, searchBar, actionButtons })
               </div>
             ))}
         </Space>
-        <div className="contacto-table-layout--pagination" ref={paginationContainerRef}></div>
+        <div
+          className="contacto-table-layout--pagination sg contacto-table"
+          ref={paginationContainerRef}
+        ></div>
       </Row>
       <div className="contacto-table-wrapper">
-        <Table {...tProps} pagination={modifiedPagination} />
+        <Table {...tableProps} />
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card } from '.'
 import { Button } from '../button/Button'
+import { Default } from '../TableLayout/index.stories'
 
 export default {
   title: 'Layout/Card',
@@ -14,6 +15,13 @@ export default {
 }
 
 const Template = (args) => <Card {...args} />
+
+export const CardWithTableInside = Template.bind({})
+CardWithTableInside.args = {
+  title: 'Workflows',
+  actionButton: <Button type="secondary" label="Create Workflow" icon="group_add" />,
+  children: <Default {...Default.args} />,
+}
 
 export const CardWithTitle = Template.bind({})
 CardWithTitle.args = {

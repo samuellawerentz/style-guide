@@ -4,7 +4,7 @@ import { Text } from '../typography/Typography'
 import PropTypes from 'prop-types'
 import './textfield.scss'
 
-export const TEXTFIELD_TYPES = ['input', 'textarea']
+export const TEXTFIELD_TYPES = ['input', 'search-box']
 /**
  * This is used to get text input from the user
  */
@@ -12,12 +12,14 @@ export const TextField = ({
   type,
   label,
   icon,
+  size,
   disabled,
   placeholder,
   readOnly,
   className,
   ...props
 }) => {
+  icon = type === 'search-box' ? 'search' : icon
   return (
     <div className="sg contacto-input-wrapper">
       {label && (
@@ -28,6 +30,8 @@ export const TextField = ({
       <Input
         className={[
           'contacto-input',
+          'contacto-input--' + type,
+          'contacto-input--' + size,
           `${readOnly ? 'contacto-input--readonly' : ''}`,
           className,
         ].join(' ')}

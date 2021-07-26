@@ -1,0 +1,42 @@
+.sg.contacto-table {
+    .ant-pagination-item {
+        display: none;
+    }
+
+    .ant-pagination-prev,
+    .ant-pagination-next {
+        height: auto;
+        min-width: auto;
+        line-height: initial;
+        color: var(--gray-1);
+
+        &.ant-pagination-disabled {
+            color: var(--gray-3);
+        }
+    }
+
+    .ant-pagination-total-text,
+    .ant-pagination-prev {
+        margin-right: 16px;
+    }
+
+    .ant-table-pagination {
+        align-items: center;
+    }
+
+    .ant-table-thead>tr>th {
+        background: var(--gray-6);
+        color: var(--gray-1);
+        font-weight: 400;
+        padding-top: 8px;
+        padding-bottom: 8px;
+
+        &:before {
+            display: none;
+        }
+    }
+
+    .ant-table-tbody>tr.ant-table-row:hover>td {
+        background-color: var(--background-highlight-color);
+    }
+}

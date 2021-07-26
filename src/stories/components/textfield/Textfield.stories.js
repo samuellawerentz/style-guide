@@ -26,6 +26,13 @@ Default.args = {
   placeholder: 'A simple text field',
 }
 
+export const SearchBox = Template.bind({})
+SearchBox.args = {
+  type: 'search-box',
+  size: 'default',
+  placeholder: 'A sample search box',
+}
+
 export const WithIcon = Template.bind({})
 WithIcon.args = {
   type: 'input',

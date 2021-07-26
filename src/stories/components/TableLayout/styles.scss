@@ -1,23 +1,8 @@
 .sg.contacto-table-layout {
-    .ant-pagination-item {
-        display: none;
+    .ant-table-pagination.ant-pagination {
+        margin: 0;
     }
-
-    .ant-pagination-prev,
-    .ant-pagination-next {
-        height: auto;
-        min-width: auto;
-        line-height: initial;
-        color: var(--gray-1);
-        &.ant-pagination-disabled {
-            color: var(--gray-3);
-        }
-    }
-    .ant-pagination-total-text, .ant-pagination-prev {
-        margin-right: 16px;
-    }
-
-    .ant-table-pagination {
-        align-items: center;
+    .contacto-table-layout--controls {
+        margin-bottom: 16px;
     }
 }

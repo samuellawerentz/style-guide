@@ -51,6 +51,11 @@ Default.args = {
     </Button>,
   ],
   searchBar: (
-    <TextField placeholder="Search for data" style={{ width: 280 }} icon="search"></TextField>
+    <TextField
+      placeholder="Search for data"
+      style={{ width: 280 }}
+      icon="search"
+      type="search-box"
+    ></TextField>
   ),
 }
