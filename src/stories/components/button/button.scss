@@ -120,6 +120,18 @@
   &--with-icon {
     padding-left: 8px;
   }
+  
+  &--table-action-link {
+    color: var(--secondary-text-color);
+    padding: 8px 0px;
+    padding-left: 0;
+    min-width: auto;
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--primary-color);
+    }
+  }
 
   .contacto-icon {
     margin-right: 8px

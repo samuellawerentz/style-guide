@@ -4,7 +4,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "repository": "git://github.com/samuellawerentz/style-guide",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
@@ -17,7 +17,9 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s dist",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=b366e708e279"
+    "deploy-storybook": "storybook-to-ghpages",
+    "chromatic": "npx chromatic --project-token=b366e708e279",
+    "analyze": "source-map-explorer 'build/*.js'"
   },
   "eslintConfig": {
     "extends": [
@@ -62,6 +64,7 @@
     "@storybook/node-logger": "^6.3.4",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.5",
+    "@storybook/storybook-deployer": "^2.8.10",
     "@storybook/theming": "^6.3.5",
     "antd": "^4.16.8",
     "chromatic": "^5.10.0-canary.0",
@@ -76,11 +79,11 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "4.0.3",
-    "react-syntax-highlighter": "^15.4.4",
     "rollup": "^2.53.3",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.0"
+    "rollup-plugin-postcss": "^4.0.0",
+    "source-map-explorer": "^2.5.2"
   },
   "peerDependencies": {
     "react": "^16.13.1",

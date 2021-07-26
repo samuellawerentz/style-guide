@@ -9,6 +9,7 @@ export const BUTTON_TYPES = [
   'danger-secondary',
   'link',
   'link-danger',
+  'table-action-link',
 ]
 /**
  * Primary UI component for user interaction

@@ -8,8 +8,8 @@ import postcss from "rollup-plugin-postcss";
 export default {
     input: 'src/index.js',
     output: [
-        { file: pkg.main, format: 'cjs' },
-        { file: pkg.module, format: 'esm' }
+        { file: pkg.main, format: 'cjs', sourcemap: true },
+        { file: pkg.module, format: 'esm', sourcemap: true }
     ],
     plugins: [
         external(),
