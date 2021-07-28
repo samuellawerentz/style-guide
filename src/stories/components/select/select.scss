@@ -1,37 +1,61 @@
-.sg.contacto-input-wrapper {
-    .contacto-input {
+.sg.contacto-select-wrapper {
+    .contacto-select {
         border-radius: 0;
         box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
         border: 1px solid var(--border-color-1);
         height: 36px;
-        padding-left: 12px;
-        & > * {
-            line-height: 20px;
-        }
-        &:hover, &:active, &:focus, &[class*='focused'] {
+        width: 100%;
+
+        &:hover,
+        &:active,
+        &:focus,
+        &[class*='focused'] {
             box-shadow: none;
             border: 1px solid var(--primary-color);
         }
+
+        .ant-select-selector {
+            border: none;
+
+            .ant-select-selection-search-input,
+            .ant-select-selection-placeholder {
+                height: 36px;
+                line-height: 36px;
+            }
+        }
+
+        .ant-select-arrow {
+            margin-top: 0;
+            top: 0;
+            transform: translateY(50%);
+            right: 19px;
+        }
+
         &[class*='focused'] {
             .contacto-icon {
                 color: var(--primary-color);
             }
         }
-        &[disabled], &[disabled]:hover {
-            background-color:var(--gray-6);
+
+        &[disabled],
+        &[disabled]:hover {
+            background-color: var(--gray-6);
             border: 1px solid var(--gray-6);
             box-shadow: none;
+
             &::placeholder {
                 color: var(--gray-2);
             }
         }
+
         &--readonly:not(.increase-specificity) {
             box-shadow: none;
-            background-color:var(--gray-6);
+            background-color: var(--gray-6);
             color: var(--primary-text-color);
         }
     }
-    .contacto-input-label-wrapper{
+
+    .contacto-select-label-wrapper {
         margin-bottom: 4px;
     }
 }

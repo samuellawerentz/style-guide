@@ -4,7 +4,7 @@ import { Text } from '../typography/Typography'
 import PropTypes from 'prop-types'
 import './textfield.scss'
 
-export const TEXTFIELD_TYPES = ['input', 'search-box']
+export const TEXTFIELD_TYPES = ['input', 'search-box', 'no-shadow']
 /**
  * This is used to get text input from the user
  */
@@ -16,7 +16,7 @@ export const TextField = ({
   disabled,
   placeholder,
   readOnly,
-  className,
+  className = '',
   ...props
 }) => {
   icon = type === 'search-box' ? 'search' : icon

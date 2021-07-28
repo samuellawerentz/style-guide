@@ -3,6 +3,25 @@
         display: none;
     }
 
+    .ant-spin-blur{
+        overflow: visible;
+      }
+
+    .ant-table-pagination.ant-pagination {
+        margin: 0;
+        position: absolute;
+        right: 16px;
+        align-items: center;
+        top: -16px;
+        transform: translateY(-100%);
+
+        .ant-pagination-total-text,
+        .material-icons {
+            line-height: 36px;
+            height: 36px;
+        }
+    }
+
     .ant-pagination-prev,
     .ant-pagination-next {
         height: auto;
@@ -18,10 +37,6 @@
     .ant-pagination-total-text,
     .ant-pagination-prev {
         margin-right: 16px;
-    }
-
-    .ant-table-pagination {
-        align-items: center;
     }
 
     .ant-table-thead>tr>th {

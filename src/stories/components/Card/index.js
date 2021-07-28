@@ -19,10 +19,10 @@ const Title = (props) => (
 /**
  * This is a layout that is mostly used in the center, when the screen has a table.
  */
-export const Card = ({ className, title, subtitle, actionButton, ...props }) => {
+export const Card = ({ className = '', title, subtitle, actionButton, ...props }) => {
   return (
     <AntCard
-      className={[className].join(' ')}
+      className={['sg contacto-card', className].join(' ')}
       {...props}
       title={<Title text={title} subtitle={subtitle} />}
       extra={actionButton || null}
@@ -49,6 +49,4 @@ Card.propTypes = {
   actionButton: PropTypes.node,
 }
 
-Card.defaultProps = {
-  className: 'sg contacto-card',
-}
+Card.defaultProps = {}

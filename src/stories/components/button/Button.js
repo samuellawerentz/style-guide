@@ -11,21 +11,26 @@ export const BUTTON_TYPES = [
   'link-danger',
   'table-action-link',
 ]
+
+export const getButtonClassName = (type, size = 'default', icon, className, onlyIcon) => {
+  return [
+    'sg',
+    'cnto-btn',
+    'contacto-button',
+    `contacto-button--${type}`,
+    `contacto-button--${size}`,
+    icon ? `contacto-button--with-icon` : '',
+    onlyIcon ? 'contacto-button--only-icon' : '',
+    className,
+  ].join(' ')
+}
 /**
  * Primary UI component for user interaction
  */
 export const Button = ({ type, size, label, icon, loading, className, ...props }) => {
   return (
     <AntButton
-      className={[
-        'sg',
-        'contacto-button',
-        `contacto-button--${type}`,
-        `contacto-button--${size}`,
-        icon ? `contacto-button--with-icon` : '',
-        !label && icon ? 'contacto-button--only-icon' : '',
-        className,
-      ].join(' ')}
+      className={getButtonClassName(type, size, icon, className, !label && icon)}
       icon={icon ? <span className={'material-icons contacto-icon ' + size}>{icon}</span> : null}
       loading={loading}
       {...props}

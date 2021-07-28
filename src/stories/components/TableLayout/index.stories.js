@@ -2,6 +2,7 @@ import React from 'react'
 import { TableLayout } from './'
 import { TextField } from '../textfield/TextField'
 import { Button } from '../button/Button'
+import { Table } from '../Table/index'
 
 const columns = [
   {
@@ -19,7 +20,7 @@ const columns = [
 ]
 
 const data = []
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 36; i++) {
   data.push({
     key: i,
     name: `Edward King ${i}`,
@@ -41,7 +42,7 @@ const Template = (args) => <TableLayout {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  tableProps: { columns, dataSource: data },
+  table: <Table columns={columns} dataSource={data} />,
   actionButtons: [
     <Button type="table-action-link" icon="filter_list" key="1" label="Filter">
       Filter

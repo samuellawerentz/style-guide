@@ -7,7 +7,7 @@ import { Table as AntTable } from 'antd'
  * Description
  */
 // eslint-disable-next-line react/prop-types
-export const Table = ({ className, pagination, ...props }) => {
+export const Table = ({ className = '', pagination, ...props }) => {
   let modifiedPagination = {
     ...pagination,
     showSizeChanger: false,
@@ -24,7 +24,7 @@ export const Table = ({ className, pagination, ...props }) => {
   }
   return (
     <AntTable
-      className={[className].join(' ')}
+      className={['sg contacto-table', className].join(' ')}
       pagination={pagination !== false && modifiedPagination}
       {...props}
     />
@@ -36,8 +36,4 @@ Table.propTypes = {
    * Class to be added
    */
   className: PropTypes.string,
-}
-
-Table.defaultProps = {
-  className: 'sg contacto-table',
 }

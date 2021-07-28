@@ -6,9 +6,9 @@ import './select.scss'
 /**
  * This is used to select a value from the list of options
  */
-export const Select = ({ label, icon, disabled, placeholder, readOnly, ...props }) => {
+export const Select = ({ label, icon, disabled, placeholder, readOnly, className, ...props }) => {
   return (
-    <div className="sg contacto-select-wrapper">
+    <div className={'sg contacto-select-wrapper ' + className}>
       {label && (
         <div className="contacto-select-label-wrapper">
           <Text type="caption-bold">{label}</Text>
@@ -18,6 +18,7 @@ export const Select = ({ label, icon, disabled, placeholder, readOnly, ...props 
         className={`contacto-select ${readOnly ? 'contacto-select--readonly' : ''}`}
         disabled={readOnly || disabled}
         placeholder={placeholder}
+        suffixIcon={<span className="material-icons contacto-icon--select-caret">expand_more</span>}
         {...props}
       />
     </div>
@@ -49,6 +50,7 @@ Select.propTypes = {
    * Show the value as readonly
    */
   readOnly: PropTypes.bool,
+  className: PropTypes.string,
 }
 
 Select.defaultProps = {

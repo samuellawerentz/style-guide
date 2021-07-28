@@ -8,8 +8,8 @@ import { Checkbox as AntCheckbox } from 'antd'
  *  Has the same properties that are used in antd.
  *  Visit https://ant.design/components/checkbox/#API for options
  */
-export const Checkbox = ({ className, ...props }) => {
-  return <AntCheckbox className={[className].join(' ')} {...props} />
+export const Checkbox = ({ className = '', ...props }) => {
+  return <AntCheckbox className={['sg contacto-checkbox', className].join(' ')} {...props} />
 }
 
 const CheckboxGroup = ({ className, ...props }) => (
@@ -26,8 +26,4 @@ Checkbox.propTypes = {
    * Class to be added
    */
   className: PropTypes.string,
-}
-
-Checkbox.defaultProps = {
-  className: 'sg contacto-checkbox',
 }

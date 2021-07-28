@@ -1,25 +1,15 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import './styles.scss'
 import PropTypes from 'prop-types'
 import { Space, Row } from 'antd'
-import { Table } from '../Table/index'
 
 /**
  * A common table layout
  *
  */
-export const TableLayout = ({ className, tableProps, searchBar, actionButtons }) => {
-  const tableLayoutRef = useRef(null)
-  const paginationContainerRef = useRef(null)
-
-  useEffect(() => {
-    const paginationContainer = tableLayoutRef.current.querySelector(
-      'ul.ant-pagination.ant-table-pagination',
-    )
-    paginationContainerRef.current.appendChild(paginationContainer)
-  }, [])
+export const TableLayout = ({ className = '', table, searchBar, actionButtons }) => {
   return (
-    <div className={[className].join(' ')} ref={tableLayoutRef}>
+    <div className={['sg contacto-table-layout', className].join(' ')}>
       <Row justify="space-between" className="contacto-table-layout--controls">
         <Space direction="horizontal" size={16}>
           <div className="contacto-table-layout--search-bar">{searchBar}</div>
@@ -30,14 +20,8 @@ export const TableLayout = ({ className, tableProps, searchBar, actionButtons })
               </div>
             ))}
         </Space>
-        <div
-          className="contacto-table-layout--pagination sg contacto-table"
-          ref={paginationContainerRef}
-        ></div>
       </Row>
-      <div className="contacto-table-wrapper">
-        <Table {...tableProps} />
-      </div>
+      <div className="contacto-table-wrapper">{table}</div>
     </div>
   )
 }
@@ -47,12 +31,8 @@ TableLayout.propTypes = {
    * Class to be added
    */
   className: PropTypes.string,
-  tableProps: PropTypes.object,
+  table: PropTypes.node,
   searchBar: PropTypes.node,
   pagination: PropTypes.node,
   actionButtons: PropTypes.arrayOf(PropTypes.node),
-}
-
-TableLayout.defaultProps = {
-  className: 'sg contacto-table-layout',
 }
