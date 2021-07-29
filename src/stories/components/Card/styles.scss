@@ -9,4 +9,11 @@
   .contacto-table-wrapper {
     margin: 0 -16px;
   }
+  .contacto-card-subtitle {
+    white-space: normal;
+    padding-right: 32px;
+  }
+  &.contacto-card-align-top .ant-card-head-wrapper {
+    align-items: flex-start;
+  }
 }

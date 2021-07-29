@@ -40,3 +40,12 @@ CardWithTitleButtonAndSubtitle.args = {
   subtitle: 'This is a descriptive copy for the header',
   actionButton: <Button type="secondary" label="Sample Action with Icon" icon="group_add" />,
 }
+
+export const CardWithLongText = Template.bind({})
+CardWithLongText.args = {
+  title: 'Sample header',
+  subtitle:
+    'This is a very very very very very long descriptive copy for the header, so that the line will wrap to the next line to see if the button is top aligned.',
+  actionButton: <Button type="secondary" label="Sample Action with Icon" icon="group_add" />,
+  topAlignButton: true,
+}

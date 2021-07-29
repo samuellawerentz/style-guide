@@ -10,7 +10,7 @@ const Title = (props) => (
       <Text type="title-2">{props.text}</Text>
     </div>
     {props.subtitle && (
-      <div>
+      <div className="contacto-card-subtitle">
         <Text variant="secondary">{props.subtitle}</Text>
       </div>
     )}
@@ -19,10 +19,21 @@ const Title = (props) => (
 /**
  * This is a layout that is mostly used in the center, when the screen has a table.
  */
-export const Card = ({ className = '', title, subtitle, actionButton, ...props }) => {
+export const Card = ({
+  className = '',
+  title,
+  subtitle,
+  actionButton,
+  topAlignButton,
+  ...props
+}) => {
   return (
     <AntCard
-      className={['sg contacto-card', className].join(' ')}
+      className={[
+        'sg contacto-card',
+        className,
+        topAlignButton ? 'contacto-card-align-top' : '',
+      ].join(' ')}
       {...props}
       title={<Title text={title} subtitle={subtitle} />}
       extra={actionButton || null}
@@ -47,6 +58,7 @@ Card.propTypes = {
    * The action button component. It must be a react component, usually, the Button component.
    */
   actionButton: PropTypes.node,
+  topAlignButton: PropTypes.bool,
 }
 
 Card.defaultProps = {}

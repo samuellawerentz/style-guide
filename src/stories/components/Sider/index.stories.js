@@ -1,9 +1,10 @@
 import React from 'react'
 import { Sider } from './'
 import { Layout } from 'antd'
+import { Button } from '../button/Button'
 
 export default {
-  title: 'Components/Sider',
+  title: 'Layout/Sider',
   component: Sider,
   // argTypes: {
   //  type: {
@@ -28,4 +29,5 @@ Default.args = {
   children: 'heelo',
   title: 'Sample Sider',
   collapsed: false,
+  footerButtons: [<Button label="Sample action" key="button" />],
 }
