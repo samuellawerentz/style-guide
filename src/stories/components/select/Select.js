@@ -3,10 +3,27 @@ import { Select as AntSelect } from 'antd'
 import { Text } from '../typography/Typography'
 import PropTypes from 'prop-types'
 import './select.scss'
+import Icon, { LoadingOutlined } from '@ant-design/icons'
 /**
  * This is used to select a value from the list of options
  */
-export const Select = ({ label, icon, disabled, placeholder, readOnly, className, ...props }) => {
+export const Select = React.forwardRef(function Select(
+  {
+    label,
+    icon,
+    disabled,
+    placeholder,
+    readOnly,
+    className,
+    dropdownClassName,
+    listHeight,
+    size,
+    onIconClick,
+    loading,
+    ...props
+  },
+  ref,
+) {
   return (
     <div className={'sg contacto-select-wrapper ' + className}>
       {label && (
@@ -15,15 +32,32 @@ export const Select = ({ label, icon, disabled, placeholder, readOnly, className
         </div>
       )}
       <AntSelect
-        className={`contacto-select ${readOnly ? 'contacto-select--readonly' : ''}`}
+        className={[
+          'contacto-select',
+          `${readOnly ? 'contacto-select--readonly' : ''}`,
+          `contacto-select--${size}`,
+        ]}
+        ref={ref}
         disabled={readOnly || disabled}
+        listHeight={listHeight || 216}
         placeholder={placeholder}
-        suffixIcon={<span className="material-icons contacto-icon--select-caret">expand_more</span>}
+        dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
+        suffixIcon={
+          loading ? (
+            <Icon component={LoadingOutlined} />
+          ) : (
+            <span className="material-icons contacto-icon--select-caret" onClick={onIconClick}>
+              expand_more
+            </span>
+          )
+        }
         {...props}
       />
     </div>
   )
-}
+})
+
+Select.Option = AntSelect.Option
 
 Select.propTypes = {
   /**
@@ -51,9 +85,12 @@ Select.propTypes = {
    */
   readOnly: PropTypes.bool,
   className: PropTypes.string,
+  dropdownClassName: PropTypes.string,
+  listHeight: PropTypes.number,
+  loading: PropTypes.bool,
+  onIconClick: PropTypes.func,
 }
 
 Select.defaultProps = {
   size: 'default',
-  type: 'input',
 }

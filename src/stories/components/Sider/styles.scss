@@ -15,7 +15,7 @@
       max-width: calc(464px - 32px);
   }
   &.contacto-sider--no-padding {
-      padding: 32px 0 0;
+      padding: 32px 0 16px;
     .contacto-sider-title, .contacto-sider-content, .contacto-sider-footer {
         min-width: 464px;
         max-width: 464px;
@@ -24,6 +24,7 @@
   }
   .contacto-sider-content{
     flex-grow: 1;
+    overflow-y: auto;
 }
   .contacto-sider-title {
       margin-bottom: 32px;
@@ -33,8 +34,10 @@
       display: flex;
       justify-content: space-between;
       flex-direction: row-reverse;
+      padding-top: 16px !important;
   }
   .contacto-sider-close-icon {
       cursor: pointer;
+      color: var(--gray-1);
   }
 }

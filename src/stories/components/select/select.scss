@@ -1,34 +1,53 @@
 .sg.contacto-select-wrapper {
     .contacto-select {
+        --height: 36px;
         border-radius: 0;
         box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
         border: 1px solid var(--border-color-1);
-        height: 36px;
+        height: var(--height);
         width: 100%;
 
         &:hover,
         &:active,
         &:focus,
         &[class*='focused'] {
-            box-shadow: none;
-            border: 1px solid var(--primary-color);
+            &:not(.ant-select-disabled) {
+                box-shadow: none;
+                border: 1px solid var(--primary-color);
+                .ant-select-selector {
+                    box-shadow: none;
+                }
+            }
         }
 
         .ant-select-selector {
             border: none;
-
+            height: calc(var(--height) - 2px);
+            cursor: pointer;
             .ant-select-selection-search-input,
             .ant-select-selection-placeholder {
-                height: 36px;
-                line-height: 36px;
+                height: calc(var(--height) - 2px);
+                line-height: calc(var(--height) - 2px);
+            }
+            .ant-select-selection-item {
+                line-height: calc(var(--height) - 2px);
             }
         }
 
         .ant-select-arrow {
             margin-top: 0;
-            top: 0;
-            transform: translateY(50%);
-            right: 19px;
+            top: 50%;
+            right: 12px;
+            color: var(--gray-1);
+            width: auto;
+            height: auto;
+            font-size: 0;
+            transform: translateY(-50%);
+            cursor: pointer;
+            .contacto-icon--select-caret {
+                font-size: 20px;
+                pointer-events: all;
+            }
         }
 
         &[class*='focused'] {
@@ -37,7 +56,7 @@
             }
         }
 
-        &[disabled],
+        &[class*="disabled"],
         &[disabled]:hover {
             background-color: var(--gray-6);
             border: 1px solid var(--gray-6);
@@ -52,10 +71,41 @@
             box-shadow: none;
             background-color: var(--gray-6);
             color: var(--primary-text-color);
+            .ant-select-selector {
+                color: var(--primary-text-color);
+            }
+        }
+        .ant-select-clear {
+            width: 20px;
+        }
+    }
+    .contacto-select--small {
+        --height: 28px;
+        .ant-select-arrow {
+            right: 8px;
         }
     }
 
     .contacto-select-label-wrapper {
         margin-bottom: 4px;
+        line-height: 0;
+    }
+    .anticon.anticon-loading {
+        color: var(--gray-2);
+        font-size: 24px;
+    }
+}
+
+.sg.contacto-select-listbox {
+    .ant-select-item {
+        line-height: 33px;
+        border-bottom: 1px solid var(--border-color);
+        &:hover {
+            background-color: var(--background-highlight-color);
+        }
+    }
+    .ant-select-item-option-selected {
+        background-color: var(--background-highlight-color);
+        color: var(--primary-color);
     }
 }

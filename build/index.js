@@ -5,11 +5,13 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var React = require('react');
 var PropTypes = require('prop-types');
 var antd = require('antd');
+var Icon = require('@ant-design/icons');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
+var Icon__default = /*#__PURE__*/_interopDefaultLegacy(Icon);
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -256,7 +258,7 @@ Text.defaultProps = {
   type: 'body'
 };
 
-var css_248z$8 = ".sg.contacto-input-wrapper .contacto-input {\n  border-radius: 0;\n  box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);\n  border: 1px solid var(--border-color-1);\n  height: 36px;\n  padding-left: 12px; }\n  .sg.contacto-input-wrapper .contacto-input > * {\n    line-height: 20px; }\n  .sg.contacto-input-wrapper .contacto-input:hover, .sg.contacto-input-wrapper .contacto-input:active, .sg.contacto-input-wrapper .contacto-input:focus, .sg.contacto-input-wrapper .contacto-input[class*='focused'] {\n    box-shadow: none;\n    border: 1px solid var(--primary-color); }\n  .sg.contacto-input-wrapper .contacto-input[class*='focused'] .contacto-icon {\n    color: var(--primary-color); }\n  .sg.contacto-input-wrapper .contacto-input[disabled], .sg.contacto-input-wrapper .contacto-input[disabled]:hover {\n    background-color: var(--gray-6);\n    border: 1px solid var(--gray-6);\n    box-shadow: none; }\n    .sg.contacto-input-wrapper .contacto-input[disabled]::placeholder, .sg.contacto-input-wrapper .contacto-input[disabled]:hover::placeholder {\n      color: var(--gray-2); }\n  .sg.contacto-input-wrapper .contacto-input--readonly:not(.increase-specificity) {\n    box-shadow: none;\n    background-color: var(--gray-6);\n    color: var(--primary-text-color); }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--small {\n    height: 28px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--search-box {\n    box-shadow: none;\n    padding-left: 8px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--no-shadow {\n    box-shadow: none; }\n\n.sg.contacto-input-wrapper .contacto-input-label-wrapper {\n  margin-bottom: 4px; }\n";
+var css_248z$8 = ".sg.contacto-input-wrapper .contacto-input {\n  border-radius: 0;\n  box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);\n  border: 1px solid var(--border-color-1);\n  height: 36px;\n  padding-left: 12px; }\n  .sg.contacto-input-wrapper .contacto-input > * {\n    line-height: 20px; }\n  .sg.contacto-input-wrapper .contacto-input:hover, .sg.contacto-input-wrapper .contacto-input:active, .sg.contacto-input-wrapper .contacto-input:focus, .sg.contacto-input-wrapper .contacto-input[class*='focused'] {\n    box-shadow: none;\n    border: 1px solid var(--primary-color); }\n  .sg.contacto-input-wrapper .contacto-input[class*='focused'] .contacto-icon {\n    color: var(--primary-color); }\n  .sg.contacto-input-wrapper .contacto-input[disabled], .sg.contacto-input-wrapper .contacto-input[disabled]:hover {\n    background-color: var(--gray-6);\n    border: 1px solid var(--gray-6);\n    box-shadow: none; }\n    .sg.contacto-input-wrapper .contacto-input[disabled]::placeholder, .sg.contacto-input-wrapper .contacto-input[disabled]:hover::placeholder {\n      color: var(--gray-2); }\n  .sg.contacto-input-wrapper .contacto-input--readonly:not(.increase-specificity) {\n    box-shadow: none;\n    background-color: var(--gray-6);\n    color: var(--primary-text-color); }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--small {\n    height: 28px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--search-box {\n    box-shadow: none;\n    padding-left: 8px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--no-shadow {\n    box-shadow: none; }\n\n.sg.contacto-input-wrapper .contacto-input-label-wrapper {\n  margin-bottom: 4px;\n  line-height: 0; }\n";
 styleInject(css_248z$8);
 
 var _excluded$6 = ["type", "label", "icon", "size", "disabled", "placeholder", "readOnly", "className"];
@@ -485,21 +487,26 @@ styleInject(css_248z$4);
   className: PropTypes__default['default'].string
 });
 
-var css_248z$3 = ".sg.contacto-select-wrapper .contacto-select {\n  border-radius: 0;\n  box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);\n  border: 1px solid var(--border-color-1);\n  height: 36px;\n  width: 100%; }\n  .sg.contacto-select-wrapper .contacto-select:hover, .sg.contacto-select-wrapper .contacto-select:active, .sg.contacto-select-wrapper .contacto-select:focus, .sg.contacto-select-wrapper .contacto-select[class*='focused'] {\n    box-shadow: none;\n    border: 1px solid var(--primary-color); }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-selector {\n    border: none; }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-search-input,\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-placeholder {\n      height: 36px;\n      line-height: 36px; }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-arrow {\n    margin-top: 0;\n    top: 0;\n    transform: translateY(50%);\n    right: 19px; }\n  .sg.contacto-select-wrapper .contacto-select[class*='focused'] .contacto-icon {\n    color: var(--primary-color); }\n  .sg.contacto-select-wrapper .contacto-select[disabled], .sg.contacto-select-wrapper .contacto-select[disabled]:hover {\n    background-color: var(--gray-6);\n    border: 1px solid var(--gray-6);\n    box-shadow: none; }\n    .sg.contacto-select-wrapper .contacto-select[disabled]::placeholder, .sg.contacto-select-wrapper .contacto-select[disabled]:hover::placeholder {\n      color: var(--gray-2); }\n  .sg.contacto-select-wrapper .contacto-select--readonly:not(.increase-specificity) {\n    box-shadow: none;\n    background-color: var(--gray-6);\n    color: var(--primary-text-color); }\n\n.sg.contacto-select-wrapper .contacto-select-label-wrapper {\n  margin-bottom: 4px; }\n";
+var css_248z$3 = ".sg.contacto-select-wrapper .contacto-select {\n  --height: 36px;\n  border-radius: 0;\n  box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);\n  border: 1px solid var(--border-color-1);\n  height: var(--height);\n  width: 100%; }\n  .sg.contacto-select-wrapper .contacto-select:hover:not(.ant-select-disabled), .sg.contacto-select-wrapper .contacto-select:active:not(.ant-select-disabled), .sg.contacto-select-wrapper .contacto-select:focus:not(.ant-select-disabled), .sg.contacto-select-wrapper .contacto-select[class*='focused']:not(.ant-select-disabled) {\n    box-shadow: none;\n    border: 1px solid var(--primary-color); }\n    .sg.contacto-select-wrapper .contacto-select:hover:not(.ant-select-disabled) .ant-select-selector, .sg.contacto-select-wrapper .contacto-select:active:not(.ant-select-disabled) .ant-select-selector, .sg.contacto-select-wrapper .contacto-select:focus:not(.ant-select-disabled) .ant-select-selector, .sg.contacto-select-wrapper .contacto-select[class*='focused']:not(.ant-select-disabled) .ant-select-selector {\n      box-shadow: none; }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-selector {\n    border: none;\n    height: calc(var(--height) - 2px);\n    cursor: pointer; }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-search-input,\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-placeholder {\n      height: calc(var(--height) - 2px);\n      line-height: calc(var(--height) - 2px); }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-item {\n      line-height: calc(var(--height) - 2px); }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-arrow {\n    margin-top: 0;\n    top: 50%;\n    right: 12px;\n    color: var(--gray-1);\n    width: auto;\n    height: auto;\n    font-size: 0;\n    transform: translateY(-50%);\n    cursor: pointer; }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-arrow .contacto-icon--select-caret {\n      font-size: 20px;\n      pointer-events: all; }\n  .sg.contacto-select-wrapper .contacto-select[class*='focused'] .contacto-icon {\n    color: var(--primary-color); }\n  .sg.contacto-select-wrapper .contacto-select[class*=\"disabled\"], .sg.contacto-select-wrapper .contacto-select[disabled]:hover {\n    background-color: var(--gray-6);\n    border: 1px solid var(--gray-6);\n    box-shadow: none; }\n    .sg.contacto-select-wrapper .contacto-select[class*=\"disabled\"]::placeholder, .sg.contacto-select-wrapper .contacto-select[disabled]:hover::placeholder {\n      color: var(--gray-2); }\n  .sg.contacto-select-wrapper .contacto-select--readonly:not(.increase-specificity) {\n    box-shadow: none;\n    background-color: var(--gray-6);\n    color: var(--primary-text-color); }\n    .sg.contacto-select-wrapper .contacto-select--readonly:not(.increase-specificity) .ant-select-selector {\n      color: var(--primary-text-color); }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-clear {\n    width: 20px; }\n\n.sg.contacto-select-wrapper .contacto-select--small {\n  --height: 28px; }\n  .sg.contacto-select-wrapper .contacto-select--small .ant-select-arrow {\n    right: 8px; }\n\n.sg.contacto-select-wrapper .contacto-select-label-wrapper {\n  margin-bottom: 4px;\n  line-height: 0; }\n\n.sg.contacto-select-wrapper .anticon.anticon-loading {\n  color: var(--gray-2);\n  font-size: 24px; }\n\n.sg.contacto-select-listbox .ant-select-item {\n  line-height: 33px;\n  border-bottom: 1px solid var(--border-color); }\n  .sg.contacto-select-listbox .ant-select-item:hover {\n    background-color: var(--background-highlight-color); }\n\n.sg.contacto-select-listbox .ant-select-item-option-selected {\n  background-color: var(--background-highlight-color);\n  color: var(--primary-color); }\n";
 styleInject(css_248z$3);
 
-var _excluded$2 = ["label", "icon", "disabled", "placeholder", "readOnly", "className"];
+var _excluded$2 = ["label", "icon", "disabled", "placeholder", "readOnly", "className", "dropdownClassName", "listHeight", "size", "onIconClick", "loading"];
 /**
  * This is used to select a value from the list of options
  */
 
-var Select = function Select(_ref) {
+var Select = /*#__PURE__*/React__default['default'].forwardRef(function Select(_ref, ref) {
   var label = _ref.label;
       _ref.icon;
       var disabled = _ref.disabled,
       placeholder = _ref.placeholder,
       readOnly = _ref.readOnly,
       className = _ref.className,
+      dropdownClassName = _ref.dropdownClassName,
+      listHeight = _ref.listHeight,
+      size = _ref.size,
+      onIconClick = _ref.onIconClick,
+      loading = _ref.loading,
       props = _objectWithoutProperties(_ref, _excluded$2);
 
   return /*#__PURE__*/React__default['default'].createElement("div", {
@@ -509,14 +516,21 @@ var Select = function Select(_ref) {
   }, /*#__PURE__*/React__default['default'].createElement(Text, {
     type: "caption-bold"
   }, label)), /*#__PURE__*/React__default['default'].createElement(antd.Select, _extends({
-    className: "contacto-select ".concat(readOnly ? 'contacto-select--readonly' : ''),
+    className: ['contacto-select', "".concat(readOnly ? 'contacto-select--readonly' : ''), "contacto-select--".concat(size)],
+    ref: ref,
     disabled: readOnly || disabled,
+    listHeight: listHeight || 216,
     placeholder: placeholder,
-    suffixIcon: /*#__PURE__*/React__default['default'].createElement("span", {
-      className: "material-icons contacto-icon--select-caret"
+    dropdownClassName: ['sg contacto-select-listbox', dropdownClassName].join(' '),
+    suffixIcon: loading ? /*#__PURE__*/React__default['default'].createElement(Icon__default['default'], {
+      component: Icon.LoadingOutlined
+    }) : /*#__PURE__*/React__default['default'].createElement("span", {
+      className: "material-icons contacto-icon--select-caret",
+      onClick: onIconClick
     }, "expand_more")
   }, props)));
-};
+});
+Select.Option = antd.Select.Option;
 Select.propTypes = {
   /**
    * How large should the textfield be?
@@ -547,11 +561,14 @@ Select.propTypes = {
    * Show the value as readonly
    */
   readOnly: PropTypes__default['default'].bool,
-  className: PropTypes__default['default'].string
+  className: PropTypes__default['default'].string,
+  dropdownClassName: PropTypes__default['default'].string,
+  listHeight: PropTypes__default['default'].number,
+  loading: PropTypes__default['default'].bool,
+  onIconClick: PropTypes__default['default'].func
 };
 Select.defaultProps = {
-  size: 'default',
-  type: 'input'
+  size: 'default'
 };
 
 var css_248z$2 = ".sg.contacto-table .ant-pagination-item {\n  display: none; }\n\n.sg.contacto-table .ant-spin-blur {\n  overflow: visible; }\n\n.sg.contacto-table .ant-table-pagination.ant-pagination {\n  margin: 0;\n  position: absolute;\n  right: 16px;\n  align-items: center;\n  top: -16px;\n  transform: translateY(-100%); }\n  .sg.contacto-table .ant-table-pagination.ant-pagination .ant-pagination-total-text,\n  .sg.contacto-table .ant-table-pagination.ant-pagination .material-icons {\n    line-height: 36px;\n    height: 36px; }\n\n.sg.contacto-table .ant-pagination-prev,\n.sg.contacto-table .ant-pagination-next {\n  height: auto;\n  min-width: auto;\n  line-height: initial;\n  color: var(--gray-1); }\n  .sg.contacto-table .ant-pagination-prev.ant-pagination-disabled,\n  .sg.contacto-table .ant-pagination-next.ant-pagination-disabled {\n    color: var(--gray-3); }\n\n.sg.contacto-table .ant-pagination-total-text,\n.sg.contacto-table .ant-pagination-prev {\n  margin-right: 16px; }\n\n.sg.contacto-table .ant-table-thead > tr > th {\n  background: var(--gray-6);\n  color: var(--gray-1);\n  font-weight: 400;\n  padding-top: 8px;\n  padding-bottom: 8px; }\n  .sg.contacto-table .ant-table-thead > tr > th:before {\n    display: none; }\n\n.sg.contacto-table .ant-table-tbody > tr.ant-table-row:hover > td {\n  background-color: var(--background-highlight-color); }\n";
@@ -639,7 +656,7 @@ TableLayout.propTypes = {
   actionButtons: PropTypes__default['default'].arrayOf(PropTypes__default['default'].node)
 };
 
-var css_248z = ".sg.contacto-sider.ant-layout-sider {\n  background-color: #fff;\n  box-shadow: rgba(0, 0, 0, 0.06) -3px 0px 6px;\n  padding: 32px 16px 16px; }\n  .sg.contacto-sider.ant-layout-sider .contacto-sider-children {\n    display: flex;\n    flex-direction: column;\n    height: 100%; }\n  .sg.contacto-sider.ant-layout-sider.ant-layout-sider-collapsed {\n    padding: 32px 0 0; }\n  .sg.contacto-sider.ant-layout-sider .contacto-sider-title, .sg.contacto-sider.ant-layout-sider .contacto-sider-content, .sg.contacto-sider.ant-layout-sider .contacto-sider-footer {\n    min-width: calc(464px - 32px);\n    max-width: calc(464px - 32px); }\n  .sg.contacto-sider.ant-layout-sider.contacto-sider--no-padding {\n    padding: 32px 0 0; }\n    .sg.contacto-sider.ant-layout-sider.contacto-sider--no-padding .contacto-sider-title, .sg.contacto-sider.ant-layout-sider.contacto-sider--no-padding .contacto-sider-content, .sg.contacto-sider.ant-layout-sider.contacto-sider--no-padding .contacto-sider-footer {\n      min-width: 464px;\n      max-width: 464px;\n      padding: 0 16px; }\n  .sg.contacto-sider.ant-layout-sider .contacto-sider-content {\n    flex-grow: 1; }\n  .sg.contacto-sider.ant-layout-sider .contacto-sider-title {\n    margin-bottom: 32px; }\n  .sg.contacto-sider.ant-layout-sider .contacto-sider-footer {\n    margin-top: auto;\n    display: flex;\n    justify-content: space-between;\n    flex-direction: row-reverse; }\n  .sg.contacto-sider.ant-layout-sider .contacto-sider-close-icon {\n    cursor: pointer; }\n";
+var css_248z = ".sg.contacto-sider.ant-layout-sider {\n  background-color: #fff;\n  box-shadow: rgba(0, 0, 0, 0.06) -3px 0px 6px;\n  padding: 32px 16px 16px; }\n  .sg.contacto-sider.ant-layout-sider .contacto-sider-children {\n    display: flex;\n    flex-direction: column;\n    height: 100%; }\n  .sg.contacto-sider.ant-layout-sider.ant-layout-sider-collapsed {\n    padding: 32px 0 0; }\n  .sg.contacto-sider.ant-layout-sider .contacto-sider-title, .sg.contacto-sider.ant-layout-sider .contacto-sider-content, .sg.contacto-sider.ant-layout-sider .contacto-sider-footer {\n    min-width: calc(464px - 32px);\n    max-width: calc(464px - 32px); }\n  .sg.contacto-sider.ant-layout-sider.contacto-sider--no-padding {\n    padding: 32px 0 16px; }\n    .sg.contacto-sider.ant-layout-sider.contacto-sider--no-padding .contacto-sider-title, .sg.contacto-sider.ant-layout-sider.contacto-sider--no-padding .contacto-sider-content, .sg.contacto-sider.ant-layout-sider.contacto-sider--no-padding .contacto-sider-footer {\n      min-width: 464px;\n      max-width: 464px;\n      padding: 0 16px; }\n  .sg.contacto-sider.ant-layout-sider .contacto-sider-content {\n    flex-grow: 1;\n    overflow-y: auto; }\n  .sg.contacto-sider.ant-layout-sider .contacto-sider-title {\n    margin-bottom: 32px; }\n  .sg.contacto-sider.ant-layout-sider .contacto-sider-footer {\n    margin-top: auto;\n    display: flex;\n    justify-content: space-between;\n    flex-direction: row-reverse;\n    padding-top: 16px !important; }\n  .sg.contacto-sider.ant-layout-sider .contacto-sider-close-icon {\n    cursor: pointer;\n    color: var(--gray-1); }\n";
 styleInject(css_248z);
 
 var _excluded = ["className", "noPadding", "title", "onClose", "children", "footerButtons"];

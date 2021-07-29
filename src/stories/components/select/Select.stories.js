@@ -20,14 +20,89 @@ Default.args = {
   type: 'input',
   size: 'default',
   placeholder: 'A simple text field',
+  options: [
+    { value: 'Apple' },
+    { value: 'Ball' },
+    { value: 'Cat' },
+    { value: 'Duck' },
+    { value: 'Egg' },
+    { value: 'Fish' },
+    { value: 'Goat' },
+    { value: 'Hen' },
+  ],
 }
 
-export const WithIcon = Template.bind({})
-WithIcon.args = {
+export const LoadingState = Template.bind({})
+LoadingState.args = {
   type: 'input',
   size: 'default',
-  placeholder: 'A textfield with an icon',
-  icon: 'search',
+  loading: true,
+  placeholder: 'A simple text field',
+  options: [
+    { value: 'Apple' },
+    { value: 'Ball' },
+    { value: 'Cat' },
+    { value: 'Duck' },
+    { value: 'Egg' },
+    { value: 'Fish' },
+    { value: 'Goat' },
+    { value: 'Hen' },
+  ],
+}
+
+export const WithSearch = Template.bind({})
+WithSearch.args = {
+  type: 'input',
+  size: 'default',
+  placeholder: 'A simple text field',
+  showSearch: true,
+  options: [
+    { value: 'Apple' },
+    { value: 'Ball' },
+    { value: 'Cat' },
+    { value: 'Duck' },
+    { value: 'Egg' },
+    { value: 'Fish' },
+    { value: 'Goat' },
+    { value: 'Hen' },
+  ],
+}
+
+export const SearchWithClear = Template.bind({})
+SearchWithClear.args = {
+  type: 'input',
+  size: 'default',
+  placeholder: 'A simple text field',
+  showSearch: true,
+  allowClear: true,
+  options: [
+    { value: 'Apple' },
+    { value: 'Ball' },
+    { value: 'Cat' },
+    { value: 'Duck' },
+    { value: 'Egg' },
+    { value: 'Fish' },
+    { value: 'Goat' },
+    { value: 'Hen' },
+  ],
+}
+
+export const SmallSize = Template.bind({})
+SmallSize.args = {
+  size: 'small',
+  placeholder: 'A small select',
+  showSearch: true,
+  allowClear: true,
+  options: [
+    { value: 'Apple' },
+    { value: 'Ball' },
+    { value: 'Cat' },
+    { value: 'Duck' },
+    { value: 'Egg' },
+    { value: 'Fish' },
+    { value: 'Goat' },
+    { value: 'Hen' },
+  ],
 }
 
 export const WithLabel = Template.bind({})
