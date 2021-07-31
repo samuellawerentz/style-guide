@@ -4,7 +4,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "repository": "git://github.com/contacto-io/contacto-console",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
@@ -71,6 +71,7 @@
     "cross-env": "^7.0.3",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "loadash": "^1.0.0",
     "material-design-icons": "^3.0.1",
     "node-sass": "^6.0.1",
     "postcss": "^8.3.6",
@@ -83,13 +84,15 @@
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
-    "source-map-explorer": "^2.5.2"
+    "source-map-explorer": "^2.5.2",
+    "ts-dedent": "^2.1.1"
   },
   "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "prop-types": "^15.7.2",
     "antd": "^4.16.8",
-    "material-design-icons": "^3.0.1"
+    "material-design-icons": "^3.0.1",
+    "@ant-design/icons": "^4.5.0"
   }
 }

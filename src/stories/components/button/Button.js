@@ -27,7 +27,7 @@ export const getButtonClassName = (type, size = 'default', icon, className, only
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ type, size, label, icon, loading, className, ...props }) => {
+export const Button = ({ type, size, label, icon, loading, className, children, ...props }) => {
   return (
     <AntButton
       className={getButtonClassName(type, size, icon, className, !label && icon)}
@@ -35,7 +35,7 @@ export const Button = ({ type, size, label, icon, loading, className, ...props }
       loading={loading}
       {...props}
     >
-      {label}
+      {label || children}
     </AntButton>
   )
 }
@@ -67,6 +67,7 @@ Button.propTypes = {
    * Activate the loading state and add a spinner icon
    */
   loading: PropTypes.bool,
+  children: PropTypes.any,
 }
 
 Button.defaultProps = {

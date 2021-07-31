@@ -14,7 +14,7 @@ export const Table = ({ className = '', pagination, ...props }) => {
     showTotal(total, range) {
       return `${range[0]}-${range[1]} of ${total}`
     },
-    itemRender(page, type, comp) {
+    itemRender(page, type) {
       if (type === 'prev' || type === 'next') {
         return (
           <span className="material-icons">{`navigate_${type === 'prev' ? 'before' : type}`}</span>
@@ -25,6 +25,7 @@ export const Table = ({ className = '', pagination, ...props }) => {
   return (
     <AntTable
       className={['sg contacto-table', className].join(' ')}
+      scroll={{ y: true }}
       pagination={pagination !== false && modifiedPagination}
       {...props}
     />

@@ -2,24 +2,12 @@ import React from 'react'
 import { Typography } from 'antd'
 import PropTypes from 'prop-types'
 import './typography.scss'
+import { TEXT_TYPES } from './TEXT_TYPES'
 
-export const TEXT_TYPES = [
-  'large-title',
-  'title-1',
-  'title-2',
-  'title-3',
-  'headline',
-  'subtitle',
-  'body',
-  'caption',
-  'caption-bold',
-  'caption-italic',
-  'caption-capital',
-]
 /**
  * Typography for Contacto Apps
  */
-export const Text = ({ type, children, className, variant, ...props }) => {
+export const Text = ({ type, children, className, variant, color, style, ...props }) => {
   return (
     <Typography.Text
       className={[
@@ -29,6 +17,7 @@ export const Text = ({ type, children, className, variant, ...props }) => {
         'contacto-typography--' + variant,
         className,
       ].join(' ')}
+      style={{ ...style, color: color ? `var(--${color})` : undefined }}
       {...props}
     >
       {children}
@@ -51,6 +40,8 @@ Text.propTypes = {
    * This indicates whether the text is primary or secondary.
    */
   variant: PropTypes.string,
+  color: PropTypes.string,
+  style: PropTypes.object,
 }
 
 Text.defaultProps = {

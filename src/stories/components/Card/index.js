@@ -16,6 +16,10 @@ const Title = (props) => (
     )}
   </>
 )
+
+const Section = (props) => (
+  <div className={['contacto-card-section', props.className || ''].join(' ')}>{props.children}</div>
+)
 /**
  * This is a layout that is mostly used in the center, when the screen has a table.
  */
@@ -25,6 +29,7 @@ export const Card = ({
   subtitle,
   actionButton,
   topAlignButton,
+  hasTableLayout,
   ...props
 }) => {
   return (
@@ -33,6 +38,7 @@ export const Card = ({
         'sg contacto-card',
         className,
         topAlignButton ? 'contacto-card-align-top' : '',
+        hasTableLayout ? 'contacto-card--has-table-layout' : '',
       ].join(' ')}
       {...props}
       title={<Title text={title} subtitle={subtitle} />}
@@ -40,6 +46,8 @@ export const Card = ({
     />
   )
 }
+
+Card.Section = Section
 
 Card.propTypes = {
   /**
@@ -59,6 +67,7 @@ Card.propTypes = {
    */
   actionButton: PropTypes.node,
   topAlignButton: PropTypes.bool,
+  hasTableLayout: PropTypes.bool,
 }
 
 Card.defaultProps = {}

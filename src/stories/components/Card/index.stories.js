@@ -49,3 +49,11 @@ CardWithLongText.args = {
   actionButton: <Button type="secondary" label="Sample Action with Icon" icon="group_add" />,
   topAlignButton: true,
 }
+
+export const CardWithSections = Template.bind({})
+CardWithSections.args = {
+  title: 'Sample header',
+  subtitle: 'This is a descriptive copy for the header',
+  actionButton: <Button type="secondary" label="Sample Action with Icon" icon="group_add" />,
+  children: <Card.Section>This is a sample section of the card with border</Card.Section>,
+}

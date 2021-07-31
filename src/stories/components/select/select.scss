@@ -7,6 +7,10 @@
         height: var(--height);
         width: 100%;
 
+        &--no-shadow {
+            box-shadow: none;
+        }
+
         &:hover,
         &:active,
         &:focus,
@@ -14,6 +18,7 @@
             &:not(.ant-select-disabled) {
                 box-shadow: none;
                 border: 1px solid var(--primary-color);
+
                 .ant-select-selector {
                     box-shadow: none;
                 }
@@ -24,11 +29,13 @@
             border: none;
             height: calc(var(--height) - 2px);
             cursor: pointer;
+
             .ant-select-selection-search-input,
             .ant-select-selection-placeholder {
                 height: calc(var(--height) - 2px);
                 line-height: calc(var(--height) - 2px);
             }
+
             .ant-select-selection-item {
                 line-height: calc(var(--height) - 2px);
             }
@@ -44,9 +51,9 @@
             font-size: 0;
             transform: translateY(-50%);
             cursor: pointer;
+
             .contacto-icon--select-caret {
                 font-size: 20px;
-                pointer-events: all;
             }
         }
 
@@ -71,16 +78,20 @@
             box-shadow: none;
             background-color: var(--gray-6);
             color: var(--primary-text-color);
+
             .ant-select-selector {
                 color: var(--primary-text-color);
             }
         }
+
         .ant-select-clear {
             width: 20px;
         }
     }
+
     .contacto-select--small {
         --height: 28px;
+
         .ant-select-arrow {
             right: 8px;
         }
@@ -90,6 +101,7 @@
         margin-bottom: 4px;
         line-height: 0;
     }
+
     .anticon.anticon-loading {
         color: var(--gray-2);
         font-size: 24px;
@@ -100,10 +112,12 @@
     .ant-select-item {
         line-height: 33px;
         border-bottom: 1px solid var(--border-color);
+
         &:hover {
             background-color: var(--background-highlight-color);
         }
     }
+
     .ant-select-item-option-selected {
         background-color: var(--background-highlight-color);
         color: var(--primary-color);

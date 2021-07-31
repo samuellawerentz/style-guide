@@ -20,6 +20,7 @@ export const Select = React.forwardRef(function Select(
     size,
     onIconClick,
     loading,
+    noShadow,
     ...props
   },
   ref,
@@ -34,7 +35,8 @@ export const Select = React.forwardRef(function Select(
       <AntSelect
         className={[
           'contacto-select',
-          `${readOnly ? 'contacto-select--readonly' : ''}`,
+          readOnly ? 'contacto-select--readonly' : '',
+          noShadow ? 'contacto-select--no-shadow' : '',
           `contacto-select--${size}`,
         ]}
         ref={ref}
@@ -89,6 +91,7 @@ Select.propTypes = {
   listHeight: PropTypes.number,
   loading: PropTypes.bool,
   onIconClick: PropTypes.func,
+  noShadow: PropTypes.bool,
 }
 
 Select.defaultProps = {

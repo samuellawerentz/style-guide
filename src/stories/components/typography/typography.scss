@@ -4,6 +4,8 @@
 }
 
 .sg.contacto-typography {
+    color: var(--primary-text-color);
+
     &--large-title {
         font-size: 26px;
         line-height: 38px;
@@ -72,5 +74,14 @@
 
     &--secondary {
         color: var(--secondary-text-color);
+    }
+
+    &.ant-typography-single-line{
+        width: 100%;
+        vertical-align: middle;
+    }
+
+    &[class*="title"]{
+        display: block;
     }
 }

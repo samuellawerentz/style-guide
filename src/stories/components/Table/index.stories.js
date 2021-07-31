@@ -44,3 +44,13 @@ Default.args = {
   columns,
   dataSource: data,
 }
+
+export const TableWithScroll = (props) => (
+  <div style={{ height: 200, border: '1px solid' }}>
+    <Table {...props} />
+  </div>
+)
+TableWithScroll.args = {
+  columns,
+  dataSource: [...data, ...data],
+}

@@ -1,19 +1,56 @@
-.sg.contacto-card { 
+.sg.contacto-card {
+  --padding: 16px;
   margin: 24px;
+  height: calc(100% - 48px);
+
   .ant-card-head {
-      padding: 0 16px;
+    padding: 0 var(--padding);
   }
+
   .ant-card-body {
-      padding: 16px;
+    padding: 0;
   }
+
   .contacto-table-wrapper {
-    margin: 0 -16px;
+    margin: 0 calc(-1 * var(--padding));
   }
+
   .contacto-card-subtitle {
     white-space: normal;
     padding-right: 32px;
   }
+
   &.contacto-card-align-top .ant-card-head-wrapper {
     align-items: flex-start;
+  }
+
+  &--has-table-layout {
+    display: flex;
+    flex-flow: column;
+
+    .ant-card-body,
+    .contacto-table-layout,
+    .contacto-table-wrapper {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-flow: column;
+    }
+  }
+
+  .contacto-card-section {
+    padding: var(--padding);
+    border-bottom: 1px solid var(--border-color-1);
+
+    &.contacto-table-layout-card-section {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-flow: column;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
   }
 }

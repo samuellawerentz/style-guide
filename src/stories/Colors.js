@@ -92,7 +92,7 @@ export const ColorBox = (props) => {
       >
         <TextField
           placeholder="Search by hex code/name"
-          icon="search"
+          type="search-box"
           label="Search"
           style={{ width: 280 }}
           onChange={({ target }) => setSearchTerm(target.value)}

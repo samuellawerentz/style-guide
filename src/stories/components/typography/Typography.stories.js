@@ -1,13 +1,19 @@
 import React from 'react'
-import { Text, TEXT_TYPES } from './Typography'
+import { Text } from './Typography'
 import { Space } from 'antd'
+import { TEXT_TYPES } from './TEXT_TYPES'
+import cssVars from '../../../utils/cssVars'
 
 export default {
   title: 'Typography/Text',
   component: Text,
   argTypes: {
     type: {
-      options: TEXT_TYPES,
+      options: TEXT_TYPES.map((type) => type.name),
+      control: { type: 'select' },
+    },
+    color: {
+      options: cssVars,
       control: { type: 'select' },
     },
   },
@@ -66,6 +72,10 @@ Subtitle.args = {
   children: 'This is subtitle',
   type: 'subtitle',
 }
+export const Body = Template.bind({})
+Body.args = {
+  children: 'This is body text',
+}
 
 export const Caption = Template.bind({})
 Caption.args = {
@@ -89,4 +99,11 @@ export const CaptionCapital = Template.bind({})
 CaptionCapital.args = {
   children: 'This is an caption on uppercase',
   type: 'caption-capital',
+}
+
+export const WithColor = Template.bind({})
+WithColor.args = {
+  children: 'This is headline',
+  type: 'headline',
+  color: 'success-color',
 }

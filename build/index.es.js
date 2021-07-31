@@ -140,7 +140,7 @@ function styleInject(css, ref) {
 var css_248z$a = ".sg.ant-btn.cnto-btn.contacto-button {\n  min-width: 60px;\n  padding: 8px 16px;\n  height: 36px;\n  line-height: 18px;\n  border: 0;\n  border-radius: 0;\n  display: flex;\n  align-items: center; }\n  .sg.ant-btn.cnto-btn.contacto-button--primary {\n    background-color: var(--primary-color);\n    color: var(--white); }\n    .sg.ant-btn.cnto-btn.contacto-button--primary:hover {\n      color: var(--white);\n      background-color: var(--primary-color-5); }\n    .sg.ant-btn.cnto-btn.contacto-button--primary[disabled], .sg.ant-btn.cnto-btn.contacto-button--primary[disabled]:hover {\n      color: var(--white);\n      background-color: var(--primary-color-2); }\n  .sg.ant-btn.cnto-btn.contacto-button--secondary {\n    color: var(--primary-color);\n    border: 1px solid var(--primary-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--secondary:hover {\n      color: var(--primary-color);\n      background-color: var(--dark-bg);\n      border: 1px solid var(--primary-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--secondary[disabled], .sg.ant-btn.cnto-btn.contacto-button--secondary[disabled]:hover {\n      color: var(--primary-color-2);\n      background-color: var(--white);\n      border: 1px solid var(--primary-color-2); }\n  .sg.ant-btn.cnto-btn.contacto-button--danger-primary {\n    color: var(--white);\n    background-color: var(--danger-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--danger-primary:hover {\n      color: var(--white);\n      background-color: var(--danger-color-5); }\n    .sg.ant-btn.cnto-btn.contacto-button--danger-primary[disabled], .sg.ant-btn.cnto-btn.contacto-button--danger-primary[disabled]:hover {\n      color: var(--white);\n      background-color: var(--danger-color-2); }\n  .sg.ant-btn.cnto-btn.contacto-button--danger-secondary {\n    color: var(--danger-color);\n    border: 1px solid var(--danger-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--danger-secondary:hover {\n      color: var(--danger-color);\n      background-color: var(--danger-color-4);\n      border: 1px solid var(--danger-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--danger-secondary[disabled], .sg.ant-btn.cnto-btn.contacto-button--danger-secondary[disabled]:hover {\n      color: var(--danger-color-2);\n      border: 1px solid var(--danger-color-2);\n      background-color: var(--white); }\n  .sg.ant-btn.cnto-btn.contacto-button--link {\n    color: var(--primary-color);\n    font-weight: 600; }\n    .sg.ant-btn.cnto-btn.contacto-button--link:hover {\n      color: var(--primary-color-5); }\n    .sg.ant-btn.cnto-btn.contacto-button--link[disabled], .sg.ant-btn.cnto-btn.contacto-button--link[disabled]:hover {\n      color: var(--primary-color-2);\n      background-color: var(--white); }\n  .sg.ant-btn.cnto-btn.contacto-button--link-danger {\n    color: var(--danger-color);\n    font-weight: 600; }\n    .sg.ant-btn.cnto-btn.contacto-button--link-danger:hover {\n      color: var(--danger-color-5); }\n    .sg.ant-btn.cnto-btn.contacto-button--link-danger[disabled], .sg.ant-btn.cnto-btn.contacto-button--link-danger[disabled]:hover {\n      color: var(--danger-color-2);\n      background-color: var(--white); }\n  .sg.ant-btn.cnto-btn.contacto-button--small {\n    height: 28px;\n    padding: 4px 8px; }\n  .sg.ant-btn.cnto-btn.contacto-button--with-icon {\n    padding-left: 8px; }\n  .sg.ant-btn.cnto-btn.contacto-button--table-action-link {\n    color: var(--secondary-text-color);\n    padding: 8px 0px;\n    padding-left: 0;\n    min-width: auto; }\n    .sg.ant-btn.cnto-btn.contacto-button--table-action-link:hover {\n      color: var(--primary-color); }\n  .sg.ant-btn.cnto-btn.contacto-button .contacto-icon {\n    margin-right: 8px; }\n  .sg.ant-btn.cnto-btn.contacto-button--only-icon {\n    padding: 8px;\n    min-width: auto;\n    width: auto; }\n    .sg.ant-btn.cnto-btn.contacto-button--only-icon .contacto-icon {\n      margin-right: 0; }\n      .sg.ant-btn.cnto-btn.contacto-button--only-icon .contacto-icon.small {\n        font-size: 20px; }\n";
 styleInject(css_248z$a);
 
-var _excluded$8 = ["type", "size", "label", "icon", "loading", "className"];
+var _excluded$8 = ["type", "size", "label", "icon", "loading", "className", "children"];
 var BUTTON_TYPES = ['primary', 'secondary', 'danger-primary', 'danger-secondary', 'link', 'link-danger', 'table-action-link'];
 var getButtonClassName = function getButtonClassName(type) {
   var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'default';
@@ -160,6 +160,7 @@ var Button = function Button(_ref) {
       icon = _ref.icon,
       loading = _ref.loading,
       className = _ref.className,
+      children = _ref.children,
       props = _objectWithoutProperties(_ref, _excluded$8);
 
   return /*#__PURE__*/React.createElement(Button$1, _extends({
@@ -168,7 +169,7 @@ var Button = function Button(_ref) {
       className: 'material-icons contacto-icon ' + size
     }, icon) : null,
     loading: loading
-  }, props), label);
+  }, props), label || children);
 };
 Button.propTypes = {
   /**
@@ -200,18 +201,75 @@ Button.propTypes = {
   /**
    * Activate the loading state and add a spinner icon
    */
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  children: PropTypes.any
 };
 Button.defaultProps = {
   size: 'default',
   type: 'primary'
 };
 
-var css_248z$9 = ".caption, .sg.contacto-typography--caption, .sg.contacto-typography--caption-bold, .sg.contacto-typography--caption-italic, .sg.contacto-typography--caption-capital {\n  font-size: 12px;\n  line-height: 18px; }\n\n.sg.contacto-typography--large-title {\n  font-size: 26px;\n  line-height: 38px;\n  font-weight: 400; }\n\n.sg.contacto-typography--title-1 {\n  font-size: 22px;\n  line-height: 32px;\n  font-weight: 400; }\n\n.sg.contacto-typography--title-2 {\n  font-size: 18px;\n  line-height: 26px;\n  font-weight: 400; }\n\n.sg.contacto-typography--title-3 {\n  font-size: 16px;\n  line-height: 24px;\n  font-weight: 400; }\n\n.sg.contacto-typography--headline {\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 600; }\n\n.sg.contacto-typography--subtitle {\n  font-size: 12px;\n  line-height: 18px;\n  font-weight: 500; }\n\n.sg.contacto-typography--body {\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 400; }\n\n.sg.contacto-typography--caption-bold {\n  font-weight: 600; }\n\n.sg.contacto-typography--caption-italic {\n  font-style: italic; }\n\n.sg.contacto-typography--caption-capital {\n  text-transform: uppercase;\n  font-weight: 600; }\n\n.sg.contacto-typography--primary {\n  color: var(--primary-color); }\n\n.sg.contacto-typography--secondary {\n  color: var(--secondary-text-color); }\n";
+var css_248z$9 = ".caption, .sg.contacto-typography--caption, .sg.contacto-typography--caption-bold, .sg.contacto-typography--caption-italic, .sg.contacto-typography--caption-capital {\n  font-size: 12px;\n  line-height: 18px; }\n\n.sg.contacto-typography {\n  color: var(--primary-text-color); }\n  .sg.contacto-typography--large-title {\n    font-size: 26px;\n    line-height: 38px;\n    font-weight: 400; }\n  .sg.contacto-typography--title-1 {\n    font-size: 22px;\n    line-height: 32px;\n    font-weight: 400; }\n  .sg.contacto-typography--title-2 {\n    font-size: 18px;\n    line-height: 26px;\n    font-weight: 400; }\n  .sg.contacto-typography--title-3 {\n    font-size: 16px;\n    line-height: 24px;\n    font-weight: 400; }\n  .sg.contacto-typography--headline {\n    font-size: 14px;\n    line-height: 20px;\n    font-weight: 600; }\n  .sg.contacto-typography--subtitle {\n    font-size: 12px;\n    line-height: 18px;\n    font-weight: 500; }\n  .sg.contacto-typography--body {\n    font-size: 14px;\n    line-height: 20px;\n    font-weight: 400; }\n  .sg.contacto-typography--caption-bold {\n    font-weight: 600; }\n  .sg.contacto-typography--caption-italic {\n    font-style: italic; }\n  .sg.contacto-typography--caption-capital {\n    text-transform: uppercase;\n    font-weight: 600; }\n  .sg.contacto-typography--primary {\n    color: var(--primary-color); }\n  .sg.contacto-typography--secondary {\n    color: var(--secondary-text-color); }\n  .sg.contacto-typography.ant-typography-single-line {\n    width: 100%;\n    vertical-align: middle; }\n  .sg.contacto-typography[class*=\"title\"] {\n    display: block; }\n";
 styleInject(css_248z$9);
 
-var _excluded$7 = ["type", "children", "className", "variant"];
-var TEXT_TYPES = ['large-title', 'title-1', 'title-2', 'title-3', 'headline', 'subtitle', 'body', 'caption', 'caption-bold', 'caption-italic', 'caption-capital'];
+var TEXT_TYPES = [{
+  name: 'large-title',
+  fontSize: '26px',
+  lineHeight: '38px',
+  fontWeight: 400
+}, {
+  name: 'title-1',
+  fontSize: '22px',
+  lineHeight: '32px',
+  fontWeight: 400
+}, {
+  name: 'title-2',
+  fontSize: '18px',
+  lineHeight: '26px',
+  fontWeight: 400
+}, {
+  name: 'title-3',
+  fontSize: '16px',
+  lineHeight: '24px',
+  fontWeight: 400
+}, {
+  name: 'headline',
+  fontSize: '14px',
+  lineHeight: '20px',
+  fontWeight: 600
+}, {
+  name: 'subtitle',
+  fontSize: '12px',
+  lineHeight: '18px',
+  fontWeight: 500
+}, {
+  name: 'body',
+  fontSize: '14px',
+  lineHeight: '20px',
+  fontWeight: 400
+}, {
+  name: 'caption',
+  fontSize: '12px',
+  lineHeight: '18px',
+  fontWeight: 400
+}, {
+  name: 'caption-bold',
+  fontSize: '12px',
+  lineHeight: '18px',
+  fontWeight: 600
+}, {
+  name: 'caption-italic',
+  fontSize: '12px',
+  lineHeight: '18px',
+  fontWeight: 400
+}, {
+  name: 'caption-capital',
+  fontSize: '12px',
+  lineHeight: '18px',
+  fontWeight: 600
+}];
+
+var _excluded$7 = ["type", "children", "className", "variant", "color", "style"];
 /**
  * Typography for Contacto Apps
  */
@@ -221,10 +279,15 @@ var Text = function Text(_ref) {
       children = _ref.children,
       className = _ref.className,
       variant = _ref.variant,
+      color = _ref.color,
+      style = _ref.style,
       props = _objectWithoutProperties(_ref, _excluded$7);
 
   return /*#__PURE__*/React.createElement(Typography.Text, _extends({
-    className: ['sg', 'contacto-typography', 'contacto-typography--' + type, 'contacto-typography--' + variant, className].join(' ')
+    className: ['sg', 'contacto-typography', 'contacto-typography--' + type, 'contacto-typography--' + variant, className].join(' '),
+    style: _objectSpread2(_objectSpread2({}, style), {}, {
+      color: color ? "var(--".concat(color, ")") : undefined
+    })
   }, props), children);
 };
 Text.propTypes = {
@@ -242,7 +305,9 @@ Text.propTypes = {
   /**
    * This indicates whether the text is primary or secondary.
    */
-  variant: PropTypes.string
+  variant: PropTypes.string,
+  color: PropTypes.string,
+  style: PropTypes.object
 };
 Text.defaultProps = {
   type: 'body'
@@ -328,10 +393,10 @@ TextField.defaultProps = {
   type: 'input'
 };
 
-var css_248z$7 = ".sg.contacto-card {\n  margin: 24px; }\n  .sg.contacto-card .ant-card-head {\n    padding: 0 16px; }\n  .sg.contacto-card .ant-card-body {\n    padding: 16px; }\n  .sg.contacto-card .contacto-table-wrapper {\n    margin: 0 -16px; }\n  .sg.contacto-card .contacto-card-subtitle {\n    white-space: normal;\n    padding-right: 32px; }\n  .sg.contacto-card.contacto-card-align-top .ant-card-head-wrapper {\n    align-items: flex-start; }\n";
+var css_248z$7 = ".sg.contacto-card {\n  --padding: 16px;\n  margin: 24px;\n  height: calc(100% - 48px); }\n  .sg.contacto-card .ant-card-head {\n    padding: 0 var(--padding); }\n  .sg.contacto-card .ant-card-body {\n    padding: 0; }\n  .sg.contacto-card .contacto-table-wrapper {\n    margin: 0 calc(-1 * var(--padding)); }\n  .sg.contacto-card .contacto-card-subtitle {\n    white-space: normal;\n    padding-right: 32px; }\n  .sg.contacto-card.contacto-card-align-top .ant-card-head-wrapper {\n    align-items: flex-start; }\n  .sg.contacto-card--has-table-layout {\n    display: flex;\n    flex-flow: column; }\n    .sg.contacto-card--has-table-layout .ant-card-body,\n    .sg.contacto-card--has-table-layout .contacto-table-layout,\n    .sg.contacto-card--has-table-layout .contacto-table-wrapper {\n      flex: 1;\n      min-height: 0;\n      display: flex;\n      flex-flow: column; }\n  .sg.contacto-card .contacto-card-section {\n    padding: var(--padding);\n    border-bottom: 1px solid var(--border-color-1); }\n    .sg.contacto-card .contacto-card-section.contacto-table-layout-card-section {\n      flex: 1;\n      min-height: 0;\n      display: flex;\n      flex-flow: column; }\n      .sg.contacto-card .contacto-card-section.contacto-table-layout-card-section:last-child {\n        padding-bottom: 0; }\n";
 styleInject(css_248z$7);
 
-var _excluded$5 = ["className", "title", "subtitle", "actionButton", "topAlignButton"];
+var _excluded$5 = ["className", "title", "subtitle", "actionButton", "topAlignButton", "hasTableLayout"];
 
 var Title = function Title(props) {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Text, {
@@ -341,6 +406,12 @@ var Title = function Title(props) {
   }, /*#__PURE__*/React.createElement(Text, {
     variant: "secondary"
   }, props.subtitle)));
+};
+
+var Section = function Section(props) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: ['contacto-card-section', props.className || ''].join(' ')
+  }, props.children);
 };
 /**
  * This is a layout that is mostly used in the center, when the screen has a table.
@@ -354,10 +425,11 @@ var Card = function Card(_ref) {
       subtitle = _ref.subtitle,
       actionButton = _ref.actionButton,
       topAlignButton = _ref.topAlignButton,
+      hasTableLayout = _ref.hasTableLayout,
       props = _objectWithoutProperties(_ref, _excluded$5);
 
   return /*#__PURE__*/React.createElement(Card$1, _extends({
-    className: ['sg contacto-card', className, topAlignButton ? 'contacto-card-align-top' : ''].join(' ')
+    className: ['sg contacto-card', className, topAlignButton ? 'contacto-card-align-top' : '', hasTableLayout ? 'contacto-card--has-table-layout' : ''].join(' ')
   }, props, {
     title: /*#__PURE__*/React.createElement(Title, {
       text: title,
@@ -366,6 +438,7 @@ var Card = function Card(_ref) {
     extra: actionButton || null
   }));
 };
+Card.Section = Section;
 Card.propTypes = {
   /**
    * Class to be added
@@ -386,7 +459,8 @@ Card.propTypes = {
    * The action button component. It must be a react component, usually, the Button component.
    */
   actionButton: PropTypes.node,
-  topAlignButton: PropTypes.bool
+  topAlignButton: PropTypes.bool,
+  hasTableLayout: PropTypes.bool
 };
 Card.defaultProps = {};
 
@@ -477,10 +551,10 @@ styleInject(css_248z$4);
   className: PropTypes.string
 });
 
-var css_248z$3 = ".sg.contacto-select-wrapper .contacto-select {\n  --height: 36px;\n  border-radius: 0;\n  box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);\n  border: 1px solid var(--border-color-1);\n  height: var(--height);\n  width: 100%; }\n  .sg.contacto-select-wrapper .contacto-select:hover:not(.ant-select-disabled), .sg.contacto-select-wrapper .contacto-select:active:not(.ant-select-disabled), .sg.contacto-select-wrapper .contacto-select:focus:not(.ant-select-disabled), .sg.contacto-select-wrapper .contacto-select[class*='focused']:not(.ant-select-disabled) {\n    box-shadow: none;\n    border: 1px solid var(--primary-color); }\n    .sg.contacto-select-wrapper .contacto-select:hover:not(.ant-select-disabled) .ant-select-selector, .sg.contacto-select-wrapper .contacto-select:active:not(.ant-select-disabled) .ant-select-selector, .sg.contacto-select-wrapper .contacto-select:focus:not(.ant-select-disabled) .ant-select-selector, .sg.contacto-select-wrapper .contacto-select[class*='focused']:not(.ant-select-disabled) .ant-select-selector {\n      box-shadow: none; }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-selector {\n    border: none;\n    height: calc(var(--height) - 2px);\n    cursor: pointer; }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-search-input,\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-placeholder {\n      height: calc(var(--height) - 2px);\n      line-height: calc(var(--height) - 2px); }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-item {\n      line-height: calc(var(--height) - 2px); }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-arrow {\n    margin-top: 0;\n    top: 50%;\n    right: 12px;\n    color: var(--gray-1);\n    width: auto;\n    height: auto;\n    font-size: 0;\n    transform: translateY(-50%);\n    cursor: pointer; }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-arrow .contacto-icon--select-caret {\n      font-size: 20px;\n      pointer-events: all; }\n  .sg.contacto-select-wrapper .contacto-select[class*='focused'] .contacto-icon {\n    color: var(--primary-color); }\n  .sg.contacto-select-wrapper .contacto-select[class*=\"disabled\"], .sg.contacto-select-wrapper .contacto-select[disabled]:hover {\n    background-color: var(--gray-6);\n    border: 1px solid var(--gray-6);\n    box-shadow: none; }\n    .sg.contacto-select-wrapper .contacto-select[class*=\"disabled\"]::placeholder, .sg.contacto-select-wrapper .contacto-select[disabled]:hover::placeholder {\n      color: var(--gray-2); }\n  .sg.contacto-select-wrapper .contacto-select--readonly:not(.increase-specificity) {\n    box-shadow: none;\n    background-color: var(--gray-6);\n    color: var(--primary-text-color); }\n    .sg.contacto-select-wrapper .contacto-select--readonly:not(.increase-specificity) .ant-select-selector {\n      color: var(--primary-text-color); }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-clear {\n    width: 20px; }\n\n.sg.contacto-select-wrapper .contacto-select--small {\n  --height: 28px; }\n  .sg.contacto-select-wrapper .contacto-select--small .ant-select-arrow {\n    right: 8px; }\n\n.sg.contacto-select-wrapper .contacto-select-label-wrapper {\n  margin-bottom: 4px;\n  line-height: 0; }\n\n.sg.contacto-select-wrapper .anticon.anticon-loading {\n  color: var(--gray-2);\n  font-size: 24px; }\n\n.sg.contacto-select-listbox .ant-select-item {\n  line-height: 33px;\n  border-bottom: 1px solid var(--border-color); }\n  .sg.contacto-select-listbox .ant-select-item:hover {\n    background-color: var(--background-highlight-color); }\n\n.sg.contacto-select-listbox .ant-select-item-option-selected {\n  background-color: var(--background-highlight-color);\n  color: var(--primary-color); }\n";
+var css_248z$3 = ".sg.contacto-select-wrapper .contacto-select {\n  --height: 36px;\n  border-radius: 0;\n  box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);\n  border: 1px solid var(--border-color-1);\n  height: var(--height);\n  width: 100%; }\n  .sg.contacto-select-wrapper .contacto-select--no-shadow {\n    box-shadow: none; }\n  .sg.contacto-select-wrapper .contacto-select:hover:not(.ant-select-disabled), .sg.contacto-select-wrapper .contacto-select:active:not(.ant-select-disabled), .sg.contacto-select-wrapper .contacto-select:focus:not(.ant-select-disabled), .sg.contacto-select-wrapper .contacto-select[class*='focused']:not(.ant-select-disabled) {\n    box-shadow: none;\n    border: 1px solid var(--primary-color); }\n    .sg.contacto-select-wrapper .contacto-select:hover:not(.ant-select-disabled) .ant-select-selector, .sg.contacto-select-wrapper .contacto-select:active:not(.ant-select-disabled) .ant-select-selector, .sg.contacto-select-wrapper .contacto-select:focus:not(.ant-select-disabled) .ant-select-selector, .sg.contacto-select-wrapper .contacto-select[class*='focused']:not(.ant-select-disabled) .ant-select-selector {\n      box-shadow: none; }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-selector {\n    border: none;\n    height: calc(var(--height) - 2px);\n    cursor: pointer; }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-search-input,\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-placeholder {\n      height: calc(var(--height) - 2px);\n      line-height: calc(var(--height) - 2px); }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-item {\n      line-height: calc(var(--height) - 2px); }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-arrow {\n    margin-top: 0;\n    top: 50%;\n    right: 12px;\n    color: var(--gray-1);\n    width: auto;\n    height: auto;\n    font-size: 0;\n    transform: translateY(-50%);\n    cursor: pointer; }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-arrow .contacto-icon--select-caret {\n      font-size: 20px; }\n  .sg.contacto-select-wrapper .contacto-select[class*='focused'] .contacto-icon {\n    color: var(--primary-color); }\n  .sg.contacto-select-wrapper .contacto-select[class*=\"disabled\"], .sg.contacto-select-wrapper .contacto-select[disabled]:hover {\n    background-color: var(--gray-6);\n    border: 1px solid var(--gray-6);\n    box-shadow: none; }\n    .sg.contacto-select-wrapper .contacto-select[class*=\"disabled\"]::placeholder, .sg.contacto-select-wrapper .contacto-select[disabled]:hover::placeholder {\n      color: var(--gray-2); }\n  .sg.contacto-select-wrapper .contacto-select--readonly:not(.increase-specificity) {\n    box-shadow: none;\n    background-color: var(--gray-6);\n    color: var(--primary-text-color); }\n    .sg.contacto-select-wrapper .contacto-select--readonly:not(.increase-specificity) .ant-select-selector {\n      color: var(--primary-text-color); }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-clear {\n    width: 20px; }\n\n.sg.contacto-select-wrapper .contacto-select--small {\n  --height: 28px; }\n  .sg.contacto-select-wrapper .contacto-select--small .ant-select-arrow {\n    right: 8px; }\n\n.sg.contacto-select-wrapper .contacto-select-label-wrapper {\n  margin-bottom: 4px;\n  line-height: 0; }\n\n.sg.contacto-select-wrapper .anticon.anticon-loading {\n  color: var(--gray-2);\n  font-size: 24px; }\n\n.sg.contacto-select-listbox .ant-select-item {\n  line-height: 33px;\n  border-bottom: 1px solid var(--border-color); }\n  .sg.contacto-select-listbox .ant-select-item:hover {\n    background-color: var(--background-highlight-color); }\n\n.sg.contacto-select-listbox .ant-select-item-option-selected {\n  background-color: var(--background-highlight-color);\n  color: var(--primary-color); }\n";
 styleInject(css_248z$3);
 
-var _excluded$2 = ["label", "icon", "disabled", "placeholder", "readOnly", "className", "dropdownClassName", "listHeight", "size", "onIconClick", "loading"];
+var _excluded$2 = ["label", "icon", "disabled", "placeholder", "readOnly", "className", "dropdownClassName", "listHeight", "size", "onIconClick", "loading", "noShadow"];
 /**
  * This is used to select a value from the list of options
  */
@@ -497,6 +571,7 @@ var Select = /*#__PURE__*/React.forwardRef(function Select(_ref, ref) {
       size = _ref.size,
       onIconClick = _ref.onIconClick,
       loading = _ref.loading,
+      noShadow = _ref.noShadow,
       props = _objectWithoutProperties(_ref, _excluded$2);
 
   return /*#__PURE__*/React.createElement("div", {
@@ -506,7 +581,7 @@ var Select = /*#__PURE__*/React.forwardRef(function Select(_ref, ref) {
   }, /*#__PURE__*/React.createElement(Text, {
     type: "caption-bold"
   }, label)), /*#__PURE__*/React.createElement(Select$1, _extends({
-    className: ['contacto-select', "".concat(readOnly ? 'contacto-select--readonly' : ''), "contacto-select--".concat(size)],
+    className: ['contacto-select', readOnly ? 'contacto-select--readonly' : '', noShadow ? 'contacto-select--no-shadow' : '', "contacto-select--".concat(size)],
     ref: ref,
     disabled: readOnly || disabled,
     listHeight: listHeight || 216,
@@ -555,13 +630,14 @@ Select.propTypes = {
   dropdownClassName: PropTypes.string,
   listHeight: PropTypes.number,
   loading: PropTypes.bool,
-  onIconClick: PropTypes.func
+  onIconClick: PropTypes.func,
+  noShadow: PropTypes.bool
 };
 Select.defaultProps = {
   size: 'default'
 };
 
-var css_248z$2 = ".sg.contacto-table .ant-pagination-item {\n  display: none; }\n\n.sg.contacto-table .ant-spin-blur {\n  overflow: visible; }\n\n.sg.contacto-table .ant-table-pagination.ant-pagination {\n  margin: 0;\n  position: absolute;\n  right: 16px;\n  align-items: center;\n  top: -16px;\n  transform: translateY(-100%); }\n  .sg.contacto-table .ant-table-pagination.ant-pagination .ant-pagination-total-text,\n  .sg.contacto-table .ant-table-pagination.ant-pagination .material-icons {\n    line-height: 36px;\n    height: 36px; }\n\n.sg.contacto-table .ant-pagination-prev,\n.sg.contacto-table .ant-pagination-next {\n  height: auto;\n  min-width: auto;\n  line-height: initial;\n  color: var(--gray-1); }\n  .sg.contacto-table .ant-pagination-prev.ant-pagination-disabled,\n  .sg.contacto-table .ant-pagination-next.ant-pagination-disabled {\n    color: var(--gray-3); }\n\n.sg.contacto-table .ant-pagination-total-text,\n.sg.contacto-table .ant-pagination-prev {\n  margin-right: 16px; }\n\n.sg.contacto-table .ant-table-thead > tr > th {\n  background: var(--gray-6);\n  color: var(--gray-1);\n  font-weight: 400;\n  padding-top: 8px;\n  padding-bottom: 8px; }\n  .sg.contacto-table .ant-table-thead > tr > th:before {\n    display: none; }\n\n.sg.contacto-table .ant-table-tbody > tr.ant-table-row:hover > td {\n  background-color: var(--background-highlight-color); }\n";
+var css_248z$2 = ".sg.contacto-table .ant-pagination-item {\n  display: none; }\n\n.sg.contacto-table .ant-spin-blur {\n  overflow: visible; }\n\n.sg.contacto-table .ant-table-pagination.ant-pagination {\n  margin: 0;\n  position: absolute;\n  right: 16px;\n  align-items: center;\n  top: -16px;\n  transform: translateY(-100%); }\n  .sg.contacto-table .ant-table-pagination.ant-pagination .ant-pagination-total-text,\n  .sg.contacto-table .ant-table-pagination.ant-pagination .material-icons {\n    line-height: 36px;\n    height: 36px; }\n\n.sg.contacto-table .ant-pagination-prev,\n.sg.contacto-table .ant-pagination-next {\n  height: auto;\n  min-width: auto;\n  line-height: initial;\n  color: var(--gray-1); }\n  .sg.contacto-table .ant-pagination-prev.ant-pagination-disabled,\n  .sg.contacto-table .ant-pagination-next.ant-pagination-disabled {\n    color: var(--gray-3); }\n\n.sg.contacto-table .ant-pagination-total-text,\n.sg.contacto-table .ant-pagination-prev {\n  margin-right: 16px; }\n\n.sg.contacto-table .ant-table-thead > tr > th {\n  background: var(--gray-6);\n  color: var(--gray-1);\n  font-weight: 400;\n  padding-top: 8px;\n  padding-bottom: 8px; }\n  .sg.contacto-table .ant-table-thead > tr > th:before {\n    display: none; }\n\n.sg.contacto-table .ant-table-tbody > tr.ant-table-row:hover > td {\n  background-color: var(--background-highlight-color); }\n\n.sg.contacto-table.ant-table-wrapper {\n  height: 100%; }\n  .sg.contacto-table.ant-table-wrapper .ant-spin-nested-loading {\n    height: 100%; }\n    .sg.contacto-table.ant-table-wrapper .ant-spin-nested-loading .ant-spin-container {\n      height: 100%;\n      display: flex;\n      flex-flow: column nowrap; }\n      .sg.contacto-table.ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table {\n        flex: auto;\n        overflow: hidden; }\n        .sg.contacto-table.ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-container {\n          height: 100%;\n          display: flex;\n          flex-flow: column nowrap; }\n          .sg.contacto-table.ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-container .ant-table-header {\n            flex: none; }\n          .sg.contacto-table.ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-container .ant-table-body {\n            flex: auto;\n            overflow: auto;\n            overflow-y: auto !important; }\n";
 styleInject(css_248z$2);
 
 var _excluded$1 = ["className", "pagination"];
@@ -581,7 +657,7 @@ var Table = function Table(_ref) {
     showTotal: function showTotal(total, range) {
       return "".concat(range[0], "-").concat(range[1], " of ").concat(total);
     },
-    itemRender: function itemRender(page, type, comp) {
+    itemRender: function itemRender(page, type) {
       if (type === 'prev' || type === 'next') {
         return /*#__PURE__*/React.createElement("span", {
           className: "material-icons"
@@ -592,6 +668,9 @@ var Table = function Table(_ref) {
 
   return /*#__PURE__*/React.createElement(Table$1, _extends({
     className: ['sg contacto-table', className].join(' '),
+    scroll: {
+      y: true
+    },
     pagination: pagination !== false && modifiedPagination
   }, props));
 };
@@ -616,7 +695,9 @@ var TableLayout = function TableLayout(_ref) {
       table = _ref.table,
       searchBar = _ref.searchBar,
       actionButtons = _ref.actionButtons;
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(Card.Section, {
+    className: "contacto-table-layout-card-section"
+  }, /*#__PURE__*/React.createElement("div", {
     className: ['sg contacto-table-layout', className].join(' ')
   }, /*#__PURE__*/React.createElement(Row, {
     justify: "space-between",
@@ -633,7 +714,7 @@ var TableLayout = function TableLayout(_ref) {
     }, actionButtons);
   }))), /*#__PURE__*/React.createElement("div", {
     className: "contacto-table-wrapper"
-  }, table));
+  }, table)));
 };
 TableLayout.propTypes = {
   /**
@@ -707,5 +788,5 @@ Sider.propTypes = {
 };
 Sider.defaultProps = {};
 
-export { BUTTON_TYPES, Button, Card, Checkbox, Select, Sider, TAG_TYPES, TEXTFIELD_TYPES, TEXT_TYPES, Table, TableLayout, Tag, Text, TextField, getButtonClassName };
+export { BUTTON_TYPES, Button, Card, Checkbox, Select, Sider, TAG_TYPES, TEXTFIELD_TYPES, Table, TableLayout, Tag, Text, TextField, getButtonClassName };
 //# sourceMappingURL=index.es.js.map

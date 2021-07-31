@@ -3,9 +3,9 @@
         display: none;
     }
 
-    .ant-spin-blur{
+    .ant-spin-blur {
         overflow: visible;
-      }
+    }
 
     .ant-table-pagination.ant-pagination {
         margin: 0;
@@ -53,5 +53,40 @@
 
     .ant-table-tbody>tr.ant-table-row:hover>td {
         background-color: var(--background-highlight-color);
+    }
+
+    &.ant-table-wrapper {
+        height: 100%;
+
+        .ant-spin-nested-loading {
+            height: 100%;
+
+            .ant-spin-container {
+                height: 100%;
+                display: flex;
+                flex-flow: column nowrap;
+
+                .ant-table {
+                    flex: auto;
+                    overflow: hidden;
+
+                    .ant-table-container {
+                        height: 100%;
+                        display: flex;
+                        flex-flow: column nowrap;
+
+                        .ant-table-header {
+                            flex: none;
+                        }
+
+                        .ant-table-body {
+                            flex: auto;
+                            overflow: auto;
+                            overflow-y: auto !important;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
