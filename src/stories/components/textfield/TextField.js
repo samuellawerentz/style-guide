@@ -16,6 +16,7 @@ export const TextField = ({
   disabled,
   placeholder,
   readOnly,
+  noShadow,
   className = '',
   ...props
 }) => {
@@ -32,7 +33,8 @@ export const TextField = ({
           'contacto-input',
           'contacto-input--' + type,
           'contacto-input--' + size,
-          `${readOnly ? 'contacto-input--readonly' : ''}`,
+          noShadow ? 'contacto-input--no-shadow' : '',
+          readOnly ? 'contacto-input--readonly' : '',
           className,
         ].join(' ')}
         disabled={readOnly || disabled}
@@ -78,6 +80,7 @@ TextField.propTypes = {
    * Show the value as readonly
    */
   readOnly: PropTypes.bool,
+  noShadow: PropTypes.bool,
 }
 
 TextField.defaultProps = {

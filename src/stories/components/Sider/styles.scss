@@ -2,6 +2,7 @@
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.06) -3px 0px 6px;
   padding: 32px 16px 16px;
+  transition: none;
   .contacto-sider-children{
       display: flex;
       flex-direction: column;
@@ -25,6 +26,7 @@
   .contacto-sider-content{
     flex-grow: 1;
     overflow-y: auto;
+    overflow-x: hidden;
 }
   .contacto-sider-title {
       margin-bottom: 32px;

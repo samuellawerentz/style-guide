@@ -39,12 +39,36 @@
         margin-right: 16px;
     }
 
+    .ant-table-thead,
+    .ant-table-tbody,
+    .ant-table tfoot {
+
+        &>tr>th,
+        &>tr>td {
+            padding: 16px 8px;
+
+            &:first-child {
+                padding-left: 16px;
+            }
+
+            &:last-child {
+                padding-right: 16px;
+            }
+        }
+    }
+
     .ant-table-thead>tr>th {
         background: var(--gray-6);
         color: var(--gray-1);
         font-weight: 400;
         padding-top: 8px;
         padding-bottom: 8px;
+        line-height: 20px;
+        border: none;
+        // Show elipsis on overflow
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
 
         &:before {
             display: none;

@@ -12,27 +12,46 @@ export const BUTTON_TYPES = [
   'table-action-link',
 ]
 
-export const getButtonClassName = (type, size = 'default', icon, className, onlyIcon) => {
+export const getButtonClassName = (
+  type,
+  size = 'default',
+  icon,
+  className,
+  onlyIcon,
+  fullWidth,
+  align,
+) => {
   return [
     'sg',
     'cnto-btn',
     'contacto-button',
-    `contacto-button--${type}`,
-    `contacto-button--${size}`,
+    type ? `contacto-button--${type}` : '',
+    size ? `contacto-button--${size}` : '',
     icon ? `contacto-button--with-icon` : '',
     onlyIcon ? 'contacto-button--only-icon' : '',
+    fullWidth ? 'contacto-button--full-width' : '',
+    align ? `contacto-button--${align}` : '',
     className,
   ].join(' ')
 }
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ type, size, label, icon, loading, className, children, ...props }) => {
+export const Button = ({
+  type,
+  size,
+  label,
+  icon,
+  fullWidth,
+  align,
+  className,
+  children,
+  ...props
+}) => {
   return (
     <AntButton
-      className={getButtonClassName(type, size, icon, className, !label && icon)}
+      className={getButtonClassName(type, size, icon, className, !label && icon, fullWidth, align)}
       icon={icon ? <span className={'material-icons contacto-icon ' + size}>{icon}</span> : null}
-      loading={loading}
       {...props}
     >
       {label || children}
@@ -63,10 +82,8 @@ Button.propTypes = {
    * Disable the button
    */
   disabled: PropTypes.bool,
-  /**
-   * Activate the loading state and add a spinner icon
-   */
-  loading: PropTypes.bool,
+  fullWidth: PropTypes.bool,
+  align: PropTypes.oneOf(['left', 'right', 'center']),
   children: PropTypes.any,
 }
 

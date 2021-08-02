@@ -1,0 +1,7 @@
+.sg.contacto-block {
+    display: block;
+    &.contacto-block-column {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+}

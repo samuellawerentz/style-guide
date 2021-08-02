@@ -76,12 +76,24 @@
         color: var(--secondary-text-color);
     }
 
-    &.ant-typography-single-line{
+    &.ant-typography-single-line {
         width: 100%;
         vertical-align: middle;
     }
 
-    &[class*="title"]{
+    &[class*="title"], &--block {
         display: block;
+    }
+
+    &--left {
+        text-align: left;
+    }
+
+    &--right {
+        text-align: right;
+    }
+
+    &--center {
+        text-align: center;
     }
 }

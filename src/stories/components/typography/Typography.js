@@ -7,14 +7,15 @@ import { TEXT_TYPES } from './TEXT_TYPES'
 /**
  * Typography for Contacto Apps
  */
-export const Text = ({ type, children, className, variant, color, style, ...props }) => {
+export const Text = ({ type, children, className, variant, color, style, align, ...props }) => {
   return (
     <Typography.Text
       className={[
         'sg',
         'contacto-typography',
-        'contacto-typography--' + type,
-        'contacto-typography--' + variant,
+        type ? 'contacto-typography--' + type : '',
+        variant ? 'contacto-typography--' + variant : '',
+        align ? 'contacto-typography--' + align + ' contacto-typography--block' : '',
         className,
       ].join(' ')}
       style={{ ...style, color: color ? `var(--${color})` : undefined }}
@@ -29,7 +30,7 @@ Text.propTypes = {
   /**
    * This indicates the type of the text that is to be used
    */
-  type: PropTypes.oneOf(TEXT_TYPES),
+  type: PropTypes.oneOf(TEXT_TYPES.map((type) => type.name)),
   /**
    * This indicates the children of the text node
    */
@@ -42,6 +43,7 @@ Text.propTypes = {
   variant: PropTypes.string,
   color: PropTypes.string,
   style: PropTypes.object,
+  align: PropTypes.oneOf(['left', 'right', 'center']),
 }
 
 Text.defaultProps = {
