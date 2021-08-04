@@ -57,7 +57,7 @@ Card.propTypes = {
   /**
    * Title of the card
    */
-  title: PropTypes.string,
+  title: PropTypes.any,
   /**
    * Text rendered beneath the title
    */

@@ -1,5 +1,5 @@
 .sg.contacto-checkbox,
-.sg.contacto-checkbox-group .ant-checkbox-wrapper {
+.ant-checkbox-wrapper {
     line-height: 20px;
     align-items: center;
     .ant-checkbox-indeterminate .ant-checkbox-inner {
@@ -17,6 +17,12 @@
             background: white;
         }
 
+    }
+
+    &.checkbox--no-label {
+        .ant-checkbox {
+            top: 0.2em;
+        }
     }
 
     .ant-checkbox {
@@ -74,6 +80,7 @@
 
         .ant-checkbox-inner {
             border-color: var(--gray-4) !important;
+            background-color: var(--background-highlight-color);
 
             &:after {
                 background-color: var(--primary-color-2);

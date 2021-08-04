@@ -66,3 +66,13 @@ ReadOnly.args = {
   value: 'Read only',
   readOnly: true,
 }
+
+export const Password = Template.bind({})
+Password.args = {
+  type: 'input',
+  password: 'true',
+  size: 'default',
+  placeholder: 'An read-only textfield',
+  value: 'Read only',
+  readOnly: true,
+}

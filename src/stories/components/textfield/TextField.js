@@ -16,11 +16,13 @@ export const TextField = ({
   disabled,
   placeholder,
   readOnly,
+  password,
   noShadow,
   className = '',
   ...props
 }) => {
   icon = type === 'search-box' ? 'search' : icon
+  const Tag = password ? Input.Password : Input
   return (
     <div className="sg contacto-input-wrapper">
       {label && (
@@ -28,7 +30,7 @@ export const TextField = ({
           <Text type="caption-bold">{label}</Text>
         </div>
       )}
-      <Input
+      <Tag
         className={[
           'contacto-input',
           'contacto-input--' + type,
@@ -81,6 +83,7 @@ TextField.propTypes = {
    */
   readOnly: PropTypes.bool,
   noShadow: PropTypes.bool,
+  password: PropTypes.bool,
 }
 
 TextField.defaultProps = {

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button as Button$1, Typography, Input, Card as Card$1, Checkbox as Checkbox$1, Tag as Tag$1, Select as Select$1, Table as Table$1, Row, Space, Layout, Col } from 'antd';
+import { Button as Button$1, Typography, Input, Card as Card$1, Checkbox as Checkbox$1, Tag as Tag$1, Radio as Radio$1, Select as Select$1, Table as Table$1, Row, Space, Layout, Col } from 'antd';
 import Icon, { LoadingOutlined } from '@ant-design/icons';
 
 function ownKeys(object, enumerableOnly) {
@@ -137,11 +137,11 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$b = ".sg.ant-btn.cnto-btn.contacto-button {\n  min-width: 60px;\n  padding: 8px 16px;\n  height: 36px;\n  line-height: 18px;\n  border: 0;\n  border-radius: 0;\n  display: flex;\n  align-items: center; }\n  .sg.ant-btn.cnto-btn.contacto-button--primary {\n    background-color: var(--primary-color);\n    color: var(--white); }\n    .sg.ant-btn.cnto-btn.contacto-button--primary:hover {\n      color: var(--white);\n      background-color: var(--primary-color-5); }\n    .sg.ant-btn.cnto-btn.contacto-button--primary[disabled], .sg.ant-btn.cnto-btn.contacto-button--primary[disabled]:hover {\n      color: var(--white);\n      background-color: var(--primary-color-2); }\n  .sg.ant-btn.cnto-btn.contacto-button--secondary {\n    color: var(--primary-color);\n    border: 1px solid var(--primary-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--secondary:hover {\n      color: var(--primary-color);\n      background-color: var(--dark-bg);\n      border: 1px solid var(--primary-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--secondary[disabled], .sg.ant-btn.cnto-btn.contacto-button--secondary[disabled]:hover {\n      color: var(--primary-color-2);\n      background-color: var(--white);\n      border: 1px solid var(--primary-color-2); }\n  .sg.ant-btn.cnto-btn.contacto-button--danger-primary {\n    color: var(--white);\n    background-color: var(--danger-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--danger-primary:hover {\n      color: var(--white);\n      background-color: var(--danger-color-5); }\n    .sg.ant-btn.cnto-btn.contacto-button--danger-primary[disabled], .sg.ant-btn.cnto-btn.contacto-button--danger-primary[disabled]:hover {\n      color: var(--white);\n      background-color: var(--danger-color-2); }\n  .sg.ant-btn.cnto-btn.contacto-button--danger-secondary {\n    color: var(--danger-color);\n    border: 1px solid var(--danger-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--danger-secondary:hover {\n      color: var(--danger-color);\n      background-color: var(--danger-color-4);\n      border: 1px solid var(--danger-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--danger-secondary[disabled], .sg.ant-btn.cnto-btn.contacto-button--danger-secondary[disabled]:hover {\n      color: var(--danger-color-2);\n      border: 1px solid var(--danger-color-2);\n      background-color: var(--white); }\n  .sg.ant-btn.cnto-btn.contacto-button--link {\n    color: var(--primary-color);\n    font-weight: 600; }\n    .sg.ant-btn.cnto-btn.contacto-button--link:hover {\n      color: var(--primary-color-5); }\n    .sg.ant-btn.cnto-btn.contacto-button--link[disabled], .sg.ant-btn.cnto-btn.contacto-button--link[disabled]:hover {\n      color: var(--primary-color-2);\n      background-color: var(--white); }\n  .sg.ant-btn.cnto-btn.contacto-button--link-danger {\n    color: var(--danger-color);\n    font-weight: 600; }\n    .sg.ant-btn.cnto-btn.contacto-button--link-danger:hover {\n      color: var(--danger-color-5); }\n    .sg.ant-btn.cnto-btn.contacto-button--link-danger[disabled], .sg.ant-btn.cnto-btn.contacto-button--link-danger[disabled]:hover {\n      color: var(--danger-color-2);\n      background-color: var(--white); }\n  .sg.ant-btn.cnto-btn.contacto-button--small {\n    height: 28px;\n    padding: 4px 8px; }\n  .sg.ant-btn.cnto-btn.contacto-button--large {\n    height: 44px;\n    padding: 12px 16px; }\n  .sg.ant-btn.cnto-btn.contacto-button--full-width {\n    width: 100%;\n    justify-content: center; }\n  .sg.ant-btn.cnto-btn.contacto-button--center {\n    justify-content: center; }\n  .sg.ant-btn.cnto-btn.contacto-button--with-icon {\n    padding-left: 8px; }\n  .sg.ant-btn.cnto-btn.contacto-button--table-action-link {\n    color: var(--secondary-text-color);\n    padding: 8px 0px;\n    padding-left: 0;\n    min-width: auto; }\n    .sg.ant-btn.cnto-btn.contacto-button--table-action-link:hover {\n      color: var(--primary-color);\n      background-color: #fff; }\n  .sg.ant-btn.cnto-btn.contacto-button .contacto-icon {\n    margin-right: 8px; }\n  .sg.ant-btn.cnto-btn.contacto-button--only-icon {\n    padding: 8px;\n    min-width: auto;\n    width: auto; }\n    .sg.ant-btn.cnto-btn.contacto-button--only-icon .contacto-icon {\n      margin-right: 0; }\n      .sg.ant-btn.cnto-btn.contacto-button--only-icon .contacto-icon.small {\n        font-size: 20px; }\n";
+var css_248z$b = ".sg.ant-btn.cnto-btn.contacto-button {\n  min-width: 60px;\n  padding: 8px 16px;\n  height: 36px;\n  line-height: 18px;\n  border: 0;\n  border-radius: 0;\n  display: flex;\n  align-items: center; }\n  .sg.ant-btn.cnto-btn.contacto-button--primary {\n    background-color: var(--primary-color);\n    color: var(--white); }\n    .sg.ant-btn.cnto-btn.contacto-button--primary:hover {\n      color: var(--white);\n      background-color: var(--primary-color-5); }\n    .sg.ant-btn.cnto-btn.contacto-button--primary[disabled], .sg.ant-btn.cnto-btn.contacto-button--primary[disabled]:hover {\n      color: var(--white);\n      background-color: var(--primary-color-2); }\n  .sg.ant-btn.cnto-btn.contacto-button--secondary {\n    color: var(--primary-color);\n    border: 1px solid var(--primary-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--secondary:hover {\n      color: var(--primary-color);\n      background-color: var(--dark-bg);\n      border: 1px solid var(--primary-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--secondary[disabled], .sg.ant-btn.cnto-btn.contacto-button--secondary[disabled]:hover {\n      color: var(--primary-color-2);\n      background-color: var(--white);\n      border: 1px solid var(--primary-color-2); }\n  .sg.ant-btn.cnto-btn.contacto-button--secondary-gray {\n    border: 1px solid var(--border-color-1); }\n    .sg.ant-btn.cnto-btn.contacto-button--secondary-gray:hover {\n      background-color: var(--dark-bg);\n      border: 1px solid var(--primary-color); }\n  .sg.ant-btn.cnto-btn.contacto-button--danger-primary {\n    color: var(--white);\n    background-color: var(--danger-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--danger-primary:hover {\n      color: var(--white);\n      background-color: var(--danger-color-5); }\n    .sg.ant-btn.cnto-btn.contacto-button--danger-primary[disabled], .sg.ant-btn.cnto-btn.contacto-button--danger-primary[disabled]:hover {\n      color: var(--white);\n      background-color: var(--danger-color-2); }\n  .sg.ant-btn.cnto-btn.contacto-button--danger-secondary {\n    color: var(--danger-color);\n    border: 1px solid var(--danger-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--danger-secondary:hover {\n      color: var(--danger-color);\n      background-color: var(--danger-color-4);\n      border: 1px solid var(--danger-color); }\n    .sg.ant-btn.cnto-btn.contacto-button--danger-secondary[disabled], .sg.ant-btn.cnto-btn.contacto-button--danger-secondary[disabled]:hover {\n      color: var(--danger-color-2);\n      border: 1px solid var(--danger-color-2);\n      background-color: var(--white); }\n  .sg.ant-btn.cnto-btn.contacto-button--link {\n    color: var(--primary-color);\n    font-weight: 600; }\n    .sg.ant-btn.cnto-btn.contacto-button--link:hover {\n      color: var(--primary-color-5); }\n    .sg.ant-btn.cnto-btn.contacto-button--link[disabled], .sg.ant-btn.cnto-btn.contacto-button--link[disabled]:hover {\n      color: var(--primary-color-2);\n      background-color: var(--white); }\n  .sg.ant-btn.cnto-btn.contacto-button[class*=\"link\"]:hover {\n    background-color: transparent; }\n  .sg.ant-btn.cnto-btn.contacto-button--link-danger {\n    color: var(--danger-color);\n    font-weight: 600; }\n    .sg.ant-btn.cnto-btn.contacto-button--link-danger:hover {\n      color: var(--danger-color-5); }\n    .sg.ant-btn.cnto-btn.contacto-button--link-danger[disabled], .sg.ant-btn.cnto-btn.contacto-button--link-danger[disabled]:hover {\n      color: var(--danger-color-2);\n      background-color: var(--white); }\n  .sg.ant-btn.cnto-btn.contacto-button--small {\n    height: 28px;\n    padding: 4px 8px; }\n  .sg.ant-btn.cnto-btn.contacto-button--large {\n    height: 44px;\n    padding: 12px 16px; }\n  .sg.ant-btn.cnto-btn.contacto-button--extra-large {\n    height: 56px;\n    padding: 16px; }\n  .sg.ant-btn.cnto-btn.contacto-button--full-width {\n    width: 100%;\n    justify-content: center; }\n  .sg.ant-btn.cnto-btn.contacto-button--center {\n    justify-content: center; }\n  .sg.ant-btn.cnto-btn.contacto-button--left {\n    justify-content: flex-start; }\n  .sg.ant-btn.cnto-btn.contacto-button--with-icon {\n    padding-left: 8px; }\n  .sg.ant-btn.cnto-btn.contacto-button--table-action-link {\n    color: var(--secondary-text-color);\n    padding: 8px 0px;\n    padding-left: 0;\n    min-width: auto; }\n    .sg.ant-btn.cnto-btn.contacto-button--table-action-link:hover {\n      color: var(--primary-color);\n      background-color: #fff; }\n  .sg.ant-btn.cnto-btn.contacto-button .contacto-icon {\n    margin-right: 8px; }\n  .sg.ant-btn.cnto-btn.contacto-button--only-icon {\n    padding: 8px;\n    min-width: auto;\n    width: auto; }\n    .sg.ant-btn.cnto-btn.contacto-button--only-icon .contacto-icon {\n      margin-right: 0; }\n      .sg.ant-btn.cnto-btn.contacto-button--only-icon .contacto-icon.small {\n        font-size: 20px; }\n";
 styleInject(css_248z$b);
 
-var _excluded$9 = ["type", "size", "label", "icon", "fullWidth", "align", "className", "children"];
-var BUTTON_TYPES = ['primary', 'secondary', 'danger-primary', 'danger-secondary', 'link', 'link-danger', 'table-action-link'];
+var _excluded$a = ["type", "size", "label", "icon", "fullWidth", "align", "className", "children"];
+var BUTTON_TYPES = ['primary', 'secondary', 'secondary-gray', 'danger-primary', 'danger-secondary', 'link', 'link-danger', 'table-action-link'];
 var getButtonClassName = function getButtonClassName(type) {
   var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'default';
   var icon = arguments.length > 2 ? arguments[2] : undefined;
@@ -164,7 +164,7 @@ var Button = function Button(_ref) {
       align = _ref.align,
       className = _ref.className,
       children = _ref.children,
-      props = _objectWithoutProperties(_ref, _excluded$9);
+      props = _objectWithoutProperties(_ref, _excluded$a);
 
   return /*#__PURE__*/React.createElement(Button$1, _extends({
     className: getButtonClassName(type, size, icon, className, !label && icon, fullWidth, align),
@@ -183,7 +183,7 @@ Button.propTypes = {
   /**
    * How large should the button be?
    */
-  size: PropTypes.oneOf(['small', 'default', 'large']),
+  size: PropTypes.oneOf(['small', 'default', 'large', 'extra-large']),
 
   /**
    * Button Text
@@ -208,7 +208,7 @@ Button.defaultProps = {
   type: 'primary'
 };
 
-var css_248z$a = ".caption, .sg.contacto-typography--caption, .sg.contacto-typography--caption-bold, .sg.contacto-typography--caption-italic, .sg.contacto-typography--caption-capital {\n  font-size: 12px;\n  line-height: 18px; }\n\n.sg.contacto-typography {\n  color: var(--primary-text-color); }\n  .sg.contacto-typography--large-title {\n    font-size: 26px;\n    line-height: 38px;\n    font-weight: 400; }\n  .sg.contacto-typography--title-1 {\n    font-size: 22px;\n    line-height: 32px;\n    font-weight: 400; }\n  .sg.contacto-typography--title-2 {\n    font-size: 18px;\n    line-height: 26px;\n    font-weight: 400; }\n  .sg.contacto-typography--title-3 {\n    font-size: 16px;\n    line-height: 24px;\n    font-weight: 400; }\n  .sg.contacto-typography--headline {\n    font-size: 14px;\n    line-height: 20px;\n    font-weight: 600; }\n  .sg.contacto-typography--subtitle {\n    font-size: 12px;\n    line-height: 18px;\n    font-weight: 500; }\n  .sg.contacto-typography--body {\n    font-size: 14px;\n    line-height: 20px;\n    font-weight: 400; }\n  .sg.contacto-typography--caption-bold {\n    font-weight: 600; }\n  .sg.contacto-typography--caption-italic {\n    font-style: italic; }\n  .sg.contacto-typography--caption-capital {\n    text-transform: uppercase;\n    font-weight: 600; }\n  .sg.contacto-typography--primary {\n    color: var(--primary-color); }\n  .sg.contacto-typography--secondary {\n    color: var(--secondary-text-color); }\n  .sg.contacto-typography.ant-typography-single-line {\n    width: 100%;\n    vertical-align: middle; }\n  .sg.contacto-typography[class*=\"title\"], .sg.contacto-typography--block {\n    display: block; }\n  .sg.contacto-typography--left {\n    text-align: left; }\n  .sg.contacto-typography--right {\n    text-align: right; }\n  .sg.contacto-typography--center {\n    text-align: center; }\n";
+var css_248z$a = ".caption, .sg.contacto-typography--caption, .sg.contacto-typography--caption-bold, .sg.contacto-typography--caption-italic, .sg.contacto-typography--caption-capital {\n  font-size: 12px;\n  line-height: 18px; }\n\n.sg.contacto-typography {\n  color: var(--primary-text-color); }\n  .sg.contacto-typography--large-title {\n    font-size: 26px;\n    line-height: 38px;\n    font-weight: 400; }\n  .sg.contacto-typography--title-1 {\n    font-size: 22px;\n    line-height: 32px;\n    font-weight: 400; }\n  .sg.contacto-typography--title-2 {\n    font-size: 18px;\n    line-height: 26px;\n    font-weight: 400; }\n  .sg.contacto-typography--title-3 {\n    font-size: 16px;\n    line-height: 24px;\n    font-weight: 400; }\n  .sg.contacto-typography--headline {\n    font-size: 14px;\n    line-height: 20px;\n    font-weight: 600; }\n  .sg.contacto-typography--subtitle {\n    font-size: 12px;\n    line-height: 18px;\n    font-weight: 500; }\n  .sg.contacto-typography--body {\n    font-size: 14px;\n    line-height: 20px;\n    font-weight: 400; }\n  .sg.contacto-typography--caption {\n    font-weight: 400; }\n  .sg.contacto-typography--caption-bold {\n    font-weight: 600; }\n  .sg.contacto-typography--caption-italic {\n    font-style: italic; }\n  .sg.contacto-typography--caption-capital {\n    text-transform: uppercase;\n    font-weight: 600; }\n  .sg.contacto-typography--primary {\n    color: var(--primary-color); }\n  .sg.contacto-typography--secondary {\n    color: var(--secondary-text-color); }\n  .sg.contacto-typography.ant-typography-single-line {\n    width: 100%;\n    vertical-align: middle; }\n  .sg.contacto-typography[class*=\"title\"], .sg.contacto-typography--block {\n    display: block; }\n  .sg.contacto-typography--left {\n    text-align: left; }\n  .sg.contacto-typography--right {\n    text-align: right; }\n  .sg.contacto-typography--center {\n    text-align: center; }\n";
 styleInject(css_248z$a);
 
 var TEXT_TYPES = [{
@@ -268,7 +268,7 @@ var TEXT_TYPES = [{
   fontWeight: 600
 }];
 
-var _excluded$8 = ["type", "children", "className", "variant", "color", "style", "align"];
+var _excluded$9 = ["type", "children", "className", "variant", "color", "style", "align"];
 /**
  * Typography for Contacto Apps
  */
@@ -281,7 +281,7 @@ var Text = function Text(_ref) {
       color = _ref.color,
       style = _ref.style,
       align = _ref.align,
-      props = _objectWithoutProperties(_ref, _excluded$8);
+      props = _objectWithoutProperties(_ref, _excluded$9);
 
   return /*#__PURE__*/React.createElement(Typography.Text, _extends({
     className: ['sg', 'contacto-typography', type ? 'contacto-typography--' + type : '', variant ? 'contacto-typography--' + variant : '', align ? 'contacto-typography--' + align + ' contacto-typography--block' : '', className].join(' '),
@@ -319,7 +319,7 @@ Text.defaultProps = {
 var css_248z$9 = ".sg.contacto-input-wrapper .contacto-input {\n  border-radius: 0;\n  box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);\n  border: 1px solid var(--border-color-1);\n  height: 36px;\n  padding-left: 12px; }\n  .sg.contacto-input-wrapper .contacto-input > * {\n    line-height: 20px; }\n  .sg.contacto-input-wrapper .contacto-input:hover, .sg.contacto-input-wrapper .contacto-input:active, .sg.contacto-input-wrapper .contacto-input:focus, .sg.contacto-input-wrapper .contacto-input[class*='focused'] {\n    box-shadow: none;\n    border: 1px solid var(--primary-color); }\n  .sg.contacto-input-wrapper .contacto-input[class*='focused'] .contacto-icon {\n    color: var(--primary-color); }\n  .sg.contacto-input-wrapper .contacto-input[disabled], .sg.contacto-input-wrapper .contacto-input[disabled]:hover {\n    background-color: var(--gray-6);\n    border: 1px solid var(--gray-6);\n    box-shadow: none; }\n    .sg.contacto-input-wrapper .contacto-input[disabled]::placeholder, .sg.contacto-input-wrapper .contacto-input[disabled]:hover::placeholder {\n      color: var(--gray-2); }\n  .sg.contacto-input-wrapper .contacto-input--readonly:not(.increase-specificity) {\n    box-shadow: none;\n    background-color: var(--gray-6);\n    color: var(--primary-text-color); }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--small {\n    height: 28px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--large {\n    height: 44px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--search-box {\n    box-shadow: none;\n    padding-left: 8px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--no-shadow {\n    box-shadow: none; }\n\n.sg.contacto-input-wrapper .contacto-input-label-wrapper {\n  margin-bottom: 4px;\n  line-height: 0; }\n";
 styleInject(css_248z$9);
 
-var _excluded$7 = ["type", "label", "icon", "size", "disabled", "placeholder", "readOnly", "noShadow", "className"];
+var _excluded$8 = ["type", "label", "icon", "size", "disabled", "placeholder", "readOnly", "password", "noShadow", "className"];
 var TEXTFIELD_TYPES = ['input', 'search-box', 'no-shadow'];
 /**
  * This is used to get text input from the user
@@ -333,19 +333,21 @@ var TextField = function TextField(_ref) {
       disabled = _ref.disabled,
       placeholder = _ref.placeholder,
       readOnly = _ref.readOnly,
+      password = _ref.password,
       noShadow = _ref.noShadow,
       _ref$className = _ref.className,
       className = _ref$className === void 0 ? '' : _ref$className,
-      props = _objectWithoutProperties(_ref, _excluded$7);
+      props = _objectWithoutProperties(_ref, _excluded$8);
 
   icon = type === 'search-box' ? 'search' : icon;
+  var Tag = password ? Input.Password : Input;
   return /*#__PURE__*/React.createElement("div", {
     className: "sg contacto-input-wrapper"
   }, label && /*#__PURE__*/React.createElement("div", {
     className: "contacto-input-label-wrapper"
   }, /*#__PURE__*/React.createElement(Text, {
     type: "caption-bold"
-  }, label)), /*#__PURE__*/React.createElement(Input, _extends({
+  }, label)), /*#__PURE__*/React.createElement(Tag, _extends({
     className: ['contacto-input', 'contacto-input--' + type, 'contacto-input--' + size, noShadow ? 'contacto-input--no-shadow' : '', readOnly ? 'contacto-input--readonly' : '', className].join(' '),
     disabled: readOnly || disabled,
     placeholder: placeholder
@@ -391,7 +393,8 @@ TextField.propTypes = {
    * Show the value as readonly
    */
   readOnly: PropTypes.bool,
-  noShadow: PropTypes.bool
+  noShadow: PropTypes.bool,
+  password: PropTypes.bool
 };
 TextField.defaultProps = {
   size: 'default',
@@ -401,7 +404,7 @@ TextField.defaultProps = {
 var css_248z$8 = ".sg.contacto-card {\n  --padding: 16px;\n  margin: 24px;\n  height: calc(100% - 48px); }\n  .sg.contacto-card .ant-card-head {\n    padding: 0 var(--padding); }\n  .sg.contacto-card .ant-card-body {\n    padding: 0; }\n  .sg.contacto-card .contacto-table-wrapper {\n    margin: 0 calc(-1 * var(--padding)); }\n  .sg.contacto-card .contacto-card-subtitle {\n    white-space: normal;\n    padding-right: 32px; }\n  .sg.contacto-card.contacto-card-align-top .ant-card-head-wrapper {\n    align-items: flex-start; }\n  .sg.contacto-card--has-table-layout {\n    display: flex;\n    flex-flow: column; }\n    .sg.contacto-card--has-table-layout .ant-card-body,\n    .sg.contacto-card--has-table-layout .contacto-table-layout,\n    .sg.contacto-card--has-table-layout .contacto-table-wrapper {\n      flex: 1;\n      min-height: 0;\n      display: flex;\n      flex-flow: column; }\n  .sg.contacto-card .contacto-card-section {\n    padding: var(--padding);\n    border-bottom: 1px solid var(--border-color-1); }\n    .sg.contacto-card .contacto-card-section.contacto-table-layout-card-section {\n      flex: 1;\n      min-height: 0;\n      display: flex;\n      flex-flow: column; }\n      .sg.contacto-card .contacto-card-section.contacto-table-layout-card-section:last-child {\n        padding-bottom: 0; }\n";
 styleInject(css_248z$8);
 
-var _excluded$6 = ["className", "title", "subtitle", "actionButton", "topAlignButton", "hasTableLayout"];
+var _excluded$7 = ["className", "title", "subtitle", "actionButton", "topAlignButton", "hasTableLayout"];
 
 var Title = function Title(props) {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Text, {
@@ -431,7 +434,7 @@ var Card = function Card(_ref) {
       actionButton = _ref.actionButton,
       topAlignButton = _ref.topAlignButton,
       hasTableLayout = _ref.hasTableLayout,
-      props = _objectWithoutProperties(_ref, _excluded$6);
+      props = _objectWithoutProperties(_ref, _excluded$7);
 
   return /*#__PURE__*/React.createElement(Card$1, _extends({
     className: ['sg contacto-card', className, topAlignButton ? 'contacto-card-align-top' : '', hasTableLayout ? 'contacto-card--has-table-layout' : ''].join(' ')
@@ -453,7 +456,7 @@ Card.propTypes = {
   /**
    * Title of the card
    */
-  title: PropTypes.string,
+  title: PropTypes.any,
 
   /**
    * Text rendered beneath the title
@@ -469,10 +472,10 @@ Card.propTypes = {
 };
 Card.defaultProps = {};
 
-var css_248z$7 = ".sg.contacto-checkbox,\n.sg.contacto-checkbox-group .ant-checkbox-wrapper {\n  line-height: 20px;\n  align-items: center; }\n  .sg.contacto-checkbox .ant-checkbox-indeterminate .ant-checkbox-inner,\n  .sg.contacto-checkbox-group .ant-checkbox-wrapper .ant-checkbox-indeterminate .ant-checkbox-inner {\n    background-color: var(--primary-color);\n    border-color: var(--primary-color); }\n    .sg.contacto-checkbox .ant-checkbox-indeterminate .ant-checkbox-inner:after,\n    .sg.contacto-checkbox-group .ant-checkbox-wrapper .ant-checkbox-indeterminate .ant-checkbox-inner:after {\n      background-color: var(--primary-color);\n      width: 2px;\n      height: 10px;\n      border-radius: 1px;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%) scale(1) rotate(90deg);\n      background: white; }\n  .sg.contacto-checkbox .ant-checkbox,\n  .sg.contacto-checkbox-group .ant-checkbox-wrapper .ant-checkbox {\n    top: 0; }\n    .sg.contacto-checkbox .ant-checkbox-checked:after,\n    .sg.contacto-checkbox-group .ant-checkbox-wrapper .ant-checkbox-checked:after {\n      border: none; }\n    .sg.contacto-checkbox .ant-checkbox-checked .ant-checkbox-inner,\n    .sg.contacto-checkbox-group .ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {\n      border-color: var(--primary-color);\n      background-color: var(--primary-color); }\n  .sg.contacto-checkbox span,\n  .sg.contacto-checkbox-group .ant-checkbox-wrapper span {\n    line-height: 20px; }\n  .sg.contacto-checkbox:hover .ant-checkbox-inner,\n  .sg.contacto-checkbox-group .ant-checkbox-wrapper:hover .ant-checkbox-inner {\n    border-color: var(--primary-color); }\n  .sg.contacto-checkbox .ant-checkbox-inner,\n  .sg.contacto-checkbox-group .ant-checkbox-wrapper .ant-checkbox-inner {\n    width: 18px;\n    height: 18px;\n    border-color: var(--gray-2);\n    border-width: 2px;\n    box-shadow: none; }\n    .sg.contacto-checkbox .ant-checkbox-inner:hover,\n    .sg.contacto-checkbox-group .ant-checkbox-wrapper .ant-checkbox-inner:hover {\n      border-color: var(--primary-color); }\n    .sg.contacto-checkbox .ant-checkbox-inner:after,\n    .sg.contacto-checkbox-group .ant-checkbox-wrapper .ant-checkbox-inner:after {\n      background-color: var(--primary-color);\n      width: 6px;\n      height: 12px;\n      border-radius: 1px;\n      top: 6px;\n      left: 2px; }\n  .sg.contacto-checkbox[class*=\"disabled\"] .ant-checkbox-checked .ant-checkbox-inner,\n  .sg.contacto-checkbox-group .ant-checkbox-wrapper[class*=\"disabled\"] .ant-checkbox-checked .ant-checkbox-inner {\n    border-color: var(--primary-color-2) !important; }\n  .sg.contacto-checkbox[class*=\"disabled\"] .ant-checkbox-inner,\n  .sg.contacto-checkbox-group .ant-checkbox-wrapper[class*=\"disabled\"] .ant-checkbox-inner {\n    border-color: var(--gray-4) !important; }\n    .sg.contacto-checkbox[class*=\"disabled\"] .ant-checkbox-inner:after,\n    .sg.contacto-checkbox-group .ant-checkbox-wrapper[class*=\"disabled\"] .ant-checkbox-inner:after {\n      background-color: var(--primary-color-2); }\n  .sg.contacto-checkbox[class*=\"disabled\"] span,\n  .sg.contacto-checkbox-group .ant-checkbox-wrapper[class*=\"disabled\"] span {\n    color: var(--primary-text-color); }\n";
+var css_248z$7 = ".sg.contacto-checkbox,\n.ant-checkbox-wrapper {\n  line-height: 20px;\n  align-items: center; }\n  .sg.contacto-checkbox .ant-checkbox-indeterminate .ant-checkbox-inner,\n  .ant-checkbox-wrapper .ant-checkbox-indeterminate .ant-checkbox-inner {\n    background-color: var(--primary-color);\n    border-color: var(--primary-color); }\n    .sg.contacto-checkbox .ant-checkbox-indeterminate .ant-checkbox-inner:after,\n    .ant-checkbox-wrapper .ant-checkbox-indeterminate .ant-checkbox-inner:after {\n      background-color: var(--primary-color);\n      width: 2px;\n      height: 10px;\n      border-radius: 1px;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%) scale(1) rotate(90deg);\n      background: white; }\n  .sg.contacto-checkbox.checkbox--no-label .ant-checkbox,\n  .ant-checkbox-wrapper.checkbox--no-label .ant-checkbox {\n    top: 0.2em; }\n  .sg.contacto-checkbox .ant-checkbox,\n  .ant-checkbox-wrapper .ant-checkbox {\n    top: 0; }\n    .sg.contacto-checkbox .ant-checkbox-checked:after,\n    .ant-checkbox-wrapper .ant-checkbox-checked:after {\n      border: none; }\n    .sg.contacto-checkbox .ant-checkbox-checked .ant-checkbox-inner,\n    .ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {\n      border-color: var(--primary-color);\n      background-color: var(--primary-color); }\n  .sg.contacto-checkbox span,\n  .ant-checkbox-wrapper span {\n    line-height: 20px; }\n  .sg.contacto-checkbox:hover .ant-checkbox-inner,\n  .ant-checkbox-wrapper:hover .ant-checkbox-inner {\n    border-color: var(--primary-color); }\n  .sg.contacto-checkbox .ant-checkbox-inner,\n  .ant-checkbox-wrapper .ant-checkbox-inner {\n    width: 18px;\n    height: 18px;\n    border-color: var(--gray-2);\n    border-width: 2px;\n    box-shadow: none; }\n    .sg.contacto-checkbox .ant-checkbox-inner:hover,\n    .ant-checkbox-wrapper .ant-checkbox-inner:hover {\n      border-color: var(--primary-color); }\n    .sg.contacto-checkbox .ant-checkbox-inner:after,\n    .ant-checkbox-wrapper .ant-checkbox-inner:after {\n      background-color: var(--primary-color);\n      width: 6px;\n      height: 12px;\n      border-radius: 1px;\n      top: 6px;\n      left: 2px; }\n  .sg.contacto-checkbox[class*=\"disabled\"] .ant-checkbox-checked .ant-checkbox-inner,\n  .ant-checkbox-wrapper[class*=\"disabled\"] .ant-checkbox-checked .ant-checkbox-inner {\n    border-color: var(--primary-color-2) !important; }\n  .sg.contacto-checkbox[class*=\"disabled\"] .ant-checkbox-inner,\n  .ant-checkbox-wrapper[class*=\"disabled\"] .ant-checkbox-inner {\n    border-color: var(--gray-4) !important;\n    background-color: var(--background-highlight-color); }\n    .sg.contacto-checkbox[class*=\"disabled\"] .ant-checkbox-inner:after,\n    .ant-checkbox-wrapper[class*=\"disabled\"] .ant-checkbox-inner:after {\n      background-color: var(--primary-color-2); }\n  .sg.contacto-checkbox[class*=\"disabled\"] span,\n  .ant-checkbox-wrapper[class*=\"disabled\"] span {\n    color: var(--primary-text-color); }\n";
 styleInject(css_248z$7);
 
-var _excluded$5 = ["className"],
+var _excluded$6 = ["className"],
     _excluded2 = ["className"];
 /**
  * Primary Checkbox Component.
@@ -483,7 +486,7 @@ var _excluded$5 = ["className"],
 var Checkbox = function Checkbox(_ref) {
   var _ref$className = _ref.className,
       className = _ref$className === void 0 ? '' : _ref$className,
-      props = _objectWithoutProperties(_ref, _excluded$5);
+      props = _objectWithoutProperties(_ref, _excluded$6);
 
   return /*#__PURE__*/React.createElement(Checkbox$1, _extends({
     className: ['sg contacto-checkbox', className].join(' ')
@@ -510,7 +513,7 @@ Checkbox.propTypes = {
 var css_248z$6 = ".sg.contacto-tag {\n  padding: 4px 8px;\n  border: none; }\n  .sg.contacto-tag .ant-typography {\n    color: inherit; }\n  .sg.contacto-tag--default {\n    background-color: var(--primary-color-4);\n    color: var(--primary-color); }\n  .sg.contacto-tag--success {\n    background-color: var(--success-color-4);\n    color: var(--success-color); }\n  .sg.contacto-tag--danger {\n    background-color: var(--danger-color-4);\n    color: var(--danger-color); }\n  .sg.contacto-tag--progress {\n    background-color: var(--primary-color-3);\n    color: var(--primary-color); }\n  .sg.contacto-tag--disabled {\n    background-color: var(--gray-5);\n    color: var(--secondary-text-color); }\n";
 styleInject(css_248z$6);
 
-var _excluded$4 = ["className", "type", "label"];
+var _excluded$5 = ["className", "type", "label"];
 var TAG_TYPES = ['success', 'danger', 'disabled', 'progress', 'default'];
 /**
  * Tag component that is used to specify status of a task
@@ -521,7 +524,7 @@ var Tag = function Tag(_ref) {
       className = _ref$className === void 0 ? '' : _ref$className,
       type = _ref.type,
       label = _ref.label,
-      props = _objectWithoutProperties(_ref, _excluded$4);
+      props = _objectWithoutProperties(_ref, _excluded$5);
 
   return /*#__PURE__*/React.createElement(Tag$1, _extends({
     className: ['sg contacto-tag', className, "contacto-tag--".concat(type)].join(' ')
@@ -552,9 +555,27 @@ Tag.defaultProps = {
 var css_248z$5 = ".sg.contacto-radio-input {\n  line-height: 20px;\n  align-items: center; }\n  .sg.contacto-radio-input .ant-radio {\n    top: 0; }\n    .sg.contacto-radio-input .ant-radio-checked .ant-radio-inner {\n      border-color: var(--primary-color); }\n  .sg.contacto-radio-input span {\n    line-height: 20px; }\n  .sg.contacto-radio-input:hover .ant-radio-inner {\n    border-color: var(--primary-color); }\n  .sg.contacto-radio-input .ant-radio-inner {\n    width: 20px;\n    height: 20px;\n    border-color: var(--gray-2);\n    border-width: 2px;\n    box-shadow: none; }\n    .sg.contacto-radio-input .ant-radio-inner:hover {\n      border-color: var(--primary-color); }\n    .sg.contacto-radio-input .ant-radio-inner:after {\n      background-color: var(--primary-color);\n      width: 10px;\n      height: 10px; }\n  .sg.contacto-radio-input[class*=\"disabled\"] .ant-radio-checked .ant-radio-inner {\n    border-color: var(--primary-color-2) !important; }\n  .sg.contacto-radio-input[class*=\"disabled\"] .ant-radio-inner {\n    border-color: var(--gray-4) !important; }\n    .sg.contacto-radio-input[class*=\"disabled\"] .ant-radio-inner:after {\n      background-color: var(--primary-color-2); }\n  .sg.contacto-radio-input[class*=\"disabled\"] span {\n    color: var(--primary-text-color); }\n";
 styleInject(css_248z$5);
 
-({
+var _excluded$4 = ["className"];
+/**
+ * Primary Radio Component.
+ *  Has the same properties that are used in antd.
+ *  Visit https://ant.design/components/radio/#API for options
+ */
+
+var Radio = function Radio(_ref) {
+  var _ref$className = _ref.className,
+      className = _ref$className === void 0 ? '' : _ref$className,
+      props = _objectWithoutProperties(_ref, _excluded$4);
+
+  return /*#__PURE__*/React.createElement(Radio$1, _extends({
+    className: ['sg contacto-radio-input', className].join(' ')
+  }, props));
+};
+Radio.Group = Radio$1.Group;
+Radio.Button = Radio$1.Button;
+Radio.propTypes = {
   className: PropTypes.string
-});
+};
 
 var css_248z$4 = ".sg.contacto-select-wrapper .contacto-select {\n  --height: 36px;\n  border-radius: 0;\n  box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);\n  border: 1px solid var(--border-color-1);\n  height: var(--height);\n  width: 100%; }\n  .sg.contacto-select-wrapper .contacto-select--no-shadow {\n    box-shadow: none; }\n  .sg.contacto-select-wrapper .contacto-select:hover:not(.ant-select-disabled), .sg.contacto-select-wrapper .contacto-select:active:not(.ant-select-disabled), .sg.contacto-select-wrapper .contacto-select:focus:not(.ant-select-disabled), .sg.contacto-select-wrapper .contacto-select[class*='focused']:not(.ant-select-disabled) {\n    box-shadow: none;\n    border: 1px solid var(--primary-color); }\n    .sg.contacto-select-wrapper .contacto-select:hover:not(.ant-select-disabled) .ant-select-selector, .sg.contacto-select-wrapper .contacto-select:active:not(.ant-select-disabled) .ant-select-selector, .sg.contacto-select-wrapper .contacto-select:focus:not(.ant-select-disabled) .ant-select-selector, .sg.contacto-select-wrapper .contacto-select[class*='focused']:not(.ant-select-disabled) .ant-select-selector {\n      box-shadow: none; }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-selector {\n    border: none;\n    height: calc(var(--height) - 2px);\n    cursor: pointer; }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-search-input,\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-placeholder {\n      height: calc(var(--height) - 2px);\n      line-height: calc(var(--height) - 2px); }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-selector .ant-select-selection-item {\n      line-height: calc(var(--height) - 2px); }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-arrow {\n    margin-top: 0;\n    top: 50%;\n    right: 12px;\n    color: var(--gray-1);\n    width: auto;\n    height: auto;\n    font-size: 0;\n    transform: translateY(-50%);\n    cursor: pointer; }\n    .sg.contacto-select-wrapper .contacto-select .ant-select-arrow .contacto-icon--select-caret {\n      font-size: 20px; }\n  .sg.contacto-select-wrapper .contacto-select[class*='focused'] .contacto-icon {\n    color: var(--primary-color); }\n  .sg.contacto-select-wrapper .contacto-select[class*=\"disabled\"], .sg.contacto-select-wrapper .contacto-select[disabled]:hover {\n    background-color: var(--gray-6);\n    border: 1px solid var(--gray-6);\n    box-shadow: none; }\n    .sg.contacto-select-wrapper .contacto-select[class*=\"disabled\"]::placeholder, .sg.contacto-select-wrapper .contacto-select[disabled]:hover::placeholder {\n      color: var(--gray-2); }\n  .sg.contacto-select-wrapper .contacto-select--readonly:not(.increase-specificity) {\n    box-shadow: none;\n    background-color: var(--gray-6);\n    color: var(--primary-text-color); }\n    .sg.contacto-select-wrapper .contacto-select--readonly:not(.increase-specificity) .ant-select-selector {\n      color: var(--primary-text-color); }\n  .sg.contacto-select-wrapper .contacto-select .ant-select-clear {\n    width: 20px; }\n\n.sg.contacto-select-wrapper .contacto-select--small {\n  --height: 28px; }\n  .sg.contacto-select-wrapper .contacto-select--small .ant-select-arrow {\n    right: 8px; }\n\n.sg.contacto-select-wrapper .contacto-select-label-wrapper {\n  margin-bottom: 4px;\n  line-height: 0; }\n\n.sg.contacto-select-wrapper .anticon.anticon-loading {\n  color: var(--gray-2);\n  font-size: 24px; }\n\n.sg.contacto-select-listbox .ant-select-item {\n  line-height: 33px;\n  border-bottom: 1px solid var(--border-color); }\n  .sg.contacto-select-listbox .ant-select-item:hover {\n    background-color: var(--background-highlight-color); }\n\n.sg.contacto-select-listbox .ant-select-item-option-selected {\n  background-color: var(--background-highlight-color);\n  color: var(--primary-color); }\n";
 styleInject(css_248z$4);
@@ -847,5 +868,5 @@ Block.propTypes = {
 };
 Block.defaultProps = {};
 
-export { BUTTON_TYPES, Block, Button, Card, Checkbox, Select, Sider, TAG_TYPES, TEXTFIELD_TYPES, Table, TableLayout, Tag, Text, TextField, getButtonClassName };
+export { BUTTON_TYPES, Block, Button, Card, Checkbox, Radio, Select, Sider, TAG_TYPES, TEXTFIELD_TYPES, Table, TableLayout, Tag, Text, TextField, getButtonClassName };
 //# sourceMappingURL=index.es.js.map

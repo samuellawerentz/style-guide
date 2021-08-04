@@ -50,6 +50,7 @@
 
     &--caption {
         @extend .caption;
+        font-weight: 400;
     }
 
     &--caption-bold {

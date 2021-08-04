@@ -5,6 +5,7 @@ import './button.scss'
 export const BUTTON_TYPES = [
   'primary',
   'secondary',
+  'secondary-gray',
   'danger-primary',
   'danger-secondary',
   'link',
@@ -68,7 +69,7 @@ Button.propTypes = {
   /**
    * How large should the button be?
    */
-  size: PropTypes.oneOf(['small', 'default', 'large']),
+  size: PropTypes.oneOf(['small', 'default', 'large', 'extra-large']),
   /**
    * Button Text
    */
