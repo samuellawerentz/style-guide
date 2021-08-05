@@ -8,19 +8,22 @@ export const TEXTFIELD_TYPES = ['input', 'search-box', 'no-shadow']
 /**
  * This is used to get text input from the user
  */
-export const TextField = ({
-  type,
-  label,
-  icon,
-  size,
-  disabled,
-  placeholder,
-  readOnly,
-  password,
-  noShadow,
-  className = '',
-  ...props
-}) => {
+export const TextField = React.forwardRef(function TextField(
+  {
+    type,
+    label,
+    icon,
+    size,
+    disabled,
+    placeholder,
+    readOnly,
+    password,
+    noShadow,
+    className = '',
+    ...props
+  },
+  ref,
+) {
   icon = type === 'search-box' ? 'search' : icon
   const Tag = password ? Input.Password : Input
   return (
@@ -31,6 +34,7 @@ export const TextField = ({
         </div>
       )}
       <Tag
+        ref={ref}
         className={[
           'contacto-input',
           'contacto-input--' + type,
@@ -50,7 +54,7 @@ export const TextField = ({
       />
     </div>
   )
-}
+})
 
 TextField.propTypes = {
   /**
