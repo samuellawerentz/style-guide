@@ -6,12 +6,14 @@ import { Default } from '../TableLayout/index.stories'
 export default {
   title: 'Layout/Card',
   component: Card,
-  // argTypes: {
-  //  type: {
-  //    options:
-  //    control: { type: 'select' },
-  //  },
-  // },
+  argTypes: {
+    actionButton: {
+      control: false,
+    },
+    children: {
+      control: false,
+    },
+  },
 }
 
 const Template = (args) => <Card {...args} />

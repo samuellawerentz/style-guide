@@ -41,7 +41,7 @@ export const Select = React.forwardRef(function Select(
         ]}
         ref={ref}
         disabled={readOnly || disabled}
-        listHeight={listHeight || 216}
+        listHeight={listHeight || 220}
         placeholder={placeholder}
         dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
         suffixIcon={

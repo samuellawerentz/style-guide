@@ -17,6 +17,7 @@ const Template = (args) => <Checkbox {...args} />
 export const Default = Template.bind({})
 Default.args = {
   children: 'Default Checkbox',
+  disabled: false,
 }
 
 export const IndeterminateState = Template.bind({})

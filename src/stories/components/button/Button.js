@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Button as AntButton } from 'antd'
+import { Icon } from '../Icon/index'
 import './button.scss'
 export const BUTTON_TYPES = [
   'primary',
@@ -51,8 +52,16 @@ export const Button = ({
 }) => {
   return (
     <AntButton
-      className={getButtonClassName(type, size, icon, className, !label && icon, fullWidth, align)}
-      icon={icon ? <span className={'material-icons contacto-icon ' + size}>{icon}</span> : null}
+      className={getButtonClassName(
+        type,
+        size,
+        icon,
+        className,
+        !(label || children) && icon,
+        fullWidth,
+        align,
+      )}
+      icon={icon ? <Icon name={icon} className={size} /> : null}
       {...props}
     >
       {label || children}

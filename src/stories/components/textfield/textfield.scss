@@ -8,8 +8,10 @@
         & > * {
             line-height: 20px;
         }
+        .ant-input-prefix {
+            margin-left: auto;
+        }
         &:hover, &:active, &:focus, &[class*='focused'] {
-            box-shadow: none;
             border: 1px solid var(--primary-color);
         }
         &[class*='focused'] {
@@ -17,13 +19,13 @@
                 color: var(--primary-color);
             }
         }
+        &::placeholder {
+            color: var(--gray-2);
+        }
         &[disabled], &[disabled]:hover {
             background-color:var(--gray-6);
-            border: 1px solid var(--gray-6);
+            border: 1px solid var(--border-color-1);
             box-shadow: none;
-            &::placeholder {
-                color: var(--gray-2);
-            }
         }
         &--readonly:not(.increase-specificity) {
             box-shadow: none;
@@ -42,6 +44,12 @@
         }
         &.contacto-input--no-shadow {
             box-shadow: none;
+        }
+        .anticon.ant-input-clear-icon {
+            font-size: 14px;
+        }
+        .ant-input::placeholder {
+            color: var(--gray-2);
         }
     }
     .contacto-input-label-wrapper{

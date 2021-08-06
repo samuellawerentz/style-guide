@@ -35,6 +35,9 @@
                 height: calc(var(--height) - 2px);
                 line-height: calc(var(--height) - 2px);
             }
+            .ant-select-selection-placeholder {
+                color: var(--gray-2);
+            }
 
             .ant-select-selection-item {
                 line-height: calc(var(--height) - 2px);
@@ -68,10 +71,6 @@
             background-color: var(--gray-6);
             border: 1px solid var(--gray-6);
             box-shadow: none;
-
-            &::placeholder {
-                color: var(--gray-2);
-            }
         }
 
         &--readonly:not(.increase-specificity) {
@@ -86,6 +85,8 @@
 
         .ant-select-clear {
             width: 20px;
+            font-size: 14px;
+            top: 47%;
         }
     }
 
@@ -109,11 +110,13 @@
 }
 
 .sg.contacto-select-listbox {
+    padding: 0;
+    border-radius: 0;
     .ant-select-item {
         line-height: 33px;
         border-bottom: 1px solid var(--border-color);
 
-        &:hover {
+        &:hover, &-option-active {
             background-color: var(--background-highlight-color);
         }
     }

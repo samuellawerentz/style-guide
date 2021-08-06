@@ -31,6 +31,7 @@ SearchBox.args = {
   type: 'search-box',
   size: 'default',
   placeholder: 'A sample search box',
+  allowClear: true,
 }
 
 export const WithIcon = Template.bind({})
@@ -74,5 +75,4 @@ Password.args = {
   size: 'default',
   placeholder: 'An read-only textfield',
   value: 'Read only',
-  readOnly: true,
 }
