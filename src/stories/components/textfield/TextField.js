@@ -86,7 +86,13 @@ TextField.propTypes = {
    * Show the value as readonly
    */
   readOnly: PropTypes.bool,
+  /**
+   * Set to true, if you don't want the shadow.
+   */
   noShadow: PropTypes.bool,
+  /**
+   * Is it a password field?
+   */
   password: PropTypes.bool,
 }
 

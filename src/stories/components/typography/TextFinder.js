@@ -5,11 +5,6 @@ import { TEXT_TYPES } from './TEXT_TYPES'
 import { Source } from '@storybook/addon-docs'
 import dedent from 'ts-dedent'
 import cssVars from '../../../utils/cssVars'
-// import { groupBy } from 'lodash'
-
-// const fontSizes = groupBy(TEXT_TYPES, 'fontSize')
-// const fontWeight = groupBy(TEXT_TYPES, 'fontWeight')
-// const lineHeight = groupBy(TEXT_TYPES, 'lineHeight')
 
 const TextFinder = () => {
   const [searchTerm, setSearchTerm] = useState('')

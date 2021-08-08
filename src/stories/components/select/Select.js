@@ -3,7 +3,7 @@ import { Select as AntSelect } from 'antd'
 import { Text } from '../typography/Typography'
 import PropTypes from 'prop-types'
 import './select.scss'
-import Icon, { LoadingOutlined } from '@ant-design/icons'
+import { Icon } from '../Icon/index'
 /**
  * This is used to select a value from the list of options
  */
@@ -46,7 +46,7 @@ export const Select = React.forwardRef(function Select(
         dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
         suffixIcon={
           loading ? (
-            <Icon component={LoadingOutlined} />
+            <Icon.Loading />
           ) : (
             <span className="material-icons contacto-icon--select-caret" onClick={onIconClick}>
               expand_more
@@ -86,11 +86,29 @@ Select.propTypes = {
    * Show the value as readonly
    */
   readOnly: PropTypes.bool,
+  /**
+   * Class name to be added
+   */
   className: PropTypes.string,
+  /**
+   * Class name to be added for the list-box
+   */
   dropdownClassName: PropTypes.string,
+  /**
+   * Height of the dropdown listbox
+   */
   listHeight: PropTypes.number,
+  /**
+   * Show the loader
+   */
   loading: PropTypes.bool,
+  /**
+   * Click handler for the icon
+   */
   onIconClick: PropTypes.func,
+  /**
+   * Set it to true to remove shadow
+   */
   noShadow: PropTypes.bool,
 }
 

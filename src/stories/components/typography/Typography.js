@@ -41,8 +41,17 @@ Text.propTypes = {
    * This indicates whether the text is primary or secondary.
    */
   variant: PropTypes.string,
+  /**
+   * Color of the text. Please specify a variable name. Hex colors won't work here.
+   */
   color: PropTypes.string,
+  /**
+   * CSS Style property
+   */
   style: PropTypes.object,
+  /**
+   * Text align
+   */
   align: PropTypes.oneOf(['left', 'right', 'center']),
 }
 

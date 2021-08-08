@@ -4,7 +4,9 @@ import PropTypes from 'prop-types'
 import { Table as AntTable } from 'antd'
 
 /**
- * Description
+ * The default table that is used in the application.
+ * The pagination, cell padding, header and scroll behaviour has been standardised.
+ * The options are similar to that of antd table
  */
 // eslint-disable-next-line react/prop-types
 export const Table = ({ className = '', pagination, ...props }) => {

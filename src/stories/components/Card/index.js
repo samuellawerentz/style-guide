@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './styles.scss'
 import PropTypes from 'prop-types'
-import { Card as AntCard } from 'antd'
+import { Card as AntCard, Space, Row } from 'antd'
 import { Text } from '../typography/Typography'
 
 const Title = (props) => (
@@ -17,9 +17,35 @@ const Title = (props) => (
   </>
 )
 
-const Section = (props) => (
-  <div className={['contacto-card-section', props.className || ''].join(' ')}>{props.children}</div>
-)
+const Section = React.forwardRef(function Section(props, ref) {
+  return (
+    <div
+      className={[
+        'contacto-card-section',
+        props.scrollY ? 'contacto-card-section--scroll-y' : '',
+        props.className || '',
+      ].join(' ')}
+      ref={ref}
+    >
+      {props.children}
+    </div>
+  )
+})
+
+const Footer = (props) => {
+  const footerRef = useRef(null)
+  const cardBody = footerRef.current?.closest('.ant-card-body')
+  if (cardBody) cardBody.parentNode.insertBefore(footerRef.current, cardBody.nextSibling)
+  return (
+    <Section className="contacto-card-footer-section" ref={footerRef}>
+      <Row justify="end">
+        <Space size={16} direction="horizontal">
+          {props.footerButtons.map((button) => button)}
+        </Space>
+      </Row>
+    </Section>
+  )
+}
 /**
  * This is a layout that is mostly used in the center, when the screen has a table.
  */
@@ -48,6 +74,7 @@ export const Card = ({
 }
 
 Card.Section = Section
+Card.Footer = Footer
 
 Card.propTypes = {
   /**
@@ -66,7 +93,14 @@ Card.propTypes = {
    * The action button component. It must be a react component, usually, the Button component.
    */
   actionButton: PropTypes.node,
+  /**
+   * Should the button be top aligned with the header?
+   */
   topAlignButton: PropTypes.bool,
+  /**
+   * If the card contains the default table view, set this to true
+   * for the scroll functionaltiy to work properly
+   */
   hasTableLayout: PropTypes.bool,
 }
 

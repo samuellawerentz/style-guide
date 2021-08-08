@@ -59,3 +59,23 @@ CardWithSections.args = {
   actionButton: <Button type="secondary" label="Sample Action with Icon" icon="group_add" />,
   children: <Card.Section>This is a sample section of the card with border</Card.Section>,
 }
+
+export const CardWithASectionAndFooter = Template.bind({})
+CardWithASectionAndFooter.args = {
+  title: 'Sample header',
+  subtitle: 'This is a descriptive copy for the header',
+  actionButton: <Button type="secondary" label="Sample Action with Icon" icon="group_add" />,
+  children: (
+    <>
+      <Card.Section>
+        This is a sample section of the card with border<br></br>A new line with new text
+      </Card.Section>
+      <Card.Footer
+        footerButtons={[
+          <Button type="secondary" label="Cancel" key="cancel" />,
+          <Button label="Save" key="Save" />,
+        ]}
+      />
+    </>
+  ),
+}

@@ -1,15 +1,20 @@
 import React from 'react'
 import { Icon } from './'
+import cssVars from '../../../utils/cssVars'
 
 export default {
   title: 'Icons/Basic Usage',
   component: Icon,
-  // argTypes: {
-  //  type: {
-  //    options:
-  //    control: { type: 'select' },
-  //  },
-  // },
+  argTypes: {
+    color: {
+      options: cssVars,
+      control: { type: 'select' },
+    },
+    hoverColor: {
+      options: cssVars,
+      control: { type: 'select' },
+    },
+  },
 }
 
 const Template = (args) => <Icon {...args} />
@@ -26,6 +31,8 @@ WithHoverColor.args = {
   color: 'gray-2',
   hoverColor: 'danger-color',
 }
+
+export const LoadingIcon = () => <Icon.Loading />
 
 export const DifferentSizes = (args) => {
   return (

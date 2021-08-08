@@ -5,13 +5,11 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var React = require('react');
 var PropTypes = require('prop-types');
 var antd = require('antd');
-var Icon$1 = require('@ant-design/icons');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
-var Icon__default = /*#__PURE__*/_interopDefaultLegacy(Icon$1);
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -206,25 +204,43 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$c = ".sg.contacto-icon {\n  user-select: none; }\n";
+var css_248z$c = ".sg.contacto-icon {\n  user-select: none; }\n\n.sg.contacto-loader {\n  border-radius: 50%;\n  position: relative;\n  display: inline-block;\n  animation: rotate-loading 1s infinite linear; }\n  .sg.contacto-loader:after {\n    content: '';\n    position: absolute;\n    width: 60%;\n    height: 100%;\n    background: white; }\n\n@keyframes rotate-loading {\n  to {\n    transform: rotate(360deg); } }\n";
 styleInject(css_248z$c);
 
 var _excluded$b = ["className", "name", "size", "color", "style", "hoverColor"];
+
+var Loading = function Loading(_ref) {
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 24 : _ref$size,
+      _ref$strokeSize = _ref.strokeSize,
+      strokeSize = _ref$strokeSize === void 0 ? 2 : _ref$strokeSize,
+      _ref$color = _ref.color,
+      color = _ref$color === void 0 ? 'gray-2' : _ref$color;
+  return /*#__PURE__*/React__default['default'].createElement("span", {
+    className: "sg contacto-loader",
+    style: {
+      width: size,
+      height: size,
+      boxShadow: "0 0 0 ".concat(strokeSize, "px var(--").concat(color, ") inset")
+    }
+  });
+};
 /**
  * Material Icons that are used in the application.
  *
  * Please visit https://fonts.google.com/icons to find different icons and their names
  */
 
-var Icon = function Icon(_ref) {
-  var _ref$className = _ref.className,
-      className = _ref$className === void 0 ? '' : _ref$className,
-      name = _ref.name,
-      size = _ref.size,
-      color = _ref.color,
-      style = _ref.style,
-      hoverColor = _ref.hoverColor,
-      props = _objectWithoutProperties(_ref, _excluded$b);
+
+var Icon = function Icon(_ref2) {
+  var _ref2$className = _ref2.className,
+      className = _ref2$className === void 0 ? '' : _ref2$className,
+      name = _ref2.name,
+      size = _ref2.size,
+      color = _ref2.color,
+      style = _ref2.style,
+      hoverColor = _ref2.hoverColor,
+      props = _objectWithoutProperties(_ref2, _excluded$b);
 
   var _useState = React.useState(color ? "var(--".concat(color, ")") : undefined),
       _useState2 = _slicedToArray(_useState, 2),
@@ -257,6 +273,7 @@ var Icon = function Icon(_ref) {
     })
   }, props, iconEventProps), name);
 };
+Icon.Loading = Loading;
 Icon.propTypes = {
   /**
    * Class to be added
@@ -558,7 +575,7 @@ TextField.defaultProps = {
   type: 'input'
 };
 
-var css_248z$8 = ".sg.contacto-card {\n  --padding: 16px;\n  margin: 24px;\n  max-height: calc(100% - 48px);\n  height: auto; }\n  .sg.contacto-card .ant-card-head {\n    padding: 0 var(--padding);\n    flex-shrink: 0; }\n  .sg.contacto-card .ant-card-body {\n    padding: 0; }\n  .sg.contacto-card .contacto-table-wrapper {\n    margin: 0 calc(-1 * var(--padding)); }\n  .sg.contacto-card .contacto-card-subtitle {\n    white-space: normal;\n    padding-right: 32px; }\n  .sg.contacto-card.contacto-card-align-top .ant-card-head-wrapper {\n    align-items: flex-start; }\n  .sg.contacto-card--has-table-layout {\n    display: flex;\n    flex-flow: column; }\n    .sg.contacto-card--has-table-layout .ant-card-body,\n    .sg.contacto-card--has-table-layout .contacto-table-layout,\n    .sg.contacto-card--has-table-layout .contacto-table-wrapper,\n    .sg.contacto-card--has-table-layout .contacto-table-layout-card-section,\n    .sg.contacto-card--has-table-layout .contacto-table,\n    .sg.contacto-card--has-table-layout .contacto-table .ant-spin-nested-loading,\n    .sg.contacto-card--has-table-layout .contacto-table .ant-spin-container,\n    .sg.contacto-card--has-table-layout .ant-table,\n    .sg.contacto-card--has-table-layout .ant-table-container {\n      flex: 1;\n      min-height: 0;\n      display: flex;\n      flex-flow: column; }\n    .sg.contacto-card--has-table-layout .contacto-table .ant-table-body tr:last-child td {\n      border-bottom: 0; }\n  .sg.contacto-card .contacto-card-section {\n    padding: var(--padding);\n    border-bottom: 1px solid var(--border-color-1); }\n    .sg.contacto-card .contacto-card-section.contacto-table-layout-card-section {\n      flex: 1;\n      min-height: 0;\n      display: flex;\n      flex-flow: column; }\n      .sg.contacto-card .contacto-card-section.contacto-table-layout-card-section:last-child {\n        padding-bottom: 0;\n        border: 0; }\n";
+var css_248z$8 = ".sg.contacto-card {\n  --padding: 16px;\n  margin: 24px;\n  max-height: calc(100% - 48px);\n  height: auto;\n  display: flex;\n  flex-flow: column; }\n  .sg.contacto-card .ant-card-head {\n    padding: 0 var(--padding);\n    flex-shrink: 0; }\n  .sg.contacto-card .ant-card-body {\n    padding: 0;\n    flex: 1;\n    min-height: 0;\n    display: flex;\n    flex-flow: column; }\n  .sg.contacto-card .contacto-table-wrapper {\n    margin: 0 calc(-1 * var(--padding)); }\n  .sg.contacto-card .contacto-card-subtitle {\n    white-space: normal;\n    padding-right: 32px; }\n  .sg.contacto-card.contacto-card-align-top .ant-card-head-wrapper {\n    align-items: flex-start; }\n  .sg.contacto-card--has-table-layout {\n    display: flex;\n    flex-flow: column; }\n    .sg.contacto-card--has-table-layout .contacto-table-layout,\n    .sg.contacto-card--has-table-layout .contacto-table-wrapper,\n    .sg.contacto-card--has-table-layout .contacto-table-layout-card-section,\n    .sg.contacto-card--has-table-layout .contacto-table,\n    .sg.contacto-card--has-table-layout .contacto-table .ant-spin-nested-loading,\n    .sg.contacto-card--has-table-layout .contacto-table .ant-spin-container,\n    .sg.contacto-card--has-table-layout .ant-table,\n    .sg.contacto-card--has-table-layout .ant-table-container {\n      flex: 1;\n      min-height: 0;\n      display: flex;\n      flex-flow: column; }\n    .sg.contacto-card--has-table-layout .contacto-table .ant-table-body tr:last-child td {\n      border-bottom: 0; }\n  .sg.contacto-card .contacto-card-section {\n    padding: var(--padding);\n    border-bottom: 1px solid var(--border-color-1); }\n    .sg.contacto-card .contacto-card-section--scroll-y {\n      overflow-y: auto; }\n    .sg.contacto-card .contacto-card-section.contacto-table-layout-card-section {\n      flex: 1;\n      min-height: 0;\n      display: flex;\n      flex-flow: column; }\n      .sg.contacto-card .contacto-card-section.contacto-table-layout-card-section:last-child {\n        padding-bottom: 0;\n        border: 0; }\n    .sg.contacto-card .contacto-card-section:last-child {\n      border-bottom: 0; }\n  .sg.contacto-card .contacto-card-footer-section {\n    border-top: 1px solid var(--border-color-1); }\n";
 styleInject(css_248z$8);
 
 var _excluded$7 = ["className", "title", "subtitle", "actionButton", "topAlignButton", "hasTableLayout"];
@@ -573,10 +590,30 @@ var Title = function Title(props) {
   }, props.subtitle)));
 };
 
-var Section = function Section(props) {
+var Section = /*#__PURE__*/React__default['default'].forwardRef(function Section(props, ref) {
   return /*#__PURE__*/React__default['default'].createElement("div", {
-    className: ['contacto-card-section', props.className || ''].join(' ')
+    className: ['contacto-card-section', props.scrollY ? 'contacto-card-section--scroll-y' : '', props.className || ''].join(' '),
+    ref: ref
   }, props.children);
+});
+
+var Footer = function Footer(props) {
+  var _footerRef$current;
+
+  var footerRef = React.useRef(null);
+  var cardBody = (_footerRef$current = footerRef.current) === null || _footerRef$current === void 0 ? void 0 : _footerRef$current.closest('.ant-card-body');
+  if (cardBody) cardBody.parentNode.insertBefore(footerRef.current, cardBody.nextSibling);
+  return /*#__PURE__*/React__default['default'].createElement(Section, {
+    className: "contacto-card-footer-section",
+    ref: footerRef
+  }, /*#__PURE__*/React__default['default'].createElement(antd.Row, {
+    justify: "end"
+  }, /*#__PURE__*/React__default['default'].createElement(antd.Space, {
+    size: 16,
+    direction: "horizontal"
+  }, props.footerButtons.map(function (button) {
+    return button;
+  }))));
 };
 /**
  * This is a layout that is mostly used in the center, when the screen has a table.
@@ -604,6 +641,7 @@ var Card = function Card(_ref) {
   }));
 };
 Card.Section = Section;
+Card.Footer = Footer;
 Card.propTypes = {
   /**
    * Class to be added
@@ -772,9 +810,7 @@ var Select = /*#__PURE__*/React__default['default'].forwardRef(function Select(_
     listHeight: listHeight || 220,
     placeholder: placeholder,
     dropdownClassName: ['sg contacto-select-listbox', dropdownClassName].join(' '),
-    suffixIcon: loading ? /*#__PURE__*/React__default['default'].createElement(Icon__default['default'], {
-      component: Icon$1.LoadingOutlined
-    }) : /*#__PURE__*/React__default['default'].createElement("span", {
+    suffixIcon: loading ? /*#__PURE__*/React__default['default'].createElement(Icon.Loading, null) : /*#__PURE__*/React__default['default'].createElement("span", {
       className: "material-icons contacto-icon--select-caret",
       onClick: onIconClick
     }, "expand_more")
@@ -1019,7 +1055,7 @@ var Block = function Block(_ref) {
 Block.Column = Column;
 Block.propTypes = {
   /**
-   * Class to be added
+   * A Block component that helps with accurate spacing
    */
   className: PropTypes__default['default'].string,
   spacing: PropTypes__default['default'].array,

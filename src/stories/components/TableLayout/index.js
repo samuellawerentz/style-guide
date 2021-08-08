@@ -34,8 +34,16 @@ TableLayout.propTypes = {
    * Class to be added
    */
   className: PropTypes.string,
+  /**
+   * Please provide a table from this same package for this layout to work properly.
+   */
   table: PropTypes.node,
+  /**
+   * Provide a TextField that will be used as a searchbar.
+   */
   searchBar: PropTypes.node,
-  pagination: PropTypes.node,
+  /**
+   * Action buttons on the table, each separated by 16px
+   */
   actionButtons: PropTypes.arrayOf(PropTypes.node),
 }

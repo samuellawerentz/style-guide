@@ -2,8 +2,20 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import './styles.scss'
 
+const Loading = ({ size = 24, strokeSize = 2, color = 'gray-2' }) => {
+  return (
+    <span
+      className="sg contacto-loader"
+      style={{
+        width: size,
+        height: size,
+        boxShadow: `0 0 0 ${strokeSize}px var(--${color}) inset`,
+      }}
+    ></span>
+  )
+}
 /**
- * Material Icons that are used in the application.
+ * Google Icons that are used in the application.
  *
  * Please visit https://fonts.google.com/icons to find different icons and their names
  */
@@ -36,6 +48,8 @@ export const Icon = ({ className = '', name, size, color, style, hoverColor, ...
     </span>
   )
 }
+
+Icon.Loading = Loading
 
 Icon.propTypes = {
   /**

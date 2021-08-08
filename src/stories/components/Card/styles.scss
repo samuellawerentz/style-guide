@@ -3,6 +3,8 @@
   margin: 24px;
   max-height: calc(100% - 48px);
   height: auto;
+  display: flex;
+  flex-flow: column;
 
   .ant-card-head {
     padding: 0 var(--padding);
@@ -11,6 +13,10 @@
 
   .ant-card-body {
     padding: 0;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-flow: column;
   }
 
   .contacto-table-wrapper {
@@ -30,7 +36,6 @@
     display: flex;
     flex-flow: column;
 
-    .ant-card-body,
     .contacto-table-layout,
     .contacto-table-wrapper,
     .contacto-table-layout-card-section,
@@ -53,6 +58,10 @@
     padding: var(--padding);
     border-bottom: 1px solid var(--border-color-1);
 
+    &--scroll-y {
+      overflow-y: auto
+    }
+
     &.contacto-table-layout-card-section {
       flex: 1;
       min-height: 0;
@@ -64,5 +73,11 @@
         border: 0;
       }
     }
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+  .contacto-card-footer-section {
+    border-top: 1px solid var(--border-color-1);
   }
 }

@@ -92,7 +92,13 @@ Button.propTypes = {
    * Disable the button
    */
   disabled: PropTypes.bool,
+  /**
+   * Set to true, if the button needs to expand to full width of the container
+   */
   fullWidth: PropTypes.bool,
+  /**
+   * How to align the text inside the button. Default is center.
+   */
   align: PropTypes.oneOf(['left', 'right', 'center']),
   children: PropTypes.any,
 }

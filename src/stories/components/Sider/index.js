@@ -5,7 +5,7 @@ import { Layout, Row, Col } from 'antd'
 import { Text } from '../typography/Typography'
 
 /**
- * Description
+ * Default sider with the title, close button and standard footer layout.
  */
 export const Sider = ({
   className = '',
@@ -57,10 +57,26 @@ Sider.propTypes = {
    * Class to be added
    */
   className: PropTypes.string,
+  /**
+   * Set this to true, to have 0 padding on the sider and individual padding on the content.
+   * This is mostly used for long content which would require scroll.
+   */
   noPadding: PropTypes.bool,
+  /**
+   * Title of the sider
+   */
   title: PropTypes.string,
+  /**
+   * Function handler that is called on clicking the close button
+   */
   onClose: PropTypes.func,
+  /**
+   * React children
+   */
   children: PropTypes.any,
+  /**
+   * An array of buttons that would be rendered with default spaing on the bottom of the footer.
+   */
   footerButtons: PropTypes.any,
 }
 
