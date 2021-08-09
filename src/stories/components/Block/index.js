@@ -18,7 +18,7 @@ const Column = (props) => {
   )
 }
 /**
- * A block element which provides spacing options line margin-bottom and margin-top.
+ * A block element which provides spacing options like margin-bottom and margin-top.
  * This helps in accurate spacing.
  */
 export const Block = ({ className = '', spacing, style, ...props }) => {
