@@ -226,7 +226,7 @@ var Loading = function Loading(_ref) {
   });
 };
 /**
- * Material Icons that are used in the application.
+ * Google Icons that are used in the application.
  *
  * Please visit https://fonts.google.com/icons to find different icons and their names
  */
@@ -372,7 +372,15 @@ Button.propTypes = {
    * Disable the button
    */
   disabled: PropTypes__default['default'].bool,
+
+  /**
+   * Set to true, if the button needs to expand to full width of the container
+   */
   fullWidth: PropTypes__default['default'].bool,
+
+  /**
+   * How to align the text inside the button. Default is center.
+   */
   align: PropTypes__default['default'].oneOf(['left', 'right', 'center']),
   children: PropTypes__default['default'].any
 };
@@ -481,15 +489,27 @@ Text.propTypes = {
    * This indicates whether the text is primary or secondary.
    */
   variant: PropTypes__default['default'].string,
+
+  /**
+   * Color of the text. Please specify a variable name. Hex colors won't work here.
+   */
   color: PropTypes__default['default'].string,
+
+  /**
+   * CSS Style property
+   */
   style: PropTypes__default['default'].object,
+
+  /**
+   * Text align
+   */
   align: PropTypes__default['default'].oneOf(['left', 'right', 'center'])
 };
 Text.defaultProps = {
   type: 'body'
 };
 
-var css_248z$9 = ".sg.contacto-input-wrapper .contacto-input {\n  border-radius: 0;\n  box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);\n  border: 1px solid var(--border-color-1);\n  height: 36px;\n  padding-left: 12px; }\n  .sg.contacto-input-wrapper .contacto-input > * {\n    line-height: 20px; }\n  .sg.contacto-input-wrapper .contacto-input .ant-input-prefix {\n    margin-left: auto; }\n  .sg.contacto-input-wrapper .contacto-input:hover, .sg.contacto-input-wrapper .contacto-input:active, .sg.contacto-input-wrapper .contacto-input:focus, .sg.contacto-input-wrapper .contacto-input[class*='focused'] {\n    border: 1px solid var(--primary-color); }\n  .sg.contacto-input-wrapper .contacto-input[class*='focused'] .contacto-icon {\n    color: var(--primary-color); }\n  .sg.contacto-input-wrapper .contacto-input::placeholder {\n    color: var(--gray-2); }\n  .sg.contacto-input-wrapper .contacto-input[disabled], .sg.contacto-input-wrapper .contacto-input[disabled]:hover {\n    background-color: var(--gray-6);\n    border: 1px solid var(--border-color-1);\n    box-shadow: none; }\n  .sg.contacto-input-wrapper .contacto-input--readonly:not(.increase-specificity) {\n    box-shadow: none;\n    background-color: var(--gray-6);\n    color: var(--primary-text-color); }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--small {\n    height: 28px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--large {\n    height: 44px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--search-box {\n    box-shadow: none;\n    padding-left: 8px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--no-shadow {\n    box-shadow: none; }\n  .sg.contacto-input-wrapper .contacto-input .anticon.ant-input-clear-icon {\n    font-size: 14px; }\n  .sg.contacto-input-wrapper .contacto-input .ant-input::placeholder {\n    color: var(--gray-2); }\n\n.sg.contacto-input-wrapper .contacto-input-label-wrapper {\n  margin-bottom: 4px;\n  line-height: 0; }\n";
+var css_248z$9 = ".sg.contacto-input-wrapper .contacto-input {\n  border-radius: 0;\n  box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);\n  border: 1px solid var(--border-color-1);\n  height: 36px;\n  padding-left: 12px; }\n  .sg.contacto-input-wrapper .contacto-input > * {\n    line-height: 20px; }\n  .sg.contacto-input-wrapper .contacto-input .ant-input-prefix {\n    margin-left: auto; }\n  .sg.contacto-input-wrapper .contacto-input:hover, .sg.contacto-input-wrapper .contacto-input:active, .sg.contacto-input-wrapper .contacto-input:focus, .sg.contacto-input-wrapper .contacto-input[class*='focused'] {\n    border: 1px solid var(--primary-color); }\n  .sg.contacto-input-wrapper .contacto-input[class*='focused'] .contacto-icon {\n    color: var(--primary-color); }\n  .sg.contacto-input-wrapper .contacto-input::placeholder {\n    color: var(--gray-2); }\n  .sg.contacto-input-wrapper .contacto-input[disabled], .sg.contacto-input-wrapper .contacto-input[disabled]:hover {\n    background-color: var(--gray-6);\n    border: 1px solid var(--border-color-1);\n    box-shadow: none; }\n  .sg.contacto-input-wrapper .contacto-input--readonly:not(.increase-specificity),\n  .sg.contacto-input-wrapper .contacto-input--readonly:not(.increase-specificity) input {\n    box-shadow: none;\n    background-color: var(--gray-6);\n    color: var(--primary-text-color); }\n  .sg.contacto-input-wrapper .contacto-input--readonly:not(.increase-specificity):hover {\n    border: 1px solid var(--border-color-1); }\n  .sg.contacto-input-wrapper .contacto-input .ant-input-suffix {\n    color: var(--gray-1); }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--small {\n    height: 28px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--large {\n    height: 44px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--search-box {\n    box-shadow: none;\n    padding-left: 8px; }\n  .sg.contacto-input-wrapper .contacto-input.contacto-input--no-shadow {\n    box-shadow: none; }\n  .sg.contacto-input-wrapper .contacto-input .anticon.ant-input-clear-icon {\n    font-size: 14px; }\n  .sg.contacto-input-wrapper .contacto-input .ant-input::placeholder {\n    color: var(--gray-2); }\n\n.sg.contacto-input-wrapper .contacto-input-label-wrapper {\n  margin-bottom: 4px;\n  line-height: 0; }\n";
 styleInject(css_248z$9);
 
 var _excluded$8 = ["type", "label", "icon", "size", "disabled", "placeholder", "readOnly", "password", "noShadow", "className"];
@@ -567,7 +587,15 @@ TextField.propTypes = {
    * Show the value as readonly
    */
   readOnly: PropTypes__default['default'].bool,
+
+  /**
+   * Set to true, if you don't want the shadow.
+   */
   noShadow: PropTypes__default['default'].bool,
+
+  /**
+   * Is it a password field?
+   */
   password: PropTypes__default['default'].bool
 };
 TextField.defaultProps = {
@@ -662,7 +690,16 @@ Card.propTypes = {
    * The action button component. It must be a react component, usually, the Button component.
    */
   actionButton: PropTypes__default['default'].node,
+
+  /**
+   * Should the button be top aligned with the header?
+   */
   topAlignButton: PropTypes__default['default'].bool,
+
+  /**
+   * If the card contains the default table view, set this to true
+   * for the scroll functionaltiy to work properly
+   */
   hasTableLayout: PropTypes__default['default'].bool
 };
 Card.defaultProps = {};
@@ -847,11 +884,35 @@ Select.propTypes = {
    * Show the value as readonly
    */
   readOnly: PropTypes__default['default'].bool,
+
+  /**
+   * Class name to be added
+   */
   className: PropTypes__default['default'].string,
+
+  /**
+   * Class name to be added for the list-box
+   */
   dropdownClassName: PropTypes__default['default'].string,
+
+  /**
+   * Height of the dropdown listbox
+   */
   listHeight: PropTypes__default['default'].number,
+
+  /**
+   * Show the loader
+   */
   loading: PropTypes__default['default'].bool,
+
+  /**
+   * Click handler for the icon
+   */
   onIconClick: PropTypes__default['default'].func,
+
+  /**
+   * Set it to true to remove shadow
+   */
   noShadow: PropTypes__default['default'].bool
 };
 Select.defaultProps = {
@@ -863,7 +924,9 @@ styleInject(css_248z$3);
 
 var _excluded$2 = ["className", "pagination"];
 /**
- * Description
+ * The default table that is used in the application.
+ * The pagination, cell padding, header and scroll behaviour has been standardised.
+ * The options are similar to that of antd table
  */
 // eslint-disable-next-line react/prop-types
 
@@ -942,9 +1005,20 @@ TableLayout.propTypes = {
    * Class to be added
    */
   className: PropTypes__default['default'].string,
+
+  /**
+   * Please provide a table from this same package for this layout to work properly.
+   */
   table: PropTypes__default['default'].node,
+
+  /**
+   * Provide a TextField that will be used as a searchbar.
+   */
   searchBar: PropTypes__default['default'].node,
-  pagination: PropTypes__default['default'].node,
+
+  /**
+   * Action buttons on the table, each separated by 16px
+   */
   actionButtons: PropTypes__default['default'].arrayOf(PropTypes__default['default'].node)
 };
 
@@ -953,7 +1027,7 @@ styleInject(css_248z$1);
 
 var _excluded$1 = ["className", "noPadding", "title", "onClose", "children", "footerButtons"];
 /**
- * Description
+ * Default sider with the title, close button and standard footer layout.
  */
 
 var Sider = function Sider(_ref) {
@@ -1001,10 +1075,31 @@ Sider.propTypes = {
    * Class to be added
    */
   className: PropTypes__default['default'].string,
+
+  /**
+   * Set this to true, to have 0 padding on the sider and individual padding on the content.
+   * This is mostly used for long content which would require scroll.
+   */
   noPadding: PropTypes__default['default'].bool,
+
+  /**
+   * Title of the sider
+   */
   title: PropTypes__default['default'].string,
+
+  /**
+   * Function handler that is called on clicking the close button
+   */
   onClose: PropTypes__default['default'].func,
+
+  /**
+   * React children
+   */
   children: PropTypes__default['default'].any,
+
+  /**
+   * An array of buttons that would be rendered with default spaing on the bottom of the footer.
+   */
   footerButtons: PropTypes__default['default'].any
 };
 Sider.defaultProps = {};
@@ -1033,7 +1128,8 @@ var Column = function Column(props) {
   }, props.children);
 };
 /**
- * Description
+ * A block element which provides spacing options like margin-bottom and margin-top.
+ * This helps in accurate spacing.
  */
 
 
@@ -1055,10 +1151,18 @@ var Block = function Block(_ref) {
 Block.Column = Column;
 Block.propTypes = {
   /**
-   * A Block component that helps with accurate spacing
+   * Class name to be added
    */
   className: PropTypes__default['default'].string,
+
+  /**
+   * The [margin-bototm, margin-top] value specified as an array
+   */
   spacing: PropTypes__default['default'].array,
+
+  /**
+   * CSS Style object
+   */
   style: PropTypes__default['default'].object
 };
 Block.defaultProps = {};
