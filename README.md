@@ -69,5 +69,5 @@ The icons used are taken from the google icon package. So for icons to work prop
   - Spacing - https://www.figma.com/file/Qbo6JU64XtTjo6npGWdX2z/Contacto-Style-Guide?node-id=809%3A179
   - Typography and Colors - https://www.figma.com/file/Qbo6JU64XtTjo6npGWdX2z/Contacto-Style-Guide?node-id=0%3A1
   - Logo and Favicon - https://www.figma.com/file/Qbo6JU64XtTjo6npGWdX2z/Contacto-Style-Guide?node-id=819%3A179
-- Github Style Guide Package - https://github.com/contacto-io/contacto-console/packages/915367
+- Style Guide Package - https://github.com/contacto-io/contacto-console/packages/915367
 - Component Library live demo - https://samuellawerentz.github.io/style-guide/
