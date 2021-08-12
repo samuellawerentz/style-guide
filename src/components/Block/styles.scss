@@ -1,0 +1,18 @@
+.sg.contacto-block {
+    display: block;
+    line-height: 1;
+
+    &.contacto-block-column {
+        display: flex;
+        flex-flow: column nowrap;
+        line-height: 1;
+
+        &--start {
+            align-items: flex-start;
+        }
+
+        &--end {
+            align-items: flex-end;
+        }
+    }
+}

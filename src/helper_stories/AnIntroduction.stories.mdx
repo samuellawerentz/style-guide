@@ -1,0 +1,208 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import {All} from '../components/Typography/Typography.stories.js'
+
+<Meta title="Introduction" />
+
+<style>{`
+  .subheading {
+    --mediumdark: '#999999';
+    font-weight: 900;
+    font-size: 15px;
+    color: black;
+    letter-spacing: 3px;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    margin-top: 40px;
+  }
+
+  .link-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 10px;
+  }
+
+  @media (min-width: 620px) {
+    .link-list {
+      row-gap: 20px;
+      column-gap: 20px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media all and (-ms-high-contrast:none) {
+  .link-list {
+      display: -ms-grid;
+      -ms-grid-columns: 1fr 1fr;
+      -ms-grid-rows: 1fr 1fr;
+    }
+  }
+
+  .link-item {
+    display: block;
+    padding: 20px 30px 20px 15px;
+    border: 1px solid #00000010;
+    border-radius: 5px;
+    transition: background 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
+    color: #333333;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .link-item:hover {
+    border-color: #1EA7FD50;
+    transform: translate3d(0, -3px, 0);
+    box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;
+  }
+
+  .link-item:active {
+    border-color: #1EA7FD;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .link-item strong {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  .link-item img {
+    height: 40px;
+    width: 40px;
+    margin-right: 15px;
+    flex: none;
+  }
+
+  .link-item span {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .tip {
+    display: inline-block;
+    border-radius: 1em;
+    font-size: 11px;
+    line-height: 12px;
+    font-weight: 700;
+    background: #E7FDD8;
+    color: #66BF3C;
+    padding: 4px 12px;
+    margin-right: 10px;
+    vertical-align: top;
+  }
+
+  .tip-wrapper {
+    font-size: 13px;
+    line-height: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .tip-wrapper code {
+    font-size: 12px;
+    display: inline-block;
+  }
+
+  
+`}</style>
+
+# The Contacto Style Guide
+
+<div style={{marginTop: 32}}></div>
+
+This is a comprehensive collection of all UI components that are used in the contacto console application. This is developed based on the [style guide](https://www.figma.com/file/Qbo6JU64XtTjo6npGWdX2z/Contacto-Style-Guide?node-id=217%3A106) provided by the design team. These components can be further extended into other apps by just modifying the CSS variable list. This collection almost has all
+required components to build a standard application. On each component you will find different stories, which are different states of the UI component.
+Buliding them here makes it easy to develop hard-to-reach states. These **stories** are different states of a component which can be independantly developed and tested and finally consumed without flaws.
+
+#### Some Pro's
+
+- Since all UI components are loaded from this package, they can be altered without changing a single line of code in the consumer application.
+- The design team, can do a UX review here and provide comments, this will reduce the number of UI/UX bugs that we recieve.
+- This makes the look of the product standardised and the user would never feel any distruptions in the UI as the components will behave uniformly.
+- For the dev team, having a common component library would help avoiding writing huge chunks of repetetive CSS again and again. Instead they can focus on developing actual business logic with accuracy.
+- The UI components can be unit tested and would be production ready.
+- This package can be installed as another library by just using `npm install`
+
+<div className="subheading">Components</div>
+The following are the common components that are built. Each of them, has stories, which define their UI states. You can play with it and use it as you wish.
+
+1. [Buttons](?path=/docs/components-button--primary)
+2. [Checkbox](?path=/docs/components-checkbox--default)
+3. [Radio](?path=/docs/components-radio--default)
+4. [Select](?path=/docs/components-select--default)
+5. [TextField](?path=/docs/components-textfield--default)
+6. [Tag](?path=/docs/components-tag--default)
+7. [Card](?path=/story/layout-card--card-with-title)
+
+<div className="subheading">How to use?</div>
+
+1. Install the component package `npm install @contacto-io/style-guide`
+2. Import the component that is required - ```import { Button } from '@contacto-io/style-guide'```
+3. Visit the particular component page on the storybook app.
+4. Navigate to your required story.
+5. Copy the code and modify the `props` as required.
+6. Since all the components are wrapper components upon antd. Please visit [antd docs](https://ant.design/components/overview/) for additional information.
+
+<div className="subheading">Technical Requirements</div>
+
+#### Dependencies
+
+For the compoenents to work properly, make sure the consumer project has these dependencies installed. The following are the peer dependencies for this component library.
+
+```json
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "prop-types": "^15.7.2",
+    "antd": "^4.16.8",
+  }
+```
+
+#### CSS variables
+
+This style guide completely depends on CSS variables that are commonly defined by the design team. Make sure that the variables are included on the top for the style guide to work properly.
+- [CSS Variable list](?path=/story/colors-css-variable-list--page)
+
+#### Icons
+
+The icons used are taken from the google icon package. So for icons to work properly, make sure google font for material Icons is loaded properly.
+
+```css
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round&display=block');
+```
+
+<div className="subheading">Layout</div>
+Complex layouts have been simplified by the creation of common components. Here's an easy example layout that has been created and can be consumed easily from the library.
+
+List of Layout Components
+- [Card](?path=/docs/layout-card--card-with-title)
+- [Table Layout](?path=/docs/layout-table-layout--default)
+
+#### Example layout with Table, Searchbar and Pagination
+This layout is used in various places within the application. You can directly use the code from here, doing so will ensure uniform UI/UX across screens and will also help us avoid multiple CSS rewrites. You can access this story [here](?path=/story/layout-card--card-with-table-inside)
+
+<Canvas><Story id="layout-card--card-with-table-inside"/></Canvas>
+
+<div className="subheading">Typography</div>
+
+The following are the text styles that are used in the application. Each has a specific font weight and font size.
+The font that is used is Poppins. See the full list of options [here](?path=/docs/typography-text--all).
+
+<Canvas><Story id="typography-text--all"/></Canvas>
+
+<div className="subheading">Colors</div>
+
+The various colors that are part of the styleguide are given as easy to search and copy here. The variable names are based on the names that is used in CSS. You can search for a color and copy the corresponding color.
+- [Colors used in Contacto](?path=/docs/colors-color-palette--page)
+
+
+<div className="subheading">Useful Links</div>
+
+- Design Style Guide
+  - Components - https://www.figma.com/file/Qbo6JU64XtTjo6npGWdX2z/Contacto-Style-Guide?node-id=217%3A106
+  - Spacing - https://www.figma.com/file/Qbo6JU64XtTjo6npGWdX2z/Contacto-Style-Guide?node-id=809%3A179
+  - Typography and Colors - https://www.figma.com/file/Qbo6JU64XtTjo6npGWdX2z/Contacto-Style-Guide?node-id=0%3A1
+  - Logo and Favicon - https://www.figma.com/file/Qbo6JU64XtTjo6npGWdX2z/Contacto-Style-Guide?node-id=819%3A179
+- Style Guide Package - https://github.com/contacto-io/contacto-console/packages/915367
+- Source code - https://github.com/samuellawerentz/style-guide
