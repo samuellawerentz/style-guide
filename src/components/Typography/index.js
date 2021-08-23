@@ -40,7 +40,7 @@ Text.propTypes = {
   /**
    * This indicates whether the text is primary or secondary.
    */
-  variant: PropTypes.string,
+  variant: PropTypes.oneOf(['primary', 'secondary']),
   /**
    * Color of the text. Please specify a variable name. Hex colors won't work here.
    */
