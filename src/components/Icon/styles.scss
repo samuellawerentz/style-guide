@@ -8,15 +8,8 @@
     border-radius: 50%;
     position: relative;
     display: inline-block;
+    line-height: 0;
     animation: rotate-loading 1s infinite linear;
-
-    &:after {
-        content: '';
-        position: absolute;
-        width: 60%;
-        height: 100%;
-        background: white;
-    }
 }
 
 @keyframes rotate-loading {

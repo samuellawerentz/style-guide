@@ -10,6 +10,7 @@
   "files": [
     "build"
   ],
+  "dependencies": {},
   "scripts": {
     "build": "npm run css-build && rollup -c",
     "css-build": "node-sass --omit-source-map-url src/style/main.scss build/style-guide.css",
@@ -87,17 +88,15 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-uglify": "^6.0.4",
-    "simplebar": "^5.3.5",
-    "simplebar-react": "^2.3.5",
     "source-map-explorer": "^2.5.2",
-    "ts-dedent": "^2.1.1"
+    "ts-dedent": "^2.1.1",
+    "simplebar-react": "^2.3.5"
   },
   "peerDependencies": {
-    "antd": "^4.16.8",
-    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "simplebar-react": "^2.3.5",
-    "simplebar": "^5.3.5"
+    "prop-types": "^15.7.2",
+    "antd": "^4.16.8",
+    "simplebar-react": "^2.3.5"
   }
 }

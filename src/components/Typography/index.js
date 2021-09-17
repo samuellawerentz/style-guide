@@ -18,7 +18,7 @@ export const Text = ({ type, children, className, variant, color, style, align, 
         align ? 'contacto-typography--' + align + ' contacto-typography--block' : '',
         className,
       ].join(' ')}
-      style={{ ...style, color: color ? `var(--${color})` : undefined }}
+      style={{ color: color ? `var(--${color})` : undefined, ...style }}
       {...props}
     >
       {children}

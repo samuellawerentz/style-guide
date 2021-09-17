@@ -15,4 +15,7 @@
             align-items: flex-end;
         }
     }
+    &.contacto-block-scroll {
+        overflow: auto;
+    }
 }

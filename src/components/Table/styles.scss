@@ -1,112 +1,125 @@
-.sg.contacto-table {
-    .ant-pagination-item {
-        display: none;
-    }
+.sg.contacto-table-inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1;
+    height: 100%;
 
-    .ant-spin-blur {
-        overflow: visible;
-    }
-
-    .ant-table-pagination.ant-pagination {
-        margin: 0;
-        position: absolute;
-        right: 16px;
-        align-items: center;
-        top: -16px;
-        transform: translateY(-100%);
-
-        .ant-pagination-total-text,
-        .material-icons-round {
-            line-height: 36px;
-            height: 36px;
-        }
-    }
-
-    .ant-pagination-prev,
-    .ant-pagination-next {
-        height: auto;
-        min-width: auto;
-        line-height: initial;
-        color: var(--gray-1);
-
-        &.ant-pagination-disabled {
-            color: var(--gray-3);
-        }
-    }
-
-    .ant-pagination-total-text,
-    .ant-pagination-prev {
-        margin-right: 16px;
-    }
-
-    .ant-table-thead,
-    .ant-table-tbody,
-    .ant-table tfoot {
-
-        &>tr>th,
-        &>tr>td {
-            padding: 16px 8px;
-
-            &:first-child {
-                padding-left: 16px;
-            }
-
-            &:last-child {
-                padding-right: 16px;
-            }
-        }
-    }
-
-    .ant-table-thead>tr>th {
-        background: var(--gray-6);
-        color: var(--gray-1);
-        font-weight: 400;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        line-height: 20px;
-        border: none;
-        // Show elipsis on overflow
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-
-        &:before {
+    .contacto-table {
+        .ant-pagination-item {
             display: none;
         }
-    }
 
-    .ant-table-tbody>tr.ant-table-row:hover>td {
-        background-color: var(--background-highlight-color);
-    }
+        .ant-spin-blur {
+            overflow: visible;
+        }
 
-    &.ant-table-wrapper {
-        height: 100%;
+        .ant-table-pagination.ant-pagination {
+            margin: 0;
+            position: absolute;
+            right: 16px;
+            align-items: center;
+            top: -16px;
+            transform: translateY(-100%);
 
-        .ant-spin-nested-loading {
+            .ant-pagination-total-text,
+            .material-icons-round {
+                line-height: 36px;
+                height: 36px;
+            }
+        }
+
+        .ant-pagination-prev,
+        .ant-pagination-next {
+            height: auto;
+            min-width: auto;
+            line-height: initial;
+            color: var(--gray-1);
+
+            &.ant-pagination-disabled {
+                color: var(--gray-3);
+            }
+        }
+
+        .ant-pagination-total-text,
+        .ant-pagination-prev {
+            margin-right: 16px;
+        }
+
+        .ant-table-thead,
+        .ant-table-tbody,
+        .ant-table tfoot {
+
+            &>tr>th,
+            &>tr>td {
+                padding: 16px 8px;
+
+                &:first-child {
+                    padding-left: 16px;
+                }
+
+                &:last-child {
+                    padding-right: 16px;
+                }
+            }
+        }
+
+        .ant-table-thead>tr>th {
+            background: var(--gray-6);
+            color: var(--gray-1);
+            font-weight: 400;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            line-height: 20px;
+            border: none;
+            // Show elipsis on overflow
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        .ant-table-tbody>tr.ant-table-row:hover>td {
+            background-color: var(--background-highlight-color);
+        }
+
+        &.ant-table-wrapper {
             height: 100%;
 
-            .ant-spin-container {
+            .ant-spin-nested-loading {
                 height: 100%;
-                display: flex;
-                flex-flow: column nowrap;
 
-                .ant-table {
-                    flex: auto;
-                    overflow: hidden;
+                .ant-spin-container {
+                    height: 100%;
+                    display: flex;
+                    flex-flow: column nowrap;
 
-                    .ant-table-container {
-                        height: 100%;
-                        display: flex;
-                        flex-flow: column nowrap;
+                    .ant-table {
+                        flex: auto;
+                        overflow: hidden;
 
-                        .ant-table-header {
-                            flex: none;
-                        }
+                        .ant-table-container {
+                            height: 100%;
+                            display: flex;
+                            flex-flow: column nowrap;
 
-                        .ant-table-body {
-                            flex: auto;
-                            overflow: auto;
-                            overflow-y: auto !important;
+                            .ant-table-header {
+                                flex: none;
+                                overflow: hidden;
+                                position: sticky;
+                                top: 0;
+                                z-index: 10;
+                            }
+
+                            .ant-table-body {
+                                display: flex;
+                                flex-direction: column;
+                                min-height: 0;
+                                overflow-y: hidden !important;
+                            }
                         }
                     }
                 }

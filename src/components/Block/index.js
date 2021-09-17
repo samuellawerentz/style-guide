@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import './styles.scss'
 import PropTypes from 'prop-types'
+import SimpleBar from 'simplebar-react'
 
 const Column = (props) => {
   const columnRef = useRef(null)
@@ -24,6 +25,14 @@ const Column = (props) => {
     </div>
   )
 }
+
+const Scrollable = ({ className, ...props }) => (
+  <SimpleBar
+    className={['sg contacto-block contacto-block-scroll', className].join(' ')}
+    {...props}
+  />
+)
+
 /**
  * A block element which provides spacing options like margin-bottom and margin-top.
  * This helps in accurate spacing.
@@ -39,6 +48,7 @@ export const Block = ({ className = '', spacing, style, ...props }) => {
 }
 
 Block.Column = Column
+Block.Scrollable = Scrollable
 
 Block.propTypes = {
   /**
