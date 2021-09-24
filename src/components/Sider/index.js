@@ -3,7 +3,6 @@ import './styles.scss'
 import PropTypes from 'prop-types'
 import { Layout, Row, Col } from 'antd'
 import { Text } from '../Typography/index'
-import { Block } from '../Block/index'
 
 /**
  * Default sider with the title, close button and standard footer layout.
@@ -44,9 +43,7 @@ export const Sider = ({
             </span>
           </Row>
         </div>
-        <div className="contacto-sider-content">
-          <Block.Scrollable className="contacto-sider-content-scroll">{children}</Block.Scrollable>
-        </div>
+        <div className="contacto-sider-content">{children}</div>
         {!!footerButtons?.length && (
           <div className="contacto-sider-footer">{footerButtons.map((button) => button)}</div>
         )}

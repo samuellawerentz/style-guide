@@ -1,66 +1,45 @@
-.sg.contacto-sider.ant-layout-sider {
-    background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.06) -3px 0px 6px;
-    padding: 32px 16px 16px;
-    transition: none;
-
-    .contacto-sider-children {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
+.sg.contacto-sider.ant-layout-sider { 
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.06) -3px 0px 6px;
+  padding: 32px 16px 16px;
+  transition: none;
+  .contacto-sider-children{
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+  }
+  &.ant-layout-sider-collapsed {
+      padding: 32px 0 0;
+  }
+  .contacto-sider-title, .contacto-sider-content, .contacto-sider-footer {
+      min-width: calc(464px - 32px);
+      max-width: calc(464px - 32px);
+  }
+  &.contacto-sider--no-padding {
+      padding: 32px 0 16px;
+    .contacto-sider-title, .contacto-sider-content, .contacto-sider-footer {
+        min-width: 464px;
+        max-width: 464px;
+        padding: 0 16px;
     }
-
-    &.ant-layout-sider-collapsed {
-        padding: 32px 0 0;
-    }
-
-    .contacto-sider-title,
-    .contacto-sider-content,
-    .contacto-sider-footer {
-        min-width: calc(464px - 32px);
-        max-width: calc(464px - 32px);
-    }
-
-    &.contacto-sider--no-padding {
-        padding: 32px 0 16px;
-
-        .contacto-sider-title,
-        .contacto-sider-content,
-        .contacto-sider-footer {
-            min-width: 464px;
-            max-width: 464px;
-            padding: 0 16px;
-        }
-    }
-
-    .contacto-sider-content {
-        display: flex;
-        flex-direction: column;
-        min-height: 0;
-        flex: 1;
-        padding: 0 !important;
-
-        &-scroll {
-            height: 100%;
-            overflow-x: hidden;
-            padding: 0 16px;
-        }
-    }
-
-    .contacto-sider-title {
-        margin-bottom: 32px;
-    }
-
-    .contacto-sider-footer {
-        margin-top: auto;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row-reverse;
-        padding-top: 16px !important;
-    }
-
-    .contacto-sider-close-icon {
-        cursor: pointer;
-        color: var(--gray-1);
-    }
+  }
+  .contacto-sider-content{
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+  .contacto-sider-title {
+      margin-bottom: 32px;
+  }
+  .contacto-sider-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      padding-top: 16px !important;
+  }
+  .contacto-sider-close-icon {
+      cursor: pointer;
+      color: var(--gray-1);
+  }
 }
