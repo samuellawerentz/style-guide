@@ -26,9 +26,13 @@ const Column = (props) => {
   )
 }
 
-const Scrollable = ({ className, ...props }) => (
+const Scrollable = ({ className, fullHeight, ...props }) => (
   <SimpleBar
-    className={['sg contacto-block contacto-block-scroll', className].join(' ')}
+    className={[
+      'sg contacto-block contacto-block-scroll',
+      fullHeight ? 'contacto-block-scroll--full-height' : '',
+      className,
+    ].join(' ')}
     {...props}
   />
 )
