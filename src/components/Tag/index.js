@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Tag as AntTag } from 'antd'
 import { Text } from '../Typography/index'
 
-export const TAG_TYPES = ['success', 'danger', 'disabled', 'progress', 'default']
+export const TAG_TYPES = ['success', 'danger', 'disabled', 'progress', 'default', 'warning']
 /**
  * Tag component that is used to specify status of a task
  */

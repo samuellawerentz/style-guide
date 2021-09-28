@@ -24,4 +24,8 @@
         background-color: var(--gray-5);
         color: var(--secondary-text-color);
     }
+    &--warning {
+        background-color: var(--warning-color-4);
+        color: var(--warning-color);
+    }
 }
