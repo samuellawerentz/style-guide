@@ -60,7 +60,7 @@ export const TextField = React.forwardRef(function TextField(
 
 const WithValidation = ({ wrapperClassName, errorMessage, validateFunction, ...props }) => {
   const [errorMsg, setErrorMsg] = useState('')
-  useEffect(() => setErrorMsg(''), [props.value])
+  useEffect(() => setErrorMsg(''), [props.value, props.disabled])
 
   const validateInput = () => {
     if (!validateFunction?.(props.value, props.key)) setErrorMsg(errorMessage)

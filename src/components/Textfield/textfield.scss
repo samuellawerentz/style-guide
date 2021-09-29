@@ -89,15 +89,22 @@
     }
 }
 
-.sg.contacto-form-input {
+.sg.contacto-form-input.ant-form-item {
+    margin: 0;
     .ant-form-item-explain-error {
         color: var(--danger-color);
         font-size: 12px;
         margin-top: 4px;
         min-height: auto;
     }
+    .ant-form-item-explain {
+        display: none;
+    }
 
     &.ant-form-item-has-error {
+        .ant-form-item-explain {
+            display: block;
+        }
         .sg.contacto-input-wrapper .contacto-input {
             box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
             border: 1px solid var(--danger-color);
