@@ -41,11 +41,32 @@ const Scrollable = ({ className, fullHeight, ...props }) => (
  * A block element which provides spacing options like margin-bottom and margin-top.
  * This helps in accurate spacing.
  */
-export const Block = ({ className = '', spacing, style, ...props }) => {
+export const Block = ({
+  className = '',
+  spacing,
+  style,
+  display,
+  justifyContent,
+  alignItems,
+  horizontalSpacing,
+  padding,
+  ...props
+}) => {
   return (
     <div
       className={['sg contacto-block', className].join(' ')}
-      style={{ ...style, marginTop: spacing?.[1], marginBottom: spacing?.[0] }}
+      style={{
+        ...style,
+        marginTop: spacing?.[1],
+        marginBottom: spacing?.[0],
+        marginLeft: horizontalSpacing?.[0],
+        marginRight:
+          horizontalSpacing?.length === 1 ? horizontalSpacing?.[0] : horizontalSpacing?.[1],
+        padding,
+        display,
+        justifyContent,
+        alignItems,
+      }}
       {...props}
     />
   )
@@ -67,6 +88,11 @@ Block.propTypes = {
    * CSS Style object
    */
   style: PropTypes.object,
+  horizontalSpacing: PropTypes.array,
+  display: PropTypes.string,
+  justifyContent: PropTypes.string,
+  alignItems: PropTypes.string,
+  padding: PropTypes.any,
 }
 
 Block.defaultProps = {}
