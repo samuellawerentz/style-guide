@@ -48,3 +48,10 @@ InProgress.args = {
   label: 'In Progress',
   type: 'progress',
 }
+
+export const Secondary = Template.bind({})
+Secondary.args = {
+  label: 'Secondary',
+  type: 'secondary',
+  disableUppercase: true,
+}
