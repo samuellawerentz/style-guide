@@ -4,7 +4,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "repository": "git://github.com/contacto-io/contacto-console",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
@@ -61,6 +61,7 @@
     "@storybook/addon-essentials": "^6.3.5",
     "@storybook/addon-links": "^6.3.5",
     "@storybook/addons": "^6.3.5",
+    "@storybook/client-api": "^6.3.12",
     "@storybook/node-logger": "^6.3.4",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.5",
@@ -90,14 +91,15 @@
     "simplebar": "^5.3.5",
     "simplebar-react": "^2.3.5",
     "source-map-explorer": "^2.5.2",
-    "ts-dedent": "^2.1.1"
+    "ts-dedent": "^2.1.1",
+    "yeoman-generator": "^5.4.2"
   },
   "peerDependencies": {
     "antd": "^4.16.8",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "simplebar-react": "^2.3.5",
-    "simplebar": "^5.3.5"
+    "simplebar": "^5.3.5",
+    "simplebar-react": "^2.3.5"
   }
 }
