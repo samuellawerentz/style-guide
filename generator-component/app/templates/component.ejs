@@ -1,0 +1,21 @@
+import React from 'react'
+import './styles.scss'
+import PropTypes from 'prop-types'
+//import { Component } from 'antd'
+//import { Text } from '../Typography/index'
+
+/**
+ * <%= description %>
+ */
+export const <%= name %> = ({ className = '', <%= props.split(' ').map(prop => prop.split(':')[0]).join(', ') %>, ...props }) => {
+  return <div className={['sg contacto-<%= lowerName %>', className].join(' ')}></div>
+}
+
+<%= name %>.propTypes = {
+  /**
+   * Class to be added
+   */
+  className: PropTypes.string,
+}
+
+<%= name %>.defaultProps = {}

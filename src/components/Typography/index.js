@@ -3,6 +3,7 @@ import { Typography } from 'antd'
 import PropTypes from 'prop-types'
 import './typography.scss'
 import { TEXT_TYPES } from './TEXT_TYPES'
+import { Block } from '../Block/index'
 
 /**
  * Typography for Contacto Apps
@@ -18,13 +19,43 @@ export const Text = ({ type, children, className, variant, color, style, align, 
         align ? 'contacto-typography--' + align + ' contacto-typography--block' : '',
         className,
       ].join(' ')}
-      style={{ ...style, color: color ? `var(--${color})` : undefined }}
+      style={{ color: color ? `var(--${color})` : undefined, ...style }}
       {...props}
     >
       {children}
     </Typography.Text>
   )
 }
+
+const TextBlock = ({
+  className = '',
+  spacing,
+  style,
+  display,
+  justifyContent,
+  alignItems,
+  horizontalSpacing,
+  padding,
+  ...props
+}) => {
+  const blockProps = {
+    className,
+    spacing,
+    style,
+    display,
+    justifyContent,
+    alignItems,
+    horizontalSpacing,
+    padding,
+  }
+  return (
+    <Block {...blockProps}>
+      <Text {...props}>{props.children}</Text>
+    </Block>
+  )
+}
+
+Text.Block = TextBlock
 
 Text.propTypes = {
   /**

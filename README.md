@@ -62,6 +62,15 @@ The icons used are taken from the google icon package. So for icons to work prop
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons&display=block');
 ```
 
+## Publishing this package
+- Create a .npmrc file with the following contents
+  ```
+  //npm.pkg.github.com/:_authToken=PASTE_YOUR_GIT_ACCESS_TOKEN_HERE
+  ```
+  To get the personal access token, head to [developer Settings](https://github.com/settings/tokens). Generate a Token with `write:package` access
+- Update the package version to the next version inside package.json
+- Run `npm run build && npm publish`
+
 ## Useful Links
 
 - Design Style Guide

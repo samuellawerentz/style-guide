@@ -1,0 +1,29 @@
+.sg.contacto-alert { 
+    --base-color: var(--primary-color);
+    --bg-color: var(--primary-color-4);
+    
+    display: flex;
+    padding: 16px;
+    gap: 16px;
+    border: 1px solid var(--base-color);
+    font-size: 0;
+    line-height: 0;
+    color: var(--base-color);
+    background-color: var(--bg-color);
+
+    &--success {
+        --base-color: var(--success-color);
+        --bg-color: var(--success-color-4);
+    }
+
+    &--warning {
+        --base-color: var(--warning-color);
+        --bg-color: var(--warning-color-4);
+    }
+
+    &--danger {
+        --base-color: var(--danger-color);
+        --bg-color: var(--danger-color-4);
+    }
+
+}

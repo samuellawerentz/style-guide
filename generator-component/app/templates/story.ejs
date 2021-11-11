@@ -1,0 +1,19 @@
+import React from 'react'
+import { <%= name %> } from './'
+
+export default {
+  title: 'Components/<%= name %>',
+  component: <%= name %>,
+  // argTypes: {
+  //  type: {
+  //    options:
+  //    control: { type: 'select' },
+  //  },
+  // },
+}
+
+const Template = (args) => <<%= name %> {...args} />
+
+export const Default = Template.bind({})
+Default.args = {}
+

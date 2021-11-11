@@ -1,5 +1,5 @@
-import React from 'react'
-import { Input } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { Input, Form } from 'antd'
 import { Text } from '../Typography/index'
 import PropTypes from 'prop-types'
 import './textfield.scss'
@@ -57,6 +57,26 @@ export const TextField = React.forwardRef(function TextField(
     </div>
   )
 })
+
+const WithValidation = ({ wrapperClassName, errorMessage, validateFunction, ...props }) => {
+  const [errorMsg, setErrorMsg] = useState('')
+  useEffect(() => setErrorMsg(''), [props.value, props.disabled])
+
+  const validateInput = () => {
+    if (!validateFunction?.(props.value, props.key)) setErrorMsg(errorMessage)
+  }
+  return (
+    <Form.Item
+      validateStatus={errorMsg && 'error'}
+      help={errorMsg}
+      className={['sg contacto-form-input', wrapperClassName].join(' ')}
+    >
+      <TextField {...props} onBlur={validateInput} />
+    </Form.Item>
+  )
+}
+
+TextField.WithValidation = WithValidation
 
 TextField.propTypes = {
   /**

@@ -18,6 +18,7 @@ export default {
 }
 
 const Template = (args) => <TextField {...args} />
+const WithValidation = (args) => <TextField.WithValidation {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -76,4 +77,10 @@ Password.args = {
   size: 'default',
   placeholder: 'An read-only textfield',
   value: 'Read only',
+}
+
+export const InputWithValidation = WithValidation.bind({})
+InputWithValidation.args = {
+  placeholder: 'An Textfield with validation',
+  errorMessage: 'Not allowed',
 }

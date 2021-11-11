@@ -1,6 +1,7 @@
 import React from 'react'
 import { Icon } from './'
 import cssVars from '../../utils/cssVars'
+import { ReactComponent as CustomIcon } from '../../assets/ic-account.svg'
 
 export default {
   title: 'Icons/Basic Usage',
@@ -32,7 +33,7 @@ WithHoverColor.args = {
   hoverColor: 'danger-color',
 }
 
-export const LoadingIcon = () => <Icon.Loading />
+export const LoadingIcon = (args) => <Icon.Loading {...args} />
 
 export const DifferentSizes = (args) => {
   return (
@@ -45,4 +46,12 @@ export const DifferentSizes = (args) => {
       <Icon name="search" size={56}></Icon>
     </div>
   )
+}
+
+export const CustomSvgIcon = Template.bind({})
+CustomSvgIcon.args = {
+  color: 'primary-color',
+  hoverColor: 'danger-color',
+  svg: CustomIcon,
+  size: 55,
 }
