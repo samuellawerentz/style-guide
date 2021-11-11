@@ -1,6 +1,7 @@
 .sg.contacto-icon {
     user-select: none;
     display: inline-block;
+
     &-custom {
         svg {
             width: 100%;
@@ -12,14 +13,12 @@
 
 .sg.contacto-loader {
     border-radius: 50%;
-    position: relative;
-    display: inline-block;
-    line-height: 0;
-    animation: rotate-loading 1s infinite linear;
+    animation: spin 1s ease infinite;
+    display: block;
 }
 
-@keyframes rotate-loading {
-    to {
-        transform: rotate(360deg)
-    }
-}
+@keyframes spin {
+    0% { transform: rotate(0deg) }
+    
+    100% { transform: rotate(359deg) }
+  }  

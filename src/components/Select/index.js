@@ -46,7 +46,7 @@ export const Select = React.forwardRef(function Select(
         dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
         suffixIcon={
           loading ? (
-            <Icon.Loading />
+            <Icon.Loading size={24} strokeWidth={2} />
           ) : (
             <span
               className="material-icons-round contacto-icon--select-caret"

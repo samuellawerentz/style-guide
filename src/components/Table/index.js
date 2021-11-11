@@ -2,14 +2,17 @@ import React from 'react'
 import './styles.scss'
 import PropTypes from 'prop-types'
 import { Table as AntTable } from 'antd'
+import { Backdrop } from '../Backdrop/index'
 
 /**
  * The default table that is used in the application.
+ *
  * The pagination, cell padding, header and scroll behaviour has been standardised.
+ *
  * The options are similar to that of antd table
  */
 // eslint-disable-next-line react/prop-types
-export const Table = ({ className = '', pagination, ...props }) => {
+export const Table = ({ className = '', pagination, loading, loadingText, ...props }) => {
   let modifiedPagination = {
     ...pagination,
     showSizeChanger: false,
@@ -29,6 +32,7 @@ export const Table = ({ className = '', pagination, ...props }) => {
   return (
     <AntTable
       className={['sg contacto-table', className].join(' ')}
+      loading={loading && Backdrop({ visible: true, blur: true, size: 32, tip: loadingText }).props}
       scroll={{ y: true }}
       pagination={pagination !== false && modifiedPagination}
       {...props}
@@ -41,4 +45,8 @@ Table.propTypes = {
    * Class to be added
    */
   className: PropTypes.string,
+  /**
+   * Text to be shown on loading state
+   */
+  loadingText: PropTypes.string,
 }
