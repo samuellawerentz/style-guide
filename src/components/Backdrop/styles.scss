@@ -1,0 +1,15 @@
+.sg.contacto-backdrop {
+    &-block {
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+
+        &-loader {
+            align-items: center;
+        }
+    }
+
+    &-blur .ant-spin-blur {
+        filter: blur(2px);
+    }
+}

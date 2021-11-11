@@ -33,7 +33,7 @@ WithHoverColor.args = {
   hoverColor: 'danger-color',
 }
 
-export const LoadingIcon = () => <Icon.Loading />
+export const LoadingIcon = (args) => <Icon.Loading {...args} />
 
 export const DifferentSizes = (args) => {
   return (
