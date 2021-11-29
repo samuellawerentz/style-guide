@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import './styles.scss'
 import PropTypes from 'prop-types'
@@ -11,8 +12,8 @@ import { Backdrop } from '../Backdrop/index'
  *
  * The options are similar to that of antd table
  */
-// eslint-disable-next-line react/prop-types
-export const Table = ({ className = '', pagination, loading, loadingText, ...props }) => {
+
+export const Table = ({ className = '', pagination, loading, backdropProps, ...props }) => {
   let modifiedPagination = {
     ...pagination,
     showSizeChanger: false,
@@ -32,7 +33,7 @@ export const Table = ({ className = '', pagination, loading, loadingText, ...pro
   return (
     <AntTable
       className={['sg contacto-table', className].join(' ')}
-      loading={loading && Backdrop({ visible: true, blur: true, size: 32, tip: loadingText }).props}
+      loading={loading && Backdrop({ visible: true, size: 32, ...backdropProps }).props}
       scroll={{ y: true }}
       pagination={pagination !== false && modifiedPagination}
       {...props}
@@ -46,7 +47,9 @@ Table.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Text to be shown on loading state
+   * Props for the Backdrop Component used during loading state
+   *
+   * Check - https://contacto-io.github.io/style-guide/?path=/docs/components-backdrop--default
    */
-  loadingText: PropTypes.string,
+  backdropProps: PropTypes.any,
 }

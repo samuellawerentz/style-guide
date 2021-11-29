@@ -43,6 +43,11 @@ export const Default = Template.bind({})
 Default.args = {
   columns,
   dataSource: data,
+  backdropProps: {
+    blur: true,
+    tip: 'Loading...',
+  },
+  loading: false,
 }
 
 export const TableWithScroll = (props) => (
@@ -53,4 +58,15 @@ export const TableWithScroll = (props) => (
 TableWithScroll.args = {
   columns,
   dataSource: [...data, ...data],
+}
+
+export const Loader = Template.bind({})
+Loader.args = {
+  columns,
+  dataSource: data,
+  loading: true,
+  backdropProps: {
+    blur: true,
+    tip: 'Loading...',
+  },
 }
