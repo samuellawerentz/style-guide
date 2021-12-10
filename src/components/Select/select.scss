@@ -125,4 +125,8 @@
         background-color: var(--background-highlight-color);
         color: var(--primary-color);
     }
+
+    .ant-select-item-option-content {
+      color:var(--primary-text-color);
+    }
 }
