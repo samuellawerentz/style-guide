@@ -41,6 +41,7 @@
 
             .ant-select-selection-item {
                 line-height: calc(var(--height) - 2px);
+                color: var(--primary-text-color);
             }
         }
 
@@ -124,9 +125,5 @@
     .ant-select-item-option-selected {
         background-color: var(--background-highlight-color);
         color: var(--primary-color);
-    }
-
-    .ant-select-item-option-content {
-      color: var(--primary-text-color);
     }
 }
