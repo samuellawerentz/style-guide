@@ -4,6 +4,7 @@ import { Text } from '../Typography/index'
 import PropTypes from 'prop-types'
 import './select.scss'
 import { Icon } from '../Icon/index'
+import { Tag } from '../Tag/index'
 /**
  * This is used to select a value from the list of options
  */
@@ -21,6 +22,7 @@ export const Select = React.forwardRef(function Select(
     onIconClick,
     loading,
     noShadow,
+    mode,
     ...props
   },
   ref,
@@ -38,12 +40,17 @@ export const Select = React.forwardRef(function Select(
           readOnly ? 'contacto-select--readonly' : '',
           noShadow ? 'contacto-select--no-shadow' : '',
           `contacto-select--${size}`,
+          mode === 'multiple' ? 'contacto-select--multiple' : '',
         ]}
         ref={ref}
         disabled={readOnly || disabled}
         listHeight={listHeight || 220}
         placeholder={placeholder}
         dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
+        mode={mode}
+        tagRender={
+          mode === 'multiple' ? (props) => <Tag disableUppercase type="select" {...props} /> : ''
+        }
         suffixIcon={
           loading ? (
             <Icon.Loading size={24} strokeWidth={2} />
@@ -113,6 +120,10 @@ Select.propTypes = {
    * Set it to true to remove shadow
    */
   noShadow: PropTypes.bool,
+  /**
+   * Set it to multiple to get multiple box
+   */
+  mode: PropTypes.string,
 }
 
 Select.defaultProps = {

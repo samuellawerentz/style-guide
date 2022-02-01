@@ -12,6 +12,7 @@ export const TAG_TYPES = [
   'default',
   'warning',
   'secondary',
+  'select',
 ]
 /**
  * Tag component that is used to specify status of a task

@@ -10,6 +10,14 @@
         &--no-shadow {
             box-shadow: none;
         }
+        &--multiple {
+            height: 100px;
+            overflow-y: auto;
+            padding-left: 8px;
+            .ant-select-selector {
+                padding: 0px;
+            }
+        }
 
         &:hover,
         &:active,
