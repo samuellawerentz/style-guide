@@ -34,37 +34,62 @@ export const Select = React.forwardRef(function Select(
           <Text type="caption-bold">{label}</Text>
         </div>
       )}
-      <AntSelect
-        className={[
-          'contacto-select',
-          readOnly ? 'contacto-select--readonly' : '',
-          noShadow ? 'contacto-select--no-shadow' : '',
-          `contacto-select--${size}`,
-          mode === 'multiple' ? 'contacto-select--multiple' : '',
-        ]}
-        ref={ref}
-        disabled={readOnly || disabled}
-        listHeight={listHeight || 220}
-        placeholder={placeholder}
-        dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
-        mode={mode}
-        tagRender={
-          mode === 'multiple' ? (props) => <Tag disableUppercase type="select" {...props} /> : ''
-        }
-        suffixIcon={
-          loading ? (
-            <Icon.Loading size={24} strokeWidth={2} />
-          ) : (
-            <span
-              className="material-icons-round contacto-icon--select-caret"
-              onClick={onIconClick}
-            >
-              expand_more
-            </span>
-          )
-        }
-        {...props}
-      />
+      {mode !== 'multiple' ? (
+        <AntSelect
+          className={[
+            'contacto-select',
+            readOnly ? 'contacto-select--readonly' : '',
+            noShadow ? 'contacto-select--no-shadow' : '',
+            `contacto-select--${size}`,
+          ]}
+          ref={ref}
+          disabled={readOnly || disabled}
+          listHeight={listHeight || 220}
+          placeholder={placeholder}
+          dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
+          suffixIcon={
+            loading ? (
+              <Icon.Loading size={24} strokeWidth={2} />
+            ) : (
+              <span
+                className="material-icons-round contacto-icon--select-caret"
+                onClick={onIconClick}
+              >
+                expand_more
+              </span>
+            )
+          }
+          {...props}
+        />
+      ) : (
+        <AntSelect
+          className={['contacto-multi-select']}
+          showArrow={false}
+          ref={ref}
+          disabled={readOnly || disabled}
+          listHeight={listHeight || 220}
+          placeholder={placeholder}
+          dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
+          mode={mode}
+          tagRender={
+            mode === 'multiple'
+              ? (props) => (
+                  <Tag
+                    disableUppercase
+                    type="select"
+                    closeIcon={
+                      <span className="close-tag-icon">
+                        <Icon color="primary-color" name="close" size={14} />
+                      </span>
+                    }
+                    {...props}
+                  />
+                )
+              : ''
+          }
+          {...props}
+        />
+      )}
     </div>
   )
 })
