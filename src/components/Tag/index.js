@@ -3,6 +3,7 @@ import './styles.scss'
 import PropTypes from 'prop-types'
 import { Tag as AntTag } from 'antd'
 import { Text } from '../Typography/index'
+import { Icon } from '../Icon/index'
 
 export const TAG_TYPES = [
   'success',
@@ -17,10 +18,27 @@ export const TAG_TYPES = [
 /**
  * Tag component that is used to specify status of a task
  */
-export const Tag = ({ className = '', type, label, disableUppercase, children, ...props }) => {
+export const Tag = ({
+  className = '',
+  type,
+  label,
+  disableUppercase,
+  children,
+  closeIcon = false,
+  ...props
+}) => {
   return (
     <AntTag
       className={['sg contacto-tag', className, `contacto-tag--${type}`].join(' ')}
+      closeIcon={
+        closeIcon ? (
+          <span className="close-tag-icon">
+            <Icon color="primary-color" name="close" size={14} />
+          </span>
+        ) : (
+          ''
+        )
+      }
       {...props}
     >
       <Text type={type === 'default' || disableUppercase ? 'caption' : 'caption-capital'}>
@@ -42,6 +60,7 @@ Tag.propTypes = {
   /**
    * The text to be displayed
    */
+  closeIcon: PropTypes.bool,
   label: PropTypes.string,
   children: PropTypes.any,
   disableUppercase: PropTypes.any,

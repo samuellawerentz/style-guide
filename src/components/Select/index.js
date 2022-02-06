@@ -70,23 +70,8 @@ export const Select = React.forwardRef(function Select(
           listHeight={listHeight || 220}
           placeholder={placeholder}
           dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
-          mode={mode}
-          tagRender={
-            mode === 'multiple'
-              ? (props) => (
-                  <Tag
-                    disableUppercase
-                    type="select"
-                    closeIcon={
-                      <span className="close-tag-icon">
-                        <Icon color="primary-color" name="close" size={14} />
-                      </span>
-                    }
-                    {...props}
-                  />
-                )
-              : ''
-          }
+          mode="multiple"
+          tagRender={(props) => <Tag disableUppercase type="select" closeIcon={true} {...props} />}
           {...props}
         />
       )}
