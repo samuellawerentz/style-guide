@@ -32,4 +32,14 @@
         background-color: var(--secondary-color-4);
         color: var(--secondary-color);
     }
+    &--select {
+        padding: 2px 4px;
+        background-color: var(--primary-color-4);
+        color: var(--primary-color);
+        margin: 8px 8px 0px 0px;
+    }
+    .close-tag-icon {
+        position: relative; 
+        top: 3px;
+    }
 }
