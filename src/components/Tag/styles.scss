@@ -39,7 +39,14 @@
         margin: 8px 8px 0px 0px;
     }
     .close-tag-icon {
-        position: relative; 
-        top: 3px;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        height: 100%;
     }
+}
+
+.contacto-tag--select {
+    display: flex;
+    align-items: center;
 }
