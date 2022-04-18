@@ -2,16 +2,53 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import './styles.scss'
 
-const Loading = ({ size = 24, color = 'primary-color' }) => {
+const Loading = ({
+  size = 32,
+  color = 'primary-color',
+  strokeWidth = 3,
+  trackColor = 'primary-color-4',
+}) => {
   return (
-    <span className="sg contacto-loader" style={{ width: size, color: `var(--${color})` }}>
-      <svg viewBox="0 0 1024 1024" focusable="false">
-        <path
-          d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 00-94.3-139.9 437.71 437.71 0 00-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
-          fill="currentColor"
+    <span
+      className="sg contacto-loader"
+      style={{
+        width: size,
+        height: size,
+        borderWidth: `${strokeWidth}px`,
+        borderStyle: 'solid',
+        borderColor: `var(--${color}) var(--${trackColor}) var(--${trackColor})`,
+      }}
+    ></span>
+  )
+}
+
+const Flag = ({ url, iso, size = 30, circle }) => {
+  const renderSize = circle ? (size * 3) / 2 : size
+  const dimensions = {
+    size,
+    radius: renderSize / 3,
+    center: renderSize / 2,
+    margin: circle ? `0 -${renderSize / 6}px` : '',
+  }
+  return (
+    <div
+      style={{
+        display: 'inline-flex',
+        margin: dimensions.margin,
+      }}
+    >
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width={renderSize} height={renderSize}>
+        {circle && (
+          <clipPath id="clipCircle">
+            <circle r={dimensions.radius} cx={dimensions.center} cy={dimensions.center} />
+          </clipPath>
+        )}
+        <use
+          href={`${url}#flag-${iso.toLowerCase()}`}
+          clipPath={circle ? 'url(#clipCircle)' : ''}
         />
       </svg>
-    </span>
+    </div>
   )
 }
 
@@ -63,6 +100,7 @@ export const Icon = ({ className = '', name, size, color, style, hoverColor, svg
 }
 
 Icon.Loading = Loading
+Icon.Flag = Flag
 
 Icon.propTypes = {
   /**

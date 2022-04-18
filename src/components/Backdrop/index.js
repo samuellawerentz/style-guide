@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Spin } from 'antd'
 import { Icon } from '../Icon/index'
 import { Block } from '../Block/index'
-import { Text } from '../Typography'
+import { Text } from '../Typography/index'
 
 /**
  * This is a backdrop container, that can be used to show loaders and other components with a backdrop.

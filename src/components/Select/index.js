@@ -4,6 +4,7 @@ import { Text } from '../Typography/index'
 import PropTypes from 'prop-types'
 import './select.scss'
 import { Icon } from '../Icon/index'
+import { Tag } from '../Tag/index'
 /**
  * This is used to select a value from the list of options
  */
@@ -21,6 +22,7 @@ export const Select = React.forwardRef(function Select(
     onIconClick,
     loading,
     noShadow,
+    mode,
     ...props
   },
   ref,
@@ -32,32 +34,47 @@ export const Select = React.forwardRef(function Select(
           <Text type="caption-bold">{label}</Text>
         </div>
       )}
-      <AntSelect
-        className={[
-          'contacto-select',
-          readOnly ? 'contacto-select--readonly' : '',
-          noShadow ? 'contacto-select--no-shadow' : '',
-          `contacto-select--${size}`,
-        ]}
-        ref={ref}
-        disabled={readOnly || disabled}
-        listHeight={listHeight || 220}
-        placeholder={placeholder}
-        dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
-        suffixIcon={
-          loading ? (
-            <Icon.Loading />
-          ) : (
-            <span
-              className="material-icons-round contacto-icon--select-caret"
-              onClick={onIconClick}
-            >
-              expand_more
-            </span>
-          )
-        }
-        {...props}
-      />
+      {mode !== 'multiple' ? (
+        <AntSelect
+          className={[
+            'contacto-select',
+            readOnly ? 'contacto-select--readonly' : '',
+            noShadow ? 'contacto-select--no-shadow' : '',
+            `contacto-select--${size}`,
+          ]}
+          ref={ref}
+          disabled={readOnly || disabled}
+          listHeight={listHeight || 220}
+          placeholder={placeholder}
+          dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
+          suffixIcon={
+            loading ? (
+              <Icon.Loading size={24} strokeWidth={2} />
+            ) : (
+              <span
+                className="material-icons-round contacto-icon--select-caret"
+                onClick={onIconClick}
+              >
+                expand_more
+              </span>
+            )
+          }
+          {...props}
+        />
+      ) : (
+        <AntSelect
+          className={['contacto-multi-select']}
+          showArrow={false}
+          ref={ref}
+          disabled={readOnly || disabled}
+          listHeight={listHeight || 220}
+          placeholder={placeholder}
+          dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
+          mode="multiple"
+          tagRender={(props) => <Tag disableUppercase type="select" closeIcon={true} {...props} />}
+          {...props}
+        />
+      )}
     </div>
   )
 })
@@ -113,6 +130,10 @@ Select.propTypes = {
    * Set it to true to remove shadow
    */
   noShadow: PropTypes.bool,
+  /**
+   * Set it to multiple to get multiple box
+   */
+  mode: PropTypes.string,
 }
 
 Select.defaultProps = {

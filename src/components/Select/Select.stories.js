@@ -130,3 +130,22 @@ ReadOnly.args = {
   value: 'Read only',
   readOnly: true,
 }
+
+export const MultipleSelect = Template.bind({})
+MultipleSelect.args = {
+  type: 'input',
+  size: 'default',
+  placeholder: 'An read-only textfield',
+  // value: 'Read only',
+  mode: 'multiple',
+  options: [
+    { value: 'Apple' },
+    { value: 'Ball' },
+    { value: 'Cat' },
+    { value: 'Duck' },
+    { value: 'Tea' },
+    { value: 'Coffee' },
+    { value: 'Milk' },
+    { value: 'Butter' },
+  ],
+}

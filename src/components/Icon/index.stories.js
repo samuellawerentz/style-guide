@@ -35,6 +35,19 @@ WithHoverColor.args = {
 
 export const LoadingIcon = (args) => <Icon.Loading {...args} />
 
+const Flag = (args) => (
+  <>
+    <Icon.Flag {...args} />
+    <Icon.Flag {...args} />
+  </>
+)
+export const FlagIcon = Flag.bind({})
+FlagIcon.args = {
+  iso: 'in',
+  url: '/symbol-defs.svg',
+  circle: true,
+}
+
 export const DifferentSizes = (args) => {
   return (
     <div>
