@@ -4,7 +4,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "repository": "git://github.com/contacto-io/contacto-console",
-  "version": "0.4.12",
+  "version": "0.4.13",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
@@ -15,7 +15,7 @@
     "css-build": "node-sass --omit-source-map-url src/style/main.scss build/style-guide.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s dist",
+    "storybook": "start-storybook -p 6006 -s static",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages",
     "chromatic": "npx chromatic --project-token=b366e708e279",
@@ -91,7 +91,8 @@
     "simplebar-react": "^2.3.5",
     "source-map-explorer": "^2.5.2",
     "ts-dedent": "^2.1.1",
-    "yeoman-generator": "^5.4.2"
+    "yeoman-generator": "^5.4.2",
+    "libphonenumber-js": "^1.9.20"
   },
   "peerDependencies": {
     "antd": "^4.16.8",
@@ -99,6 +100,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "simplebar": "^5.3.5",
-    "simplebar-react": "^2.3.5"
+    "simplebar-react": "^2.3.5",
+    "libphonenumber-js": "^1.9.20"
   }
 }

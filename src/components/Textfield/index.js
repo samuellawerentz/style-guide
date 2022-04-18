@@ -99,7 +99,7 @@ TextField.propTypes = {
   /**
    * Material UI icon name taken from https://fonts.google.com/icons
    */
-  icon: PropTypes.string,
+  icon: PropTypes.any,
   /**
    * Disable the textfield
    */

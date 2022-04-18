@@ -1,0 +1,33 @@
+.sg.contacto-country-input {
+    .country-flag-icon {
+        display: inline;
+        cursor: pointer;
+    }
+}
+
+.sg.country-dropdown {
+    padding-top: 0;
+    .ant-popover-inner-content {
+        max-height: 260px;
+        width: 285px;
+        overflow: auto;
+        padding: 0;
+    }
+    .sg-country-list-item {
+        height: 44px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 0 16px;
+        &:hover, &.selected {
+            background-color: var(--background-highlight-color);
+        }
+    }
+    .sg-country-search {
+        padding: 16px 16px 8px;
+        background-color: #fff;
+    }
+    .sg-country-list-holder {
+        position: relative;
+    }
+}

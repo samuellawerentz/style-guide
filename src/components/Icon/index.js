@@ -22,6 +22,36 @@ const Loading = ({
   )
 }
 
+const Flag = ({ url, iso, size = 30, circle }) => {
+  const renderSize = circle ? (size * 3) / 2 : size
+  const dimensions = {
+    size,
+    radius: renderSize / 3,
+    center: renderSize / 2,
+    margin: circle ? `0 -${renderSize / 6}px` : '',
+  }
+  return (
+    <div
+      style={{
+        display: 'inline-flex',
+        margin: dimensions.margin,
+      }}
+    >
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width={renderSize} height={renderSize}>
+        {circle && (
+          <clipPath id="clipCircle">
+            <circle r={dimensions.radius} cx={dimensions.center} cy={dimensions.center} />
+          </clipPath>
+        )}
+        <use
+          href={`${url}#flag-${iso.toLowerCase()}`}
+          clipPath={circle ? 'url(#clipCircle)' : ''}
+        />
+      </svg>
+    </div>
+  )
+}
+
 /**
  * Google Icons that are used in the application.
  *
@@ -70,6 +100,7 @@ export const Icon = ({ className = '', name, size, color, style, hoverColor, svg
 }
 
 Icon.Loading = Loading
+Icon.Flag = Flag
 
 Icon.propTypes = {
   /**
