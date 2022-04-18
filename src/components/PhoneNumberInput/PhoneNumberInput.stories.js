@@ -1,10 +1,10 @@
 import React from 'react'
-import { CountryInput } from '.'
+import { PhoneNumberInput } from '.'
 import { useArgs } from '@storybook/client-api'
 
 export default {
-  title: 'Components/CountryInput',
-  component: CountryInput,
+  title: 'Components/Phone number Input',
+  component: PhoneNumberInput,
   argTypes: {
     size: {
       options: ['small', 'default', 'large'],
@@ -17,7 +17,7 @@ export default {
 const Template = () => {
   const [args, updateArgs] = useArgs()
   return (
-    <CountryInput
+    <PhoneNumberInput
       {...args}
       onChange={({ target: { value } }) => {
         updateArgs({ value })

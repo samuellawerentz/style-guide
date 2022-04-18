@@ -1,12 +1,21 @@
 .sg.contacto-country-input {
+    padding-left: 0 !important;
     .country-flag-icon {
         display: inline;
         cursor: pointer;
     }
+    .ant-input-prefix {
+        width: 43px;
+        justify-content: center;
+        background: var(--background-highlight-color);
+        margin-top: -4px;
+        height: 34px;
+        margin-right: 4px;
+    }
 }
 
 .sg.country-dropdown {
-    padding-top: 0;
+    padding-top: 4px;
     .ant-popover-inner-content {  
         width: 285px;
         padding: 0;

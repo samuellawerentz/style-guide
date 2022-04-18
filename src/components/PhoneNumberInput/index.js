@@ -35,7 +35,7 @@ const stripSpecialChars = (a, b) => {
 }
 
 // Component
-export const CountryInput = ({ value, onChange, className, flagURL, ...props }) => {
+export const PhoneNumberInput = ({ value, onChange, className, flagURL, ...props }) => {
   const ref = useRef()
   const textFieldRef = useRef()
   const wrapperRef = useRef()
@@ -78,6 +78,7 @@ export const CountryInput = ({ value, onChange, className, flagURL, ...props }) 
           countryISO={countryRef}
           value={number}
           flagURL={flagURL}
+          wrapperRef={wrapperRef}
         />
       }
       overlayClassName="sg country-dropdown"
@@ -91,16 +92,12 @@ export const CountryInput = ({ value, onChange, className, flagURL, ...props }) 
           className={[className, 'sg', 'contacto-country-input'].join(' ')}
           icon={
             <span className="country-flag-icon" onClick={() => setVisible(!visible)}>
-              {countryRef.current ? (
-                <Icon.Flag
-                  url={flagURL || '/symbol-defs.svg'}
-                  iso={countryRef.current}
-                  circle
-                  size={20}
-                />
-              ) : (
-                'flag_circle'
-              )}
+              <Icon.Flag
+                url={flagURL || '/symbol-defs.svg'}
+                iso={countryRef.current || 'unknown'}
+                circle
+                size={20}
+              />
             </span>
           }
           onChange={({ target: { value } }) => {
@@ -118,7 +115,7 @@ export const CountryInput = ({ value, onChange, className, flagURL, ...props }) 
   )
 }
 
-CountryInput.propTypes = {
+PhoneNumberInput.propTypes = {
   className: PropTypes.string,
   /**
    * How large should the textfield be?
@@ -135,7 +132,7 @@ CountryInput.propTypes = {
   flagURL: PropTypes.any,
 }
 
-CountryInput.defaultProps = {
+PhoneNumberInput.defaultProps = {
   size: 'default',
   type: 'input',
 }

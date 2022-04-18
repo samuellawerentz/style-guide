@@ -13,6 +13,7 @@ const CountryDropdown = ({
   countryISO,
   value,
   flagURL,
+  wrapperRef,
 }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const listHolderRef = useRef()
@@ -20,12 +21,11 @@ const CountryDropdown = ({
   // Add a clickaway listener to close the dropdown while clicking outside
   useEffect(() => {
     const clickAwayListener = (e) => {
-      if (document.querySelector('.sg.contacto-country-input')?.contains(e.target) === false)
-        setVisible(false)
+      if (wrapperRef.current?.contains(e.target) === false) setVisible(false)
     }
     document.body.addEventListener('click', clickAwayListener)
     return () => document.body.removeEventListener('click', clickAwayListener)
-  }, [setVisible])
+  }, [setVisible, wrapperRef])
 
   // Filter countries based on search Term
   const countriesList = window.contactoCountryData.filter(
