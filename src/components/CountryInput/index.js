@@ -8,10 +8,12 @@ import './styles.scss'
 import { Popover } from 'antd'
 import CountryDropdown from './country-dropdown'
 /**
- * This is used to get text input from the user
+ * This is used to get phone number input
  */
 const dialCodeMap = new Metadata().metadata.country_calling_codes
 const regionNames = new Intl.DisplayNames(['en'], { type: 'region' })
+
+// Store the countries data in window object, so that it can be used elsewhere
 window.contactoCountryData = Array.from(
   new Set([
     'US',
@@ -22,18 +24,25 @@ window.contactoCountryData = Array.from(
       .sort(),
   ]),
 ).map((iso) => [regionNames.of(iso), iso, getCountryCallingCode(iso)])
+
+// Used to strip the numbers from the special characters
+// If the comparision is equal, we remove the last string - this helps in backspace functionality
 const stripSpecialChars = (a, b) => {
   const regex = /[(-)\s+]/g
   const str = a?.replace(regex, '')
   if (str?.length < 6 && str === b?.replace(regex, '')) return str?.substr(0, str.length - 1)
   return str
 }
+
+// Component
 export const CountryInput = ({ value, onChange, className, ...props }) => {
   const ref = useRef()
   const textFieldRef = useRef()
   const [visible, setVisible] = useState(false)
   const [number, setNumber] = useState(value)
   const countryRef = useRef()
+
+  // Effect that handles the value change and formats the number accordingly
   useEffect(() => {
     setVisible(false)
     let newValue = stripSpecialChars(value, ref.current)
@@ -111,29 +120,9 @@ CountryInput.propTypes = {
    */
   placeholder: PropTypes.string,
   /**
-   * Label for the Input
-   */
-  label: PropTypes.string,
-  /**
-   * Material UI icon name taken from https://fonts.google.com/icons
-   */
-  icon: PropTypes.any,
-  /**
-   * Disable the textfield
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Show the value as readonly
-   */
-  readOnly: PropTypes.bool,
-  /**
    * Set to true, if you don't want the shadow.
    */
   onChange: PropTypes.any,
-  /**
-   * Is it a password field?
-   */
-  password: PropTypes.bool,
 }
 
 CountryInput.defaultProps = {

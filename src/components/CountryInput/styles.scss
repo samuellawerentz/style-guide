@@ -7,10 +7,8 @@
 
 .sg.country-dropdown {
     padding-top: 0;
-    .ant-popover-inner-content {
-        max-height: 260px;
+    .ant-popover-inner-content {  
         width: 285px;
-        overflow: auto;
         padding: 0;
     }
     .sg-country-list-item {
@@ -28,6 +26,7 @@
         background-color: #fff;
     }
     .sg-country-list-holder {
-        position: relative;
+        max-height: 220px;
+        overflow: auto;
     }
 }

@@ -1,5 +1,5 @@
 import { AsYouType } from 'libphonenumber-js'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { Block } from '../Block'
 import { Icon } from '../Icon'
 import { TextField } from '../Textfield'
@@ -7,18 +7,33 @@ import { Text } from '../Typography'
 
 const CountryDropdown = ({ visible, setVisible, onChange, textFieldRef, countryISO, value }) => {
   const [searchTerm, setSearchTerm] = useState('')
-  const clickAwayListener = (e) => {
-    if (document.querySelector('.sg.contacto-country-input')?.contains(e.target) === false)
-      setVisible(false)
-  }
+  const listHolderRef = useRef()
+
+  // Add a clickaway listener to close the dropdown while clicking outside
   useEffect(() => {
+    const clickAwayListener = (e) => {
+      if (document.querySelector('.sg.contacto-country-input')?.contains(e.target) === false)
+        setVisible(false)
+    }
     document.body.addEventListener('click', clickAwayListener)
     return () => document.body.removeEventListener('click', clickAwayListener)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [setVisible])
+
+  // Filter countries based on search Term
   const countriesList = window.contactoCountryData.filter(
     (country) => country[0].toLowerCase().indexOf(searchTerm) !== -1,
   )
+
+  // Scroll to the selected country
+  useEffect(() => {
+    setSearchTerm('')
+    setTimeout(() => {
+      const position = listHolderRef.current.querySelector('.selected')
+      if (visible && position?.offsetTop)
+        listHolderRef.current?.scrollTo({ top: position.offsetTop - 150 })
+    }, 50)
+  }, [visible])
+
   return (
     <div>
       <Block className="sg-country-search">
@@ -29,7 +44,7 @@ const CountryDropdown = ({ visible, setVisible, onChange, textFieldRef, countryI
           allowClear
         />
       </Block>
-      <Block className="sg-country-list-holder">
+      <div className="sg-country-list-holder" ref={listHolderRef}>
         {countriesList.length ? (
           countriesList.map((country, i) => (
             <Block
@@ -55,7 +70,7 @@ const CountryDropdown = ({ visible, setVisible, onChange, textFieldRef, countryI
         ) : (
           <Block className="sg-country-list-item">No Countries found</Block>
         )}
-      </Block>
+      </div>
     </div>
   )
 }
