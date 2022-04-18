@@ -1,0 +1,41 @@
+.sg.contacto-country-input {
+    padding-left: 0 !important;
+    .country-flag-icon {
+        display: inline;
+        cursor: pointer;
+    }
+    .ant-input-prefix {
+        width: 43px;
+        justify-content: center;
+        background: var(--background-highlight-color);
+        margin-top: -4px;
+        height: 34px;
+        margin-right: 4px;
+    }
+}
+
+.sg.country-dropdown {
+    padding-top: 4px;
+    .ant-popover-inner-content {  
+        width: 285px;
+        padding: 0;
+    }
+    .sg-country-list-item {
+        height: 44px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 0 16px;
+        &:hover, &.selected {
+            background-color: var(--background-highlight-color);
+        }
+    }
+    .sg-country-search {
+        padding: 16px 16px 8px;
+        background-color: #fff;
+    }
+    .sg-country-list-holder {
+        max-height: 220px;
+        overflow: auto;
+    }
+}
