@@ -93,7 +93,7 @@ export const PhoneNumberInput = ({ value, onChange, className, flagURL, ...props
           icon={
             <span className="country-flag-icon" onClick={() => setVisible(!visible)}>
               <Icon.Flag
-                url={flagURL || '/symbol-defs.svg'}
+                url={flagURL || '/style-guide/symbol-defs.svg'}
                 iso={countryRef.current || 'unknown'}
                 circle
                 size={20}
