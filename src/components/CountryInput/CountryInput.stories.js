@@ -29,5 +29,4 @@ const Template = () => {
 export const Default = Template.bind({})
 Default.args = {
   placeholder: 'Enter number',
-  value: '+919791603078',
 }

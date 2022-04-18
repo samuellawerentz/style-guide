@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './styles.scss'
 import { TextField } from '../Textfield/index'
 import { Metadata, AsYouType, getCountryCallingCode } from 'libphonenumber-js'
-import { Icon } from '../Icon'
+import { Icon } from '../Icon/index'
 import './styles.scss'
 import { Popover } from 'antd'
 import CountryDropdown from './country-dropdown'
@@ -35,9 +35,10 @@ const stripSpecialChars = (a, b) => {
 }
 
 // Component
-export const CountryInput = ({ value, onChange, className, ...props }) => {
+export const CountryInput = ({ value, onChange, className, flagURL, ...props }) => {
   const ref = useRef()
   const textFieldRef = useRef()
+  const wrapperRef = useRef()
   const [visible, setVisible] = useState(false)
   const [number, setNumber] = useState(value)
   const countryRef = useRef()
@@ -50,8 +51,8 @@ export const CountryInput = ({ value, onChange, className, ...props }) => {
     countryRef.current = countryFromDialMap || countryRef.current
     if (newValue && newValue[0] !== '+') newValue = '+' + newValue
     let finalNumber = newValue
-    if (finalNumber.length < 1) countryRef.current = null
-    if (newValue && newValue.length > 4) {
+    if (finalNumber?.length < 1) countryRef.current = null
+    if (newValue && newValue.length > 3) {
       const a = new AsYouType(countryRef.current)
       a.input(newValue)
       countryRef.current = a.getCountry() || countryRef.current
@@ -76,35 +77,43 @@ export const CountryInput = ({ value, onChange, className, ...props }) => {
           textFieldRef={textFieldRef}
           countryISO={countryRef}
           value={number}
+          flagURL={flagURL}
         />
       }
       overlayClassName="sg country-dropdown"
-      getPopupContainer={() => document.querySelector('.contacto-country-input')}
+      getPopupContainer={() => wrapperRef.current}
     >
-      <TextField
-        ref={textFieldRef}
-        {...props}
-        value={number}
-        className={[className, 'sg', 'contacto-country-input'].join(' ')}
-        icon={
-          <span className="country-flag-icon" onClick={() => setVisible(!visible)}>
-            {countryRef.current ? (
-              <Icon.Flag url="/symbol-defs.svg" iso={countryRef.current} circle size={20} />
-            ) : (
-              'flag_circle'
-            )}
-          </span>
-        }
-        onChange={({ target: { value } }) => {
-          if (value.length > 8) {
-            const a = new AsYouType()
-            a.input(value)
-            const isValidFormat = !!a.formatter.matchingFormats.length
-            if (!isValidFormat) value = value.substr(0, value.length - 1)
+      <div ref={wrapperRef}>
+        <TextField
+          ref={textFieldRef}
+          {...props}
+          value={number}
+          className={[className, 'sg', 'contacto-country-input'].join(' ')}
+          icon={
+            <span className="country-flag-icon" onClick={() => setVisible(!visible)}>
+              {countryRef.current ? (
+                <Icon.Flag
+                  url={flagURL || '/symbol-defs.svg'}
+                  iso={countryRef.current}
+                  circle
+                  size={20}
+                />
+              ) : (
+                'flag_circle'
+              )}
+            </span>
           }
-          onChange({ target: { value } })
-        }}
-      />
+          onChange={({ target: { value } }) => {
+            if (value.length > 8) {
+              const a = new AsYouType()
+              a.input(value)
+              const isValidFormat = !!a.formatter.matchingFormats.length
+              if (!isValidFormat) value = value.substr(0, value.length - 1)
+            }
+            onChange({ target: { value } })
+          }}
+        />
+      </div>
     </Popover>
   )
 }
@@ -123,6 +132,7 @@ CountryInput.propTypes = {
    * Set to true, if you don't want the shadow.
    */
   onChange: PropTypes.any,
+  flagURL: PropTypes.any,
 }
 
 CountryInput.defaultProps = {
