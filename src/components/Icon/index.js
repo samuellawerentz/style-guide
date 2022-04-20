@@ -23,12 +23,13 @@ const Loading = ({
 }
 
 const Flag = ({ url, iso, size = 30, circle }) => {
-  const renderSize = circle ? (size * 3) / 2 : size
+  const shouldClip = circle && iso !== 'unknown'
+  const renderSize = shouldClip ? (size * 3) / 2 : size
   const dimensions = {
     size,
     radius: renderSize / 3,
     center: renderSize / 2,
-    margin: circle ? `0 -${renderSize / 6}px` : '',
+    margin: shouldClip ? `0 -${renderSize / 6}px` : '',
   }
   return (
     <div
@@ -38,14 +39,14 @@ const Flag = ({ url, iso, size = 30, circle }) => {
       }}
     >
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width={renderSize} height={renderSize}>
-        {circle && (
+        {shouldClip && (
           <clipPath id="clipCircle">
             <circle r={dimensions.radius} cx={dimensions.center} cy={dimensions.center} />
           </clipPath>
         )}
         <use
           href={`${url}#flag-${iso.toLowerCase()}`}
-          clipPath={circle ? 'url(#clipCircle)' : ''}
+          clipPath={shouldClip ? 'url(#clipCircle)' : ''}
         />
       </svg>
     </div>
