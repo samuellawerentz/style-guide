@@ -44,7 +44,7 @@ const Flag = (args) => (
 export const FlagIcon = Flag.bind({})
 FlagIcon.args = {
   iso: 'in',
-  url: '/symbol-defs.svg',
+  url: '/style-guide/symbol-defs.svg',
   circle: true,
 }
 

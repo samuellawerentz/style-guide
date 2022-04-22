@@ -69,6 +69,7 @@ export const PhoneNumberInput = ({ value, onChange, className, flagURL, ...props
       placement="bottomLeft"
       trigger="click"
       visible={visible}
+      zIndex={1000}
       content={
         <CountryDropdown
           visible={visible}
@@ -89,11 +90,16 @@ export const PhoneNumberInput = ({ value, onChange, className, flagURL, ...props
           ref={textFieldRef}
           {...props}
           value={number}
-          className={[className, 'sg', 'contacto-country-input'].join(' ')}
+          className={[
+            className,
+            'sg',
+            'contacto-country-input',
+            visible ? 'dropdown-open' : '',
+          ].join(' ')}
           icon={
             <span className="country-flag-icon" onClick={() => setVisible(!visible)}>
               <Icon.Flag
-                url={flagURL || '/symbol-defs.svg'}
+                url={flagURL || '/style-guide/symbol-defs.svg'}
                 iso={countryRef.current || 'unknown'}
                 circle
                 size={20}
