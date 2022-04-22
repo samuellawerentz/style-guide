@@ -25,7 +25,10 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.WRITE_TOKEN }}
       with:
         tag-prefix:  'v'
-        commit-message: 'CI: bumps version to {{version}} [skip ci]'
+        commit-message: 'Automated Commit by CI: bumps version to {{version}} [skip ci]'
+        skip-commit:  'true'
+        skip-tag: 'true'
+        skip-push:  'true'
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
