@@ -18,11 +18,11 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
     - name:  'Automated Version Bump'
       uses:  'phips28/gh-action-bump-version@master'
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.WRITE_TOKEN }}
       with:
         tag-prefix:  'v'
         commit-message: 'CI: bumps version to {{version}} [skip ci]'
