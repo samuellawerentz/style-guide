@@ -84,3 +84,13 @@ InputWithValidation.args = {
   placeholder: 'An Textfield with validation',
   errorMessage: 'Not allowed',
 }
+
+export const PasswordWithSuffix = WithValidation.bind({})
+PasswordWithSuffix.args = {
+  placeholder: 'An Textfield with validation',
+  password: 'true',
+  errorMessage: 'Not allowed',
+  suffixIcon: 'content_copy',
+  onSuffixClick: () => console.log('suffix clicked'),
+  readOnly: 'true',
+}

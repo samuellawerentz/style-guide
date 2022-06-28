@@ -1,113 +1,135 @@
 .sg.contacto-input-wrapper {
-    .contacto-input {
-        border-radius: 0;
-        box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
+  .contacto-input {
+    border-radius: 0;
+    box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
+    border: 1px solid var(--border-color-1);
+    height: 36px;
+    padding-left: 12px;
+
+    & > * {
+      line-height: 20px;
+    }
+
+    .ant-input-prefix {
+      margin-left: auto;
+    }
+
+    &:hover,
+    &:active,
+    &:focus,
+    &[class*='focused'] {
+      border: 1px solid var(--primary-color);
+    }
+
+    &[class*='focused'] {
+      .contacto-icon {
+        color: var(--primary-color);
+      }
+    }
+
+    &::placeholder {
+      color: var(--gray-2);
+    }
+
+    &[disabled],
+    &[disabled]:hover {
+      background-color: var(--gray-6);
+      border: 1px solid var(--border-color-1);
+      box-shadow: none;
+    }
+
+    &--readonly:not(.increase-specificity) {
+      &,
+      & input {
+        box-shadow: none;
+        background-color: var(--gray-6);
+        color: var(--primary-text-color);
+      }
+
+      &:hover {
         border: 1px solid var(--border-color-1);
-        height: 36px;
-        padding-left: 12px;
-
-        &>* {
-            line-height: 20px;
-        }
-
-        .ant-input-prefix {
-            margin-left: auto;
-        }
-
-        &:hover,
-        &:active,
-        &:focus,
-        &[class*='focused'] {
-            border: 1px solid var(--primary-color);
-        }
-
-        &[class*='focused'] {
-            .contacto-icon {
-                color: var(--primary-color);
-            }
-        }
-
-        &::placeholder {
-            color: var(--gray-2);
-        }
-
-        &[disabled],
-        &[disabled]:hover {
-            background-color: var(--gray-6);
-            border: 1px solid var(--border-color-1);
-            box-shadow: none;
-        }
-
-        &--readonly:not(.increase-specificity) {
-
-            &,
-            & input {
-
-                box-shadow: none;
-                background-color: var(--gray-6);
-                color: var(--primary-text-color);
-            }
-
-            &:hover {
-                border: 1px solid var(--border-color-1);
-            }
-        }
-
-        .ant-input-suffix {
-            color: var(--gray-1)
-        }
-
-        &.contacto-input--small {
-            height: 28px;
-        }
-
-        &.contacto-input--large {
-            height: 44px;
-        }
-
-        &.contacto-input--search-box {
-            box-shadow: none;
-            padding-left: 8px;
-        }
-
-        &.contacto-input--no-shadow {
-            box-shadow: none;
-        }
-
-        .anticon.ant-input-clear-icon {
-            font-size: 14px;
-        }
-
-        .ant-input::placeholder {
-            color: var(--gray-2);
-        }
+      }
     }
 
-    .contacto-input-label-wrapper {
-        margin-bottom: 4px;
-        line-height: 0;
+    &--password-with-suffix:not(.increase-specificity) {
+      .ant-input-password-icon {
+        position: absolute;
+        left: 4px;
+        top: 6px;
+        margin-right: 8px;
+      }
+
+      .contacto-icon--input-prefix {
+        position: absolute;
+        right: 4px;
+        top: 7px;
+        margin-right: 0;
+        cursor: pointer;
+        z-index: 10000;
+      }
+
+      .ant-input {
+        width: 90%;
+        margin-right: 11px;
+        margin-left: 18px;
+      }
     }
+
+    .ant-input-suffix {
+      color: var(--gray-1);
+    }
+
+    &.contacto-input--small {
+      height: 28px;
+    }
+
+    &.contacto-input--large {
+      height: 44px;
+    }
+
+    &.contacto-input--search-box {
+      box-shadow: none;
+      padding-left: 8px;
+    }
+
+    &.contacto-input--no-shadow {
+      box-shadow: none;
+    }
+
+    .anticon.ant-input-clear-icon {
+      font-size: 14px;
+    }
+
+    .ant-input::placeholder {
+      color: var(--gray-2);
+    }
+  }
+
+  .contacto-input-label-wrapper {
+    margin-bottom: 4px;
+    line-height: 0;
+  }
 }
 
 .sg.contacto-form-input.ant-form-item {
-    margin: 0;
-    .ant-form-item-explain-error {
-        color: var(--danger-color);
-        font-size: 12px;
-        margin-top: 4px;
-        min-height: auto;
-    }
-    .ant-form-item-explain {
-        display: none;
-    }
+  margin: 0;
+  .ant-form-item-explain-error {
+    color: var(--danger-color);
+    font-size: 12px;
+    margin-top: 4px;
+    min-height: auto;
+  }
+  .ant-form-item-explain {
+    display: none;
+  }
 
-    &.ant-form-item-has-error {
-        .ant-form-item-explain {
-            display: block;
-        }
-        .sg.contacto-input-wrapper .contacto-input {
-            box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
-            border: 1px solid var(--danger-color);
-        }
+  &.ant-form-item-has-error {
+    .ant-form-item-explain {
+      display: block;
     }
+    .sg.contacto-input-wrapper .contacto-input {
+      box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
+      border: 1px solid var(--danger-color);
+    }
+  }
 }
