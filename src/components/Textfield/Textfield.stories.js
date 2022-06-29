@@ -92,5 +92,4 @@ PasswordWithSuffix.args = {
   errorMessage: 'Not allowed',
   suffixIcon: 'content_copy',
   onSuffixClick: () => console.log('suffix clicked'),
-  readOnly: 'true',
 }

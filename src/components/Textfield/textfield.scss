@@ -54,24 +54,22 @@
     &--password-with-suffix:not(.increase-specificity) {
       .ant-input-password-icon {
         position: absolute;
-        left: 4px;
-        top: 6px;
+        left: 12px;
+        top: 8px;
         margin-right: 8px;
       }
 
       .contacto-icon--input-prefix {
         position: absolute;
-        right: 4px;
-        top: 7px;
-        margin-right: 0;
+        right: 12px;
+        top: 8px;
         cursor: pointer;
-        z-index: 10000;
+        margin-right: 0px;
       }
 
       .ant-input {
-        width: 90%;
-        margin-right: 11px;
-        margin-left: 18px;
+        width: 88%;
+        margin-right: 20px;
       }
     }
 
@@ -125,7 +123,7 @@
 
   &.ant-form-item-has-error {
     .ant-form-item-explain {
-      display: block;
+      display: none;
     }
     .sg.contacto-input-wrapper .contacto-input {
       box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);

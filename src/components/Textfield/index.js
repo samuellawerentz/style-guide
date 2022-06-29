@@ -68,7 +68,9 @@ export const TextField = React.forwardRef(function TextField(
             </span>
           ) : null
         }
-        iconRender={(visible) => <Icon name={visible ? 'visibility' : 'visibility_off'} />}
+        iconRender={(visible) => (
+          <Icon size={20} name={visible ? 'visibility' : 'visibility_off'} />
+        )}
       />
     </div>
   )
