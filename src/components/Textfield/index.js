@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Input, Form } from 'antd'
 import { Text } from '../Typography/index'
+import { Icon } from '../Icon/index'
 import PropTypes from 'prop-types'
 import './textfield.scss'
 
@@ -20,6 +21,9 @@ export const TextField = React.forwardRef(function TextField(
     password,
     noShadow,
     className = '',
+    suffixIcon,
+    passwordWithSuffix,
+    onSuffixClick,
     ...props
   },
   ref,
@@ -41,18 +45,32 @@ export const TextField = React.forwardRef(function TextField(
           'contacto-input--' + size,
           noShadow ? 'contacto-input--no-shadow' : '',
           readOnly ? 'contacto-input--readonly' : '',
+          password && suffixIcon ? 'contacto-input--password-with-suffix' : '',
           className,
         ].join(' ')}
         disabled={readOnly || disabled}
         placeholder={placeholder}
         {...props}
         prefix={
-          icon ? (
-            <span className="material-icons-round contacto-icon contacto-icon--input-prefix">
-              {icon}
+          icon || (password && suffixIcon) ? (
+            <span
+              onClick={onSuffixClick}
+              className="material-icons-round contacto-icon contacto-icon--input-prefix"
+            >
+              {password && suffixIcon ? suffixIcon : icon}
             </span>
           ) : null
         }
+        suffix={
+          suffixIcon && !password ? (
+            <span className="material-icons-round contacto-icon contacto-icon--input-prefix">
+              {suffixIcon}
+            </span>
+          ) : null
+        }
+        iconRender={(visible) => (
+          <Icon size={20} name={visible ? 'visibility' : 'visibility_off'} />
+        )}
       />
     </div>
   )
@@ -116,6 +134,18 @@ TextField.propTypes = {
    * Is it a password field?
    */
   password: PropTypes.bool,
+  /**
+   * To display the icon at last
+   */
+  suffixIcon: PropTypes.any,
+  /**
+   * If it's a passowrd with suffix
+   */
+  passwordWithSuffix: PropTypes.bool,
+  /**
+   * What to do when suffix is clicked
+   */
+  onSuffixClick: PropTypes.func,
 }
 
 TextField.defaultProps = {
