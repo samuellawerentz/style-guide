@@ -14,7 +14,7 @@ export default {
       control: { type: 'select' },
     },
   },
-  decorators: [(story) => <div style={{ width: '280px' }}>{story()}</div>],
+  decorators: [(story) => <div style={{ width: '350px' }}>{story()}</div>],
 }
 
 const Template = (args) => <TextField {...args} />
@@ -41,6 +41,15 @@ WithIcon.args = {
   size: 'default',
   placeholder: 'A textfield with an icon',
   icon: 'search',
+}
+
+export const PasswordWithSuffix = WithValidation.bind({})
+PasswordWithSuffix.args = {
+  placeholder: 'An Textfield with validation',
+  password: 'true',
+  errorMessage: 'Not allowed',
+  suffixIcon: 'content_copy',
+  onSuffixWithPasswordClick: () => console.log('suffix clicked'),
 }
 
 export const WithLabel = Template.bind({})
@@ -83,13 +92,4 @@ export const InputWithValidation = WithValidation.bind({})
 InputWithValidation.args = {
   placeholder: 'An Textfield with validation',
   errorMessage: 'Not allowed',
-}
-
-export const PasswordWithSuffix = WithValidation.bind({})
-PasswordWithSuffix.args = {
-  placeholder: 'An Textfield with validation',
-  password: 'true',
-  errorMessage: 'Not allowed',
-  suffixIcon: 'content_copy',
-  onSuffixClick: () => console.log('suffix clicked'),
 }

@@ -23,6 +23,7 @@ export const TextField = React.forwardRef(function TextField(
     className = '',
     suffixIcon,
     passwordWithSuffix,
+    onSuffixWithPasswordClick,
     onSuffixClick,
     ...props
   },
@@ -54,7 +55,7 @@ export const TextField = React.forwardRef(function TextField(
         prefix={
           icon || (password && suffixIcon) ? (
             <span
-              onClick={onSuffixClick}
+              onClick={onSuffixWithPasswordClick}
               className="material-icons-round contacto-icon contacto-icon--input-prefix"
             >
               {password && suffixIcon ? suffixIcon : icon}
@@ -63,7 +64,10 @@ export const TextField = React.forwardRef(function TextField(
         }
         suffix={
           suffixIcon && !password ? (
-            <span className="material-icons-round contacto-icon contacto-icon--input-prefix">
+            <span
+              onClick={onSuffixClick}
+              className="material-icons-round contacto-icon contacto-icon--input-prefix"
+            >
               {suffixIcon}
             </span>
           ) : null
@@ -146,6 +150,10 @@ TextField.propTypes = {
    * What to do when suffix is clicked
    */
   onSuffixClick: PropTypes.func,
+  /**
+   * What to do when suffix with password is clicked
+   */
+  onSuffixWithPasswordClick: PropTypes.func,
 }
 
 TextField.defaultProps = {
