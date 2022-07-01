@@ -17,15 +17,18 @@ export const TextField = React.forwardRef(function TextField(
     disabled,
     placeholder,
     readOnly,
+    showCount,
     password,
     noShadow,
+    textArea,
     className = '',
     ...props
   },
   ref,
 ) {
   icon = type === 'search-box' ? 'search' : icon
-  const Tag = password ? Input.Password : Input
+  const Tag = password ? Input.Password : textArea ? Input.TextArea : Input
+
   return (
     <div className="sg contacto-input-wrapper">
       {label && (
@@ -39,11 +42,13 @@ export const TextField = React.forwardRef(function TextField(
           'contacto-input',
           'contacto-input--' + type,
           'contacto-input--' + size,
+          showCount ? 'show-count' : '',
           noShadow ? 'contacto-input--no-shadow' : '',
           readOnly ? 'contacto-input--readonly' : '',
           className,
         ].join(' ')}
         disabled={readOnly || disabled}
+        showCount={showCount}
         placeholder={placeholder}
         {...props}
         prefix={
@@ -60,11 +65,13 @@ export const TextField = React.forwardRef(function TextField(
 
 const WithValidation = ({ wrapperClassName, errorMessage, validateFunction, ...props }) => {
   const [errorMsg, setErrorMsg] = useState('')
+
   useEffect(() => setErrorMsg(''), [props.value, props.disabled])
 
   const validateInput = () => {
     if (!validateFunction?.(props.value, props.key)) setErrorMsg(errorMessage)
   }
+
   return (
     <Form.Item
       validateStatus={errorMsg && 'error'}
@@ -93,6 +100,14 @@ TextField.propTypes = {
    */
   placeholder: PropTypes.string,
   /**
+   * Enter maximum length input should hold
+   */
+  maxLength: PropTypes.number,
+  /**
+   * Set to true, if you don't want count of character on top.
+   */
+  topCountVisible: PropTypes.bool,
+  /**
    * Label for the Input
    */
   label: PropTypes.string,
@@ -109,6 +124,10 @@ TextField.propTypes = {
    */
   readOnly: PropTypes.bool,
   /**
+   * Set to true, if you don't want the TextArea.
+   */
+  textArea: PropTypes.bool,
+  /**
    * Set to true, if you don't want the shadow.
    */
   noShadow: PropTypes.bool,
@@ -116,6 +135,7 @@ TextField.propTypes = {
    * Is it a password field?
    */
   password: PropTypes.bool,
+  showCount: PropTypes.bool,
 }
 
 TextField.defaultProps = {

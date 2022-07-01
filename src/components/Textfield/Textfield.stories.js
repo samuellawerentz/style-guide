@@ -24,6 +24,8 @@ export const Default = Template.bind({})
 Default.args = {
   type: 'input',
   size: 'default',
+  showCount: true,
+  maxLength: 100,
   placeholder: 'A simple text field',
 }
 
@@ -77,6 +79,15 @@ Password.args = {
   size: 'default',
   placeholder: 'An read-only textfield',
   value: 'Read only',
+}
+
+export const TextArea = Template.bind({})
+TextArea.args = {
+  type: 'input',
+  textArea: true,
+  size: 'default',
+  showCount: true,
+  placeholder: 'A textArea',
 }
 
 export const InputWithValidation = WithValidation.bind({})

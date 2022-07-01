@@ -1,0 +1,112 @@
+.sg.contacto-number-input-wrapper {
+    .contacto-number-input {
+        border-radius: 0;
+        box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
+        border: 1px solid var(--border-color-1);
+        width: 100%;
+        &>* {
+            line-height: 20px;
+        }
+
+        .-number-prefix {
+            margin-left: auto;
+        }
+
+        &.ant-input-affix-wrapper {
+            input {
+              border: 0 !important;
+              background-color: transparent !important;
+              box-shadow: none !important;
+            }
+            padding: 0px;
+            padding-right: 12px;
+          }
+
+        &:hover,
+        &:active,
+        &:focus,
+        &[class*='focused'] {
+            border: 1px solid var(--primary-color);
+        }
+
+        &[class*='focused'] {
+            .contacto-icon {
+                color: var(--primary-color);
+            }
+        }
+
+        &::placeholder {
+            color: var(--gray-2);
+        }
+
+        &[disabled],
+        &[disabled]:hover {
+            background-color: var(--gray-6);
+            border: 1px solid var(--border-color-1);
+            box-shadow: none;
+        }
+
+        &--readonly:not(.increase-specificity) {
+
+            &,
+            & input {
+
+                box-shadow: none;
+                background-color: var(--gray-6);
+                color: var(--primary-text-color);
+            }
+
+            &:hover {
+                border: 1px solid var(--border-color-1);
+            }
+        }
+     
+       .ant-input-number-input {
+            height: 36px; 
+        }
+
+        &.contacto-number-input--small .ant-input-number-input {
+            height: 28px;
+        }
+
+        &.contacto-number-input--large .ant-input-number-input{
+            height: 44px;
+        }
+
+        &.contacto-number-input--no-shadow {
+            box-shadow: none;
+        }
+
+        .ant-input-number-input::placeholder {
+            color: var(--gray-2);
+        }
+    }
+
+    .contacto-number-input-label-wrapper {
+        margin-bottom: 4px;
+        line-height: 0;
+    }
+}
+
+.sg.contacto-form-number-input.ant-form-item {
+    margin: 0;
+    .ant-form-item-explain-error {
+        color: var(--danger-color);
+        font-size: 12px;
+        margin-top: 4px;
+        min-height: auto;
+    }
+    .ant-form-item-explain {
+        display: none;
+    }
+
+    &.ant-form-item-has-error {
+        .ant-form-item-explain {
+            display: block;
+        }
+        .sg.contacto-number-input-wrapper .contacto-number-input {
+            box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
+            border: 1px solid var(--danger-color);
+        }
+    }
+}
