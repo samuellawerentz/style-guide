@@ -24,7 +24,6 @@ export const Default = Template.bind({})
 Default.args = {
   type: 'input',
   size: 'default',
-  showCount: true,
   maxLength: 100,
   placeholder: 'A simple text field',
 }
@@ -86,7 +85,6 @@ TextArea.args = {
   type: 'input',
   textArea: true,
   size: 'default',
-  showCount: true,
   placeholder: 'A textArea',
 }
 
