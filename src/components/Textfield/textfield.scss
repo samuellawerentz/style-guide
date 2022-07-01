@@ -56,7 +56,6 @@
         position: absolute;
         left: 12px;
         top: 8px;
-        margin-right: 8px;
       }
 
       .contacto-icon--input-prefix {
@@ -65,11 +64,11 @@
         top: 8px;
         cursor: pointer;
         margin-right: 0px;
+        z-index: 1000
       }
 
       .ant-input {
-        width: 88%;
-        margin-right: 20px;
+        padding: 0px 25px;
       }
     }
 
