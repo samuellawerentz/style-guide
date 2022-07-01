@@ -48,8 +48,9 @@
             &:active,
             &:focus,
             &[class*='focused'] {
-              border: none !important ;
+              border: 1px solid transparent;
             }
+            border: 1px solid transparent;
         }
     }
 
