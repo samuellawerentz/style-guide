@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Input, Form } from 'antd'
 import { Text } from '../Typography/index'
+import { Icon } from '../Icon/index'
 import PropTypes from 'prop-types'
 import './textfield.scss'
 
@@ -22,6 +23,10 @@ export const TextField = React.forwardRef(function TextField(
     noShadow,
     textArea,
     className = '',
+    suffixIcon,
+    passwordWithSuffix,
+    onSuffixWithPasswordClick,
+    onSuffixClick,
     ...props
   },
   ref,
@@ -45,6 +50,7 @@ export const TextField = React.forwardRef(function TextField(
           showCount ? 'show-count' : '',
           noShadow ? 'contacto-input--no-shadow' : '',
           readOnly ? 'contacto-input--readonly' : '',
+          password && suffixIcon ? 'contacto-input--password-with-suffix' : '',
           className,
         ].join(' ')}
         disabled={readOnly || disabled}
@@ -52,12 +58,28 @@ export const TextField = React.forwardRef(function TextField(
         placeholder={placeholder}
         {...props}
         prefix={
-          icon ? (
-            <span className="material-icons-round contacto-icon contacto-icon--input-prefix">
-              {icon}
+          icon || (password && suffixIcon) ? (
+            <span
+              onClick={onSuffixWithPasswordClick}
+              className="material-icons-round contacto-icon contacto-icon--input-prefix"
+            >
+              {password && suffixIcon ? suffixIcon : icon}
             </span>
           ) : null
         }
+        suffix={
+          suffixIcon && !password ? (
+            <span
+              onClick={onSuffixClick}
+              className="material-icons-round contacto-icon contacto-icon--input-prefix"
+            >
+              {suffixIcon}
+            </span>
+          ) : null
+        }
+        iconRender={(visible) => (
+          <Icon size={20} name={visible ? 'visibility' : 'visibility_off'} />
+        )}
       />
     </div>
   )
@@ -135,7 +157,26 @@ TextField.propTypes = {
    * Is it a password field?
    */
   password: PropTypes.bool,
+  /**
+   * Set to true, if you don't want the character count.
+   */
   showCount: PropTypes.bool,
+  /**
+   * To display the icon at last
+   */
+  suffixIcon: PropTypes.any,
+  /**
+   * If it's a passowrd with suffix
+   */
+  passwordWithSuffix: PropTypes.bool,
+  /**
+   * What to do when suffix is clicked
+   */
+  onSuffixClick: PropTypes.func,
+  /**
+   * What to do when suffix with password is clicked
+   */
+  onSuffixWithPasswordClick: PropTypes.func,
 }
 
 TextField.defaultProps = {
