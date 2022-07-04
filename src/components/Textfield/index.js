@@ -20,6 +20,7 @@ export const TextField = React.forwardRef(function TextField(
     readOnly,
     showCount,
     password,
+    countTop,
     noShadow,
     textArea,
     className = '',
@@ -54,7 +55,24 @@ export const TextField = React.forwardRef(function TextField(
           className,
         ].join(' ')}
         disabled={readOnly || disabled}
-        showCount={showCount}
+        {...(showCount && !textArea
+          ? {
+              showCount: {
+                // eslint-disable-next-line react/display-name
+                formatter: ({ count, maxLength }) => {
+                  return (
+                    <Text
+                      type="caption"
+                      color="gray-2"
+                      className={`${countTop ? 'count-top' : 'count-margin'}`}
+                    >
+                      {count}/{maxLength}
+                    </Text>
+                  )
+                },
+              },
+            }
+          : showCount && { showCount: true })}
         placeholder={placeholder}
         {...props}
         prefix={
@@ -161,6 +179,10 @@ TextField.propTypes = {
    * Set to true, if you don't want the character count.
    */
   showCount: PropTypes.bool,
+  /**
+   * Set to true, if you don't want the character count on top of TextField.
+   */
+  countTop: PropTypes.bool,
   /**
    * To display the icon at last
    */

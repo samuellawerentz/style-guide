@@ -16,53 +16,65 @@
         background-color: transparent !important;
         box-shadow: none !important;
       }
-      &.show-count
-      {
+      &.show-count {
         padding: 0px;
+        .count-margin {
+          margin-right: 12px;
+        }
+        .count-top {
+          position: absolute;
+          top: -21px;
+          right: 0;
+        }
       }
       padding-right: 12px;
     }
 
-  
-
-    &.ant-input-textarea-show-count
-    {
-        input {
-            border: 0 !important;
-            background-color: transparent !important;
-            box-shadow: none !important;
-          }
-          &.show-count
-          {
-            padding: 0px;
-          }
-          padding-right: 12px;
+    &.ant-input-textarea-show-count {
+      input {
+        border: 0 !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+      }
+      &.show-count {
+        padding: 0px;
+      }
+      padding-right: 12px;
+      &:after {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        color: #9b9faa;
+        position: absolute;
+        top: 22px;
+        right: 708px;
+      }
     }
 
-    &.ant-input-textarea
-    {
-        height: inherit;
-        .ant-input
-        {
-            &:hover,
-            &:active,
-            &:focus,
-            &[class*='focused'] {
-              border: 1px solid transparent;
-            }
-            border: 1px solid transparent;
+    &.ant-input-textarea {
+      height: inherit;
+      .ant-input {
+        &:hover,
+        &:active,
+        &:focus,
+        &[class*='focused'] {
+          border: 1px solid var(--primary-color);
         }
+        border: 1px solid transparent;
+      }
     }
 
     .ant-input-prefix {
       margin-left: auto;
     }
 
-    &:hover,
-    &:active,
-    &:focus,
-    &[class*='focused'] {
-      border: 1px solid var(--primary-color) ;
+    &:hover:not(.ant-input-textarea),
+    &:active:not(.ant-input-textarea),
+    &:focus:not(.ant-input-textarea),
+    &[class*='focused']:not(.ant-input-textarea) {
+      border: 1px solid var(--primary-color);
     }
 
     &[class*='focused'] {
@@ -108,7 +120,7 @@
         top: 8px;
         cursor: pointer;
         margin-right: 0px;
-        z-index: 1000
+        z-index: 1000;
       }
 
       .ant-input {

@@ -80,11 +80,22 @@ Password.args = {
   value: 'Read only',
 }
 
+export const CountTop = Template.bind({})
+CountTop.args = {
+  type: 'input',
+  size: 'default',
+  maxLength: 100,
+  showCount: true,
+  countTop: true,
+  placeholder: 'A simple text field',
+}
+
 export const TextArea = Template.bind({})
 TextArea.args = {
   type: 'input',
   textArea: true,
   size: 'default',
+  autoSize: { minRows: 2, maxRows: 6 },
   placeholder: 'A textArea',
 }
 
