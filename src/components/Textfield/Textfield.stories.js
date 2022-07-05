@@ -80,8 +80,8 @@ Password.args = {
   value: 'Read only',
 }
 
-export const CountTop = Template.bind({})
-CountTop.args = {
+export const CountOnTop = Template.bind({})
+CountOnTop.args = {
   type: 'input',
   size: 'default',
   maxLength: 100,

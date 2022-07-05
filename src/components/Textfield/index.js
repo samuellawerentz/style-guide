@@ -36,7 +36,11 @@ export const TextField = React.forwardRef(function TextField(
   const Tag = password ? Input.Password : textArea ? Input.TextArea : Input
 
   return (
-    <div className="sg contacto-input-wrapper">
+    <div
+      className={`sg contacto-input-wrapper ${
+        showCount && countTop && !textArea && 'show-count-padding'
+      }`}
+    >
       {label && (
         <div className="contacto-input-label-wrapper">
           <Text type="caption-bold">{label}</Text>
@@ -143,10 +147,6 @@ TextField.propTypes = {
    * Enter maximum length input should hold
    */
   maxLength: PropTypes.number,
-  /**
-   * Set to true, if you don't want count of character on top.
-   */
-  topCountVisible: PropTypes.bool,
   /**
    * Label for the Input
    */

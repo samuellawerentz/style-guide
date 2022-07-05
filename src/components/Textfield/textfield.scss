@@ -1,4 +1,8 @@
 .sg.contacto-input-wrapper {
+  &.show-count-padding {
+    padding-top: 20px;
+  }
+
   .contacto-input {
     border-radius: 0;
     box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
@@ -61,6 +65,7 @@
         &:focus,
         &[class*='focused'] {
           border: 1px solid var(--primary-color);
+          box-shadow: none;
         }
         border: 1px solid transparent;
       }
