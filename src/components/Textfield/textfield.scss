@@ -189,12 +189,14 @@
       border: 1px solid var(--danger-color);
       &.ant-input-textarea {
         .ant-input {
-          &:hover,
-          &:active,
-          &:focus,
-          &[class*='focused'] {
-            border: none !important;
-            box-shadow: none;
+          &.ant-input-status-error {
+            &:hover,
+            &:active,
+            &:focus,
+            &[class*='focused'] {
+              border: 1px solid var(--danger-color) !important;
+              box-shadow: none;
+            }
           }
         }
       }
