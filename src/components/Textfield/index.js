@@ -66,7 +66,7 @@ export const TextField = React.forwardRef(function TextField(
           suffixIcon && !password ? (
             <span
               onClick={onSuffixClick}
-              className="material-icons-round contacto-icon contacto-icon--input-prefix"
+              className="material-icons-round contacto-icon contacto-icon--input-suffix"
             >
               {suffixIcon}
             </span>
