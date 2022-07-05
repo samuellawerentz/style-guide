@@ -74,10 +74,10 @@
       margin-left: auto;
     }
 
-    &:hover:not(.ant-input-textarea),
-    &:active:not(.ant-input-textarea),
-    &:focus:not(.ant-input-textarea),
-    &[class*='focused']:not(.ant-input-textarea) {
+    &:hover:not(.ant-input-textarea, .ant-input-affix-wrapper-status-error),
+    &:active:not(.ant-input-textarea, .ant-input-affix-wrapper-status-error),
+    &:focus:not(.ant-input-textarea, .ant-input-affix-wrapper-status-error),
+    &[class*='focused']:not(.ant-input-textarea, .ant-input-affix-wrapper-status-error) {
       border: 1px solid var(--primary-color);
     }
 
