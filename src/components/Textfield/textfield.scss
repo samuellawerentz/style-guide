@@ -51,6 +51,13 @@
       }
     }
 
+    .contacto-icon--input-suffix {
+        position: absolute;
+        cursor: pointer;
+        font-size: 20px;
+        right: 12px;
+      }
+
     &--password-with-suffix:not(.increase-specificity) {
       .ant-input-password-icon {
         position: absolute;
