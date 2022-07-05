@@ -67,7 +67,6 @@
           border: 1px solid var(--primary-color);
           box-shadow: none;
         }
-        border: 1px solid transparent;
       }
     }
 
@@ -188,6 +187,17 @@
     .sg.contacto-input-wrapper .contacto-input {
       box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
       border: 1px solid var(--danger-color);
+      &.ant-input-textarea {
+        .ant-input {
+          &:hover,
+          &:active,
+          &:focus,
+          &[class*='focused'] {
+            border: none !important;
+            box-shadow: none;
+          }
+        }
+      }
     }
   }
 }
