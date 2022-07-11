@@ -38,7 +38,7 @@ export const TextField = React.forwardRef(function TextField(
   return (
     <div
       className={`sg contacto-input-wrapper ${
-        showCount && countTop && !textArea && 'show-count-padding'
+        showCount && countTop && !textArea && !label && 'show-count-padding'
       }`}
     >
       {label && (

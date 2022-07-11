@@ -67,7 +67,6 @@
           border: 1px solid var(--primary-color);
           box-shadow: none;
         }
-        border: 1px solid transparent;
       }
     }
 
@@ -75,10 +74,10 @@
       margin-left: auto;
     }
 
-    &:hover:not(.ant-input-textarea),
-    &:active:not(.ant-input-textarea),
-    &:focus:not(.ant-input-textarea),
-    &[class*='focused']:not(.ant-input-textarea) {
+    &:hover:not(.ant-input-textarea, .ant-input-affix-wrapper-status-error),
+    &:active:not(.ant-input-textarea, .ant-input-affix-wrapper-status-error),
+    &:focus:not(.ant-input-textarea, .ant-input-affix-wrapper-status-error),
+    &[class*='focused']:not(.ant-input-textarea, .ant-input-affix-wrapper-status-error) {
       border: 1px solid var(--primary-color);
     }
 
@@ -195,6 +194,19 @@
     .sg.contacto-input-wrapper .contacto-input {
       box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
       border: 1px solid var(--danger-color);
+      &.ant-input-textarea {
+        .ant-input {
+          &.ant-input-status-error {
+            &:hover,
+            &:active,
+            &:focus,
+            &[class*='focused'] {
+              border: 1px solid var(--danger-color) !important;
+              box-shadow: none;
+            }
+          }
+        }
+      }
     }
   }
 }
