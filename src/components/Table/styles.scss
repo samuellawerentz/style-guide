@@ -22,6 +22,12 @@
         }
     }
 
+    .ant-table-row-selected {
+        .ant-table-cell {
+          background: var(--background-highlight-color) !important;
+        }
+      }
+
     .ant-pagination-prev,
     .ant-pagination-next {
         height: auto;
