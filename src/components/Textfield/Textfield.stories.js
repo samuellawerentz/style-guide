@@ -119,3 +119,12 @@ PasswordWithSuffix.args = {
   readOnly: 'true',
   value: 'test',
 }
+
+export const Suffix = Template.bind({})
+Suffix.args = {
+  type: 'input',
+  size: 'default',
+  suffix: 'Sample suffix',
+  maxLength: 100,
+  placeholder: 'A simple text field',
+}

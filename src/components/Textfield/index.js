@@ -24,6 +24,7 @@ export const TextField = React.forwardRef(function TextField(
     noShadow,
     textArea,
     className = '',
+    suffix,
     suffixIcon,
     passwordWithSuffix,
     onSuffixWithPasswordClick,
@@ -97,7 +98,9 @@ export const TextField = React.forwardRef(function TextField(
             >
               {suffixIcon}
             </span>
-          ) : null
+          ) : (
+            suffix
+          )
         }
         iconRender={(visible) => (
           <Icon size={20} name={visible ? 'visibility' : 'visibility_off'} />
@@ -183,6 +186,10 @@ TextField.propTypes = {
    * Set to true, if you don't want the character count on top of TextField.
    */
   countTop: PropTypes.bool,
+  /**
+   * To display the text/component at end
+   */
+  suffix: PropTypes.any,
   /**
    * To display the icon at last
    */
