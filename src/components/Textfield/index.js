@@ -12,6 +12,7 @@ export const TEXTFIELD_TYPES = ['input', 'search-box', 'no-shadow']
 export const TextField = React.forwardRef(function TextField(
   {
     type,
+    inputType = 'text',
     label,
     icon,
     size,
@@ -49,6 +50,7 @@ export const TextField = React.forwardRef(function TextField(
       )}
       <Tag
         ref={ref}
+        type={inputType}
         className={[
           'contacto-input',
           'contacto-input--' + type,
@@ -56,7 +58,6 @@ export const TextField = React.forwardRef(function TextField(
           showCount ? 'show-count' : '',
           noShadow ? 'contacto-input--no-shadow' : '',
           readOnly ? 'contacto-input--readonly' : '',
-          password && suffixIcon ? 'contacto-input--password-with-suffix' : '',
           className,
         ].join(' ')}
         disabled={readOnly || disabled}
@@ -81,17 +82,17 @@ export const TextField = React.forwardRef(function TextField(
         placeholder={placeholder}
         {...props}
         prefix={
-          icon || (password && suffixIcon) ? (
+          icon ? (
             <span
               onClick={onSuffixWithPasswordClick}
               className="material-icons-round contacto-icon contacto-icon--input-prefix"
             >
-              {password && suffixIcon ? suffixIcon : icon}
+              {icon}
             </span>
           ) : null
         }
         suffix={
-          suffixIcon && !password ? (
+          suffixIcon ? (
             <span
               onClick={onSuffixClick}
               className="material-icons-round contacto-icon contacto-icon--input-suffix"
@@ -137,6 +138,10 @@ TextField.propTypes = {
    * This indicates the type of textfield
    */
   type: PropTypes.oneOf(TEXTFIELD_TYPES),
+  /**
+   * This indicates the type of input, i.e., password, text etc.
+   */
+  inputType: PropTypes.string,
   className: PropTypes.string,
   /**
    * How large should the textfield be?

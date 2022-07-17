@@ -116,31 +116,12 @@
         cursor: pointer;
         font-size: 20px;
         right: 12px;
-      }
-
-    &--password-with-suffix:not(.increase-specificity) {
-      .ant-input-password-icon {
-        position: absolute;
-        left: 12px;
-        top: 8px;
-      }
-
-      .contacto-icon--input-prefix {
-        position: absolute;
-        right: 12px;
-        top: 8px;
-        cursor: pointer;
-        margin-right: 0px;
         z-index: 1000;
-      }
-
-      .ant-input {
-        padding: 0px 25px;
-      }
+        color: var(--gray-1);
     }
 
-    .ant-input-suffix {
-      color: var(--gray-1);
+    .contacto-icon--input-prefix {
+        cursor: pointer;
     }
 
     &.contacto-input--small {

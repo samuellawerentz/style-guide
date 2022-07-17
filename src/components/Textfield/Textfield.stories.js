@@ -1,5 +1,6 @@
 import React from 'react'
 import { TEXTFIELD_TYPES, TextField } from '.'
+import { Icon } from '../Icon'
 
 export default {
   title: 'Components/Textfield',
@@ -127,4 +128,17 @@ Suffix.args = {
   suffix: 'Sample suffix',
   maxLength: 100,
   placeholder: 'A simple text field',
+}
+
+export const CustomPassword = Template.bind({})
+CustomPassword.args = {
+  inputType: 'password',
+  size: 'default',
+  suffix: 'Sample suffix',
+  maxLength: 100,
+  placeholder: 'A simple text field',
+  icon: <Icon size={20} name="visibility_off" />,
+  suffixIcon: 'content_copy',
+  readOnly: 'true',
+  value: 'tests',
 }
