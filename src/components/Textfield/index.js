@@ -49,7 +49,7 @@ export const TextField = React.forwardRef(function TextField(
       <Tag
         ref={ref}
         className={[
-          'contacto-input',
+          `contacto-input${textArea && showCount ? '-text-area-show-count' : ''}`,
           'contacto-input--' + type,
           'contacto-input--' + size,
           showCount ? 'show-count' : '',
