@@ -14,30 +14,20 @@
       line-height: 20px;
     }
 
-    &.ant-input-affix-wrapper {
-      input {
-        border: 0 !important;
-        background-color: transparent !important;
-        box-shadow: none !important;
-      }
-      &.show-count {
-        padding: 0px;
-        .count-margin {
-          margin-right: 12px;
-        }
-        .count-top {
-          position: absolute;
-          top: -21px;
-          right: 0;
-        }
-      }
-      padding-right: 12px;
+    &.ant-input-status-error {
+      box-shadow: none !important;
     }
 
-    &.ant-input-textarea-show-count {
-      input {
-        border: 0 !important;
-        background-color: transparent !important;
+    &-text-area-show-count {
+      .ant-input {
+        &:not(.ant-input-status-error) {
+          &:hover,
+          &:active,
+          &:focus,
+          &[class*='focused'] {
+            border-color: var(--primary-color);
+          }
+        }
         box-shadow: none !important;
       }
       &.show-count {
@@ -52,32 +42,47 @@
         line-height: 18px;
         color: #9b9faa;
         position: absolute;
-        top: 22px;
-        right: 708px;
+        top: -22px;
+        right: 0;
       }
+    }
+
+    &.ant-input-affix-wrapper {
+      input {
+        border: 0 !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+      }
+      &.ant-input-affix-wrapper-status-error {
+        box-shadow: none;
+      }
+
+      &.show-count {
+        padding: 0px;
+        .count-margin {
+          margin-right: 12px;
+        }
+        .count-top {
+          position: absolute;
+          top: -23px;
+          right: 0;
+        }
+      }
+      padding-right: 12px;
     }
 
     &.ant-input-textarea {
       height: inherit;
-      .ant-input {
-        &:hover,
-        &:active,
-        &:focus,
-        &[class*='focused'] {
-          border: 1px solid var(--primary-color);
-          box-shadow: none;
-        }
-      }
     }
 
     .ant-input-prefix {
       margin-left: auto;
     }
 
-    &:hover:not(.ant-input-textarea, .ant-input-affix-wrapper-status-error),
-    &:active:not(.ant-input-textarea, .ant-input-affix-wrapper-status-error),
-    &:focus:not(.ant-input-textarea, .ant-input-affix-wrapper-status-error),
-    &[class*='focused']:not(.ant-input-textarea, .ant-input-affix-wrapper-status-error) {
+    &:hover,
+    &:active,
+    &:focus,
+    &[class*='focused']:not(.ant-input-affix-wrapper-focused.ant-input-affix-wrapper-status-error) {
       border: 1px solid var(--primary-color);
     }
 
@@ -175,19 +180,6 @@
     .sg.contacto-input-wrapper .contacto-input {
       box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
       border: 1px solid var(--danger-color);
-      &.ant-input-textarea {
-        .ant-input {
-          &.ant-input-status-error {
-            &:hover,
-            &:active,
-            &:focus,
-            &[class*='focused'] {
-              border: 1px solid var(--danger-color) !important;
-              box-shadow: none;
-            }
-          }
-        }
-      }
     }
   }
 }
