@@ -56,8 +56,12 @@ export const TextField = React.forwardRef(function TextField(
           'contacto-input--' + type,
           'contacto-input--' + size,
           showCount ? 'show-count' : '',
-          noShadow ? 'contacto-input--no-shadow' : '',
-          readOnly ? 'contacto-input--readonly' : '',
+          noShadow
+            ? `contacto-input${textArea && showCount ? '-text-area-show-count' : ''}--no-shadow`
+            : '',
+          readOnly
+            ? `contacto-input${textArea && showCount ? '-text-area-show-count' : ''}--readonly`
+            : '',
           className,
         ].join(' ')}
         disabled={readOnly || disabled}

@@ -171,6 +171,15 @@
   }
 }
 
+.flex-direction {
+  display: flex;
+  .ant-select-selection-item {
+    display: flex;
+    gap: 6px;
+    padding-right: 0 !important;
+  }
+}
+
 .sg.contacto-form-input.ant-form-item {
   margin: 0;
   .ant-form-item-explain-error {
