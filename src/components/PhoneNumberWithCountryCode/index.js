@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Row } from 'antd'
 import PropTypes from 'prop-types'
 import './style.scss'
 import { TextField } from '../Textfield'
 import { Select } from '../Select'
 import { Icon } from '../Icon/index'
 import { isValidPhoneNumber } from 'libphonenumber-js'
+import { Block } from '../Block'
 const { Option } = Select
 
 export const PhoneNumberInput = React.forwardRef(function PhoneNumberInput({
@@ -67,7 +67,7 @@ export const PhoneNumberInput = React.forwardRef(function PhoneNumberInput({
               }
             >
               {
-                <Row align="middle">
+                <Block display="flex" alignItems="center" gap={8}>
                   <Icon.Flag
                     url={'/symbol-defs.svg'}
                     iso={country[1] || 'unknown'}
@@ -75,7 +75,7 @@ export const PhoneNumberInput = React.forwardRef(function PhoneNumberInput({
                     size={20}
                   />
                   <span>+{country[2]}</span>
-                </Row>
+                </Block>
               }
             </Option>
           )

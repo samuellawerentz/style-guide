@@ -23,7 +23,7 @@
         &,
         & textarea {
           box-shadow: none;
-          border: 0;
+          border: 1px solid var(--border-color-1);
           background-color: var(--gray-6);
           color: var(--primary-text-color);
         }
