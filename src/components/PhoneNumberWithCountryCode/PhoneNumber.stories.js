@@ -1,9 +1,9 @@
 import React from 'react'
-import { PhoneNumberInput } from '.'
+import { PhoneNumberWithCodeInput } from '.'
 
 export default {
   title: 'Components/Phone number with Country Code',
-  component: PhoneNumberInput,
+  component: PhoneNumberWithCodeInput,
   argTypes: {
     size: {
       options: ['small', 'default', 'large'],
@@ -13,7 +13,7 @@ export default {
   decorators: [(story) => <div style={{ width: '280px' }}>{story()}</div>],
 }
 
-const Template = (args) => <PhoneNumberInput {...args} />
+const Template = (args) => <PhoneNumberWithCodeInput {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
