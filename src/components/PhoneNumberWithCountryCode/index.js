@@ -17,6 +17,7 @@ export const PhoneNumberInput = React.forwardRef(function PhoneNumberInput({
   defaultNumber,
   onChange,
   fieldGap,
+  iconUrl,
   ...props
 }) {
   const [countryCode, setCountryCode] = useState(defaultCode)
@@ -32,8 +33,8 @@ export const PhoneNumberInput = React.forwardRef(function PhoneNumberInput({
   }
 
   useEffect(() => {
-    isValidPhoneNumber(`+${countryCode}${phoneNumber}`)
-    setShowError(isValidPhoneNumber(`+${countryCode}${phoneNumber}`))
+    const checkNumberValidity = isValidPhoneNumber(`+${countryCode}${phoneNumber}`)
+    setShowError(checkNumberValidity)
     onChange({ showError: showError, phoneNumber: phoneNumber, countryCode: countryCode })
   }, [phoneNumber, countryCode])
 
@@ -46,7 +47,6 @@ export const PhoneNumberInput = React.forwardRef(function PhoneNumberInput({
         {...props}
         optionLabelProp="selectionLabel"
         defaultValue={defaultCode}
-        // className="select-country"
         onChange={(event) => handleChange(event, 'countryCode')}
       >
         {window.contactoCountryData.map((country) => {
@@ -57,7 +57,7 @@ export const PhoneNumberInput = React.forwardRef(function PhoneNumberInput({
               selectionLabel={
                 <>
                   <Icon.Flag
-                    url={'/symbol-defs.svg'}
+                    url={iconUrl || '/symbol-defs.svg'}
                     iso={country[1] || 'unknown'}
                     circle
                     size={20}
@@ -69,7 +69,7 @@ export const PhoneNumberInput = React.forwardRef(function PhoneNumberInput({
               {
                 <Block display="flex" alignItems="center" gap={8}>
                   <Icon.Flag
-                    url={'/symbol-defs.svg'}
+                    url={iconUrl || '/symbol-defs.svg'}
                     iso={country[1] || 'unknown'}
                     circle
                     size={20}
@@ -142,6 +142,10 @@ PhoneNumberInput.propTypes = {
    * Set gap between fields
    */
   fieldGap: PropTypes.string,
+  /**
+   * Set URL for flag icon
+   */
+  iconUrl: PropTypes.any,
 }
 
 PhoneNumberInput.defaultProps = {
