@@ -8,7 +8,7 @@ import { isValidPhoneNumber } from 'libphonenumber-js'
 import { Block } from '../Block'
 const { Option } = Select
 
-export const PhoneNumberInput = React.forwardRef(function PhoneNumberInput({
+export const PhoneNumberWithCodeInput = React.forwardRef(function PhoneNumberWithCodeInput({
   inputType = 'text',
   label,
   placeholder,
@@ -91,14 +91,14 @@ export const PhoneNumberInput = React.forwardRef(function PhoneNumberInput({
   )
 })
 
-PhoneNumberInput.propTypes = {
+PhoneNumberWithCodeInput.propTypes = {
   /**
    * This indicates the type of input, i.e., password, text etc.
    */
   inputType: PropTypes.string,
   className: PropTypes.string,
   /**
-   * How large should the PhoneNumberInput be?
+   * How large should the PhoneNumberWithCodeInput be?
    */
   size: PropTypes.oneOf(['small', 'default', 'large']),
   /**
@@ -148,7 +148,7 @@ PhoneNumberInput.propTypes = {
   iconUrl: PropTypes.any,
 }
 
-PhoneNumberInput.defaultProps = {
+PhoneNumberWithCodeInput.defaultProps = {
   size: 'default',
   type: 'input',
 }
