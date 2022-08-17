@@ -2,7 +2,7 @@ import React from 'react'
 import { PhoneNumberInput } from '.'
 
 export default {
-  title: 'Components/PhoneNumberWithCountryCode',
+  title: 'Components/Phone number with Country Code',
   component: PhoneNumberInput,
   argTypes: {
     size: {
@@ -15,8 +15,8 @@ export default {
 
 const Template = (args) => <PhoneNumberInput {...args} />
 
-export const PhoneNumberWithCountryCode = Template.bind({})
-PhoneNumberWithCountryCode.args = {
+export const Default = Template.bind({})
+Default.args = {
   type: 'input',
   size: 'default',
   placeholder: 'A simple text field',
