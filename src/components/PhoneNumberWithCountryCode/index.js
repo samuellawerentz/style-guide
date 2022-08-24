@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
-import { TextField } from '../Textfield'
-import { Select } from '../Select'
-import { Icon } from '../Icon'
+import { TextField } from '../Textfield/index'
+import { Select } from '../Select/index'
+import { Icon } from '../Icon/index'
 import { isValidPhoneNumber } from 'libphonenumber-js'
-import { Block } from '../Block'
+import { Block } from '../Block/index'
 const { Option } = Select
 
 export const PhoneNumberWithCodeInput = React.forwardRef(function PhoneNumberWithCodeInput({
