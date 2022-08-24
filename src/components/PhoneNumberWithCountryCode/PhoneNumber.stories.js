@@ -17,12 +17,11 @@ const Template = (args) => <PhoneNumberWithCodeInput {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  type: 'input',
-  size: 'default',
-  placeholder: 'A simple text field',
+  fieldGap: '12px',
+  maxLength: 20,
+  phoneNumberLabel: 'Phone Number',
+  codeLabel: 'Country',
   defaultCode: '91',
   defaultNumber: '8107680129',
-  maxLength: 20,
-  fieldGap: '12px',
-  onChange: () => {},
+  placeholder: 'A simple text field',
 }

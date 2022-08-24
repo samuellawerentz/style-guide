@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
-import { TextField } from '../Textfield/index'
-import { Select } from '../Select/index'
-import { Icon } from '../Icon/index'
+import { TextField } from '../Textfield'
+import { Select } from '../Select'
+import { Icon } from '../Icon'
 import { isValidPhoneNumber } from 'libphonenumber-js'
-import { Block } from '../Block/index'
+import { Block } from '../Block'
 const { Option } = Select
 
 export const PhoneNumberWithCodeInput = React.forwardRef(function PhoneNumberWithCodeInput({
@@ -18,11 +18,12 @@ export const PhoneNumberWithCodeInput = React.forwardRef(function PhoneNumberWit
   onChange,
   fieldGap,
   iconUrl,
+  codeLabel,
+  phoneNumberLabel,
   ...props
 }) {
-  const [countryCode, setCountryCode] = useState(defaultCode)
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [showError, setShowError] = useState(false)
+  const [countryCode, setCountryCode] = useState(defaultCode || '1')
+  const [phoneNumber, setPhoneNumber] = useState(defaultNumber)
 
   const handleChange = (event, type) => {
     if (type === 'countryCode') {
@@ -34,8 +35,13 @@ export const PhoneNumberWithCodeInput = React.forwardRef(function PhoneNumberWit
 
   useEffect(() => {
     const checkNumberValidity = isValidPhoneNumber(`+${countryCode}${phoneNumber}`)
-    setShowError(checkNumberValidity)
-    onChange({ showError: showError, phoneNumber: phoneNumber, countryCode: countryCode })
+
+    onChange({
+      showError: checkNumberValidity || false,
+      phoneNumber: phoneNumber,
+      countryCode: countryCode,
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phoneNumber, countryCode])
 
   return (
@@ -44,9 +50,11 @@ export const PhoneNumberWithCodeInput = React.forwardRef(function PhoneNumberWit
         suffixIcon={null}
         dropdownMatchSelectWidth={240}
         showSearch
+        label={codeLabel}
         {...props}
+        style={{ width: '100px' }}
+        value={countryCode}
         optionLabelProp="selectionLabel"
-        defaultValue={defaultCode}
         onChange={(event) => handleChange(event, 'countryCode')}
       >
         {window.contactoCountryData.map((country) => {
@@ -84,7 +92,8 @@ export const PhoneNumberWithCodeInput = React.forwardRef(function PhoneNumberWit
 
       <TextField
         {...props}
-        defaultValue={defaultNumber}
+        value={phoneNumber}
+        label={phoneNumberLabel}
         onChange={(event) => handleChange(event, 'phoneNumber')}
       />
     </div>
@@ -125,10 +134,6 @@ PhoneNumberWithCodeInput.propTypes = {
   /**
    * Set to true, if you don't want the TextArea.
    */
-  noShadow: PropTypes.bool,
-  /**
-   * Set default code
-   */
   defaultCode: PropTypes.string || PropTypes.number,
   /**
    * Set default number
@@ -146,6 +151,14 @@ PhoneNumberWithCodeInput.propTypes = {
    * Set URL for flag icon
    */
   iconUrl: PropTypes.any,
+  /**
+   * Set Lable for Phone Number input
+   */
+  phoneNumberLabel: PropTypes.string,
+  /**
+   * Set Label for Country Code input
+   */
+  codeLabel: PropTypes.string,
 }
 
 PhoneNumberWithCodeInput.defaultProps = {
