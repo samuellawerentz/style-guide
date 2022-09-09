@@ -4,5 +4,8 @@
     display: flex;
     gap: 6px;
     padding-right: 0 !important;
+    div {
+      margin: 2px -5px !important;
+    }
   }
 }

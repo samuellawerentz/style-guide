@@ -60,8 +60,8 @@ export const PhoneNumberWithCodeInput = React.forwardRef(function PhoneNumberWit
         {window.contactoCountryData.map((country) => {
           return (
             <Option
-              key={country[0]}
-              value={country[2]}
+              key={`+${country[0]}`}
+              value={`+${country[2]}`}
               selectionLabel={
                 <>
                   <Icon.Flag
