@@ -26,10 +26,11 @@ export const PhoneNumberWithCodeInput = React.forwardRef(function PhoneNumberWit
   const [phoneNumber, setPhoneNumber] = useState(defaultNumber)
 
   const handleChange = (event, type) => {
+    const value = event.target.value
     if (type === 'countryCode') {
       setCountryCode(event)
     } else {
-      setPhoneNumber(event.target.value)
+      Number(value) ? setPhoneNumber(value) : setPhoneNumber('')
     }
   }
 
