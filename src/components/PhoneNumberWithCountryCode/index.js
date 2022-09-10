@@ -35,7 +35,7 @@ export const PhoneNumberWithCodeInput = React.forwardRef(function PhoneNumberWit
   }
 
   useEffect(() => {
-    const checkNumberValidity = isValidPhoneNumber(`+${countryCode}${phoneNumber}`)
+    const checkNumberValidity = isValidPhoneNumber(`${countryCode}${phoneNumber}`)
 
     onChange({
       showError: checkNumberValidity || false,
