@@ -22,7 +22,7 @@ export const PhoneNumberWithCodeInput = React.forwardRef(function PhoneNumberWit
   phoneNumberLabel,
   ...props
 }) {
-  const [countryCode, setCountryCode] = useState(defaultCode || '1')
+  const [countryCode, setCountryCode] = useState(defaultCode || '+1')
   const [phoneNumber, setPhoneNumber] = useState(defaultNumber)
 
   const handleChange = (event, type) => {
