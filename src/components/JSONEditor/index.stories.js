@@ -16,6 +16,7 @@ const Template = (args) => <JSONEditor {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
+  mode: 'key-value',
   data: {
     hi: 123,
   },

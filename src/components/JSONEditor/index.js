@@ -8,10 +8,14 @@ import { JsonEditor as JsonSchemaEditor } from 'rc-json-editor'
 /**
  * A JSON Editor component wrapped upon rc-json-editor
  */
-export const JSONEditor = forwardRef(function JSONEditor({ className = '', data, ...props }, ref) {
+export const JSONEditor = forwardRef(function JSONEditor(
+  { className = '', data, mode = 'schema', ...props },
+  ref,
+) {
+  const ItemRowWrapper = (props) => <ItemRow {...props} mode={mode} />
   return (
-    <div className={['sg contacto-jsoneditor', className].join(' ')}>
-      <JsonSchemaEditor data={data} ItemComponent={ItemRow} ref={ref} />
+    <div className={['sg contacto-jsoneditor', className, mode].join(' ')}>
+      <JsonSchemaEditor data={data} ItemComponent={ItemRowWrapper} ref={ref} />
     </div>
   )
 })
@@ -22,6 +26,7 @@ JSONEditor.propTypes = {
    */
   className: PropTypes.string,
   data: PropTypes.any,
+  mode: PropTypes.string,
 }
 
 JSONEditor.defaultProps = {}
