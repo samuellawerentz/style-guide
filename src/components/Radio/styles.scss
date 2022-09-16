@@ -32,6 +32,11 @@
             background-color: var(--primary-color);
             width: 10px;
             height: 10px;
+            transform: scale(1) !important;
+            top: 3px !important;
+            left: 3px !important;
+            margin-top: 0 !important;
+            margin-left: 0 !important;
         }
     }
 

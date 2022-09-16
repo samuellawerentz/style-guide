@@ -4,7 +4,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "repository": "git://github.com/contacto-io/contacto-console",
-  "version": "0.4.14",
+  "version": "0.4.37",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
@@ -73,6 +73,7 @@
     "cross-env": "^7.0.3",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "libphonenumber-js": "^1.9.20",
     "loadash": "^1.0.0",
     "material-design-icons": "^3.0.1",
     "node-sass": "^6.0.1",
@@ -82,6 +83,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "4.0.3",
+    "react-sortable-hoc": "^2.0.0",
     "rollup": "^2.53.3",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -91,16 +93,16 @@
     "simplebar-react": "^2.3.5",
     "source-map-explorer": "^2.5.2",
     "ts-dedent": "^2.1.1",
-    "yeoman-generator": "^5.4.2",
-    "libphonenumber-js": "^1.9.20"
+    "yeoman-generator": "^5.4.2"
   },
   "peerDependencies": {
     "antd": "^4.16.8",
+    "libphonenumber-js": "^1.9.20",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "simplebar": "^5.3.5",
     "simplebar-react": "^2.3.5",
-    "libphonenumber-js": "^1.9.20"
+    "react-sortable-hoc": "^2.0.0"
   }
 }

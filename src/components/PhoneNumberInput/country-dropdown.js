@@ -69,7 +69,12 @@ const CountryDropdown = ({
                 textFieldRef?.current.focus({ cursor: 'end' })
               }}
             >
-              <Icon.Flag iso={country[1]} url={flagURL || '/symbol-defs.svg'} circle size={20} />
+              <Icon.Flag
+                iso={country[1]}
+                url={flagURL || '/style-guide/symbol-defs.svg'}
+                circle
+                size={20}
+              />
               <Text ellipsis type="caption">
                 {country[0]} (+{country[2]})
               </Text>

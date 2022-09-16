@@ -4,13 +4,20 @@
         display: inline;
         cursor: pointer;
     }
+    .contacto-icon--input-prefix{
+        margin-right: 0;
+    }
     .ant-input-prefix {
         width: 43px;
         justify-content: center;
-        background: var(--background-highlight-color);
         margin-top: -4px;
         height: 34px;
         margin-right: 4px;
+    }
+    &.dropdown-open {
+        .ant-input-prefix {
+            background: var(--background-highlight-color);
+        }
     }
 }
 

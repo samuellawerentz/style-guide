@@ -1,5 +1,6 @@
 import React from 'react'
 import { TEXTFIELD_TYPES, TextField } from '.'
+import { Icon } from '../Icon'
 
 export default {
   title: 'Components/Textfield',
@@ -24,6 +25,7 @@ export const Default = Template.bind({})
 Default.args = {
   type: 'input',
   size: 'default',
+  maxLength: 100,
   placeholder: 'A simple text field',
 }
 
@@ -79,8 +81,64 @@ Password.args = {
   value: 'Read only',
 }
 
+export const CountOnTop = Template.bind({})
+CountOnTop.args = {
+  type: 'input',
+  size: 'default',
+  maxLength: 100,
+  showCount: true,
+  countTop: true,
+  placeholder: 'A simple text field',
+}
+
+export const TextArea = Template.bind({})
+TextArea.args = {
+  type: 'input',
+  textArea: true,
+  size: 'default',
+  autoSize: { minRows: 2, maxRows: 6 },
+  placeholder: 'A textArea',
+}
+
 export const InputWithValidation = WithValidation.bind({})
 InputWithValidation.args = {
   placeholder: 'An Textfield with validation',
   errorMessage: 'Not allowed',
+  suffixIcon: 'content_copy',
+  onSuffixClick: () => console.log('suffix clicked'),
+  readOnly: 'true',
+  value: 'testtest',
+}
+
+export const PasswordWithSuffix = WithValidation.bind({})
+PasswordWithSuffix.args = {
+  placeholder: 'A password textfield with suffix',
+  password: 'true',
+  errorMessage: 'Not allowed',
+  suffixIcon: 'content_copy',
+  onSuffixWithPasswordClick: () => console.log('suffix clicked'),
+  readOnly: 'true',
+  value: 'test',
+}
+
+export const Suffix = Template.bind({})
+Suffix.args = {
+  type: 'input',
+  size: 'default',
+  suffix: 'Sample suffix',
+  maxLength: 100,
+  placeholder: 'A simple text field',
+}
+
+export const CustomPassword = Template.bind({})
+CustomPassword.args = {
+  inputType: 'password',
+  size: 'default',
+  suffix: 'Sample suffix',
+  maxLength: 100,
+  placeholder: 'A simple text field',
+  icon: <Icon size={20} name="visibility_off" />,
+  suffixIcon: 'content_copy',
+  readOnly: 'true',
+  value: 'tests',
 }
