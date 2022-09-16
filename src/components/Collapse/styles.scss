@@ -1,0 +1,61 @@
+.sg.contacto-collapse {
+    background-color: var(--white);
+    border: 0;
+
+}
+.sg.contacto-panel {
+    width: 100%;
+    margin-bottom: 16px;
+    border: 1px solid var(--border-color-1);
+    box-shadow: var(--box-shadow-default);
+    background-color: var(--white);
+    .ant-collapse-content {
+        border: 0;
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            width: calc(100% - 32px);
+            height: 1px;
+            background-color: var(--border-color-1);
+            left: 16px;
+        }
+    }
+    .panel-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .ant-collapse-header {
+        padding-right: 40px;
+        position: relative;
+        padding: 12px 16px;
+        color: rgba(0, 0, 0, 0.85);
+        line-height: 1.5715;
+        cursor: pointer;
+        transition: all 0.3s, visibility 0s;
+        &::before {
+            display: table;
+            content: '';
+        }
+        &::after {
+            display: table;
+            clear: both;
+            content: '';
+        }
+        .contacto-icon.ant-collapse-arrow {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            left: auto;
+            margin: 0;
+            transform: translateY(-50%);
+
+            display: inline-block;
+            margin-right: 12px;
+            font-size: 12px;
+            vertical-align: -1px;
+        }
+        
+    }
+  }
