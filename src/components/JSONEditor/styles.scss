@@ -1,14 +1,6 @@
 .sg.contacto-jsoneditor {
     .schema-editor {
-        .add-item {
-            border: 1px solid var(--primary-color);
-            display: grid;
-            place-items: center;
-            width: 28px;
-            height: 28px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
+        
         .object .object .item::before {
             width: 2px;
             background-color: var(--primary-color-3);
@@ -17,8 +9,17 @@
             height: 2px;
             background-color: var(--primary-color-3);
         }
-        .key {
-            margin-left: -8px;
+    }
+    .add-item {
+        border: 1px solid var(--primary-color);
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        border-radius: 4px;
+        &-container {
+            flex-basis: 100%;
         }
     }
     .key-menu {
@@ -28,6 +29,16 @@
             &:hover {
                 background-color: var(--background-highlight-color);
             }
+        }
+    }
+    &.key-value {
+        .object .object .item::before, .object .object .item::after {
+            left: -22px;
+        }
+    }
+    &.schema {
+        .key {
+            margin-left: -8px;
         }
     }
 }
