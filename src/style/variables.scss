@@ -89,4 +89,10 @@
     --colors-accent-teal-blue: #5ac8fa;
     --duck-egg-blue: #e9f1fc;
     --active-green: #cef4e6;
+    --shadow-rgb: 106, 110, 128;
+    --shadow-alpha: 0.15;
+    --box-shadow-default: 0px 0px 8px rgba(var(--shadow-rgb), var(--shadow-alpha));
+    --shadow1-rgb: 106, 110, 128;
+    --shadow1-alpha: 0.25;
+    --box-shadow1: 0px 0px 8px rgba(var(--shadow1-rgb), var(--shadow1-alpha));
 }
