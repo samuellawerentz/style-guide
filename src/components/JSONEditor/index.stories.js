@@ -14,10 +14,65 @@ export default {
 
 const Template = (args) => <JSONEditor {...args} />
 
-export const Default = Template.bind({})
-Default.args = {
+export const SchemaEditor = Template.bind({})
+SchemaEditor.args = {
+  mode: 'schema',
+  data: {
+    order: {
+      order_id: 12312412,
+      order_date: '12/12/12',
+      order_amount: '12000.00',
+      payment: {
+        type: 'cash',
+        is_successful: true,
+      },
+    },
+  },
+}
+
+export const KeyValueEditor = Template.bind({})
+KeyValueEditor.args = {
   mode: 'key-value',
   data: {
-    hi: 123,
+    order: {
+      order_id: 12312412,
+      order_date: '12/12/12',
+      order_amount: '12000.00',
+      payment: {
+        type: 'cash',
+        is_successful: true,
+      },
+    },
   },
+}
+
+export const KeyValueEditorWithNoChildren = Template.bind({})
+KeyValueEditorWithNoChildren.args = {
+  mode: 'no-children',
+  data: {
+    order_id: 12312412,
+    order_date: '12/12/12',
+    order_amount: '12000.00',
+  },
+}
+
+export const LoadingFromTreeData = Template.bind({})
+LoadingFromTreeData.args = {
+  mode: 'schema',
+  fromTree: true,
+  data: [
+    {
+      key: 'contact',
+      display_format: 'object',
+      selected: true,
+      sub_object: [
+        {
+          key: 'id',
+          display_format: 'number',
+          selected: false,
+          sub_object: [],
+        },
+      ],
+    },
+  ],
 }

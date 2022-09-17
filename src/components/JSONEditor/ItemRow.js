@@ -78,7 +78,7 @@ function ItemRow({
       <div className="key">
         <TextField value={item.key} onChange={(e) => updateKey(item, e.target.value)} />
       </div>
-      {(mode === MODES.keyvalue || MODES.noChildren) && (
+      {mode !== MODES.schema && (
         <div className="value">
           <TextField
             disabled={item.display_format === 'object'}
