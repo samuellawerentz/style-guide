@@ -27,7 +27,7 @@ const KeyMenu = ({ addItem, addSubItem }) => {
 
 function ItemRow({
   item,
-  dataRef,
+  siblings,
   idx,
   updateSelection,
   addSubItem,
@@ -38,7 +38,7 @@ function ItemRow({
   updateValue,
   mode,
 }) {
-  //   const sub_object = dataRef[idx].sub_object
+  //   const sub_object = siblings[idx].sub_object
   const [dropdownVisible, setdropdownVisible] = useState(false)
   return (
     <>
@@ -47,7 +47,7 @@ function ItemRow({
           <Checkbox
             type="checkbox"
             checked={item.selected}
-            onChange={(e) => updateSelection(dataRef?.[idx], e.target.checked)}
+            onChange={(e) => updateSelection(siblings?.[idx], e.target.checked)}
           />
         </div>
       )}
@@ -60,10 +60,10 @@ function ItemRow({
             <KeyMenu
               addItem={() => {
                 setdropdownVisible(false)
-                addItem(dataRef, dataRef[idx].parent)
+                addItem(siblings, siblings[idx].parent)
               }}
               addSubItem={() => {
-                addSubItem(dataRef, idx)
+                addSubItem(siblings, idx)
                 setdropdownVisible(false)
               }}
             />
@@ -78,7 +78,7 @@ function ItemRow({
       <div className="key">
         <TextField value={item.key} onChange={(e) => updateKey(item, e.target.value)} />
       </div>
-      {(mode === MODES.keyvalue || MODES.noChildren) && (
+      {mode !== MODES.schema && (
         <div className="value">
           <TextField
             disabled={item.display_format === 'object'}
@@ -107,14 +107,14 @@ function ItemRow({
       <div
         className="remove"
         onClick={() => {
-          removeNode(dataRef, idx)
+          removeNode(siblings, idx)
         }}
       >
         <Icon name="delete" size={20} color="gray-3" hoverColor="danger-color" />
       </div>
-      {mode === MODES.noChildren && idx === dataRef.length - 1 && (
+      {mode === MODES.noChildren && idx === siblings.length - 1 && (
         <Block className="add-item-container" spacing={[0, 16]}>
-          <div className="add-item" onClick={() => addItem(dataRef, dataRef[idx].parent)}>
+          <div className="add-item" onClick={() => addItem(siblings, siblings[idx].parent)}>
             <Icon name="add" size={20} color="primary-color" />
           </div>
         </Block>
