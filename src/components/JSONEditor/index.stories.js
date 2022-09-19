@@ -51,13 +51,10 @@ KeyValueEditorWithNoChildren.args = {
   mode: 'no-children',
   data: {
     order_id: 12312412,
-    order_date: '12/12/12',
-    order_amount: '12000.00',
   },
 }
 
-export const LoadingFromTreeData = Template.bind({})
-LoadingFromTreeData.args = {
+const treeProps = {
   mode: 'schema',
   fromTree: true,
   data: [
@@ -76,3 +73,10 @@ LoadingFromTreeData.args = {
     },
   ],
 }
+
+const treeDataTemplate = () => (
+  <div>
+    <JSONEditor {...treeProps} />
+  </div>
+)
+export const LoadingFromTreeData = treeDataTemplate.bind({})
