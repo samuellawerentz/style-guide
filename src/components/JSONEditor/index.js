@@ -15,7 +15,13 @@ export const JSONEditor = forwardRef(function JSONEditor(
   const ItemRowWrapper = (props) => <ItemRow {...props} mode={mode} />
   return (
     <div className={['sg contacto-jsoneditor', className, mode].join(' ')}>
-      <JsonSchemaEditor data={data} ItemComponent={ItemRowWrapper} ref={ref} fromTree={fromTree} />
+      <JsonSchemaEditor
+        data={data}
+        ItemComponent={ItemRowWrapper}
+        ref={ref}
+        fromTree={fromTree}
+        {...props}
+      />
     </div>
   )
 })

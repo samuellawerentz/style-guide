@@ -60,12 +60,12 @@ const treeProps = {
   data: [
     {
       key: 'contact',
-      display_format: 'object',
+      data_type: 'object',
       selected: true,
       sub_object: [
         {
           key: 'id',
-          display_format: 'number',
+          data_type: 'number',
           selected: false,
           sub_object: [],
         },
