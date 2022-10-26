@@ -37,8 +37,12 @@
         }
     }
     &.schema {
-        .key {
-            margin-left: -8px;
+        .object .object .item:first-child::before {
+            height: calc(100% + 32px);
+            top: -16px;
+        }
+        .object .object .item:only-child::before {
+            height: 32px;
         }
     }
 }

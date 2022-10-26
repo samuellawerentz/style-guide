@@ -3,27 +3,12 @@ import { Icon } from '../Icon/index'
 import { Select } from '../Select/index'
 import { TextField } from '../Textfield/index'
 
-import React, { useState } from 'react'
-import { Dropdown, Menu } from 'antd'
+import React from 'react'
 import { Block } from '../Block/index'
 import { MODES } from './constants'
+import { Text } from '../Typography/index'
 
-const KeyMenu = ({ addItem, addSubItem }) => {
-  return (
-    <Menu>
-      <div className="menu-container">
-        <Block display="flex" gap={8} alignItems="center" onClick={addItem}>
-          <Icon name="add" color="gray-1" />
-          <div>Add key</div>
-        </Block>
-        <Block display="flex" gap={8} alignItems="center" onClick={addSubItem}>
-          <Icon name="add" color="gray-1" />
-          <div>Add Sub Key</div>
-        </Block>
-      </div>
-    </Menu>
-  )
-}
+const KEY_WIDTH = 250
 
 function ItemRow({
   item,
@@ -38,8 +23,6 @@ function ItemRow({
   updateValue,
   mode,
 }) {
-  //   const sub_object = siblings[idx].sub_object
-  const [dropdownVisible, setdropdownVisible] = useState(false)
   return (
     <>
       {mode === MODES.schema && (
@@ -51,37 +34,22 @@ function ItemRow({
           />
         </div>
       )}
-      {mode !== MODES.noChildren && (
-        <Dropdown
-          visible={dropdownVisible}
-          onVisibleChange={(visible) => setdropdownVisible(visible)}
-          trigger={['click']}
-          overlay={
-            <KeyMenu
-              addItem={() => {
-                setdropdownVisible(false)
-                addItem(siblings, siblings[idx].parent)
-              }}
-              addSubItem={() => {
-                addSubItem(siblings, idx)
-                setdropdownVisible(false)
-              }}
-            />
-          }
-          overlayClassName="key-menu"
-        >
-          <div className="add-item">
-            <Icon name="add" size={20} color="primary-color" />
-          </div>
-        </Dropdown>
-      )}
-      <div className="key">
-        <TextField value={item.key} onChange={(e) => updateKey(item, e.target.value)} />
+      <div
+        className="key"
+        style={{ width: mode === MODES.schema ? `${KEY_WIDTH - 32 * item.level}px` : undefined }}
+      >
+        {mode !== MODES.schema ? (
+          <TextField value={item.key} onChange={(e) => updateKey(item, e.target.value)} />
+        ) : (
+          <Text type="headline" ellipsis>
+            {item.key}
+          </Text>
+        )}
       </div>
       {mode !== MODES.schema && (
         <div className="value">
           <TextField
-            disabled={item.display_format === 'object'}
+            disabled={item.data_type === 'object'}
             value={item.response_value}
             onChange={(e) => updateValue(item, e.target.value)}
           />
@@ -90,7 +58,7 @@ function ItemRow({
       {mode === MODES.schema && (
         <div className="type">
           <Select
-            value={item.display_format}
+            value={item.data_type}
             style={{ width: 180 }}
             onChange={(e) => {
               updateNodeType(item, e)
