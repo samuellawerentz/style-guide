@@ -42,16 +42,19 @@ export const GroupAndSearchDropdown = ({
             }}
           />
         </div>
-        {options?.map((option, index) => (
-          <>
-            <div className="group-header" key={index}>
-              <Text type="captions_bold" color="gray-2">
-                {option?.title}
-              </Text>
-            </div>
-            {option?.children
-              ?.filter((item) => item?.value?.includes(searchString))
-              .map((child, childIndex) => (
+        {options?.map((option, index) => {
+          const filteredOptions = option?.children?.filter((item) =>
+            item?.value?.toLowerCase().includes(searchString.toLowerCase()),
+          )
+          if (filteredOptions.length === 0) return null
+          return (
+            <>
+              <div className="group-header" key={index}>
+                <Text type="captions_bold" color="gray-2">
+                  {option?.title}
+                </Text>
+              </div>
+              {filteredOptions?.map((child, childIndex) => (
                 <div
                   className="group-option"
                   key={childIndex}
@@ -68,8 +71,9 @@ export const GroupAndSearchDropdown = ({
                   <Text type="caption">{child?.label}</Text>
                 </div>
               ))}
-          </>
-        ))}
+            </>
+          )
+        })}
       </div>
     )
   }
