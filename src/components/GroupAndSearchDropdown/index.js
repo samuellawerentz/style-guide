@@ -11,11 +11,12 @@ import './groupAndSearchDropdown.scss'
 export const GroupAndSearchDropdown = ({
   options,
   value = '',
-  setValue = () => {},
+  onValueSelect,
   className,
   ...props
 }) => {
   const [showDropdown, setShowDropdown] = useState(false)
+  console.log('value', value)
 
   const OptionsDropdown = () => {
     const [searchString, setSearchString] = useState('')
@@ -60,9 +61,9 @@ export const GroupAndSearchDropdown = ({
                   key={childIndex}
                   onClick={() => {
                     if (!value.includes('{{')) {
-                      setValue(`{{${value + child?.value}}}`)
+                      onValueSelect(`${value}{{${child?.value}}}`)
                     } else {
-                      setValue(`${value + child?.value}}}`)
+                      onValueSelect(`${value}${child?.value}}}`)
                     }
                     setShowDropdown(false)
                     setSearchString('')
@@ -79,7 +80,7 @@ export const GroupAndSearchDropdown = ({
   }
 
   useEffect(() => {
-    if (value.includes('{{')) setShowDropdown(true)
+    if (value?.includes('{{')) setShowDropdown(true)
   }, [value])
 
   return (
@@ -100,7 +101,6 @@ export const GroupAndSearchDropdown = ({
               </div>
             }
             value={value}
-            onChange={(e) => setValue(e.target.value)}
             onClick={(e) => e.stopPropagation()}
             {...props}
           />
@@ -117,5 +117,5 @@ GroupAndSearchDropdown.propTypes = {
    */
   options: PropTypes.object,
   value: PropTypes.string,
-  setValue: PropTypes.func,
+  onValueSelect: PropTypes.func,
 }
