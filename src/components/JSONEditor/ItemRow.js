@@ -7,6 +7,7 @@ import React from 'react'
 import { Block } from '../Block/index'
 import { MODES } from './constants'
 import { Text } from '../Typography/index'
+import { GroupAndSearchDropdown } from '../GroupAndSearchDropdown'
 
 const KEY_WIDTH = 250
 
@@ -22,6 +23,7 @@ function ItemRow({
   updateKey,
   updateValue,
   mode,
+  options,
 }) {
   return (
     <>
@@ -48,11 +50,16 @@ function ItemRow({
       </div>
       {mode !== MODES.schema && (
         <div className="value">
-          <TextField
-            disabled={item.data_type === 'object'}
-            value={item.response_value}
-            onChange={(e) => updateValue(item, e.target.value)}
-          />
+          {item.data_type === 'object' ? (
+            <TextField disabled />
+          ) : (
+            <GroupAndSearchDropdown
+              options={options}
+              value={item.response_value ? String(item.response_value) : ''}
+              onChange={(e) => updateValue(item, e.target.value)}
+              onValueSelect={(value) => updateValue(item, value)}
+            />
+          )}
         </div>
       )}
       {mode === MODES.schema && (
