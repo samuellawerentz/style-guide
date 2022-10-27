@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useEffect, useState } from 'react'
-import _debounce from 'lodash/debounce'
+import React, { useEffect, useRef, useState } from 'react'
 import { Dropdown } from 'antd'
 import PropTypes from 'prop-types'
 import { Icon } from '../Icon/index'
@@ -16,21 +15,10 @@ export const GroupAndSearchDropdown = ({
   ...props
 }) => {
   const [showDropdown, setShowDropdown] = useState(false)
-  console.log('value', value)
+  const textFieldRef = useRef()
 
   const OptionsDropdown = () => {
     const [searchString, setSearchString] = useState('')
-
-    const handleSearchDebounce = useCallback(
-      _debounce((value) => {
-        setSearchString(value)
-      }, 400),
-      [],
-    )
-
-    function onSearchChange(value) {
-      handleSearchDebounce(value)
-    }
 
     return (
       <div className="options-dropdown">
@@ -38,8 +26,8 @@ export const GroupAndSearchDropdown = ({
           <TextField
             type="search-box"
             placeholder="Search"
-            onChange={(e) => {
-              onSearchChange(e.target.value)
+            onChange={({ target }) => {
+              setSearchString(target.value)
             }}
           />
         </div>
@@ -60,11 +48,10 @@ export const GroupAndSearchDropdown = ({
                   className="group-option"
                   key={childIndex}
                   onClick={() => {
-                    if (!value.includes('{{')) {
-                      onValueSelect(`${value}{{${child?.value}}}`)
-                    } else {
-                      onValueSelect(`${value}${child?.value}}}`)
-                    }
+                    const index = textFieldRef.current.input.selectionStart
+                    const isOpenedByTyping = value[index - 1] === '{'
+                    const finalValue = `${value}${isOpenedByTyping ? '' : '{{'}${child?.value}}}`
+                    onValueSelect(finalValue)
                     setShowDropdown(false)
                     setSearchString('')
                   }}
@@ -80,15 +67,19 @@ export const GroupAndSearchDropdown = ({
   }
 
   useEffect(() => {
-    if (value?.includes('{{')) setShowDropdown(true)
+    const index = textFieldRef.current.input.selectionStart
+    if (value[index - 1] === '{' && value[index - 2] === '{') {
+      setShowDropdown(true)
+    } else setShowDropdown(false)
   }, [value])
 
   return (
     <>
       <Dropdown overlay={<OptionsDropdown />} trigger={['click']} visible={showDropdown}>
-        <div className={`sg contacto-input-wrapper `}>
+        <div className={`group-dropdown`}>
           <TextField
             type={'text'}
+            ref={textFieldRef}
             className={className}
             suffix={
               <div
