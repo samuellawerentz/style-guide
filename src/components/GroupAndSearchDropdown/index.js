@@ -15,31 +15,29 @@ export const GroupAndSearchDropdown = ({
   className,
   ...props
 }) => {
-  const [searchString, setSearchString] = useState('')
   const [showDropdown, setShowDropdown] = useState(false)
 
-  const handleSearchDebounce = useCallback(
-    _debounce((value) => {
-      setSearchString(value)
-    }, 400),
-    [],
-  )
+  const OptionsDropdown = () => {
+    const [searchString, setSearchString] = useState('')
 
-  function onSearchChange(value) {
-    handleSearchDebounce(value)
-  }
+    const handleSearchDebounce = useCallback(
+      _debounce((value) => {
+        setSearchString(value)
+      }, 400),
+      [],
+    )
 
-  const OptionsDropdown = ({ displayString }) => {
-    const [dStr, setDStr] = useState(displayString)
+    function onSearchChange(value) {
+      handleSearchDebounce(value)
+    }
+
     return (
       <div className="options-dropdown">
         <div className="search-box">
           <TextField
             type="search-box"
             placeholder="Search"
-            value={dStr}
             onChange={(e) => {
-              setDStr(e.target.value)
               onSearchChange(e.target.value)
             }}
           />
@@ -58,7 +56,11 @@ export const GroupAndSearchDropdown = ({
                   className="group-option"
                   key={childIndex}
                   onClick={() => {
-                    setValue(value + child?.value)
+                    if (!value.includes('{{')) {
+                      setValue(`{{${value + child?.value}}}`)
+                    } else {
+                      setValue(`${value + child?.value}}}`)
+                    }
                     setShowDropdown(false)
                     setSearchString('')
                   }}
@@ -78,11 +80,7 @@ export const GroupAndSearchDropdown = ({
 
   return (
     <>
-      <Dropdown
-        overlay={<OptionsDropdown displayString={searchString} />}
-        trigger={['click']}
-        visible={showDropdown}
-      >
+      <Dropdown overlay={<OptionsDropdown />} trigger={['click']} visible={showDropdown}>
         <div className={`sg contacto-input-wrapper `}>
           <TextField
             type={'text'}
@@ -90,7 +88,6 @@ export const GroupAndSearchDropdown = ({
             suffix={
               <div
                 onClick={() => {
-                  if (showDropdown) setSearchString('')
                   setShowDropdown(!showDropdown)
                 }}
                 className="contacto-icon--input-suffix-variable-dropdown"
