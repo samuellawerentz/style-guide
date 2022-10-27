@@ -7,7 +7,7 @@ import React from 'react'
 import { Block } from '../Block/index'
 import { MODES } from './constants'
 import { Text } from '../Typography/index'
-import { GroupAndSearchDropdown } from '../GroupAndSearchDropdown'
+import { GroupAndSearchDropdown } from '../GroupAndSearchDropdown/index'
 
 const KEY_WIDTH = 250
 
