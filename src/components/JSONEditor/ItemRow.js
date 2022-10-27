@@ -5,7 +5,7 @@ import { TextField } from '../Textfield/index'
 
 import React from 'react'
 import { Block } from '../Block/index'
-import { MODES } from './constants'
+import { DATA_TYPES, MODES } from './constants'
 import { Text } from '../Typography/index'
 import { GroupAndSearchDropdown } from '../GroupAndSearchDropdown/index'
 
@@ -50,7 +50,7 @@ function ItemRow({
       </div>
       {mode !== MODES.schema && (
         <div className="value">
-          {item.data_type === 'object' ? (
+          {item.data_type === DATA_TYPES.object || item.data_type === DATA_TYPES.list ? (
             <TextField disabled />
           ) : (
             <GroupAndSearchDropdown
@@ -71,7 +71,7 @@ function ItemRow({
               updateNodeType(item, e)
             }}
           >
-            <option value="array">Array</option>
+            <option value="list">List</option>
             <option value="string">String</option>
             <option value="object">Object</option>
             <option value="number">Number</option>
