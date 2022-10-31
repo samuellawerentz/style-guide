@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Select as AntSelect } from 'antd'
 import { Text } from '../Typography/index'
 import PropTypes from 'prop-types'
 import './select.scss'
 import { Icon } from '../Icon/index'
 import { Tag } from '../Tag/index'
+import { Modal } from '../Modal/index'
 /**
  * This is used to select a value from the list of options
  */
@@ -23,10 +24,25 @@ export const Select = React.forwardRef(function Select(
     loading,
     noShadow,
     mode,
+    maxTagCount,
+    maxTagModalTitle,
+    value,
+    onChange,
     ...props
   },
   ref,
 ) {
+  const [localValue, setLocalValue] = useState(value)
+  const [showMaxTagModal, setShowMaxTagModal] = useState(false)
+  const onMaxTagClick = (e) => {
+    e.stopPropagation()
+    setShowMaxTagModal(true)
+  }
+  const onValueChange = (value) => {
+    onChange(value)
+    setLocalValue(value)
+  }
+
   return (
     <div className={'sg contacto-select-wrapper ' + className}>
       {label && (
@@ -59,21 +75,74 @@ export const Select = React.forwardRef(function Select(
               </span>
             )
           }
+          value={localValue}
+          onChange={onValueChange}
           {...props}
         />
       ) : (
-        <AntSelect
-          className={['contacto-multi-select']}
-          showArrow={false}
-          ref={ref}
-          disabled={readOnly || disabled}
-          listHeight={listHeight || 220}
-          placeholder={placeholder}
-          dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
-          mode="multiple"
-          tagRender={(props) => <Tag disableUppercase type="select" closeIcon={true} {...props} />}
-          {...props}
-        />
+        <>
+          <AntSelect
+            className={['contacto-multi-select', `contacto-multi-select--${size}`]}
+            showArrow={false}
+            ref={ref}
+            disabled={readOnly || disabled}
+            listHeight={listHeight || 220}
+            placeholder={placeholder}
+            dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
+            mode="multiple"
+            maxTagCount={maxTagCount}
+            tagRender={(tagProps) => <Tag type="select" disableUppercase closeIcon {...tagProps} />}
+            maxTagPlaceholder={(values) => (
+              <Text className="max-tag-placeholder" onClick={onMaxTagClick} type="caption">
+                +{values.length} more
+              </Text>
+            )}
+            value={localValue}
+            onChange={onValueChange}
+            {...props}
+          />
+          <Modal
+            title={maxTagModalTitle}
+            visible={showMaxTagModal}
+            onCancel={() => setShowMaxTagModal(false)}
+            cancelButtonProps={null}
+          >
+            <div className="contacto-multi-select-modal">
+              <AntSelect
+                className="contacto-multi-select"
+                showArrow={false}
+                listHeight={listHeight || 220}
+                placeholder={placeholder}
+                tagRender={() => {}}
+                dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
+                mode="multiple"
+                value={localValue}
+                onChange={onValueChange}
+                style={{ '--placeHolderText': `"${placeholder}"` }}
+                {...props}
+              />
+              <div className="contacto-multi-select-tag-list">
+                {localValue?.map?.((tag, i) => (
+                  <Tag
+                    key={i}
+                    type="select"
+                    disableUppercase
+                    closable
+                    closeIcon
+                    label={tag}
+                    onClose={() =>
+                      setLocalValue((local) => {
+                        const newLocal = local.filter((item) => item !== tag)
+                        onChange(newLocal)
+                        return newLocal
+                      })
+                    }
+                  />
+                ))}
+              </div>
+            </div>
+          </Modal>
+        </>
       )}
     </div>
   )
@@ -134,8 +203,25 @@ Select.propTypes = {
    * Set it to multiple to get multiple box
    */
   mode: PropTypes.string,
+  /**
+   * Set Max tag count before getting ellipsis
+   */
+  maxTagCount: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf(['responsive'])]),
+  /**
+   * Title for max tag dialog
+   */
+  maxTagModalTitle: PropTypes.string,
+  /**
+   * Value of the select
+   */
+  value: PropTypes.any,
+  /**
+   * onChange handler for the select
+   */
+  onChange: PropTypes.func,
 }
 
 Select.defaultProps = {
   size: 'default',
+  maxTagCount: null,
 }
