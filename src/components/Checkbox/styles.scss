@@ -86,7 +86,9 @@
             background-color: var(--gray-6);
 
             &:after {
-                background-color: var(--primary-color-2);
+                background-color: transparent;
+                border-color: var(--primary-color-2);
+                transition: all 0.1s ease-out;
             }
         }
 

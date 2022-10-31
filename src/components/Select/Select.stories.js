@@ -137,8 +137,7 @@ export const MultipleSelect = Template.bind({})
 MultipleSelect.args = {
   type: 'input',
   size: 'default',
-  placeholder: 'A read-only textfield',
-  // value: 'Read only',
+  placeholder: 'A multi select textfield',
   mode: 'multiple',
   maxTagCount: 'responsive',
   maxTagModalTitle: 'Select items',

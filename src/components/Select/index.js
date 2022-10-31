@@ -112,7 +112,6 @@ export const Select = React.forwardRef(function Select(
                 className="contacto-multi-select"
                 showArrow={false}
                 listHeight={listHeight || 220}
-                placeholder={placeholder}
                 tagRender={() => {}}
                 dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
                 mode="multiple"

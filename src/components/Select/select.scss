@@ -215,35 +215,39 @@
   }
 }
 
-.contacto-multi-select-modal {
-  display: flex;
-  flex-direction: column;
+.ant-modal-body {
+  padding: 16px !important;
 
-  > .contacto-multi-select {
-    margin-bottom: 8px;
+  > .contacto-multi-select-modal {
+    display: flex;
+    flex-direction: column;
 
-    .ant-select-selection-overflow {
-      position: relative;
-      padding-left: 8px;
+    > .contacto-multi-select {
+      margin-bottom: 8px;
 
-      &::after {
-        content: var(--placeHolderText);
-        position: absolute;
-        height: 100%;
-        left: 8px;
-        top: 50%;
-        transform: translateY(-10px);
-        color: var(--gray-2)
+      .ant-select-selection-overflow {
+        position: relative;
+        padding-left: 8px;
+
+        &::after {
+          content: var(--placeHolderText);
+          position: absolute;
+          height: 100%;
+          left: 8px;
+          top: 50%;
+          transform: translateY(-11px);
+          color: var(--gray-2);
+        }
       }
     }
-  }
-  > .contacto-multi-select-tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    > .contacto-multi-select-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
 
-    .contacto-tag--select {
-      margin: 0;
+      .contacto-tag--select {
+        margin: 0;
+      }
     }
   }
 }
