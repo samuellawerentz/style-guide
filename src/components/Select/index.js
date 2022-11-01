@@ -34,8 +34,9 @@ export const Select = React.forwardRef(function Select(
 ) {
   const [localValue, setLocalValue] = useState(value)
   const [showMaxTagModal, setShowMaxTagModal] = useState(false)
-  const onMaxTagClick = (e) => {
-    e.stopPropagation()
+  const onMaxTagClick = (event) => {
+    event.preventDefault()
+    event.stopPropagation()
     setShowMaxTagModal(true)
   }
   const onValueChange = (value) => {
@@ -102,12 +103,16 @@ export const Select = React.forwardRef(function Select(
             {...props}
           />
           <Modal
+            className={[
+              'contacto-multi-select-modal',
+              maxTagModalTitle ? '' : 'contacto-multi-select-modal--no-title',
+            ].join(' ')}
             title={maxTagModalTitle}
             visible={showMaxTagModal}
             onCancel={() => setShowMaxTagModal(false)}
             cancelButtonProps={null}
           >
-            <div className="contacto-multi-select-modal">
+            <div className="contacto-multi-select-wrapper">
               <AntSelect
                 className="contacto-multi-select"
                 showArrow={false}

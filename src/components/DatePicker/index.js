@@ -14,7 +14,11 @@ export const DatePicker = forwardRef(function DatePicker(
   const Component = rangePicker ? AntDatePicker.RangePicker : AntDatePicker
   return (
     <Component
-      className={['contacto-date-picker-field', 'contacto-date-picker-field--' + size, className]}
+      className={[
+        'contacto-date-picker-field',
+        'contacto-date-picker-field--' + size,
+        className,
+      ].join(' ')}
       {...props}
     />
   )
