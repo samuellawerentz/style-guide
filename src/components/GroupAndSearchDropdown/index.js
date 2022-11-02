@@ -48,7 +48,7 @@ export const GroupAndSearchDropdown = ({
                   className="group-option"
                   key={childIndex}
                   onClick={() => {
-                    const finalValue = `{{${value}}}`
+                    const finalValue = `{{${child?.value}}}`
                     onValueSelect(finalValue)
                     setShowDropdown(false)
                     setSearchString('')
@@ -65,7 +65,7 @@ export const GroupAndSearchDropdown = ({
   }
 
   useEffect(() => {
-    if (value[0] === '{' && value[1] === '{') {
+    if (value[0] === '{' && value[1] === '{' && value?.length === 2) {
       setShowDropdown(true)
     } else setShowDropdown(false)
   }, [value])
