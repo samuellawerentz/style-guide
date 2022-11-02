@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import './datepicker.scss'
 
 export const DatePicker = forwardRef(function DatePicker(
-  { className = '', size, rangePicker, ...props },
+  { className = '', size, showToday, rangePicker, ...props },
   ref,
 ) {
   moment.updateLocale('en', {
@@ -20,6 +20,10 @@ export const DatePicker = forwardRef(function DatePicker(
         className,
       ].join(' ')}
       {...props}
+      dropdownClassName={[
+        'contacto-date-picker-popup',
+        showToday ? 'contacto-date-picker-popup--showToday' : '',
+      ].join(' ')}
     />
   )
 })
@@ -36,9 +40,16 @@ DatePicker.propTypes = {
    */
   size: PropTypes.oneOf(['small', 'default', 'large']),
   /**
-   * Class name to be added
+   * Show range picker
    */
   rangePicker: PropTypes.bool,
+  /**
+   * Highlight today's date
+   */
+  showToday: PropTypes.bool,
 }
 
-DatePicker.defaultProps = {}
+DatePicker.defaultProps = {
+  size: 'default',
+  showToday: false,
+}

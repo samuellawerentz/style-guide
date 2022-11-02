@@ -21,7 +21,16 @@
   }
 }
 
-.ant-picker-dropdown {
+.contacto-date-picker-popup {
+  .ant-picker-cell-today > .ant-picker-cell-inner::before {
+    border-color: transparent;
+    border-radius: 4px;
+  }
+  &--showToday {
+    .ant-picker-cell-today > .ant-picker-cell-inner::before {
+      border-color: var(--primary-color);
+    }
+  }
   > .ant-picker-panel-container {
     width: 280px;
     border: 1px solid var(--default-container-background);
@@ -30,12 +39,6 @@
     overflow: hidden;
 
     .ant-picker-cell {
-      &.ant-picker-cell-today > .ant-picker-cell-inner {
-        &::before {
-          border-color: var(--primary-color);
-          border-radius: 4px;
-        }
-      }
       &.ant-picker-cell-selected > .ant-picker-cell-inner {
         background-color: var(--primary-color);
         border-radius: 4px;
@@ -89,12 +92,6 @@
                 border-radius: 0px 4px 4px 0;
                 background-color: var(--primary-color-3);
               }
-            }
-          }
-          &.ant-picker-cell-today > .ant-picker-cell-inner {
-            &::before {
-              border-color: var(--primary-color);
-              border-radius: 4px;
             }
           }
           &.ant-picker-cell-today.ant-picker-cell-disabled > .ant-picker-cell-inner {
