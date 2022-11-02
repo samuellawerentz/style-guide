@@ -1,105 +1,103 @@
 .sg.contacto-checkbox,
 .sg.contacto-checkbox-group .ant-checkbox-wrapper,
 .sg.contacto-table .ant-table-selection-column .ant-checkbox-wrapper {
-    line-height: 20px;
-    align-items: center;
+  line-height: 20px;
+  align-items: center;
 
-    .ant-checkbox-indeterminate .ant-checkbox-inner {
-        background-color: var(--primary-color);
-        border-color: var(--primary-color);
+  .ant-checkbox-indeterminate .ant-checkbox-inner {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 
-        &:after {
-            background-color: var(--primary-color);
-            width: 2px;
-            height: 10px;
-            border-radius: 1px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(1) rotate(90deg);
-            background: white;
-        }
-
+    &:after {
+      background-color: var(--primary-color);
+      width: 2px;
+      height: 10px;
+      border-radius: 1px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1) rotate(90deg);
+      background: white;
     }
+  }
 
-    &.checkbox--no-label {
-        .ant-checkbox {
-            top: 0.2em;
-        }
-    }
-
+  &.checkbox--no-label {
     .ant-checkbox {
-        top: 0;
-
-        &-checked {
-            &:after {
-                border: none;
-            }
-
-            .ant-checkbox-inner {
-                border-color: var(--primary-color);
-                background-color: var(--primary-color);
-            }
-        }
-
+      top: 0.2em;
     }
+  }
 
-    span {
-        line-height: 20px;
-        color: var(--primary-text-color);
-    }
+  .ant-checkbox {
+    top: 0;
 
-    &:hover .ant-checkbox-inner {
+    &-checked {
+      &:after {
+        border: none;
+      }
+
+      .ant-checkbox-inner {
         border-color: var(--primary-color);
+        background-color: var(--primary-color);
+      }
+    }
+  }
+
+  span {
+    line-height: 20px;
+    color: var(--primary-text-color);
+  }
+
+  &:hover .ant-checkbox-inner {
+    border-color: var(--primary-color);
+  }
+
+  .ant-checkbox-inner {
+    width: 18px;
+    height: 18px;
+    border-color: var(--gray-2);
+    border-width: 2px;
+    box-shadow: none;
+
+    &:hover {
+      border-color: var(--primary-color);
+    }
+
+    &:after {
+      background-color: var(--primary-color);
+      width: 6px;
+      height: 12px;
+      border-radius: 1px;
+      top: 6px;
+      left: 2px;
+    }
+  }
+
+  &[class*='disabled'] {
+    .ant-checkbox-checked {
+      .ant-checkbox-inner {
+        border-color: var(--primary-color-2) !important;
+        background-color: var(--primary-color-2);
+      }
     }
 
     .ant-checkbox-inner {
-        width: 18px;
-        height: 18px;
-        border-color: var(--gray-2);
-        border-width: 2px;
-        box-shadow: none;
+      border-color: var(--gray-4) !important;
+      background-color: var(--gray-6);
 
-        &:hover {
-            border-color: var(--primary-color);
-        }
-
-        &:after {
-            background-color: var(--primary-color);
-            width: 6px;
-            height: 12px;
-            border-radius: 1px;
-            top: 6px;
-            left: 2px;
-        }
+      &:after {
+        background-color: transparent;
+        border-color: white;
+        transition: all 0.1s ease-out;
+      }
     }
 
-    &[class*="disabled"] {
-        .ant-checkbox-checked {
-            .ant-checkbox-inner {
-                border-color: var(--primary-color-2) !important;
-            }
-
-        }
-
-        .ant-checkbox-inner {
-            border-color: var(--gray-4) !important;
-            background-color: var(--gray-6);
-
-            &:after {
-                background-color: transparent;
-                border-color: var(--primary-color-2);
-                transition: all 0.1s ease-out;
-            }
-        }
-
-        span {
-            color: var(--primary-text-color);
-        }
+    span {
+      color: var(--primary-text-color);
     }
+  }
 }
 
 .sg.contacto-table .ant-table-selection-column .ant-checkbox-wrapper {
-    .ant-checkbox {
-        top: 0.2em;
-    }
+  .ant-checkbox {
+    top: 0.2em;
+  }
 }
