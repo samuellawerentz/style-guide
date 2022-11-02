@@ -7,7 +7,7 @@
 
     .ant-cascader-picker {
         border: 0;
-        box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
+        box-shadow: var(--box-shadow-default);
             border: 1px solid var(--border-color-1);
         .ant-cascader-picker-label {
             pointer-events: none;
