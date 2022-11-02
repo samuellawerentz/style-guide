@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Select as AntSelect } from 'antd'
 import { Text } from '../Typography/index'
 import PropTypes from 'prop-types'
@@ -33,17 +33,21 @@ export const Select = React.forwardRef(function Select(
   ref,
 ) {
   const [open, setOpen] = useState(false)
-  const [localValue, setLocalValue] = useState(value)
+  const [localValue, setLocalValue] = useState()
   const [showMaxTagModal, setShowMaxTagModal] = useState(false)
   const onMaxTagClick = (event) => {
     event.stopPropagation()
     setOpen(false)
     setShowMaxTagModal(true)
   }
-  const onValueChange = (value) => {
-    onChange(value)
-    setLocalValue(value)
+  const onValueChange = (...params) => {
+    onChange(...params)
+    setLocalValue(params[0])
   }
+
+  useEffect(() => {
+    setLocalValue(value)
+  }, [value])
 
   return (
     <div className={'sg contacto-select-wrapper ' + className}>
