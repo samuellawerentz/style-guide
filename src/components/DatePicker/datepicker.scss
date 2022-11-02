@@ -166,6 +166,21 @@
     }
   }
 
+  .ant-picker-range-arrow {
+    width: 12px;
+    height: 12px;
+    box-shadow: none;
+    translate: 0 -2px;
+
+    &::after {
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      border: 2px solid var(--primary-color-4);
+      border-left-width: 0px;
+      border-bottom-width: 0px;
+    }
+  }
   .ant-picker-cell {
     .ant-picker-cell-inner {
       width: 36px;
