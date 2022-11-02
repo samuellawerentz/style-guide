@@ -32,11 +32,12 @@ export const Select = React.forwardRef(function Select(
   },
   ref,
 ) {
+  const [open, setOpen] = useState(false)
   const [localValue, setLocalValue] = useState(value)
   const [showMaxTagModal, setShowMaxTagModal] = useState(false)
   const onMaxTagClick = (event) => {
-    event.preventDefault()
     event.stopPropagation()
+    setOpen(false)
     setShowMaxTagModal(true)
   }
   const onValueChange = (value) => {
@@ -98,6 +99,9 @@ export const Select = React.forwardRef(function Select(
                 +{values.length} more
               </Text>
             )}
+            open={open}
+            onBlur={() => setOpen(false)}
+            onClick={() => setOpen(true)}
             value={localValue}
             onChange={onValueChange}
             {...props}
@@ -228,4 +232,5 @@ Select.propTypes = {
 Select.defaultProps = {
   size: 'default',
   maxTagCount: null,
+  maxTagModalTitle: 'Select items',
 }
