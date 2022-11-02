@@ -5,7 +5,7 @@
 
   .contacto-input {
     border-radius: 0;
-    box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
+    box-shadow: var(--box-shadow-default);
     border: 1px solid var(--border-color-1);
     height: 36px;
     padding-left: 12px;
@@ -19,7 +19,7 @@
     }
 
     &-text-area-show-count {
-      box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
+      box-shadow: var(--box-shadow-default);
       &--readonly:not(.increase-specificity) {
         &,
         & textarea {
@@ -193,7 +193,7 @@
       display: none;
     }
     .sg.contacto-input-wrapper .contacto-input {
-      box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
+      box-shadow: var(--box-shadow-default);
       border: 1px solid var(--danger-color);
     }
   }

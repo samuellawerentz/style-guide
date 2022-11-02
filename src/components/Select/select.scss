@@ -2,7 +2,7 @@
   .contacto-select, .ant-select.ant-cascader {
     --height: 36px;
     border-radius: 0;
-    box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
+    box-shadow: var(--box-shadow-default);
     border: 1px solid var(--border-color-1);
     height: var(--height);
     width: 100%;
@@ -131,7 +131,7 @@
 
 .contacto-multi-select {
   border-radius: 0;
-  box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
+  box-shadow: var(--box-shadow-default);
   border: 1px solid var(--border-color-1);
   height: var(--height);
   width: 100%;
