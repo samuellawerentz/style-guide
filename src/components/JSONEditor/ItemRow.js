@@ -3,27 +3,13 @@ import { Icon } from '../Icon/index'
 import { Select } from '../Select/index'
 import { TextField } from '../Textfield/index'
 
-import React, { useState } from 'react'
-import { Dropdown, Menu } from 'antd'
+import React from 'react'
 import { Block } from '../Block/index'
-import { MODES } from './constants'
+import { DATA_TYPES, MODES } from './constants'
+import { Text } from '../Typography/index'
+import { GroupAndSearchDropdown } from '../GroupAndSearchDropdown/index'
 
-const KeyMenu = ({ addItem, addSubItem }) => {
-  return (
-    <Menu>
-      <div className="menu-container">
-        <Block display="flex" gap={8} alignItems="center" onClick={addItem}>
-          <Icon name="add" color="gray-1" />
-          <div>Add key</div>
-        </Block>
-        <Block display="flex" gap={8} alignItems="center" onClick={addSubItem}>
-          <Icon name="add" color="gray-1" />
-          <div>Add Sub Key</div>
-        </Block>
-      </div>
-    </Menu>
-  )
-}
+const KEY_WIDTH = 250
 
 function ItemRow({
   item,
@@ -37,9 +23,8 @@ function ItemRow({
   updateKey,
   updateValue,
   mode,
+  options,
 }) {
-  //   const sub_object = siblings[idx].sub_object
-  const [dropdownVisible, setdropdownVisible] = useState(false)
   return (
     <>
       {mode === MODES.schema && (
@@ -51,52 +36,42 @@ function ItemRow({
           />
         </div>
       )}
-      {mode !== MODES.noChildren && (
-        <Dropdown
-          visible={dropdownVisible}
-          onVisibleChange={(visible) => setdropdownVisible(visible)}
-          trigger={['click']}
-          overlay={
-            <KeyMenu
-              addItem={() => {
-                setdropdownVisible(false)
-                addItem(siblings, siblings[idx].parent)
-              }}
-              addSubItem={() => {
-                addSubItem(siblings, idx)
-                setdropdownVisible(false)
-              }}
-            />
-          }
-          overlayClassName="key-menu"
-        >
-          <div className="add-item">
-            <Icon name="add" size={20} color="primary-color" />
-          </div>
-        </Dropdown>
-      )}
-      <div className="key">
-        <TextField value={item.key} onChange={(e) => updateKey(item, e.target.value)} />
+      <div
+        className="key"
+        style={{ width: mode === MODES.schema ? `${KEY_WIDTH - 32 * item.level}px` : undefined }}
+      >
+        {mode !== MODES.schema ? (
+          <TextField value={item.key} onChange={(e) => updateKey(item, e.target.value)} />
+        ) : (
+          <Text type="headline" ellipsis>
+            {item.key}
+          </Text>
+        )}
       </div>
       {mode !== MODES.schema && (
         <div className="value">
-          <TextField
-            disabled={item.display_format === 'object'}
-            value={item.response_value}
-            onChange={(e) => updateValue(item, e.target.value)}
-          />
+          {item.data_type === DATA_TYPES.object || item.data_type === DATA_TYPES.list ? (
+            <TextField disabled />
+          ) : (
+            <GroupAndSearchDropdown
+              options={options}
+              value={item.response_value ? String(item.response_value) : ''}
+              onChange={(e) => updateValue(item, e.target.value)}
+              onValueSelect={(value) => updateValue(item, value)}
+            />
+          )}
         </div>
       )}
       {mode === MODES.schema && (
         <div className="type">
           <Select
-            value={item.display_format}
+            value={item.data_type}
             style={{ width: 180 }}
             onChange={(e) => {
               updateNodeType(item, e)
             }}
           >
-            <option value="array">Array</option>
+            <option value="list">List</option>
             <option value="string">String</option>
             <option value="object">Object</option>
             <option value="number">Number</option>

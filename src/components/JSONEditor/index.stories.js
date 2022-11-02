@@ -44,6 +44,26 @@ KeyValueEditor.args = {
       },
     },
   },
+  options: [
+    {
+      title: 'System Variables',
+      children: [
+        { label: 'Abcd', value: 'Abcd' },
+        { label: 'dsfsdf', value: 'dsfsdf' },
+        { label: 'gtg', value: 'gtg' },
+        { label: 'qwe', value: 'qwe' },
+      ],
+    },
+    {
+      title: 'API 2',
+      children: [
+        { label: 'Absfwecd', value: 'Absfwecd' },
+        { label: 'ewrew', value: 'ewrew' },
+        { label: 'yut', value: 'yut' },
+        { label: 'pop', value: 'pop' },
+      ],
+    },
+  ],
 }
 
 export const KeyValueEditorWithNoChildren = Template.bind({})
@@ -60,12 +80,12 @@ const treeProps = {
   data: [
     {
       key: 'contact',
-      display_format: 'object',
+      data_type: 'object',
       selected: true,
       sub_object: [
         {
           key: 'id',
-          display_format: 'number',
+          data_type: 'number',
           selected: false,
           sub_object: [],
         },

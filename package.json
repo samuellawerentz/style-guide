@@ -4,13 +4,14 @@
     "registry": "https://npm.pkg.github.com"
   },
   "repository": "git://github.com/contacto-io/contacto-console",
-  "version": "0.4.38",
+  "version": "0.4.45",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
     "build"
   ],
   "scripts": {
+    "start": "npm run storybook",
     "build": "npm run css-build && rollup -c",
     "css-build": "node-sass --omit-source-map-url src/style/main.scss build/style-guide.css",
     "test": "react-scripts test",
@@ -82,7 +83,7 @@
     "raw-loader": "^4.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "rc-json-editor": "^2.0.5",
+    "rc-json-editor": "^2.0.8",
     "react-scripts": "4.0.3",
     "react-sortable-hoc": "^2.0.0",
     "rollup": "^2.53.3",
