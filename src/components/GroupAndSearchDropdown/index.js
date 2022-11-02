@@ -48,9 +48,7 @@ export const GroupAndSearchDropdown = ({
                   className="group-option"
                   key={childIndex}
                   onClick={() => {
-                    const index = textFieldRef.current.input.selectionStart
-                    const isOpenedByTyping = value[index - 1] === '{'
-                    const finalValue = `${value}${isOpenedByTyping ? '' : '{{'}${child?.value}}}`
+                    const finalValue = `{{${value}}}`
                     onValueSelect(finalValue)
                     setShowDropdown(false)
                     setSearchString('')
@@ -67,8 +65,7 @@ export const GroupAndSearchDropdown = ({
   }
 
   useEffect(() => {
-    const index = textFieldRef.current.input.selectionStart
-    if (value[index - 1] === '{' && value[index - 2] === '{') {
+    if (value[0] === '{' && value[1] === '{') {
       setShowDropdown(true)
     } else setShowDropdown(false)
   }, [value])
