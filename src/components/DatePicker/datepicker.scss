@@ -31,11 +31,11 @@
       border-color: var(--primary-color);
     }
   }
-  > .ant-picker-panel-container {
-    width: 280px;
+  .ant-picker-panel-container {
     border: 1px solid var(--default-container-background);
     box-shadow: 0px 0px 8px rgba(106, 110, 128, 0.15);
     border-radius: 4px;
+    padding: 12px 8px 4px 8px;
     overflow: hidden;
 
     .ant-picker-cell {
@@ -120,10 +120,13 @@
 
   .ant-picker-panel {
     width: 100%;
+    border: none;
 
     > .ant-picker-date-panel {
       > .ant-picker-header {
         padding: 0 16px;
+        border-bottom: none;
+
         .ant-picker-header-super-prev-btn {
           display: none;
         }
@@ -140,6 +143,9 @@
             color: var(--primary-color);
           }
         }
+      }
+      > .ant-picker-body {
+        padding: 0px 12px 8px 12px;
       }
 
       .ant-picker-content {
