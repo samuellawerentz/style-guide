@@ -3,9 +3,10 @@ import { DatePicker as AntDatePicker } from 'antd'
 import moment from 'moment'
 import PropTypes from 'prop-types'
 import './datepicker.scss'
+import { Text } from '../Typography/index'
 
 export const DatePicker = forwardRef(function DatePicker(
-  { className = '', size, showToday, rangePicker, ...props },
+  { className = '', size, label, showToday, rangePicker, ...props },
   ref,
 ) {
   moment.updateLocale('en', {
@@ -13,18 +14,21 @@ export const DatePicker = forwardRef(function DatePicker(
   })
   const Component = rangePicker ? AntDatePicker.RangePicker : AntDatePicker
   return (
-    <Component
-      className={[
-        'contacto-date-picker-field',
-        'contacto-date-picker-field--' + size,
-        className,
-      ].join(' ')}
-      {...props}
-      dropdownClassName={[
-        'contacto-date-picker-popup',
-        showToday ? 'contacto-date-picker-popup--showToday' : '',
-      ].join(' ')}
-    />
+    <div className={['contacto-date-picker-field-wrapper', className].join(' ')}>
+      {label && (
+        <Text className="contacto-date-picker-label" type="caption-bold">
+          {label}
+        </Text>
+      )}
+      <Component
+        className={['contacto-date-picker-field', 'contacto-date-picker-field--' + size].join(' ')}
+        dropdownClassName={[
+          'contacto-date-picker-popup',
+          showToday ? 'contacto-date-picker-popup--showToday' : '',
+        ].join(' ')}
+        {...props}
+      />
+    </div>
   )
 })
 
@@ -44,6 +48,10 @@ DatePicker.propTypes = {
    */
   rangePicker: PropTypes.bool,
   /**
+   * Show Label
+   */
+  label: PropTypes.string,
+  /**
    * Highlight today's date
    */
   showToday: PropTypes.bool,
@@ -51,5 +59,6 @@ DatePicker.propTypes = {
 
 DatePicker.defaultProps = {
   size: 'default',
+  label: null,
   showToday: false,
 }

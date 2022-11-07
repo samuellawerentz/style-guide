@@ -1,23 +1,30 @@
-.contacto-date-picker-field {
+.contacto-date-picker-field-wrapper {
   width: 100%;
-  height: 36px;
-  box-shadow: var(--box-shadow-default);
-
-  &:hover {
-    border-color: var(--primary-color-3);
+  > .contacto-date-picker-label {
+    display: block;
+    margin-bottom: 4px;
   }
-  &.ant-picker-focused {
-    border-color: var(--primary-color-2);
-  }
-  &--small {
-    height: 28px;
-  }
-  &--large {
-    height: 44px;
-  }
-
-  > .ant-picker-active-bar {
-    background-color: var(--primary-color);
+  > .contacto-date-picker-field {
+    width: 100%;
+    height: 36px;
+    box-shadow: var(--box-shadow-default);
+  
+    &:hover {
+      border-color: var(--primary-color-3);
+    }
+    &.ant-picker-focused {
+      border-color: var(--primary-color-2);
+    }
+    &--small {
+      height: 28px;
+    }
+    &--large {
+      height: 44px;
+    }
+  
+    > .ant-picker-active-bar {
+      background-color: var(--primary-color);
+    }
   }
 }
 
