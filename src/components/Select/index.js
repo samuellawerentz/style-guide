@@ -41,7 +41,7 @@ export const Select = React.forwardRef(function Select(
     setShowMaxTagModal(true)
   }
   const onValueChange = (...params) => {
-    onChange(...params)
+    onChange && onChange(...params)
     setLocalValue(params[0])
   }
 
