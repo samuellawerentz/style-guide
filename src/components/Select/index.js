@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Select as AntSelect } from 'antd'
 import { Text } from '../Typography/index'
 import PropTypes from 'prop-types'
-import './select.scss'
 import { Icon } from '../Icon/index'
 import { Tag } from '../Tag/index'
 import { Modal } from '../Modal/index'
+import './select.scss'
+
 /**
  * This is used to select a value from the list of options
  */
@@ -122,36 +123,21 @@ export const Select = React.forwardRef(function Select(
           >
             <div className="contacto-multi-select-wrapper">
               <AntSelect
+                size="large"
                 className="contacto-multi-select"
                 showArrow={false}
                 listHeight={listHeight || 220}
-                tagRender={() => {}}
+                placeholder={placeholder}
+                tagRender={(tagProps) => (
+                  <Tag type="select" disableUppercase closeIcon {...tagProps} />
+                )}
                 dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
                 mode="multiple"
                 value={localValue}
                 onChange={onValueChange}
-                style={{ '--placeHolderText': `"${placeholder}"` }}
                 {...props}
+                maxTagCount={null}
               />
-              <div className="contacto-multi-select-tag-list">
-                {localValue?.map?.((tag, i) => (
-                  <Tag
-                    key={i}
-                    type="select"
-                    disableUppercase
-                    closable
-                    closeIcon
-                    label={tag}
-                    onClose={() =>
-                      setLocalValue((local) => {
-                        const newLocal = local.filter((item) => item !== tag)
-                        onChange(newLocal)
-                        return newLocal
-                      })
-                    }
-                  />
-                ))}
-              </div>
             </div>
           </Modal>
         </>
