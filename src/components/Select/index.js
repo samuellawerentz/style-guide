@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Select as AntSelect } from 'antd'
 import { Text } from '../Typography/index'
 import PropTypes from 'prop-types'
-import './select.scss'
 import { Icon } from '../Icon/index'
 import { Tag } from '../Tag/index'
 import { Modal } from '../Modal/index'
+import './select.scss'
+
 /**
  * This is used to select a value from the list of options
  */
@@ -115,7 +116,7 @@ export const Select = React.forwardRef(function Select(
               'contacto-multi-select-modal',
               maxTagModalTitle ? '' : 'contacto-multi-select-modal--no-title',
             ].join(' ')}
-            title={'Hello'}
+            title={maxTagModalTitle}
             visible={showMaxTagModal}
             onCancel={() => setShowMaxTagModal(false)}
             cancelButtonProps={null}
@@ -134,8 +135,8 @@ export const Select = React.forwardRef(function Select(
                 mode="multiple"
                 value={localValue}
                 onChange={onValueChange}
-                maxTagCount={null}
                 {...props}
+                maxTagCount={null}
               />
             </div>
           </Modal>
