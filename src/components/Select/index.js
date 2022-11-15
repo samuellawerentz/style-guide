@@ -115,43 +115,28 @@ export const Select = React.forwardRef(function Select(
               'contacto-multi-select-modal',
               maxTagModalTitle ? '' : 'contacto-multi-select-modal--no-title',
             ].join(' ')}
-            title={maxTagModalTitle}
+            title={'Hello'}
             visible={showMaxTagModal}
             onCancel={() => setShowMaxTagModal(false)}
             cancelButtonProps={null}
           >
             <div className="contacto-multi-select-wrapper">
               <AntSelect
+                size="large"
                 className="contacto-multi-select"
                 showArrow={false}
                 listHeight={listHeight || 220}
-                tagRender={() => {}}
+                placeholder={placeholder}
+                tagRender={(tagProps) => (
+                  <Tag type="select" disableUppercase closeIcon {...tagProps} />
+                )}
                 dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
                 mode="multiple"
                 value={localValue}
                 onChange={onValueChange}
-                style={{ '--placeHolderText': `"${placeholder}"` }}
+                maxTagCount={null}
                 {...props}
               />
-              <div className="contacto-multi-select-tag-list">
-                {localValue?.map?.((tag, i) => (
-                  <Tag
-                    key={i}
-                    type="select"
-                    disableUppercase
-                    closable
-                    closeIcon
-                    label={tag}
-                    onClose={() =>
-                      setLocalValue((local) => {
-                        const newLocal = local.filter((item) => item !== tag)
-                        onChange(newLocal)
-                        return newLocal
-                      })
-                    }
-                  />
-                ))}
-              </div>
             </div>
           </Modal>
         </>

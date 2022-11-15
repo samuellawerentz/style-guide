@@ -1,5 +1,7 @@
-.sg.contacto-select-wrapper, .sg.contacto-cascader {
-  .contacto-select, .ant-select.ant-cascader {
+.sg.contacto-select-wrapper,
+.sg.contacto-cascader {
+  .contacto-select,
+  .ant-select.ant-cascader {
     --height: 36px;
     border-radius: 0;
     box-shadow: var(--box-shadow-default);
@@ -198,6 +200,24 @@
         line-height: calc(var(--height) - 2px);
         color: var(--primary-text-color);
       }
+
+      .ant-select-selection-search {
+        height: 22px;
+        line-height: 22px;
+      }
+    }
+  }
+
+  .ant-select-selection-overflow {
+    position: relative;
+    gap: 8px;
+
+    .contacto-tag--select {
+      margin: 0;
+    }
+    .ant-select-selection-search {
+      height: 28px;
+      line-height: 28px;
     }
   }
 
@@ -224,34 +244,59 @@
   .ant-modal-content {
     > .ant-modal-body {
       padding: 16px !important;
-    
+
       > .contacto-multi-select-wrapper {
         display: flex;
         flex-direction: column;
-    
+
         > .contacto-multi-select {
-          margin-bottom: 8px;
-    
+          > .ant-select-selector {
+            border: none;
+            min-height: 98px;
+            max-height: 300px;
+            display: block;
+            overflow-y: auto;
+            padding: 8px;
+
+            &::after {
+              display: none;
+            }
+
+            > .ant-select-selection-overflow {
+              .ant-select-selection-placeholder {
+                color: var(--gray-2);
+                top: 20px;
+                left: 13px;
+              }
+
+              .ant-select-selection-item {
+                line-height: calc(var(--height) - 2px);
+                color: var(--primary-text-color);
+              }
+
+              .ant-select-selection-search,
+              .ant-select-selection-search-mirror {
+                height: 20px;
+                line-height: 20px;
+                margin: 0;
+
+                > input {
+                  height: inherit;
+                  line-height: inherit;
+                }
+              }
+            }
+          }
+
           .ant-select-selection-overflow {
             position: relative;
-            padding-left: 8px;
-    
-            &::after {
-              content: var(--placeHolderText);
-              position: absolute;
-              height: 100%;
-              left: 8px;
-              top: 50%;
-              transform: translateY(-11px);
-              color: var(--gray-2);
-            }
           }
         }
         > .contacto-multi-select-tag-list {
           display: flex;
           flex-wrap: wrap;
           gap: 8px;
-    
+
           .contacto-tag--select {
             margin: 0;
           }
