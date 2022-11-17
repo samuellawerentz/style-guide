@@ -1,0 +1,66 @@
+.sg.contacto-jsoneditor {
+    .schema-editor {
+        
+        .object .object .item::before {
+            width: 2px;
+            background-color: var(--primary-color-3);
+        }
+        .object .object .item::after {
+            height: 2px;
+            background-color: var(--primary-color-3);
+        }
+    }
+    .add-item {
+        border: 1px solid var(--primary-color);
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        border-radius: 4px;
+        &-container {
+            flex-basis: 100%;
+        }
+    }
+    .key-menu {
+        padding: 4px 0;
+        & > div {
+            height: 44px;
+            &:hover {
+                background-color: var(--background-highlight-color);
+            }
+        }
+    }
+    &.key-value {
+        .object .object .item::before, .object .object .item::after {
+            left: -22px;
+        }
+    }
+    &.schema {
+        .object .object .item:first-child::before {
+            height: calc(100% + 32px);
+            top: -16px;
+        }
+        .object .object .item:only-child::before {
+            height: 32px;
+        }
+    }
+}
+.key-menu {
+    border: 1px solid var(--primary-color-4);
+    padding: 4px 0;
+    box-shadow: var(--box-shadow1);
+    .menu-container {
+        & > div {
+            cursor: pointer;
+            height: 44px;
+            padding: 0 16px;
+            &:hover {
+                background-color: var(--background-highlight-color);
+            }
+            &:first-child {
+                border-bottom: 1px solid var(--border-color-1);
+            }
+        }
+    }
+}

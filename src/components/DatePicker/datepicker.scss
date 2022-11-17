@@ -1,0 +1,200 @@
+.contacto-date-picker-field-wrapper {
+  width: 100%;
+  > .contacto-date-picker-label {
+    display: block;
+    margin-bottom: 4px;
+  }
+  > .contacto-date-picker-field {
+    width: 100%;
+    height: 36px;
+    box-shadow: var(--box-shadow-default);
+  
+    &:hover {
+      border-color: var(--primary-color-3);
+    }
+    &.ant-picker-focused {
+      border-color: var(--primary-color-2);
+    }
+    &--small {
+      height: 28px;
+    }
+    &--large {
+      height: 44px;
+    }
+  
+    > .ant-picker-active-bar {
+      background-color: var(--primary-color);
+    }
+  }
+}
+
+.contacto-date-picker-popup {
+  .ant-picker-cell-today > .ant-picker-cell-inner::before {
+    border-color: transparent;
+    border-radius: 4px;
+  }
+  &--showToday {
+    .ant-picker-cell-today > .ant-picker-cell-inner::before {
+      border-color: var(--primary-color);
+    }
+  }
+  .ant-picker-panel-container {
+    border: 1px solid var(--default-container-background);
+    box-shadow: var(--box-shadow-default);
+    border-radius: 4px;
+    padding: 12px 8px 4px 8px;
+    overflow: hidden;
+
+    .ant-picker-cell {
+      &.ant-picker-cell-selected > .ant-picker-cell-inner {
+        background-color: var(--primary-color);
+        border-radius: 4px;
+      }
+    }
+    > .ant-picker-panel {
+      .ant-picker-cell-selected {
+        .ant-picker-cell-inner {
+          width: 36px;
+          height: 36px;
+        }
+      }
+    }
+  }
+  > .ant-picker-range-wrapper {
+    border: 1px solid var(--default-container-background);
+    box-shadow: var(--box-shadow-default);
+    border-radius: 4px;
+    overflow: hidden;
+
+    .ant-picker-panel-container {
+      .ant-picker-content {
+        overflow: hidden;
+
+        .ant-picker-cell {
+          &::before {
+            height: 36px;
+          }
+          &::after {
+            height: 36px;
+            border-color: var(--primary-color-3);
+          }
+          &.ant-picker-cell-in-range {
+            &::before {
+              background-color: var(--primary-color-4);
+            }
+
+            &.ant-picker-cell-range-hover {
+              &::before {
+                background-color: var(--primary-color-3);
+              }
+            }
+            &.ant-picker-cell-range-hover-start > .ant-picker-cell-inner {
+              &::after {
+                background-color: var(--primary-color-3);
+                border-radius: 4px 0 0 4px;
+              }
+            }
+            &.ant-picker-cell-range-hover-end > .ant-picker-cell-inner {
+              &::after {
+                border-radius: 0px 4px 4px 0;
+                background-color: var(--primary-color-3);
+              }
+            }
+          }
+          &.ant-picker-cell-today.ant-picker-cell-disabled > .ant-picker-cell-inner {
+            &::before {
+              border-color: transparent;
+            }
+          }
+          &.ant-picker-cell-range-start {
+            z-index: 3;
+            > .ant-picker-cell-inner {
+              background-color: var(--primary-color);
+              border-radius: 4px 0 0 4px;
+            }
+          }
+          &.ant-picker-cell-range-end {
+            z-index: 3;
+            > .ant-picker-cell-inner {
+              background-color: var(--primary-color);
+              border-radius: 0px 4px 4px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .ant-picker-panel {
+    width: 100%;
+    border: none;
+
+    > .ant-picker-date-panel {
+      > .ant-picker-header {
+        padding: 0 16px;
+        border-bottom: none;
+
+        .ant-picker-header-super-prev-btn {
+          display: none;
+        }
+        .ant-picker-header-super-next-btn {
+          display: none;
+        }
+
+        > .ant-picker-header-view {
+          font-weight: 600;
+        }
+        button {
+          color: unset;
+          &:hover {
+            color: var(--primary-color);
+          }
+        }
+      }
+      > .ant-picker-body {
+        padding: 0px 12px 8px 12px;
+      }
+
+      .ant-picker-content {
+        > thead > tr > th {
+          font-size: 12px;
+          text-transform: uppercase;
+          color: var(--gray-2);
+        }
+        > tbody {
+          > tr:last-child {
+            display: none;
+          }
+        }
+      }
+    }
+    > .ant-picker-footer {
+      display: none;
+    }
+  }
+
+  .ant-picker-range-arrow {
+    width: 12px;
+    height: 12px;
+    box-shadow: none;
+    translate: 0 -2px;
+
+    &::after {
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      border: 2px solid var(--primary-color-4);
+      border-left-width: 0px;
+      border-bottom-width: 0px;
+    }
+  }
+  .ant-picker-cell {
+    .ant-picker-cell-inner {
+      width: 36px;
+      height: 36px;
+      text-align: center;
+      line-height: 36px;
+      border-radius: 4px;
+    }
+  }
+}

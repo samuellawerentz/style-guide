@@ -13,7 +13,9 @@ export default {
   decorators: [(story) => <div style={{ width: '280px' }}>{story()}</div>],
 }
 
-const Template = (args) => <Select {...args} />
+const Template = (args) => {
+  return <Select {...args} />
+}
 
 export const Default = Template.bind({})
 Default.args = {
@@ -126,7 +128,7 @@ export const ReadOnly = Template.bind({})
 ReadOnly.args = {
   type: 'input',
   size: 'default',
-  placeholder: 'An read-only textfield',
+  placeholder: 'A read-only textfield',
   value: 'Read only',
   readOnly: true,
 }
@@ -135,9 +137,10 @@ export const MultipleSelect = Template.bind({})
 MultipleSelect.args = {
   type: 'input',
   size: 'default',
-  placeholder: 'An read-only textfield',
-  // value: 'Read only',
+  placeholder: 'A multi select textfield',
   mode: 'multiple',
+  maxTagCount: 'responsive',
+  maxTagModalTitle: 'Select items',
   options: [
     { value: 'Apple' },
     { value: 'Ball' },
