@@ -79,7 +79,7 @@ function ItemRow({
           </Select>
         </div>
       )}
-      {siblings?.length > 1 && (
+      {mode !== MODES.schema && siblings?.length > 1 && (
         <div
           className="remove"
           onClick={() => {
