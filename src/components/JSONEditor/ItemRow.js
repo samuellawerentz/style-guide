@@ -79,14 +79,16 @@ function ItemRow({
           </Select>
         </div>
       )}
-      <div
-        className="remove"
-        onClick={() => {
-          removeNode(siblings, idx)
-        }}
-      >
-        <Icon name="delete" size={20} color="gray-3" hoverColor="danger-color" />
-      </div>
+      {siblings?.length > 1 && (
+        <div
+          className="remove"
+          onClick={() => {
+            removeNode(siblings, idx)
+          }}
+        >
+          <Icon name="delete" size={20} color="gray-3" hoverColor="danger-color" />
+        </div>
+      )}
       {mode === MODES.noChildren && idx === siblings.length - 1 && (
         <Block className="add-item-container" spacing={[0, 16]}>
           <div className="add-item" onClick={() => addItem(siblings, siblings[idx].parent)}>
