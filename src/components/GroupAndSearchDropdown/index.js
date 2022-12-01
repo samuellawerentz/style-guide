@@ -72,7 +72,12 @@ export const GroupAndSearchDropdown = ({
 
   return (
     <>
-      <Dropdown overlay={<OptionsDropdown />} trigger={['click']} visible={showDropdown}>
+      <Dropdown
+        overlay={<OptionsDropdown />}
+        trigger={['click']}
+        visible={showDropdown}
+        onVisibleChange={(visible) => setShowDropdown(visible)}
+      >
         <div className={`group-dropdown`}>
           <TextField
             type={'text'}

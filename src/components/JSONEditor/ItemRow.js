@@ -41,7 +41,11 @@ function ItemRow({
         style={{ width: mode === MODES.schema ? `${KEY_WIDTH - 32 * item.level}px` : undefined }}
       >
         {mode !== MODES.schema ? (
-          <TextField value={item.key} onChange={(e) => updateKey(item, e.target.value)} />
+          <TextField
+            className="textfield-width"
+            value={item.key}
+            onChange={(e) => updateKey(item, e.target.value)}
+          />
         ) : (
           <Text type="headline" ellipsis>
             {item.key}
@@ -51,13 +55,14 @@ function ItemRow({
       {mode !== MODES.schema && (
         <div className="value">
           {item.data_type === DATA_TYPES.object || item.data_type === DATA_TYPES.list ? (
-            <TextField disabled />
+            <TextField className="textfield-width" disabled />
           ) : (
             <GroupAndSearchDropdown
               options={options}
               value={item.response_value ? String(item.response_value) : ''}
               onChange={(e) => updateValue(item, e.target.value)}
               onValueSelect={(value) => updateValue(item, value)}
+              className="textfield-width"
             />
           )}
         </div>
@@ -79,7 +84,7 @@ function ItemRow({
           </Select>
         </div>
       )}
-      {siblings?.length > 1 && (
+      {mode !== MODES.schema && siblings?.length > 1 && (
         <div
           className="remove"
           onClick={() => {
