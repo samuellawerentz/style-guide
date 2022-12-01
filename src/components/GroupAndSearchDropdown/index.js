@@ -21,7 +21,7 @@ export const GroupAndSearchDropdown = ({
     const [searchString, setSearchString] = useState('')
 
     return (
-      <div id="dropdown" className="options-dropdown">
+      <div className="options-dropdown">
         <div className="search-box">
           <TextField
             type="search-box"
