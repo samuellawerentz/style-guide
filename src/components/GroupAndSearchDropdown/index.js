@@ -21,7 +21,7 @@ export const GroupAndSearchDropdown = ({
     const [searchString, setSearchString] = useState('')
 
     return (
-      <div className="options-dropdown">
+      <div id="dropdown" className="options-dropdown">
         <div className="search-box">
           <TextField
             type="search-box"
@@ -72,7 +72,12 @@ export const GroupAndSearchDropdown = ({
 
   return (
     <>
-      <Dropdown overlay={<OptionsDropdown />} trigger={['click']} visible={showDropdown}>
+      <Dropdown
+        overlay={<OptionsDropdown />}
+        trigger={['click']}
+        visible={showDropdown}
+        onVisibleChange={(visible) => setShowDropdown(visible)}
+      >
         <div className={`group-dropdown`}>
           <TextField
             type={'text'}
