@@ -136,6 +136,7 @@ export const Select = React.forwardRef(function Select(
                 value={localValue}
                 onChange={onValueChange}
                 {...props}
+                getPopupContainer={undefined}
                 maxTagCount={null}
               />
             </div>
