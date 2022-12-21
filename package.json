@@ -4,7 +4,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "repository": "git://github.com/contacto-io/contacto-console",
-  "version": "0.4.55",
+  "version": "0.4.56",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
@@ -83,7 +83,7 @@
     "raw-loader": "^4.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "rc-json-editor": "^2.0.8",
+    "rc-json-editor": "^2.0.22",
     "react-scripts": "4.0.3",
     "react-sortable-hoc": "^2.0.0",
     "rollup": "^2.53.3",
@@ -104,7 +104,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-sortable-hoc": "^2.0.0",
-    "rc-json-editor": "^2.0.5",
+    "rc-json-editor": "^2.0.22",
     "simplebar": "^5.3.5",
     "simplebar-react": "^2.3.5"
   }

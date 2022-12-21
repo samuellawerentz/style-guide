@@ -44,6 +44,7 @@ function ItemRow({
           <TextField
             className="textfield-width"
             value={item.key}
+            placeholder="Key"
             onChange={(e) => updateKey(item, e.target.value)}
           />
         ) : (
@@ -63,6 +64,7 @@ function ItemRow({
               onChange={(e) => updateValue(item, e.target.value)}
               onValueSelect={(value) => updateValue(item, value)}
               className="textfield-width"
+              placeholder="Value"
             />
           )}
         </div>
@@ -96,7 +98,7 @@ function ItemRow({
       )}
       {mode === MODES.noChildren && idx === siblings.length - 1 && (
         <Block className="add-item-container" spacing={[0, 16]}>
-          <div className="add-item" onClick={() => addItem(siblings, siblings[idx].parent)}>
+          <div className="add-item" onClick={() => addItem(siblings)}>
             <Icon name="add" size={20} color="primary-color" />
           </div>
         </Block>
