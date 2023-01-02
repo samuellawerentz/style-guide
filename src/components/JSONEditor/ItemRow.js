@@ -8,6 +8,64 @@ import { Block } from '../Block/index'
 import { DATA_TYPES, MODES } from './constants'
 import { Text } from '../Typography/index'
 import { GroupAndSearchDropdown } from '../GroupAndSearchDropdown/index'
+import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc'
+
+const DragHandle = SortableHandle((props) => (
+  <Icon
+    name="drag_indicator"
+    size={20}
+    color="gray-2"
+    className={`remove ${props.className || ''}`}
+  />
+))
+
+const SortableGroup = SortableContainer(({ options, item, updateValue, valueArray }) => {
+  return (
+    <div>
+      {valueArray.map((valueItem, index, arr) => {
+        const SortableValue = SortableElement((props) => (
+          <Block key={index} display="flex" className="value-group" gap={8} {...props}>
+            <GroupAndSearchDropdown
+              key={index}
+              options={options}
+              defaultValue={valueItem}
+              onValueSelect={(value) => {
+                valueArray[index] = value
+                updateValue(item, valueArray.join('|'))
+              }}
+              className="textfield-width"
+              placeholder="Value"
+            />
+            <DragHandle className={`${arr.length > 1 ? '' : 'no-drag'}`} />
+          </Block>
+        ))
+        return <SortableValue key={index} index={index} />
+      })}
+    </div>
+  )
+})
+
+const ValueGroup = (props) => {
+  const hasNull = !!/\|?null\|?/g.exec(props.item.response_value)
+  const isNullInBetween = props.item.response_value.split(/\|?null\|?/g).every(Boolean)
+  const valueArray = String(
+    props.item.response_value.replace(/\|?null\|?/g, `${isNullInBetween ? '|' : ''}`),
+  ).split('|')
+  return (
+    <SortableGroup
+      onSortEnd={({ oldIndex, newIndex }) => {
+        const newArr = arrayMove(valueArray, oldIndex, newIndex)
+        props.updateValue(props.item, `${newArr.join('|')}${hasNull ? '|null' : ''}`)
+      }}
+      shouldCancelStart={() => {}}
+      distance={5}
+      useDragHandle
+      lockAxis={true}
+      valueArray={valueArray}
+      {...props}
+    />
+  )
+}
 
 const KEY_WIDTH = 250
 
@@ -16,7 +74,6 @@ function ItemRow({
   siblings,
   idx,
   updateSelection,
-  addSubItem,
   addItem,
   updateNodeType,
   removeNode,
@@ -58,14 +115,7 @@ function ItemRow({
           {item.data_type === DATA_TYPES.object || item.data_type === DATA_TYPES.list ? (
             <TextField className="textfield-width" disabled />
           ) : (
-            <GroupAndSearchDropdown
-              options={options}
-              value={item.response_value ? String(item.response_value) : ''}
-              onChange={(e) => updateValue(item, e.target.value)}
-              onValueSelect={(value) => updateValue(item, value)}
-              className="textfield-width"
-              placeholder="Value"
-            />
+            <ValueGroup options={options} item={item} updateValue={updateValue} />
           )}
         </div>
       )}
@@ -78,11 +128,18 @@ function ItemRow({
               updateNodeType(item, e)
             }}
           >
-            <option value="list">List</option>
             <option value="string">String</option>
-            <option value="object">Object</option>
             <option value="number">Number</option>
             <option value="boolean">Boolean</option>
+            <option value="object" disabled>
+              Object
+            </option>
+            <option value="list" disabled>
+              List
+            </option>
+            <option value="list of strings">List of Strings</option>
+            <option value="list of booleans">List of Booleans</option>
+            <option value="list of numbers">List of Numbers</option>
           </Select>
         </div>
       )}
@@ -95,6 +152,34 @@ function ItemRow({
         >
           <Icon name="delete" size={20} color="gray-3" hoverColor="danger-color" />
         </div>
+      )}
+      {mode !== MODES.schema && (
+        <>
+          <Block
+            className="add-value"
+            display="flex"
+            alignItems="center"
+            gap={4}
+            onClick={() => {
+              updateValue(item, item.response_value + '|')
+            }}
+          >
+            <Icon name="add" size={20} color="primary-color" />
+            <Text variant="primary">Add Value</Text>
+          </Block>
+          <Block className="remove">
+            <Checkbox
+              style={{ marginLeft: 16 }}
+              checked={!!/\|?null\|?/g.exec(item.response_value)}
+              onChange={(e) => {
+                if (e.target.checked) updateValue(item, item.response_value + '|null')
+                else updateValue(item, item.response_value.replace(/\|?null\|?/g, ''))
+              }}
+            >
+              Pass null value
+            </Checkbox>
+          </Block>
+        </>
       )}
       {mode === MODES.noChildren && idx === siblings.length - 1 && (
         <Block className="add-item-container" spacing={[0, 16]}>

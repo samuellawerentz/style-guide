@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Dropdown } from 'antd'
 import PropTypes from 'prop-types'
 import { Icon } from '../Icon/index'
@@ -7,13 +7,7 @@ import { Text } from '../Typography/index'
 import { TextField } from '../Textfield/index'
 import './groupAndSearchDropdown.scss'
 
-export const GroupAndSearchDropdown = ({
-  options,
-  value = '',
-  onValueSelect,
-  className,
-  ...props
-}) => {
+export const GroupAndSearchDropdown = ({ options, onValueSelect, className, ...props }) => {
   const [showDropdown, setShowDropdown] = useState(false)
   const textFieldRef = useRef()
 
@@ -64,12 +58,6 @@ export const GroupAndSearchDropdown = ({
     )
   }
 
-  useEffect(() => {
-    if (value[0] === '{' && value[1] === '{' && value?.length === 2) {
-      setShowDropdown(true)
-    } else setShowDropdown(false)
-  }, [value])
-
   return (
     <>
       <Dropdown
@@ -93,8 +81,12 @@ export const GroupAndSearchDropdown = ({
                 <Icon name="data_object" />
               </div>
             }
-            value={value}
             onClick={(e) => e.stopPropagation()}
+            onChange={({ target: { value } }) => {
+              if (value[0] === '{' && value[1] === '{' && value?.length === 2) {
+                setShowDropdown(true)
+              } else setShowDropdown(false)
+            }}
             {...props}
           />
         </div>

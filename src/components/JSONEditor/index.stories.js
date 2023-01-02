@@ -25,24 +25,53 @@ SchemaEditor.args = {
       payment: {
         type: 'cash',
         is_successful: true,
+        ids: [1, 2, 3],
       },
     },
   },
 }
 
-export const KeyValueEditor = Template.bind({})
-KeyValueEditor.args = {
-  mode: 'key-value',
+// export const KeyValueEditor = Template.bind({})
+// KeyValueEditor.args = {
+//   mode: 'key-value',
+//   data: {
+//     order: {
+//       order_id: 12312412,
+//       order_date: '12/12/12',
+//       order_amount: '12000.00',
+//       payment: {
+//         type: 'cash',
+//         is_successful: true,
+//       },
+//     },
+//   },
+//   options: [
+//     {
+//       title: 'System Variables',
+//       children: [
+//         { label: 'Abcd', value: 'Abcd' },
+//         { label: 'dsfsdf', value: 'dsfsdf' },
+//         { label: 'gtg', value: 'gtg' },
+//         { label: 'qwe', value: 'qwe' },
+//       ],
+//     },
+//     {
+//       title: 'API 2',
+//       children: [
+//         { label: 'Absfwecd', value: 'Absfwecd' },
+//         { label: 'ewrew', value: 'ewrew' },
+//         { label: 'yut', value: 'yut' },
+//         { label: 'pop', value: 'pop' },
+//       ],
+//     },
+//   ],
+// }
+
+export const KeyValueEditorWithNoChildren = Template.bind({})
+KeyValueEditorWithNoChildren.args = {
+  mode: 'no-children',
   data: {
-    order: {
-      order_id: 12312412,
-      order_date: '12/12/12',
-      order_amount: '12000.00',
-      payment: {
-        type: 'cash',
-        is_successful: true,
-      },
-    },
+    order_id: 'asfd',
   },
   options: [
     {
@@ -64,14 +93,7 @@ KeyValueEditor.args = {
       ],
     },
   ],
-}
-
-export const KeyValueEditorWithNoChildren = Template.bind({})
-KeyValueEditorWithNoChildren.args = {
-  mode: 'no-children',
-  data: {
-    order_id: 12312412,
-  },
+  onChange: (e) => console.log(e),
 }
 
 const treeProps = {

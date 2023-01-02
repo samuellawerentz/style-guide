@@ -9,6 +9,22 @@
             height: 2px;
             background-color: var(--primary-color-3);
         }
+
+        .object .item {
+            align-items: flex-start;
+            .remove, .add-value {
+                margin-top: 8px;
+                cursor: pointer;
+            }
+            .value-group:nth-child(n + 2) {
+                margin-top: 8px;
+            }
+            .no-drag {
+                opacity: 0;
+                pointer-events: none;
+                visibility: hidden;
+            }
+        }
     }
     .add-item {
         border: 1px solid var(--primary-color);
