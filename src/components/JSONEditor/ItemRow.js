@@ -9,6 +9,7 @@ import { DATA_TYPES, MODES } from './constants'
 import { Text } from '../Typography/index'
 import { GroupAndSearchDropdown } from '../GroupAndSearchDropdown/index'
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc'
+import { useRef } from 'react'
 
 const DragHandle = SortableHandle((props) => (
   <Icon
@@ -19,49 +20,58 @@ const DragHandle = SortableHandle((props) => (
   />
 ))
 
-const SortableGroup = SortableContainer(({ options, item, updateValue, valueArray }) => {
-  return (
-    <div>
-      {valueArray.map((valueItem, index, arr) => {
-        const SortableValue = SortableElement((props) => (
-          <Block key={index} display="flex" className="value-group" gap={8} {...props}>
-            <GroupAndSearchDropdown
-              key={index}
-              options={options}
-              defaultValue={valueItem}
-              onValueSelect={(value) => {
-                valueArray[index] = value
-                updateValue(item, valueArray.join('|'))
-              }}
-              className="textfield-width"
-              placeholder="Value"
-            />
-            <DragHandle className={`${arr.length > 1 ? '' : 'no-drag'}`} />
-          </Block>
-        ))
-        return <SortableValue key={index} index={index} />
-      })}
-    </div>
-  )
-})
+const SortableGroup = SortableContainer(
+  ({ options, item, updateValue, valueArray, valueChangeRef }) => {
+    return (
+      <div>
+        {valueArray.map((valueItem, index, arr) => {
+          if (valueItem === 'null') return null
+          const SortableValue = SortableElement((props) => (
+            <Block key={index} display="flex" className="value-group" gap={8} {...props}>
+              <GroupAndSearchDropdown
+                key={index}
+                options={options}
+                defaultValue={valueItem}
+                onValueSelect={(value) => {
+                  valueArray[index] = value
+                  updateValue(item, valueArray.join('|'))
+                  valueChangeRef.current = true
+                }}
+                onBlur={(e) => {
+                  const value = e.target.value
+                  if (!valueChangeRef.current && value && valueArray[index] !== value) {
+                    valueArray[index] = value
+                    updateValue(item, valueArray.join('|'))
+                    valueChangeRef.current = false
+                  }
+                }}
+                className="textfield-width"
+                placeholder="Value"
+              />
+              <DragHandle className={`${arr.length > 1 ? '' : 'no-drag'}`} />
+            </Block>
+          ))
+          return <SortableValue key={index} index={index} />
+        })}
+      </div>
+    )
+  },
+)
 
 const ValueGroup = (props) => {
-  const hasNull = !!/\|?null\|?/g.exec(props.item.response_value)
-  const isNullInBetween = props.item.response_value.split(/\|?null\|?/g).every(Boolean)
-  const valueArray = String(
-    props.item.response_value.replace(/\|?null\|?/g, `${isNullInBetween ? '|' : ''}`),
-  ).split('|')
+  const valueArray = props.item.response_value.split('|')
   return (
     <SortableGroup
       onSortEnd={({ oldIndex, newIndex }) => {
         const newArr = arrayMove(valueArray, oldIndex, newIndex)
-        props.updateValue(props.item, `${newArr.join('|')}${hasNull ? '|null' : ''}`)
+        props.updateValue(props.item, newArr.join('|'))
       }}
       shouldCancelStart={() => {}}
       distance={5}
       useDragHandle
       lockAxis={true}
       valueArray={valueArray}
+      valueChangeRef={props.valueChangeRef}
       {...props}
     />
   )
@@ -82,6 +92,7 @@ function ItemRow({
   mode,
   options,
 }) {
+  const valueChangeRef = useRef(false)
   return (
     <>
       {mode === MODES.schema && (
@@ -115,7 +126,12 @@ function ItemRow({
           {item.data_type === DATA_TYPES.object || item.data_type === DATA_TYPES.list ? (
             <TextField className="textfield-width" disabled />
           ) : (
-            <ValueGroup options={options} item={item} updateValue={updateValue} />
+            <ValueGroup
+              options={options}
+              item={item}
+              updateValue={updateValue}
+              valueChangeRef={valueChangeRef}
+            />
           )}
         </div>
       )}
@@ -161,7 +177,16 @@ function ItemRow({
             alignItems="center"
             gap={4}
             onClick={() => {
-              updateValue(item, item.response_value + '|')
+              setTimeout(() => {
+                const hasNull = !!/\|?null\|?/g.exec(item.response_value)
+                const isNullInBetween = item.response_value.split(/\|?null\|?/g).every(Boolean)
+                const stringValue = String(
+                  item.response_value.replace(/\|?null\|?/g, `${isNullInBetween ? '|' : ''}`),
+                )
+
+                valueChangeRef.current = false
+                updateValue(item, `${hasNull ? stringValue + '||null' : item.response_value + '|'}`)
+              }, 50)
             }}
           >
             <Icon name="add" size={20} color="primary-color" />
@@ -172,6 +197,7 @@ function ItemRow({
               style={{ marginLeft: 16 }}
               checked={!!/\|?null\|?/g.exec(item.response_value)}
               onChange={(e) => {
+                valueChangeRef.current = false
                 if (e.target.checked) updateValue(item, item.response_value + '|null')
                 else updateValue(item, item.response_value.replace(/\|?null\|?/g, ''))
               }}

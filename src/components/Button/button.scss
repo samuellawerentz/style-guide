@@ -182,12 +182,12 @@
   }
 
   &--only-icon {
-    padding: 8px;
+    padding: 4px;
     min-width: auto;
     width: auto;
 
     .contacto-icon {
-      margin-right: 0;
+      margin-right: 0 !important;
 
       &.small {
         font-size: 20px;

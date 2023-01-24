@@ -1,5 +1,6 @@
 import React from 'react'
 import { JSONEditor } from './'
+import { ReactComponent as BracketIcon } from '../../assets/ic-bracket.svg'
 
 export default {
   title: 'Components/JSONEditor',
@@ -70,9 +71,8 @@ SchemaEditor.args = {
 export const KeyValueEditorWithNoChildren = Template.bind({})
 KeyValueEditorWithNoChildren.args = {
   mode: 'no-children',
-  data: {
-    order_id: 'asfd',
-  },
+  dropdownIcon: BracketIcon,
+  data: { '': '' },
   options: [
     {
       title: 'System Variables',

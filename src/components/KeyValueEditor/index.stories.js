@@ -1,27 +1,29 @@
+import { useArgs } from '@storybook/client-api'
 import React from 'react'
-import { GroupAndSearchDropdown } from '.'
+import { KeyValueEditor } from './'
 import { ReactComponent as BracketIcon } from '../../assets/ic-bracket.svg'
 
 export default {
-  title: 'Components/GroupAndSearchDropdown',
-  component: GroupAndSearchDropdown,
-  argTypes: {
-    size: {
-      options: ['small', 'default', 'large'],
-      control: { type: 'select' },
-    },
-  },
-  decorators: [(story) => <div style={{ width: '280px' }}>{story()}</div>],
+  title: 'Components/KeyValueEditor',
+  component: KeyValueEditor,
+  // argTypes: {
+  //  type: {
+  //    options:
+  //    control: { type: 'select' },
+  //  },
+  // },
 }
 
-const Template = (args) => <GroupAndSearchDropdown {...args} />
+const Template = (args) => {
+  // eslint-disable-next-line no-unused-vars
+  const [{ data }, updateArgs] = useArgs()
+  return <KeyValueEditor {...args} onChange={(data) => updateArgs({ data: [...data] })} />
+}
 
 export const Default = Template.bind({})
 Default.args = {
+  data: [{ key: '123', value: ['123'] }],
   dropdownIcon: BracketIcon,
-  maxLength: 100,
-  placeholder: 'A simple text field',
-  onChange: (e) => console.log(e.target.value),
   options: [
     {
       title: 'System Variables',

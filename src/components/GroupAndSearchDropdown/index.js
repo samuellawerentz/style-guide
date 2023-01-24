@@ -7,7 +7,22 @@ import { Text } from '../Typography/index'
 import { TextField } from '../Textfield/index'
 import './groupAndSearchDropdown.scss'
 
-export const GroupAndSearchDropdown = ({ options, onValueSelect, className, ...props }) => {
+function insertText(newText, e) {
+  let cursorPosition = e.selectionStart
+  let textBeforeCursorPosition = e.value.substring(0, cursorPosition)
+  let textAfterCursorPosition = e.value.substring(cursorPosition, e.value.length)
+  return textBeforeCursorPosition + newText + textAfterCursorPosition
+}
+
+export const GroupAndSearchDropdown = ({
+  options,
+  onValueSelect,
+  className,
+  mode,
+  onChange,
+  dropdownIcon,
+  ...props
+}) => {
   const [showDropdown, setShowDropdown] = useState(false)
   const textFieldRef = useRef()
 
@@ -43,7 +58,8 @@ export const GroupAndSearchDropdown = ({ options, onValueSelect, className, ...p
                   key={childIndex}
                   onClick={() => {
                     const finalValue = `{{${child?.value}}}`
-                    onValueSelect(finalValue)
+                    textFieldRef.current.focus()
+                    onChange({ target: { value: insertText(finalValue, document.activeElement) } })
                     setShowDropdown(false)
                     setSearchString('')
                   }}
@@ -62,7 +78,7 @@ export const GroupAndSearchDropdown = ({ options, onValueSelect, className, ...p
     <>
       <Dropdown
         overlay={<OptionsDropdown />}
-        trigger={['click']}
+        trigger={[]}
         visible={showDropdown}
         onVisibleChange={(visible) => setShowDropdown(visible)}
       >
@@ -73,19 +89,20 @@ export const GroupAndSearchDropdown = ({ options, onValueSelect, className, ...p
             className={className}
             suffix={
               <div
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation()
                   setShowDropdown(!showDropdown)
                 }}
                 className="contacto-icon--input-suffix-variable-dropdown"
               >
-                <Icon name="data_object" />
+                <Icon svg={dropdownIcon} size={20} />
               </div>
             }
-            onClick={(e) => e.stopPropagation()}
-            onChange={({ target: { value } }) => {
-              if (value[0] === '{' && value[1] === '{' && value?.length === 2) {
-                setShowDropdown(true)
-              } else setShowDropdown(false)
+            // onClick={(e) => e.stopPropagation()}
+            onChange={(e) => {
+              const value = e.target.value
+              setShowDropdown(value.match(/{{$/g))
+              onChange(e)
             }}
             {...props}
           />
@@ -103,4 +120,7 @@ GroupAndSearchDropdown.propTypes = {
   options: PropTypes.object,
   value: PropTypes.string,
   onValueSelect: PropTypes.func,
+  mode: PropTypes.string,
+  onChange: PropTypes.func,
+  dropdownIcon: PropTypes.any,
 }

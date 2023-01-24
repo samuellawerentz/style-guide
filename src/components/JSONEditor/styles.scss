@@ -16,6 +16,10 @@
                 margin-top: 8px;
                 cursor: pointer;
             }
+            .remove.disabled {
+                pointer-events: none;
+                opacity: 0.5;
+            }
             .value-group:nth-child(n + 2) {
                 margin-top: 8px;
             }
