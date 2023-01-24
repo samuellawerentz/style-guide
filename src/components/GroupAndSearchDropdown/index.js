@@ -59,7 +59,10 @@ export const GroupAndSearchDropdown = ({
                   onClick={() => {
                     const finalValue = `{{${child?.value}}}`
                     textFieldRef.current.focus()
-                    onChange({ target: { value: insertText(finalValue, document.activeElement) } })
+                    onChange({
+                      target: { value: insertText(finalValue, document.activeElement) },
+                      isSelection: true,
+                    })
                     setShowDropdown(false)
                     setSearchString('')
                   }}
