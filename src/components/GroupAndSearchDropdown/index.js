@@ -11,7 +11,7 @@ function insertText(newText, e) {
   let cursorPosition = e.selectionStart
   let textBeforeCursorPosition = e.value.substring(0, cursorPosition)
   let textAfterCursorPosition = e.value.substring(cursorPosition, e.value.length)
-  return textBeforeCursorPosition + newText + textAfterCursorPosition
+  return textBeforeCursorPosition.replace(/{{$/, '') + newText + textAfterCursorPosition
 }
 
 export const GroupAndSearchDropdown = ({
@@ -80,6 +80,7 @@ export const GroupAndSearchDropdown = ({
         overlay={<OptionsDropdown />}
         trigger={[]}
         visible={showDropdown}
+        placement="bottomRight"
         onVisibleChange={(visible) => setShowDropdown(visible)}
       >
         <div className={`group-dropdown`}>

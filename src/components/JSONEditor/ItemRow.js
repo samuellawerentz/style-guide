@@ -20,38 +20,48 @@ const DragHandle = SortableHandle((props) => (
   />
 ))
 
+const SortableValue = SortableElement(
+  ({ arr, valueArray, i, dropdownIcon, valueItem, updateValue, item, options, ...props }) => (
+    <Block display="flex" className="value-group" gap={8} {...props}>
+      <GroupAndSearchDropdown
+        dropdownIcon={dropdownIcon}
+        key={i}
+        options={options}
+        defaultValue={valueItem}
+        onChange={(e) => {
+          const value = e.target.value
+          valueArray[i] = value
+          updateValue(item, valueArray.join('|'))
+        }}
+        className="textfield-width"
+        placeholder="Value"
+      />
+      <DragHandle className={`${arr.length > 1 ? '' : 'no-drag'}`} />
+    </Block>
+  ),
+)
+
 const SortableGroup = SortableContainer(
-  ({ options, item, updateValue, valueArray, valueChangeRef }) => {
+  ({ options, item, updateValue, valueArray, valueChangeRef, dropdownIcon }) => {
     return (
       <div>
         {valueArray.map((valueItem, index, arr) => {
           if (valueItem === 'null') return null
-          const SortableValue = SortableElement((props) => (
-            <Block key={index} display="flex" className="value-group" gap={8} {...props}>
-              <GroupAndSearchDropdown
-                key={index}
-                options={options}
-                defaultValue={valueItem}
-                onValueSelect={(value) => {
-                  valueArray[index] = value
-                  updateValue(item, valueArray.join('|'))
-                  valueChangeRef.current = true
-                }}
-                onBlur={(e) => {
-                  const value = e.target.value
-                  if (!valueChangeRef.current && value && valueArray[index] !== value) {
-                    valueArray[index] = value
-                    updateValue(item, valueArray.join('|'))
-                    valueChangeRef.current = false
-                  }
-                }}
-                className="textfield-width"
-                placeholder="Value"
-              />
-              <DragHandle className={`${arr.length > 1 ? '' : 'no-drag'}`} />
-            </Block>
-          ))
-          return <SortableValue key={index} index={index} />
+
+          return (
+            <SortableValue
+              key={index}
+              index={index}
+              arr={arr}
+              i={index}
+              valueArray={valueArray}
+              dropdownIcon={dropdownIcon}
+              valueItem={valueItem}
+              updateValue={updateValue}
+              item={item}
+              options
+            />
+          )
         })}
       </div>
     )
@@ -90,6 +100,7 @@ function ItemRow({
   updateKey,
   updateValue,
   mode,
+  dropdownIcon,
   options,
 }) {
   const valueChangeRef = useRef(false)
@@ -131,6 +142,7 @@ function ItemRow({
               item={item}
               updateValue={updateValue}
               valueChangeRef={valueChangeRef}
+              dropdownIcon={dropdownIcon}
             />
           )}
         </div>

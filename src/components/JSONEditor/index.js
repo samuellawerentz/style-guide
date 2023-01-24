@@ -9,10 +9,12 @@ import { JsonEditor as JsonSchemaEditor } from 'rc-json-editor'
  * A JSON Editor component wrapped upon rc-json-editor
  */
 export const JSONEditor = forwardRef(function JSONEditor(
-  { options, className = '', data, mode = 'schema', fromTree, ...props },
+  { options, className = '', data, mode = 'schema', fromTree, dropdownIcon, ...props },
   ref,
 ) {
-  const ItemRowWrapper = (props) => <ItemRow options={options} {...props} mode={mode} />
+  const ItemRowWrapper = (props) => (
+    <ItemRow options={options} dropdownIcon={dropdownIcon} {...props} mode={mode} />
+  )
   return (
     <div className={['sg contacto-jsoneditor', className, mode].join(' ')}>
       <JsonSchemaEditor
@@ -47,6 +49,7 @@ JSONEditor.propTypes = {
    * Whether the data is JSON or Tree data
    */
   fromTree: PropTypes.bool,
+  dropdownIcon: PropTypes.any,
 }
 
 JSONEditor.defaultProps = {}

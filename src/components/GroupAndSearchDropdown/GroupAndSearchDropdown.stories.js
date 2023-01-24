@@ -11,7 +11,7 @@ export default {
       control: { type: 'select' },
     },
   },
-  decorators: [(story) => <div style={{ width: '280px' }}>{story()}</div>],
+  decorators: [(story) => <div style={{ width: '580px' }}>{story()}</div>],
 }
 
 const Template = (args) => <GroupAndSearchDropdown {...args} />
