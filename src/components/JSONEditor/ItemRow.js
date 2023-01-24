@@ -59,7 +59,7 @@ const SortableGroup = SortableContainer(
               valueItem={valueItem}
               updateValue={updateValue}
               item={item}
-              options
+              options={options}
             />
           )
         })}
@@ -81,7 +81,6 @@ const ValueGroup = (props) => {
       useDragHandle
       lockAxis={true}
       valueArray={valueArray}
-      valueChangeRef={props.valueChangeRef}
       {...props}
     />
   )
