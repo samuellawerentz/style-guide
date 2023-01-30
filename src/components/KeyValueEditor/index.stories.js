@@ -17,12 +17,20 @@ export default {
 const Template = (args) => {
   // eslint-disable-next-line no-unused-vars
   const [{ data }, updateArgs] = useArgs()
-  return <KeyValueEditor {...args} onChange={(data) => updateArgs({ data: [...data] })} />
+  return (
+    <KeyValueEditor
+      {...args}
+      onChange={(data) => {
+        console.log('out', JSON.stringify(data))
+        updateArgs({ data: [...data] })
+      }}
+    />
+  )
 }
 
 export const Default = Template.bind({})
 Default.args = {
-  data: [{ key: '123', value: ['123'] }],
+  data: [{ key: '', value: '' }],
   dropdownIcon: BracketIcon,
   options: [
     {

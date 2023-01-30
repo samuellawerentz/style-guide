@@ -20,6 +20,7 @@ export const Default = Template.bind({})
 Default.args = {
   dropdownIcon: BracketIcon,
   maxLength: 100,
+  mode: 'replacer',
   placeholder: 'A simple text field',
   onChange: (e) => console.log(e.target.value),
   options: [

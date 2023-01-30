@@ -9,9 +9,7 @@ import { TextField } from '../Textfield/index'
 import { Button } from '../Button/index'
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc'
 import { GroupAndSearchDropdown } from '../GroupAndSearchDropdown/index'
-// import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc'
-//import { Component } from 'antd'
-//import { Text } from '../Typography/index'
+import { outputAdapter, inputAdapter } from './adapters'
 
 /**
  * This component helps to generate a key value pair
@@ -20,10 +18,16 @@ import { GroupAndSearchDropdown } from '../GroupAndSearchDropdown/index'
 const ValueGroup = (props) => {
   return (
     <SortableGroup
-      onSortEnd={({ oldIndex, newIndex }) => {
-        props.item.value = arrayMove(props.item.value, oldIndex, newIndex)
-        props.onChange?.(props.data)
-      }}
+      onSortEnd={({ oldIndex, newIndex }) =>
+        props.changeHandler(
+          () =>
+            (props.item.value.valueArray = arrayMove(
+              props.item.value.valueArray,
+              oldIndex,
+              newIndex,
+            )),
+        )
+      }
       shouldCancelStart={() => {}}
       distance={5}
       useDragHandle
@@ -43,20 +47,29 @@ const DragHandle = SortableHandle((props) => (
 ))
 
 const SortableValue = SortableElement(
-  ({ options, valueItem, item, onChange, data, i, ...props }) => (
+  ({ options, valueItem, item, changeHandler, data, i, ...props }) => (
     <Block display="flex" className="value-group" gap={8} {...props}>
       <GroupAndSearchDropdown
         dropdownIcon={props.dropdownIcon}
         options={options}
         className="textfield-width"
         value={valueItem}
+        mode="replacer"
+        openOnTextboxClick={item.value.hasVariable}
         placeholder="Value"
-        onChange={(e) => {
-          item.value[i] = e.target.value
-          onChange?.(data)
-        }}
+        onChange={(e) =>
+          changeHandler(() => {
+            const shouldClear =
+              !e.target.value && item.value.valueArray.filter(Boolean).length === 1
+            item.value.valueArray[i] = e.target.value
+            if (shouldClear) {
+              item.value.hasVariable = false
+              item.value.valueArray = []
+            }
+          })
+        }
       />
-      <DragHandle className={`${item.value.length > 1 ? '' : 'hide'}`} />
+      <DragHandle className={`${item.value.valueArray.length > 1 ? '' : 'hidden'}`} />
     </Block>
   ),
 )
@@ -64,7 +77,7 @@ const SortableValue = SortableElement(
 const SortableGroup = SortableContainer(({ item, ...props }) => {
   return (
     <div className="value-items">
-      {item.value.map((valueItem, i) => {
+      {item.value.valueArray.map((valueItem, i) => {
         return (
           <SortableValue key={i} index={i} i={i} item={item} {...props} valueItem={valueItem} />
         )
@@ -75,6 +88,13 @@ const SortableGroup = SortableContainer(({ item, ...props }) => {
 
 export const KeyValueEditor = ({ className = '', data, onChange, options, dropdownIcon }) => {
   if (!data && !data?.length) return null
+
+  const transformedData = inputAdapter(JSON.parse(JSON.stringify(data)))
+
+  const changeHandler = (fn) => {
+    fn()
+    onChange && onChange(outputAdapter(transformedData))
+  }
   return (
     <div className={['sg contacto-keyvalueeditor', className].join(' ')}>
       <Block display="flex" gap={270} className="heading-item">
@@ -85,7 +105,7 @@ export const KeyValueEditor = ({ className = '', data, onChange, options, dropdo
           Value
         </Text>
       </Block>
-      {data.map((item, i) => {
+      {transformedData.map((item, i) => {
         return (
           <Block key={i} gap={8} display="flex">
             <Block display="flex" gap={16}>
@@ -93,14 +113,11 @@ export const KeyValueEditor = ({ className = '', data, onChange, options, dropdo
                 className="textfield-width"
                 value={item.key}
                 placeholder="Key"
-                onChange={(e) => {
-                  item.key = e.target.value
-                  onChange?.(data)
-                }}
+                onChange={(e) => changeHandler(() => (item.key = e.target.value))}
               />
               <ValueGroup
                 item={item}
-                onChange={onChange}
+                changeHandler={changeHandler}
                 data={data}
                 options={options}
                 dropdownIcon={dropdownIcon}
@@ -112,25 +129,26 @@ export const KeyValueEditor = ({ className = '', data, onChange, options, dropdo
                 name="delete"
                 className={`remove ${data.length > 1 ? '' : 'hide'}`}
                 color="gray-2"
-                onClick={() => {
-                  data.splice(i, 1)
-                  onChange?.(data)
-                }}
+                onClick={() => changeHandler(() => transformedData.splice(i, 1))}
               />
               <Block
-                className="add-value"
+                className={`add-value ${item.value.hasVariable ? '' : 'disabled-btn'}`}
                 display="flex"
                 gap={4}
-                onClick={() => {
-                  item.value.push('')
-                  onChange?.(data)
-                }}
+                onClick={() => changeHandler(() => item.value.valueArray.push(''))}
               >
                 <Icon name="add" size={20} color="primary-color" />
                 <Text variant="primary">Add Value</Text>
               </Block>
               <div>
-                <Checkbox style={{ marginLeft: 16 }}>Pass null value</Checkbox>
+                <Checkbox
+                  style={{ marginLeft: 16 }}
+                  checked={item.value.hasNull}
+                  disabled={!item.value.hasVariable}
+                  onChange={(e) => changeHandler(() => (item.value.hasNull = e.target.checked))}
+                >
+                  Pass null value
+                </Checkbox>
               </div>
             </Block>
           </Block>
@@ -141,10 +159,14 @@ export const KeyValueEditor = ({ className = '', data, onChange, options, dropdo
           icon="add"
           type="secondary"
           size="small"
-          onClick={() => {
-            data.push({ key: '', value: [''] })
-            onChange?.(data)
-          }}
+          onClick={() =>
+            changeHandler(() =>
+              transformedData.push({
+                key: '',
+                value: { valueArray: [''], hasNull: false, hasVariable: false },
+              }),
+            )
+          }
         />
       </div>
     </div>

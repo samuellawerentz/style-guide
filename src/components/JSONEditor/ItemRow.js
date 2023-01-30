@@ -27,11 +27,11 @@ const SortableValue = SortableElement(
         dropdownIcon={dropdownIcon}
         key={i}
         options={options}
-        defaultValue={valueItem}
+        value={valueItem}
         onChange={(e) => {
           const value = e.target.value
           valueArray[i] = value
-          updateValue(item, valueArray.join('|'))
+          updateValue(item, valueArray.join('|'), e)
         }}
         className="textfield-width"
         placeholder="Value"

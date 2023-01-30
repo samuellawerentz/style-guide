@@ -20,13 +20,18 @@
     }
     .add-value, .remove {
         cursor: pointer;
+        &.disabled-btn {
+            background-color: transparent;
+            pointer-events: none;
+            opacity: 0.5;
+        }
     }
 }
 .value-group {
     align-items: center;
 }
 
-.hide {
+.hidden {
     opacity: 0;
     pointer-events: none;
 }

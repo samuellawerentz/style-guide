@@ -21,6 +21,7 @@ export const GroupAndSearchDropdown = ({
   mode,
   onChange,
   dropdownIcon,
+  openOnTextboxClick,
   ...props
 }) => {
   const [showDropdown, setShowDropdown] = useState(false)
@@ -60,7 +61,12 @@ export const GroupAndSearchDropdown = ({
                     const finalValue = `{{${child?.value}}}`
                     textFieldRef.current.focus()
                     onChange({
-                      target: { value: insertText(finalValue, document.activeElement) },
+                      target: {
+                        value:
+                          mode === 'replacer'
+                            ? finalValue
+                            : insertText(finalValue, document.activeElement),
+                      },
                       isSelection: true,
                     })
                     setShowDropdown(false)
@@ -81,7 +87,7 @@ export const GroupAndSearchDropdown = ({
     <>
       <Dropdown
         overlay={<OptionsDropdown />}
-        trigger={[]}
+        trigger={['click']}
         visible={showDropdown}
         placement="bottomRight"
         onVisibleChange={(visible) => setShowDropdown(visible)}
@@ -102,7 +108,7 @@ export const GroupAndSearchDropdown = ({
                 <Icon svg={dropdownIcon} size={20} />
               </div>
             }
-            // onClick={(e) => e.stopPropagation()}
+            onClick={(e) => !openOnTextboxClick && e.stopPropagation()}
             onChange={(e) => {
               const value = e.target.value
               setShowDropdown(value.match(/{{$/g))
@@ -127,4 +133,5 @@ GroupAndSearchDropdown.propTypes = {
   mode: PropTypes.string,
   onChange: PropTypes.func,
   dropdownIcon: PropTypes.any,
+  openOnTextboxClick: PropTypes.bool,
 }
