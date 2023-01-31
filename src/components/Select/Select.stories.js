@@ -141,6 +141,7 @@ MultipleSelect.args = {
   mode: 'multiple',
   maxTagCount: 'responsive',
   maxTagModalTitle: 'Select items',
+  showCloseTag: true,
   options: [
     { value: 'Apple' },
     { value: 'Ball' },

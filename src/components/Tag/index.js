@@ -35,9 +35,7 @@ export const Tag = ({
           <span className="close-tag-icon">
             <Icon color="primary-color" name="close" size={14} />
           </span>
-        ) : (
-          ''
-        )
+        ) : null
       }
       {...props}
     >
