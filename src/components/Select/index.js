@@ -29,7 +29,7 @@ export const Select = React.forwardRef(function Select(
     maxTagModalTitle,
     value,
     onChange,
-    showCloseTag,
+    showCloseTag = true,
     ...props
   },
   ref,
