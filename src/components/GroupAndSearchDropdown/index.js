@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Dropdown } from 'antd'
 import PropTypes from 'prop-types'
 import { Icon } from '../Icon/index'
@@ -26,6 +26,14 @@ export const GroupAndSearchDropdown = ({
 }) => {
   const [showDropdown, setShowDropdown] = useState(false)
   const textFieldRef = useRef()
+  const searchRef = useRef()
+
+  //To autofocus the search bar whenever the dropdown opens
+  useEffect(() => {
+    if (showDropdown) {
+      setTimeout(() => searchRef.current.focus(), 100)
+    }
+  }, [showDropdown])
 
   const OptionsDropdown = () => {
     const [searchString, setSearchString] = useState('')
@@ -39,6 +47,8 @@ export const GroupAndSearchDropdown = ({
             onChange={({ target }) => {
               setSearchString(target.value)
             }}
+            autoFocus={true}
+            ref={searchRef}
           />
         </div>
         {options?.map((option, index) => {
