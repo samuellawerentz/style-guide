@@ -118,9 +118,14 @@ export const GroupAndSearchDropdown = ({
                 <Icon svg={dropdownIcon} size={20} />
               </div>
             }
+            onBlur={(e) => {
+              e.target.value = e.target.value.trim()
+              onChange(e)
+            }}
             onClick={(e) => !openOnTextboxClick && e.stopPropagation()}
             onChange={(e) => {
               const value = e.target.value
+
               setShowDropdown(value.match(/{{$/g))
               onChange(e)
             }}
