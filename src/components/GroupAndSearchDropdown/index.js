@@ -125,8 +125,8 @@ export const GroupAndSearchDropdown = ({
             onClick={(e) => !openOnTextboxClick && e.stopPropagation()}
             onChange={(e) => {
               const value = e.target.value
-
-              setShowDropdown(value.match(/{{$/g))
+              const openDropdown = value.slice(-2) === '{{'
+              setShowDropdown(openDropdown)
               onChange(e)
             }}
             {...props}
