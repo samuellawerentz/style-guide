@@ -4,6 +4,9 @@
     .heading-item {
         margin-bottom: -6px;
     }
+    .hide {
+        display: none;
+    }
     gap: 16px;
     .textfield-width {
         width: 280px;
@@ -12,6 +15,19 @@
         align-items: center;
         align-self: flex-start;
         margin-top: 6px;
+        > *:not(:first-child) {
+            position: relative;
+            &:before {
+                content: '';
+                width: 1px;
+                height: 28px;
+                background-color: var(--gray-5);
+                display: block;
+                position: absolute;
+                top: -2px;
+                left: -12px;
+            }
+        }
     }
     .value-items {
         display: flex;
@@ -20,7 +36,7 @@
     }
     .add-value, .remove {
         cursor: pointer;
-        &.disabled-btn {
+        &.disabled-btn > * {
             background-color: transparent;
             pointer-events: none;
             opacity: 0.5;

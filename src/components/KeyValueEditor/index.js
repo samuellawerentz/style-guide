@@ -124,13 +124,15 @@ export const KeyValueEditor = ({ className = '', data, onChange, options, dropdo
               />
             </Block>
             {/* <ValueGroup options={options} item={item} /> */}
-            <Block display="flex" gap={12} className="key-controls">
-              <Icon
-                name="delete"
-                className={`remove ${data.length > 1 ? '' : 'hide'}`}
-                color="gray-2"
-                onClick={() => changeHandler(() => transformedData.splice(i, 1))}
-              />
+            <Block display="flex" gap={24} className="key-controls">
+              {data.length > 1 && (
+                <Icon
+                  name="delete"
+                  className={`remove`}
+                  color="gray-2"
+                  onClick={() => changeHandler(() => transformedData.splice(i, 1))}
+                />
+              )}
               <Block
                 className={`add-value ${item.value.hasVariable ? '' : 'disabled-btn'}`}
                 display="flex"
@@ -142,7 +144,7 @@ export const KeyValueEditor = ({ className = '', data, onChange, options, dropdo
               </Block>
               <div>
                 <Checkbox
-                  style={{ marginLeft: 16 }}
+                  style={{ marginLeft: 4 }}
                   checked={item.value.hasNull}
                   disabled={!item.value.hasVariable}
                   onChange={(e) => changeHandler(() => (item.value.hasNull = e.target.checked))}
