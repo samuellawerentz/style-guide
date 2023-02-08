@@ -7,7 +7,7 @@ import { Collapse as AntCollapse } from 'antd'
 import { Icon } from '../Icon/index'
 
 const { Panel } = AntCollapse
-const DragHandle = SortableHandle(() => <Icon name="drag_indicator" size={20} color="gray-3" />)
+const DragHandle = SortableHandle(() => <Icon name="drag_indicator" size={24} color="gray-2" />)
 
 /**
  * A wrapper on Antd collapse

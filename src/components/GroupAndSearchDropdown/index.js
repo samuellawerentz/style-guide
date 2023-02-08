@@ -59,7 +59,7 @@ export const GroupAndSearchDropdown = ({
           return (
             <>
               <div className="group-header" key={index}>
-                <Text type="captions_bold" color="gray-2">
+                <Text type="captions-bold" color="gray-2">
                   {option?.title}
                 </Text>
               </div>
