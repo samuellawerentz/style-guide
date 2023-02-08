@@ -1,111 +1,39 @@
 import { Checkbox } from '../Checkbox/index'
-import { Icon } from '../Icon/index'
 import { Select } from '../Select/index'
-import { TextField } from '../Textfield/index'
 
 import React from 'react'
-import { Block } from '../Block/index'
-import { DATA_TYPES, MODES } from './constants'
 import { Text } from '../Typography/index'
-import { GroupAndSearchDropdown } from '../GroupAndSearchDropdown/index'
-import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc'
-import { useRef } from 'react'
+import { Icon } from '../Icon/index'
+import { Block } from '../Block/index'
 
-const DragHandle = SortableHandle((props) => (
-  <Icon
-    name="drag_indicator"
-    size={20}
-    color="gray-2"
-    className={`remove ${props.className || ''}`}
-  />
-))
+const KEY_WIDTH = 200
 
-const SortableValue = SortableElement(
-  ({ arr, valueArray, i, dropdownIcon, valueItem, updateValue, item, options, ...props }) => (
-    <Block display="flex" className="value-group" gap={8} {...props}>
-      <GroupAndSearchDropdown
-        dropdownIcon={dropdownIcon}
-        key={i}
-        options={options}
-        value={valueItem}
-        onChange={(e) => {
-          const value = e.target.value
-          valueArray[i] = value
-          updateValue(item, valueArray.join('|'), e)
-        }}
-        className="textfield-width"
-        placeholder="Value"
-      />
-      <DragHandle className={`${arr.length > 1 ? '' : 'no-drag'}`} />
-    </Block>
-  ),
-)
-
-const SortableGroup = SortableContainer(
-  ({ options, item, updateValue, valueArray, valueChangeRef, dropdownIcon }) => {
-    return (
-      <div>
-        {valueArray.map((valueItem, index, arr) => {
-          if (valueItem === 'null') return null
-
-          return (
-            <SortableValue
-              key={index}
-              index={index}
-              arr={arr}
-              i={index}
-              valueArray={valueArray}
-              dropdownIcon={dropdownIcon}
-              valueItem={valueItem}
-              updateValue={updateValue}
-              item={item}
-              options={options}
-            />
-          )
-        })}
-      </div>
-    )
-  },
-)
-
-const ValueGroup = (props) => {
-  const valueArray = props.item.response_value.split('|')
+const SelectDataType = ({ item, updateNodeType }) => {
   return (
-    <SortableGroup
-      onSortEnd={({ oldIndex, newIndex }) => {
-        const newArr = arrayMove(valueArray, oldIndex, newIndex)
-        props.updateValue(props.item, newArr.join('|'))
-      }}
-      shouldCancelStart={() => {}}
-      distance={5}
-      useDragHandle
-      lockAxis={true}
-      valueArray={valueArray}
-      {...props}
-    />
+    <Select value={item.data_type} onChange={(e) => updateNodeType(item, e)}>
+      <option value="string">String</option>
+      <option value="number">Number</option>
+      <option value="boolean">Boolean</option>
+      <option value="object" disabled>
+        Object
+      </option>
+      <option value="list" disabled={item.data_type !== 'static list'}>
+        List
+      </option>
+      <option value="static list" disabled={item.data_type !== 'list'}>
+        Static List
+      </option>
+      <option value="list of strings">List of Strings</option>
+      <option value="list of booleans">List of Booleans</option>
+      <option value="list of numbers">List of Numbers</option>
+    </Select>
   )
 }
 
-const KEY_WIDTH = 250
-
-function ItemRow({
-  item,
-  siblings,
-  idx,
-  updateSelection,
-  addItem,
-  updateNodeType,
-  removeNode,
-  updateKey,
-  updateValue,
-  mode,
-  dropdownIcon,
-  options,
-}) {
-  const valueChangeRef = useRef(false)
+function ItemRow({ item, siblings, idx, updateSelection, updateNodeType, updateNode, options }) {
   return (
     <>
-      {mode === MODES.schema && (
+      <Block display="flex" alignItems="center" gap={16} style={{ width: '100%' }}>
         <div className="checkbox" style={{ transform: `translateX(-${32 * item.level}px)` }}>
           <Checkbox
             type="checkbox"
@@ -113,116 +41,146 @@ function ItemRow({
             onChange={(e) => updateSelection(siblings?.[idx], e.target.checked)}
           />
         </div>
-      )}
-      <div
-        className="key"
-        style={{ width: mode === MODES.schema ? `${KEY_WIDTH - 32 * item.level}px` : undefined }}
-      >
-        {mode !== MODES.schema ? (
-          <TextField
-            className="textfield-width"
-            value={item.key}
-            placeholder="Key"
-            onChange={(e) => updateKey(item, e.target.value)}
-          />
-        ) : (
+        <div className="key" style={{ width: `${KEY_WIDTH - 32 * item.level}px` }}>
           <Text type="headline" ellipsis>
             {item.key}
           </Text>
-        )}
-      </div>
-      {mode !== MODES.schema && (
-        <div className="value">
-          {item.data_type === DATA_TYPES.object || item.data_type === DATA_TYPES.list ? (
-            <TextField className="textfield-width" disabled />
-          ) : (
-            <ValueGroup
-              options={options}
-              item={item}
-              updateValue={updateValue}
-              valueChangeRef={valueChangeRef}
-              dropdownIcon={dropdownIcon}
-            />
+          {item.parent?.parent?.data_type === 'static list' && !!item.response_value && (
+            <Text type="caption" variant="secondary" ellipsis>
+              {item.response_value}
+            </Text>
           )}
         </div>
-      )}
-      {mode === MODES.schema && (
-        <div className="type">
-          <Select
-            value={item.data_type}
-            style={{ width: 180 }}
-            onChange={(e) => {
-              updateNodeType(item, e)
-            }}
-          >
-            <option value="string">String</option>
-            <option value="number">Number</option>
-            <option value="boolean">Boolean</option>
-            <option value="object" disabled>
-              Object
-            </option>
-            <option value="list" disabled>
-              List
-            </option>
-            <option value="list of strings">List of Strings</option>
-            <option value="list of booleans">List of Booleans</option>
-            <option value="list of numbers">List of Numbers</option>
-          </Select>
-        </div>
-      )}
-      {mode !== MODES.schema && siblings?.length > 1 && (
-        <div
-          className="remove"
-          onClick={() => {
-            removeNode(siblings, idx)
-          }}
-        >
-          <Icon name="delete" size={20} color="gray-3" hoverColor="danger-color" />
-        </div>
-      )}
-      {mode !== MODES.schema && (
-        <>
-          <Block
-            className="add-value"
-            display="flex"
-            alignItems="center"
-            gap={4}
-            onClick={() => {
-              setTimeout(() => {
-                const hasNull = !!/\|?null\|?/g.exec(item.response_value)
-                const isNullInBetween = item.response_value.split(/\|?null\|?/g).every(Boolean)
-                const stringValue = String(
-                  item.response_value.replace(/\|?null\|?/g, `${isNullInBetween ? '|' : ''}`),
-                )
-
-                valueChangeRef.current = false
-                updateValue(item, `${hasNull ? stringValue + '||null' : item.response_value + '|'}`)
-              }, 50)
-            }}
-          >
-            <Icon name="add" size={20} color="primary-color" />
-            <Text variant="primary">Add Value</Text>
+        <Block display="flex" gap={16} className="select-boxes">
+          <SelectDataType item={item} updateNodeType={updateNodeType} />
+          {!item.transformation ? (
+            <>
+              <div
+                className="add-related-info"
+                onClick={() =>
+                  updateNode(item, {
+                    transformation: {
+                      api: null,
+                      path: null,
+                      search_key: null,
+                      related_value: {
+                        key: null,
+                        data_type: null,
+                        selected: item.selected,
+                        transformation: null,
+                        sub_object: null,
+                      },
+                    },
+                  })
+                }
+              >
+                {item.data_type !== 'object' &&
+                  item.data_type !== 'list' &&
+                  item.data_type !== 'static list' && (
+                    <Icon
+                      name="add_circle_outline"
+                      size={20}
+                      color="gray-1"
+                      style={{ flexShrink: 0 }}
+                    />
+                  )}
+              </div>
+              <div></div>
+              <span style={{ width: 20 }}></span>
+            </>
+          ) : (
+            <>
+              <Select
+                options={options}
+                placeholder="Select"
+                value={
+                  item.transformation.path
+                    ? `${item.transformation.path}.${item.transformation.search_key}`
+                    : null
+                }
+                onChange={(value, opt) => {
+                  updateNode(item, {
+                    transformation: {
+                      ...item.transformation,
+                      api: opt.api,
+                      path: value.split('.').slice(0, -1).join('.'),
+                      search_key: value.split('.').slice(-1).join(),
+                    },
+                  })
+                }}
+              />
+              <Select
+                placeholder="Select"
+                options={options.reduce((acc, optItem) => {
+                  acc.push(
+                    ...optItem.options.filter((i) =>
+                      i.value?.startsWith(item?.transformation?.path),
+                    ),
+                  )
+                  return acc
+                }, [])}
+                disabled={!item.transformation.path}
+                value={item.transformation.related_value.key}
+                onChange={(value, opt) => {
+                  updateNode(item, {
+                    transformation: {
+                      ...item.transformation,
+                      related_value: {
+                        ...item.transformation.related_value,
+                        key: value,
+                        data_type: opt.data_type,
+                      },
+                    },
+                  })
+                }}
+              />
+              <Icon
+                name="playlist_remove"
+                size={20}
+                color="gray-1"
+                hoverColor="danger-color"
+                onClick={() => updateNode(item, { transformation: null })}
+              />
+            </>
+          )}
+        </Block>
+      </Block>
+      {item.transformation && item.transformation.related_value.key && (
+        <Block className="item related-value" style={{ width: '100%' }}>
+          <Block display="flex" alignItems="center" gap={16} style={{ width: '100%' }}>
+            <div className="checkbox" style={{ transform: `translateX(-${32 * item.level}px)` }}>
+              <Checkbox
+                type="checkbox"
+                checked={item.transformation.related_value.selected}
+                onChange={(e) =>
+                  updateSelection(item.transformation.related_value, e.target.checked)
+                }
+              />
+            </div>
+            <div className="key" style={{ width: `${KEY_WIDTH - 32 * item.level}px` }}>
+              <Block display="flex" gap={4}>
+                <Text type="headline" ellipsis style={{ width: 'auto' }}>
+                  {item.transformation.related_value.key}
+                </Text>
+                <Icon
+                  size={20}
+                  name="link"
+                  style={{ transform: 'rotate(90deg)' }}
+                  color="secondary-color"
+                />
+              </Block>
+            </div>
+            <Block display="flex" gap={16} className="select-boxes">
+              <SelectDataType
+                item={item.transformation.related_value}
+                updateNodeType={updateNodeType}
+              />
+              {/* Empty divs for the dynamic width */}
+              <div></div>
+              <div></div>
+              <span style={{ width: 20 }}></span>
+            </Block>
           </Block>
-          <Block className="remove">
-            <Checkbox
-              style={{ marginLeft: 16 }}
-              checked={!!/\|?null\|?/g.exec(item.response_value)}
-              onChange={(e) => {
-                valueChangeRef.current = false
-                if (e.target.checked) updateValue(item, item.response_value + '|null')
-                else updateValue(item, item.response_value.replace(/\|?null\|?/g, ''))
-              }}
-            >
-              Pass null value
-            </Checkbox>
-          </Block>
-        </>
-      )}
-      {mode === MODES.noChildren && idx === siblings.length - 1 && (
-        <Block className="add-item-container" spacing={[0, 16]}>
-          <div className="add-item" onClick={() => addItem(siblings)}>
-            <Icon name="add" size={20} color="primary-color" />
-          </div>
         </Block>
       )}
     </>

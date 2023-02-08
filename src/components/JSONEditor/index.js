@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useMemo } from 'react'
 import './styles.scss'
 import PropTypes from 'prop-types'
 import ItemRow from './ItemRow'
@@ -8,13 +9,39 @@ import { JsonEditor as JsonSchemaEditor } from 'rc-json-editor'
 /**
  * A JSON Editor component wrapped upon rc-json-editor
  */
+
+const extractKeys = (responseBody, parentKey, path, api) => {
+  return responseBody.reduce((acc, obj) => {
+    const resp_key = `${path ? `${path}.${obj.key}` : obj.key}`
+    if (parentKey === '' || obj.key === parentKey)
+      acc.push(
+        ...[
+          obj.data_type !== 'list' && obj.data_type !== 'object'
+            ? { value: resp_key, data_type: obj.data_type, api }
+            : null,
+          ...extractKeys(obj.sub_object, '', resp_key, api),
+        ].filter(Boolean),
+      )
+    return acc
+  }, [])
+}
+
 export const JSONEditor = forwardRef(function JSONEditor(
-  { options, className = '', data, mode = 'schema', fromTree, dropdownIcon, ...props },
+  { className = '', data, mode = 'schema', fromTree, apis, ...props },
   ref,
 ) {
-  const ItemRowWrapper = (props) => (
-    <ItemRow options={options} dropdownIcon={dropdownIcon} {...props} mode={mode} />
+  const options = useMemo(
+    () =>
+      apis.map((api) => ({
+        label: api.name,
+        options: extractKeys(api.response_body, api.primary_object, '', api.uuid).slice(
+          Number(!!api.primary_object),
+        ),
+      })),
+    [],
   )
+
+  const ItemRowWrapper = (props) => <ItemRow {...props} options={options} />
   return (
     <div className={['sg contacto-jsoneditor', className, mode].join(' ')}>
       <JsonSchemaEditor
@@ -29,10 +56,6 @@ export const JSONEditor = forwardRef(function JSONEditor(
 })
 
 JSONEditor.propTypes = {
-  /**
-   * Array of dropdown options for the value
-   */
-  options: PropTypes.array,
   /**
    * Class to be added
    */
@@ -49,7 +72,7 @@ JSONEditor.propTypes = {
    * Whether the data is JSON or Tree data
    */
   fromTree: PropTypes.bool,
-  dropdownIcon: PropTypes.any,
+  apis: PropTypes.array,
 }
 
 JSONEditor.defaultProps = {}

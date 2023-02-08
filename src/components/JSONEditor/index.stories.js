@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { JSONEditor } from './'
-import { ReactComponent as BracketIcon } from '../../assets/ic-bracket.svg'
+import { useArgs } from '@storybook/client-api'
+import { TreeUtils } from 'rc-json-editor'
 
 export default {
   title: 'Components/JSONEditor',
@@ -13,112 +15,233 @@ export default {
   // },
 }
 
-const Template = (args) => <JSONEditor {...args} />
-
-export const SchemaEditor = Template.bind({})
-SchemaEditor.args = {
-  mode: 'schema',
-  data: {
-    order: {
-      order_id: 12312412,
-      order_date: '12/12/12',
-      order_amount: '12000.00',
-      payment: {
-        type: 'cash',
-        is_successful: true,
-        ids: [1, 2, 3],
-      },
-    },
-  },
-}
-
-// export const KeyValueEditor = Template.bind({})
-// KeyValueEditor.args = {
-//   mode: 'key-value',
-//   data: {
-//     order: {
-//       order_id: 12312412,
-//       order_date: '12/12/12',
-//       order_amount: '12000.00',
-//       payment: {
-//         type: 'cash',
-//         is_successful: true,
-//       },
-//     },
-//   },
-//   options: [
-//     {
-//       title: 'System Variables',
-//       children: [
-//         { label: 'Abcd', value: 'Abcd' },
-//         { label: 'dsfsdf', value: 'dsfsdf' },
-//         { label: 'gtg', value: 'gtg' },
-//         { label: 'qwe', value: 'qwe' },
-//       ],
-//     },
-//     {
-//       title: 'API 2',
-//       children: [
-//         { label: 'Absfwecd', value: 'Absfwecd' },
-//         { label: 'ewrew', value: 'ewrew' },
-//         { label: 'yut', value: 'yut' },
-//         { label: 'pop', value: 'pop' },
-//       ],
-//     },
-//   ],
-// }
-
-export const KeyValueEditorWithNoChildren = Template.bind({})
-KeyValueEditorWithNoChildren.args = {
-  mode: 'no-children',
-  dropdownIcon: BracketIcon,
-  data: { '': '' },
-  options: [
-    {
-      title: 'System Variables',
-      children: [
-        { label: 'Abcd', value: 'Abcd' },
-        { label: 'dsfsdf', value: 'dsfsdf' },
-        { label: 'gtg', value: 'gtg' },
-        { label: 'qwe', value: 'qwe' },
-      ],
-    },
-    {
-      title: 'API 2',
-      children: [
-        { label: 'Absfwecd', value: 'Absfwecd' },
-        { label: 'ewrew', value: 'ewrew' },
-        { label: 'yut', value: 'yut' },
-        { label: 'pop', value: 'pop' },
-      ],
-    },
-  ],
-  onChange: (e) => console.log(e),
-}
-
 const treeProps = {
-  mode: 'schema',
   fromTree: true,
-  data: [
+  apis: [
     {
-      key: 'contact',
-      data_type: 'object',
-      selected: true,
-      sub_object: [
+      headers: [
         {
-          key: 'id',
-          data_type: 'number',
-          selected: false,
-          sub_object: [],
+          key: 'test',
+          value: 'new|',
+        },
+        {
+          key: 'test1',
+          value: '1231',
         },
       ],
+      query_params: [],
+      response_body: [
+        {
+          key: 'books',
+          data_type: 'list',
+          selected: false,
+          transformation: null,
+          sub_object: [
+            {
+              key: 'author',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'description',
+              data_type: 'object',
+              selected: false,
+              transformation: null,
+              sub_object: [
+                {
+                  key: 'description_name',
+                  data_type: 'string',
+                  selected: false,
+                  transformation: null,
+                  sub_object: [],
+                },
+              ],
+            },
+            {
+              key: 'isbn',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'pages',
+              data_type: 'number',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'published',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'publisher',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'subtitle',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'title',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'website',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+          ],
+        },
+      ],
+      name: 'API 2',
+      slug: 'api-2',
+      method: 'GET',
+      url: 'https://run.mocky.io/v3/a1566548-524f-43a4-a04f-77d353b0da84',
+      primary_object: '',
+      request_body_type: 'NoBody',
+      request_body: null,
+      enabled: true,
+      lookup_category: 'generic',
+      priority: 1,
+      shown_to_agent: false,
+      uuid: '7a285489-f370-4462-97f7-acb6088d3907',
+    },
+    {
+      headers: null,
+      query_params: null,
+      response_body: [
+        {
+          key: 'books1',
+          data_type: 'list',
+          selected: false,
+          transformation: null,
+          sub_object: [
+            {
+              key: 'author',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'description',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'isbn',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'pages',
+              data_type: 'number',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'published',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'publisher',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'subtitle',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'title',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+            {
+              key: 'website',
+              data_type: 'string',
+              selected: false,
+              transformation: null,
+              sub_object: [],
+            },
+          ],
+        },
+      ],
+      name: 'API 1',
+      slug: 'api-1',
+      method: 'GET',
+      url: 'https://run.mocky.io/v3/a1566548-524f-43a4-a04f-77d353b0da84',
+      primary_object: '',
+      request_body_type: 'NoBody',
+      request_body: null,
+      enabled: true,
+      lookup_category: 'generic',
+      priority: 1,
+      shown_to_agent: true,
+      uuid: '326521cf-37f2-4d8c-a220-1846d457a904',
     },
   ],
+  data: TreeUtils.cleanTree(
+    TreeUtils.convertJSONtoTree({
+      h: [
+        { id: 1, value: '1231' },
+        { id: 2, value: '143j' },
+      ],
+      k: 'samy',
+      o: { a: 'b', c: { d: { e: 'yoyo', b: [1, 2, 3] } } },
+    }),
+    false,
+    undefined,
+    false,
+  ),
 }
 
-const treeDataTemplate = () => (
-  <div>
-    <JSONEditor {...treeProps} />
-  </div>
-)
-export const LoadingFromTreeData = treeDataTemplate.bind({})
+const TreeDataTemplate = (args) => {
+  const [{ data }, updateArgs] = useArgs()
+  return (
+    <div>
+      <JSONEditor
+        {...args}
+        onChange={(data) => {
+          console.log('onChange', data)
+          updateArgs({ data: TreeUtils.cleanTree(data, false, undefined, false) })
+        }}
+      />
+    </div>
+  )
+}
+export const LoadingFromTreeData = TreeDataTemplate.bind({})
+LoadingFromTreeData.args = treeProps
