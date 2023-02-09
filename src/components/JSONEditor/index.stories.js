@@ -214,19 +214,60 @@ const treeProps = {
       uuid: '326521cf-37f2-4d8c-a220-1846d457a904',
     },
   ],
-  data: TreeUtils.cleanTree(
-    TreeUtils.convertJSONtoTree({
-      h: [
-        { id: 1, value: '1231' },
-        { id: 2, value: '143j' },
-      ],
-      k: 'samy',
-      o: { a: 'b', c: { d: { e: 'yoyo', b: [1, 2, 3] } } },
-    }),
-    false,
-    undefined,
-    false,
-  ),
+  data: [
+    {
+      key: 'state',
+      data_type: 'string',
+      selected: true,
+      transformation: null,
+      sub_object: [],
+      ui_label: 'state',
+      field_type: 'TextInput',
+      display_format: 'Lowercase',
+      optional: false,
+      editable: false,
+      create: false,
+    },
+    {
+      key: 'city',
+      data_type: 'string',
+      selected: true,
+      transformation: null,
+      sub_object: [],
+      ui_label: 'city',
+      field_type: 'TextInput',
+      display_format: 'Lowercase',
+      optional: false,
+      editable: false,
+      create: false,
+    },
+    {
+      key: 'address',
+      data_type: 'string',
+      selected: true,
+      transformation: null,
+      sub_object: [],
+      ui_label: 'address',
+      field_type: 'TextInput',
+      display_format: 'Lowercase',
+      optional: false,
+      editable: false,
+      create: false,
+    },
+    {
+      key: 'country',
+      data_type: 'string',
+      selected: true,
+      transformation: null,
+      sub_object: [],
+      ui_label: 'country',
+      field_type: 'TextInput',
+      display_format: 'Lowercase',
+      optional: false,
+      editable: false,
+      create: false,
+    },
+  ],
 }
 
 const TreeDataTemplate = (args) => {
@@ -234,6 +275,7 @@ const TreeDataTemplate = (args) => {
   return (
     <div>
       <JSONEditor
+        fromTree
         {...args}
         onChange={(data) => {
           console.log('onChange', data)
