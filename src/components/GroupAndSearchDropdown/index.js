@@ -59,7 +59,7 @@ export const GroupAndSearchDropdown = ({
           return (
             <>
               <div className="group-header" key={index}>
-                <Text type="captions_bold" color="gray-2">
+                <Text type="caption-bold" color="gray-2">
                   {option?.title}
                 </Text>
               </div>
@@ -118,10 +118,15 @@ export const GroupAndSearchDropdown = ({
                 <Icon svg={dropdownIcon} size={20} />
               </div>
             }
+            onBlur={(e) => {
+              e.target.value = e.target.value.trim()
+              onChange(e)
+            }}
             onClick={(e) => !openOnTextboxClick && e.stopPropagation()}
             onChange={(e) => {
               const value = e.target.value
-              setShowDropdown(value.match(/{{$/g))
+              const openDropdown = value.slice(-2) === '{{'
+              setShowDropdown(openDropdown)
               onChange(e)
             }}
             {...props}
