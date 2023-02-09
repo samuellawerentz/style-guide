@@ -27,7 +27,7 @@ const extractKeys = (responseBody, parentKey, path, api) => {
 }
 
 export const JSONEditor = forwardRef(function JSONEditor(
-  { className = '', data, mode = 'schema', fromTree, apis, ...props },
+  { className = '', data, mode = 'schema', fromTree, apis, onNodeTypeChange, ...props },
   ref,
 ) {
   const options = useMemo(
@@ -41,7 +41,9 @@ export const JSONEditor = forwardRef(function JSONEditor(
     [],
   )
 
-  const ItemRowWrapper = (props) => <ItemRow {...props} options={options} />
+  const ItemRowWrapper = (props) => (
+    <ItemRow {...props} options={options} onNodeTypeChange={onNodeTypeChange} />
+  )
   return (
     <div className={['sg contacto-jsoneditor', className, mode].join(' ')}>
       <JsonSchemaEditor
@@ -73,6 +75,7 @@ JSONEditor.propTypes = {
    */
   fromTree: PropTypes.bool,
   apis: PropTypes.array,
+  onNodeTypeChange: PropTypes.func,
 }
 
 JSONEditor.defaultProps = {}

@@ -1,12 +1,12 @@
 import { Checkbox } from '../Checkbox/index'
 import { Select } from '../Select/index'
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Text } from '../Typography/index'
 import { Icon } from '../Icon/index'
 import { Block } from '../Block/index'
 
-const KEY_WIDTH = 200
+const KEY_WIDTH = 280
 
 const SelectDataType = ({ item, updateNodeType }) => {
   return (
@@ -30,13 +30,29 @@ const SelectDataType = ({ item, updateNodeType }) => {
   )
 }
 
-function ItemRow({ item, siblings, idx, updateSelection, updateNodeType, updateNode, options }) {
+function ItemRow({
+  item,
+  siblings,
+  idx,
+  updateSelection,
+  updateNodeType,
+  updateNode,
+  options,
+  onNodeTypeChange,
+}) {
+  const selectedChildrenLength = useMemo(() => item.sub_object.filter((i) => i.selected).length, [
+    item,
+  ])
+  const isIndeterminate =
+    selectedChildrenLength > 0 && selectedChildrenLength < item.sub_object.length
+
   return (
     <>
       <Block display="flex" alignItems="center" gap={16} style={{ width: '100%' }}>
         <div className="checkbox" style={{ transform: `translateX(-${32 * item.level}px)` }}>
           <Checkbox
             type="checkbox"
+            indeterminate={isIndeterminate}
             checked={item.selected}
             onChange={(e) => updateSelection(siblings?.[idx], e.target.checked)}
           />
@@ -52,7 +68,13 @@ function ItemRow({ item, siblings, idx, updateSelection, updateNodeType, updateN
           )}
         </div>
         <Block display="flex" gap={16} className="select-boxes">
-          <SelectDataType item={item} updateNodeType={updateNodeType} />
+          <SelectDataType
+            item={item}
+            updateNodeType={(...args) => {
+              onNodeTypeChange?.(...args)
+              updateNodeType(...args)
+            }}
+          />
           {!item.transformation ? (
             <>
               <div
