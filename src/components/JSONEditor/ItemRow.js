@@ -48,7 +48,13 @@ function ItemRow({
 
   return (
     <>
-      <Block display="flex" alignItems="center" gap={16} style={{ width: '100%' }}>
+      <Block
+        display="flex"
+        alignItems="center"
+        gap={16}
+        style={{ width: '100%' }}
+        className={`${item.transformation ? 'has-related-value' : ''}`}
+      >
         <div className="checkbox" style={{ transform: `translateX(-${32 * item.level}px)` }}>
           <Checkbox
             type="checkbox"
@@ -124,6 +130,11 @@ function ItemRow({
                   updateNode(item, {
                     transformation: {
                       ...item.transformation,
+                      related_value: {
+                        ...item.transformation.related_value,
+                        key: null,
+                        data_type: null,
+                      },
                       api: opt.api,
                       path: value.split('.').slice(0, -1).join('.'),
                       search_key: value.split('.').slice(-1).join(),
@@ -136,13 +147,13 @@ function ItemRow({
                 options={options.reduce((acc, optItem) => {
                   acc.push(
                     ...optItem.options.filter((i) =>
-                      i.value?.startsWith(item?.transformation?.path),
+                      i.value?.startsWith(item?.transformation?.path + '.'),
                     ),
                   )
                   return acc
                 }, [])}
                 disabled={!item.transformation.path}
-                value={item.transformation.related_value.key}
+                value={item.transformation.related_value?.key}
                 onChange={(value, opt) => {
                   updateNode(item, {
                     transformation: {
@@ -167,7 +178,7 @@ function ItemRow({
           )}
         </Block>
       </Block>
-      {item.transformation && item.transformation.related_value.key && (
+      {item.transformation && item.transformation.related_value?.key && (
         <Block className="item related-value" style={{ width: '100%' }}>
           <Block display="flex" alignItems="center" gap={16} style={{ width: '100%' }}>
             <div className="checkbox" style={{ transform: `translateX(-${32 * item.level}px)` }}>
