@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { JSONEditor } from './'
-import { ReactComponent as BracketIcon } from '../../assets/ic-bracket.svg'
+import { useArgs } from '@storybook/client-api'
+import { TreeUtils } from 'rc-json-editor'
 
 export default {
   title: 'Components/JSONEditor',
@@ -13,112 +15,79 @@ export default {
   // },
 }
 
-const Template = (args) => <JSONEditor {...args} />
-
-export const SchemaEditor = Template.bind({})
-SchemaEditor.args = {
-  mode: 'schema',
-  data: {
-    order: {
-      order_id: 12312412,
-      order_date: '12/12/12',
-      order_amount: '12000.00',
-      payment: {
-        type: 'cash',
-        is_successful: true,
-        ids: [1, 2, 3],
-      },
-    },
-  },
-}
-
-// export const KeyValueEditor = Template.bind({})
-// KeyValueEditor.args = {
-//   mode: 'key-value',
-//   data: {
-//     order: {
-//       order_id: 12312412,
-//       order_date: '12/12/12',
-//       order_amount: '12000.00',
-//       payment: {
-//         type: 'cash',
-//         is_successful: true,
-//       },
-//     },
-//   },
-//   options: [
-//     {
-//       title: 'System Variables',
-//       children: [
-//         { label: 'Abcd', value: 'Abcd' },
-//         { label: 'dsfsdf', value: 'dsfsdf' },
-//         { label: 'gtg', value: 'gtg' },
-//         { label: 'qwe', value: 'qwe' },
-//       ],
-//     },
-//     {
-//       title: 'API 2',
-//       children: [
-//         { label: 'Absfwecd', value: 'Absfwecd' },
-//         { label: 'ewrew', value: 'ewrew' },
-//         { label: 'yut', value: 'yut' },
-//         { label: 'pop', value: 'pop' },
-//       ],
-//     },
-//   ],
-// }
-
-export const KeyValueEditorWithNoChildren = Template.bind({})
-KeyValueEditorWithNoChildren.args = {
-  mode: 'no-children',
-  dropdownIcon: BracketIcon,
-  data: { '': '' },
-  options: [
-    {
-      title: 'System Variables',
-      children: [
-        { label: 'Abcd', value: 'Abcd' },
-        { label: 'dsfsdf', value: 'dsfsdf' },
-        { label: 'gtg', value: 'gtg' },
-        { label: 'qwe', value: 'qwe' },
-      ],
-    },
-    {
-      title: 'API 2',
-      children: [
-        { label: 'Absfwecd', value: 'Absfwecd' },
-        { label: 'ewrew', value: 'ewrew' },
-        { label: 'yut', value: 'yut' },
-        { label: 'pop', value: 'pop' },
-      ],
-    },
-  ],
-  onChange: (e) => console.log(e),
-}
-
 const treeProps = {
-  mode: 'schema',
   fromTree: true,
+  options: [{ label: 'API 1', options: [{ value: '123' }] }],
   data: [
     {
-      key: 'contact',
-      data_type: 'object',
+      key: 'state',
+      data_type: 'string',
       selected: true,
-      sub_object: [
-        {
-          key: 'id',
-          data_type: 'number',
-          selected: false,
-          sub_object: [],
-        },
-      ],
+      transformation: null,
+      sub_object: [],
+      ui_label: 'state',
+      field_type: 'TextInput',
+      display_format: 'Lowercase',
+      optional: false,
+      editable: false,
+      create: false,
+    },
+    {
+      key: 'city',
+      data_type: 'string',
+      selected: true,
+      transformation: null,
+      sub_object: [],
+      ui_label: 'city',
+      field_type: 'TextInput',
+      display_format: 'Lowercase',
+      optional: false,
+      editable: false,
+      create: false,
+    },
+    {
+      key: 'address',
+      data_type: 'string',
+      selected: true,
+      transformation: null,
+      sub_object: [],
+      ui_label: 'address',
+      field_type: 'TextInput',
+      display_format: 'Lowercase',
+      optional: false,
+      editable: false,
+      create: false,
+    },
+    {
+      key: 'country',
+      data_type: 'string',
+      selected: true,
+      transformation: null,
+      sub_object: [],
+      ui_label: 'country',
+      field_type: 'TextInput',
+      display_format: 'Lowercase',
+      optional: false,
+      editable: false,
+      create: false,
     },
   ],
 }
 
-const treeDataTemplate = () => (
-  <div>
-    <JSONEditor {...treeProps} />
-  </div>
-)
-export const LoadingFromTreeData = treeDataTemplate.bind({})
+const TreeDataTemplate = (args) => {
+  const [{ data }, updateArgs] = useArgs()
+  return (
+    <div>
+      <JSONEditor
+        fromTree
+        {...args}
+        onChange={(data) => {
+          console.log('onChange', data)
+          updateArgs({ data: TreeUtils.cleanTree(data, false, undefined, false) })
+        }}
+      />
+    </div>
+  )
+}
+export const LoadingFromTreeData = TreeDataTemplate.bind({})
+LoadingFromTreeData.args = treeProps
