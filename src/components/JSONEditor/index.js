@@ -15,11 +15,17 @@ export const JSONEditor = ({
   mode = 'schema',
   fromTree,
   onNodeTypeChange,
+  onRelatedValueChange,
   options,
   ...props
 }) => {
   const ItemRowWrapper = (props) => (
-    <ItemRow {...props} options={options} onNodeTypeChange={onNodeTypeChange} />
+    <ItemRow
+      {...props}
+      options={options}
+      onNodeTypeChange={onNodeTypeChange}
+      onRelatedValueChange={onRelatedValueChange}
+    />
   )
   return (
     <div className={['sg contacto-jsoneditor', className, mode].join(' ')}>
@@ -47,6 +53,7 @@ JSONEditor.propTypes = {
   fromTree: PropTypes.bool,
   options: PropTypes.array,
   onNodeTypeChange: PropTypes.func,
+  onRelatedValueChange: PropTypes.func,
 }
 
 JSONEditor.defaultProps = {}
