@@ -64,7 +64,7 @@ function ItemRow({
   const relatedKeyOptions = useMemo(
     () =>
       options.reduce((acc, optItem) => {
-        if (optItem.options[0].api === item.transformation?.api) {
+        if (optItem.options?.[0]?.api === item.transformation?.api) {
           acc.push(
             ...optItem.options.filter((i) => {
               return (
@@ -174,7 +174,7 @@ function ItemRow({
                 value={item.transformation.related_value?.key}
                 onChange={(value, opt) => {
                   updateNode(item, {
-                    related_value: onRelatedValueChange(opt),
+                    related_value: onRelatedValueChange(opt, item),
                     transformation: {
                       ...item.transformation,
                       related_value: {
