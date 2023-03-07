@@ -21,8 +21,8 @@ const Template = (args) => {
     <KeyValueEditor
       {...args}
       onChange={(data) => {
-        console.log('out', JSON.stringify(data))
-        updateArgs({ data: [...data] })
+        // console.log('out', JSON.stringify(data))
+        updateArgs({ data })
       }}
     />
   )

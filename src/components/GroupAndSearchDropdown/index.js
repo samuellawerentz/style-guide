@@ -11,6 +11,10 @@ function insertText(newText, e) {
   let cursorPosition = e.selectionStart
   let textBeforeCursorPosition = e.value.substring(0, cursorPosition)
   let textAfterCursorPosition = e.value.substring(cursorPosition, e.value.length)
+
+  const shouldIncludeBraces = textBeforeCursorPosition?.split('')?.at(-1) !== '|'
+  if (!shouldIncludeBraces) newText = newText.replace(/[{}]/g, '')
+
   return textBeforeCursorPosition.replace(/{{$/, '') + newText + textAfterCursorPosition
 }
 
@@ -118,16 +122,27 @@ export const GroupAndSearchDropdown = ({
                 <Icon svg={dropdownIcon} size={20} />
               </div>
             }
-            onBlur={(e) => {
-              e.target.value = e.target.value.trim()
-              onChange(e)
-            }}
             onClick={(e) => !openOnTextboxClick && e.stopPropagation()}
-            onChange={(e) => {
+            onKeyUp={(e) => {
+              e.persist()
               const value = e.target.value
-              const openDropdown = value.slice(-2) === '{{'
+              // const keyPressed = String.fromCharCode(e.keyCode)
+              const caretEnd = e.target.selectionEnd
+              const keyPressed = value[caretEnd - 1]
+              const openDropdown =
+                value.slice(-2) === '{{' ||
+                (keyPressed === '|' && /\{\{[\w|]+\|$/g.test(value.substring(0, caretEnd)))
               setShowDropdown(openDropdown)
+            }}
+            onChange={(e) => {
+              // So that the event is not lost
+              e.persist()
+              const caretStart = e.target.selectionStart
+              const caretEnd = e.target.selectionEnd
               onChange(e)
+
+              // To preserve the caret position
+              setTimeout(() => e.target.setSelectionRange?.(caretStart, caretEnd), 0)
             }}
             {...props}
           />

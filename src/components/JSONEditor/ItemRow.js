@@ -148,11 +148,11 @@ function ItemRow({
               <Select
                 options={options}
                 placeholder="Select"
-                value={
+                value={`${
                   item.transformation.path
                     ? `${item.transformation.path}.${item.transformation.search_key}`
                     : item.transformation.search_key
-                }
+                }`}
                 onChange={(value, opt) => {
                   updateNode(item, {
                     transformation: {
