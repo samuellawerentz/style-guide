@@ -37,6 +37,21 @@
         background-color: var(--primary-color-4);
         color: var(--primary-color);
     }
+    &--round {
+        display: flex;
+        width: fit-content;
+        align-items: center;
+        background-color: transparent;
+        border-radius: 999px;
+        padding: 3px 8px;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+
+        .ant-tag-close-icon {
+            color: inherit;
+            font-size: 14px;
+        }
+    }
     .close-tag-icon {
         display: flex;
         align-items: center;

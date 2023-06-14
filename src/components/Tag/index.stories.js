@@ -55,3 +55,11 @@ Secondary.args = {
   type: 'secondary',
   disableUppercase: true,
 }
+
+export const Round = Template.bind({})
+Round.args = {
+  label: 'Round',
+  type: 'round',
+  closable: true,
+  disableUppercase: true,
+}
