@@ -71,7 +71,7 @@
         padding-bottom: 8px;
         line-height: 20px;
         border: none;
-        // Show elipsis on overflow
+        // Show ellipsis on overflow
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -83,6 +83,7 @@
 
     .ant-table-tbody>tr.ant-table-row:hover>td {
         background-color: var(--background-highlight-color);
+        cursor: pointer;
     }
 
     &.ant-table-wrapper {
