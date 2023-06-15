@@ -11,7 +11,8 @@ export const FooterBlock = (props) => {
     <Block
       className="contacto-modal-footer-block"
       display="flex"
-      justifyContent={props.footerJustify || 'space-between'}
+      justifyContent={'space-between'}
+      {...props}
     >
       {props.children}
     </Block>
@@ -28,6 +29,7 @@ export const Modal = ({
   okButtonProps,
   cancelButtonProps,
   width,
+  footerProps = {},
   ...props
 }) => {
   return (
@@ -37,10 +39,10 @@ export const Modal = ({
       width={width}
       footer={
         footerButtons?.length ? (
-          <FooterBlock>{footerButtons.map((button) => button)}</FooterBlock>
+          <FooterBlock {...footerProps}>{footerButtons.map((button) => button)}</FooterBlock>
         ) : (
           (okButtonProps || cancelButtonProps) && (
-            <FooterBlock>
+            <FooterBlock {...footerProps}>
               <Button
                 {...cancelButtonProps}
                 label={cancelButtonProps?.label || 'Cancel'}
@@ -67,6 +69,10 @@ Modal.propTypes = {
    * To Remove the footer, pass null values to both okButtonProps and cancelButtonProps
    */
   footerButtons: PropTypes.array,
+  /**
+   * Props for the footer, default to {}
+   */
+  footerProps: PropTypes.object,
   /**
    * Props for the default Okay button
    */
