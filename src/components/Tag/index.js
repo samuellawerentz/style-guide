@@ -40,7 +40,11 @@ export const Tag = ({
       }
       {...props}
     >
-      <Text type={type === 'default' || disableUppercase ? 'caption' : 'caption-capital'}>
+      <Text
+        type={
+          ['default', 'round'].includes(type) || disableUppercase ? 'caption' : 'caption-capital'
+        }
+      >
         {label || children}
       </Text>
     </AntTag>
