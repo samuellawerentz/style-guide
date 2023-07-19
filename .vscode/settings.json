@@ -4,6 +4,7 @@
         "cascader",
         "contacto",
         "datepicker",
-        "listbox"
+        "listbox",
+        "wavesurfer"
     ]
 }

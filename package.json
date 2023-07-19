@@ -95,6 +95,7 @@
     "simplebar-react": "^2.3.5",
     "source-map-explorer": "^2.5.2",
     "ts-dedent": "^2.1.1",
+    "wavesurfer.js": "^7.0.3",
     "yeoman-generator": "^5.4.2"
   },
   "peerDependencies": {
