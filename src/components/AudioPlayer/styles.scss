@@ -26,3 +26,24 @@
     }
   }
 }
+
+.contacto-player-speed {
+  .ant-popover-arrow {
+    display: none;
+  }
+  .ant-popover-inner-content div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 4px;
+
+    .contacto-player-speed-button {
+      display: flex;
+	  min-width: 48px;
+	  width: 48px;
+      justify-content: center;
+      align-items: center;
+	  box-shadow: none;
+    }
+  }
+}

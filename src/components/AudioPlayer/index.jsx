@@ -1,15 +1,16 @@
 import React from 'react'
 import Text from 'antd/lib/typography/Text'
-
-import { Button, Progress } from 'antd'
+import { Progress } from 'antd'
 import { forwardRef } from 'react'
-import PlayPauseIcon from './utils/PlayPauseIcon'
-import { useWaveSurfer } from './utils/useWaveSurfer'
-import { getDisplayTime } from './utils/getDisplayTime'
+import PlayPauseIcon from './components/PlayPauseIcon'
+import { useWaveSurfer } from './helpers/useWaveSurfer'
+import { getDisplayTime } from './helpers/getDisplayTime'
+import PlaybackSpeed from './components/PlaybackSpeed'
+import { Button } from '../Button'
 import './styles.scss'
 
 const AudioPlayer = forwardRef((props, ref) => {
-  const { className, url, size } = props
+  const { className, url } = props
   const { waveSurfer, playerConfig, durationConfig } = useWaveSurfer(url)
 
   const { isPlaying, loading } = playerConfig
@@ -30,6 +31,7 @@ const AudioPlayer = forwardRef((props, ref) => {
       <div className="audio-controls">
         <Button
           className="audio-controls-play-pause"
+          type="default"
           onClick={() => waveSurfer?.playPause()}
           icon={<PlayPauseIcon isPlaying={isPlaying} />}
         />
@@ -40,10 +42,7 @@ const AudioPlayer = forwardRef((props, ref) => {
             </Text>
           </span>
         </div>
-        <div
-          id={playerConfig.id}
-          className={`audio-controls-wave-bar ${size === 'small' ? 'small-audio-surfer' : ''}`}
-        />
+        <div id={playerConfig.id} className={`audio-controls-wave-bar`} />
         <div className="audio-controls-time right">
           <span>
             <Text type="caption" className="timer">
@@ -51,6 +50,7 @@ const AudioPlayer = forwardRef((props, ref) => {
             </Text>
           </span>
         </div>
+        <PlaybackSpeed waveSurfer={waveSurfer} />
       </div>
     </div>
   )
