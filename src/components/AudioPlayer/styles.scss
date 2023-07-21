@@ -6,9 +6,12 @@
     align-items: center;
 
     .audio-controls-play-pause {
+      min-width: 38px;
+	  max-width: 38px;
+      height: 36px;
       padding: 0;
       border: none;
-      margin-right: 24px;
+      box-shadow: none;
 
       &::after {
         display: none;
@@ -23,7 +26,31 @@
     .audio-controls-time {
       width: max-content;
       min-width: max-content;
+
+      &.left {
+        margin-left: 24px;
+      }
     }
+
+	.audio-controls-wave-bar {
+		height: 24px;
+		background-color: transparent;
+		overflow: hidden;
+		transition: height 0.3s ease-in-out;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+
+		div {
+			width: 100%;
+		}
+	}
+  }
+  &.loading {
+	.audio-controls-wave-bar {
+		height: 2px;
+		background-color: var(--gray-4);
+	}
   }
 }
 
@@ -31,19 +58,21 @@
   .ant-popover-arrow {
     display: none;
   }
-  .ant-popover-inner-content div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 4px;
-
-    .contacto-player-speed-button {
+  .ant-popover-inner-content {
+    padding: 16px;
+    div {
       display: flex;
-	  min-width: 48px;
-	  width: 48px;
       justify-content: center;
       align-items: center;
-	  box-shadow: none;
+
+      .contacto-player-speed-button {
+        display: flex;
+        min-width: 48px !important;
+        max-width: 48px !important;
+        justify-content: center;
+        align-items: center;
+        box-shadow: none;
+      }
     }
   }
 }

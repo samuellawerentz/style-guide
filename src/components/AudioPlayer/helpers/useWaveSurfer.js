@@ -10,7 +10,6 @@ const defaultPlayerConfig = (playerId) => ({
 const defaultDurationConfig = () => ({
   totalDuration: 0,
   currentDuration: 0,
-  loadingPercent: 0,
 })
 export const useWaveSurfer = (url) => {
   const playerId = useRef(`contacto-player-wave-${new Date().getTime()}`).current
@@ -29,10 +28,10 @@ export const useWaveSurfer = (url) => {
         cursorColor: '#0040E4',
         responsive: true,
         height: 24,
-        barHeight: 5,
+        barHeight: 3,
         barMinHeight: 1,
         barWidth: 1,
-        barGap: 4,
+        barGap: 2,
         hideScrollbar: true,
         closeAudioContext: true,
         partialRender: true,
