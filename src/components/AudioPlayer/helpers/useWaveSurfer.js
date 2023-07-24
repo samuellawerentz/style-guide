@@ -31,7 +31,7 @@ export const useWaveSurfer = (url) => {
         barHeight: 3,
         barMinHeight: 1,
         barWidth: 1,
-        barGap: 2,
+        barGap: 4,
         hideScrollbar: true,
         closeAudioContext: true,
         partialRender: true,

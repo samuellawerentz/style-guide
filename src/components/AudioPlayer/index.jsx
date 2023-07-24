@@ -29,19 +29,11 @@ const AudioPlayer = forwardRef((props, ref) => {
           icon={loading ? <Icon.Loading size={30} /> : <PlayPauseIcon isPlaying={isPlaying} />}
         />
         <div className="audio-controls-time left">
-          <span>
-            <Text type="caption" className="timer">
-              {getDisplayTime(currentDuration)}
-            </Text>
-          </span>
+          <Text type="caption">{getDisplayTime(currentDuration)}</Text>
         </div>
         <div id={playerConfig.id} className="audio-controls-wave-bar" />
         <div className="audio-controls-time right">
-          <span>
-            <Text type="caption" className="timer">
-              {getDisplayTime(totalDuration)}
-            </Text>
-          </span>
+          <Text type="caption">{getDisplayTime(totalDuration)}</Text>
         </div>
         <PlaybackSpeed waveSurfer={waveSurfer} />
       </div>

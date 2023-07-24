@@ -24,8 +24,8 @@ export default function PlaybackSpeed({ waveSurfer }) {
           {speeds.map((speed) => (
             <Button
               key={speed}
-              className="contacto-player-speed-button"
-              type={speed === waveSurfer?.getPlaybackRate() ? 'primary' : 'table-action-link'}
+              className="contacto-player-speed"
+              type={speed === waveSurfer?.getPlaybackRate() ? 'secondary' : 'table-action-link'}
               onClick={() => handleSpeedChange(speed)}
             >
               {speed}x
@@ -34,7 +34,9 @@ export default function PlaybackSpeed({ waveSurfer }) {
         </div>
       )}
     >
-      <Button type="link">{speed}x</Button>
+      <Button className="contacto-player-speed-trigger" type="secondary">
+        {speed}x
+      </Button>
     </Popover>
   )
 }
