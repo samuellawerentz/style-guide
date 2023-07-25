@@ -6,3 +6,7 @@ export const getDisplayTime = (seconds) => {
   seconds = (seconds < 10 ? '0' : '') + seconds
   return minutes + ':' + seconds
 }
+
+export const generateId = (prefix) => {
+  return `${prefix}${Math.random().toString(36).slice(2)}`
+}

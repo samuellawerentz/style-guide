@@ -3,10 +3,10 @@ import Text from 'antd/lib/typography/Text'
 import { forwardRef } from 'react'
 import PlayPauseIcon from './components/PlayPauseIcon'
 import { useWaveSurfer } from './helpers/useWaveSurfer'
-import { getDisplayTime } from './helpers/getDisplayTime'
 import PlaybackSpeed from './components/PlaybackSpeed'
-import { Button } from '../Button'
-import { Icon } from '../Icon'
+import { Button } from '../Button/index'
+import { Icon } from '../Icon/index'
+import { getDisplayTime } from './helpers/utils'
 import './styles.scss'
 
 const AudioPlayer = forwardRef((props, ref) => {

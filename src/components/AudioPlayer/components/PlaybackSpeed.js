@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Popover } from 'antd'
-import { Button } from '../../Button'
+import { Button } from '../../Button/index'
 
 const speeds = [0.8, 1, 1.2, 1.5, 1.7, 2, 2.5]
 export default function PlaybackSpeed({ waveSurfer }) {

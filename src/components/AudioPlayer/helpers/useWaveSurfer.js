@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 
 import WaveSurfer from 'wavesurfer.js'
+import { generateId } from './utils'
 
 const defaultPlayerConfig = (playerId) => ({
   id: playerId,
@@ -12,7 +13,7 @@ const defaultDurationConfig = () => ({
   currentDuration: 0,
 })
 export const useWaveSurfer = (url) => {
-  const playerId = useRef(`contacto-player-wave-${new Date().getTime()}`).current
+  const playerId = useRef(generateId('contacto-player-wave-')).current
   const [playerConfig, setPlayerConfig] = useState(defaultPlayerConfig(playerId))
   const [durationConfig, setDurationConfig] = useState(defaultDurationConfig())
   const [waveSurfer, setWaveSurfer] = useState(null)
