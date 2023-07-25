@@ -2,7 +2,7 @@ import React from 'react'
 import Text from 'antd/lib/typography/Text'
 import { forwardRef } from 'react'
 import PlayPauseIcon from './components/PlayPauseIcon'
-import { useWaveSurfer } from './helpers/useWaveSurfer'
+import useWaveSurfer from './helpers/useWaveSurfer'
 import PlaybackSpeed from './components/PlaybackSpeed'
 import { Button } from '../Button/index'
 import { Icon } from '../Icon/index'
@@ -42,4 +42,4 @@ const AudioPlayer = forwardRef((props, ref) => {
 })
 
 AudioPlayer.displayName = 'AudioPlayer'
-export default AudioPlayer
+export { AudioPlayer }

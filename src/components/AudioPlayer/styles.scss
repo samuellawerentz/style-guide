@@ -4,17 +4,23 @@
   height: 26px !important;
   min-width: unset !important;
   justify-content: center;
+  background: transparent;
   border-radius: 4px !important;
   align-items: center;
   padding: 0;
   font-size: 12px;
+  font-weight: 400;
   transition: none;
+
+  &:hover {
+    background: transparent !important;
+  }
 
   &.contacto-button--table-action-link {
     background-color: var(--background-highlight-color);
 
     &:hover {
-      background-color: var(--background-highlight-color);
+      background-color: var(--background-highlight-color) !important;
     }
   }
 }

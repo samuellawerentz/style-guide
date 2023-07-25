@@ -1,5 +1,5 @@
 import React from 'react'
-import AudioPlayer from './'
+import { AudioPlayer } from './'
 
 export default {
   title: 'Components/Audio Player',

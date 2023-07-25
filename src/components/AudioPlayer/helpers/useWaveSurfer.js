@@ -12,7 +12,7 @@ const defaultDurationConfig = () => ({
   totalDuration: 0,
   currentDuration: 0,
 })
-export const useWaveSurfer = (url) => {
+export default function useWaveSurfer(url) {
   const playerId = useRef(generateId('contacto-player-wave-')).current
   const [playerConfig, setPlayerConfig] = useState(defaultPlayerConfig(playerId))
   const [durationConfig, setDurationConfig] = useState(defaultDurationConfig())
