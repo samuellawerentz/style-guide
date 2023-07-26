@@ -10,5 +10,5 @@ const Template = (args) => <AudioPlayer {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  url: '/sample-audio.mp3',
+  url: 'https://wavesurfer-js.org/wavesurfer-code/examples/audio/mono.mp3',
 }
