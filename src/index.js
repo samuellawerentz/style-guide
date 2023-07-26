@@ -1,3 +1,4 @@
+export * from './components/AudioPlayer/index'
 export * from './components/Button/index'
 export * from './components/Textfield/index'
 export * from './components/Typography/index'
