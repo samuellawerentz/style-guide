@@ -49,7 +49,7 @@ export default function useWaveSurfer(url) {
       })
       wave.on('audioprocess', () => {
         const duration = parseInt(wave.getCurrentTime())
-        if (durationConfig.currentDuration !== duration) {
+        if (durationConfig?.currentDuration !== duration) {
           setDurationConfig((prevConfig) => ({
             ...prevConfig,
             currentDuration: duration,
