@@ -9,6 +9,7 @@ import { Icon } from '../Icon/index'
 import { getDisplayTime } from './helpers/utils'
 import './styles.scss'
 
+// TODO: @Ritik Add Error Boundaries
 const AudioPlayer = forwardRef((props, ref) => {
   const { className, url } = props
   const { waveSurfer, playerConfig, durationConfig } = useWaveSurfer(url)
@@ -25,13 +26,13 @@ const AudioPlayer = forwardRef((props, ref) => {
         <Button
           className="audio-controls-play-pause"
           type="default"
-          onClick={() => !loading && waveSurfer?.playPause()}
           icon={loading ? <Icon.Loading size={30} /> : <PlayPauseIcon isPlaying={isPlaying} />}
+          onClick={() => !loading && waveSurfer?.playPause()}
         />
         <div className="audio-controls-time left">
           <Text type="caption">{getDisplayTime(currentDuration)}</Text>
         </div>
-        <div id={playerConfig.id} className="audio-controls-wave-bar" />
+        <div id={playerConfig?.id} className="audio-controls-wave-bar" />
         <div className="audio-controls-time right">
           <Text type="caption">{getDisplayTime(totalDuration)}</Text>
         </div>
