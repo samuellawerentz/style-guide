@@ -25,9 +25,7 @@ export const TopBanner = ({
           <Icon.Loading size={16} color="white" />
         </Block>
       )}
-      <Text type="headline" color="white">
-        {loading ? loadingText : content}
-      </Text>
+      <Text color="white">{loading ? loadingText : content}</Text>
       {!loading && buttons && (
         <Block display="flex" className="top-banner-buttons-container">
           {buttons.map((button) => button)}
