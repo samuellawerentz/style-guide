@@ -183,6 +183,13 @@
     }
   }
 
+  &--underline {
+    text-decoration: underline;
+    height: 24px;
+    padding: 0;
+    min-width: 0;
+  }
+
   .contacto-icon {
     margin-right: 8px
   }

@@ -22,7 +22,7 @@ export const TopBanner = ({
     >
       {loading && (
         <Block>
-          <Icon.Loading size={16} color="white" />
+          <Icon.Loading size={16} trackColor="white" />
         </Block>
       )}
       <Text color="white">{loading ? loadingText : content}</Text>

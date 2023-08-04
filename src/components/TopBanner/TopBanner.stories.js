@@ -54,6 +54,7 @@ BannerWithButton.args = {
       onClick={() => alert('Banner button clicked!')}
       size="small"
       type="link"
+      variant="underline"
     />,
   ],
 }
