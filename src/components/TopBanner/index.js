@@ -1,5 +1,5 @@
 import React from 'react'
-import { Block } from '../Block'
+import { Block } from '../Block/index'
 import { Icon } from '../Icon/index'
 import { Text } from '../Typography/index'
 import './topbanner.scss'
