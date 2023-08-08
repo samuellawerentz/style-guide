@@ -16,7 +16,8 @@ export default function useWaveSurfer(url) {
   const playerId = useRef(generateId('contacto-player-wave-')).current
   const [playerConfig, setPlayerConfig] = useState(defaultPlayerConfig(playerId))
   const [durationConfig, setDurationConfig] = useState(defaultDurationConfig())
-  const [waveSurfer, setWaveSurfer] = useState(null)
+  // const [waveSurfer, setWaveSurfer] = useState(null)
+  const waveSurferRef = useRef(null)
 
   useLayoutEffect(() => {
     let wave = null
@@ -65,19 +66,28 @@ export default function useWaveSurfer(url) {
       wave.on('finish', () => {
         setPlayerConfig((prevConfig) => ({ ...prevConfig, isPlaying: false }))
       })
-
-      setWaveSurfer(wave)
+      console.log(wave)
+      window.wavesurfers = window.wavesurfers || []
+      window.wavesurfers.push(wave)
+      console.log(window)
+      console.log(window.wavesurfers[0]) // Make sure this is done after adding instances
+      // setWaveSurfer(wave)
+      waveSurferRef.current = wave
     }
-
     return () => {
       wave?.stop()
       wave?.destroy()
-      setWaveSurfer(null)
+      // setWaveSurfer(null)
+      const index = window.wavesurfers.indexOf(wave)
+      if (index !== -1) {
+        window.wavesurfers.splice(index, 1)
+      }
       setPlayerConfig(defaultPlayerConfig(playerId))
       setDurationConfig(defaultDurationConfig())
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playerId, url])
-
-  return { waveSurfer, playerConfig, durationConfig }
+  // const wavesurfer = waveSurferRef.current
+  // console.log('sfka', wavesurfer)
+  return { playerConfig, durationConfig, waveSurferRef }
 }
