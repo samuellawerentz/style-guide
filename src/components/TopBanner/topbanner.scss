@@ -1,9 +1,13 @@
 .top-banner {
     height: 36px;
     gap: 4px;
+
+    .contacto-typography--body {
+      text-align: center;
+    }
+
     &-buttons-container {
       gap: 16px;
-    //   margin-left: 4px;
   
       .sg.cnto-btn.contacto-button--small {
         color: white;
