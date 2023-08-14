@@ -24,11 +24,13 @@ const AudioPlayer = forwardRef((props, ref) => {
 
   const playAudio = () => {
     if (loading) return
-    window.wavesurfers.forEach((surfer) => {
-      if (surfer !== waveSurferInstance) {
-        surfer.pause()
-      }
-    })
+    if (window.wavesurfers?.length) {
+      window.wavesurfers.forEach((surfer) => {
+        if (surfer !== waveSurferInstance) {
+          surfer.pause()
+        }
+      })
+    }
     waveSurferInstance?.playPause()
   }
   return (

@@ -72,9 +72,11 @@ export default function useWaveSurfer(url) {
     return () => {
       wave?.stop()
       wave?.destroy()
-      const index = window.wavesurfers.indexOf(wave)
-      if (index !== -1) {
-        window.wavesurfers.splice(index, 1)
+      if (window.wavesurfers?.length) {
+        const index = window.wavesurfers.indexOf(wave)
+        if (index !== -1) {
+          window.wavesurfers.splice(index, 1)
+        }
       }
       setPlayerConfig(defaultPlayerConfig(playerId))
       setDurationConfig(defaultDurationConfig())
