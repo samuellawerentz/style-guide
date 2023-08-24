@@ -1,6 +1,6 @@
 import React from 'react'
 import Text from 'antd/lib/typography/Text'
-import { forwardRef } from 'react'
+import { forwardRef, useState, useLayoutEffect } from 'react'
 import PlayPauseIcon from './components/PlayPauseIcon'
 import useWaveSurfer from './helpers/useWaveSurfer'
 import PlaybackSpeed from './components/PlaybackSpeed'
@@ -12,11 +12,27 @@ import './styles.scss'
 // TODO: @Ritik Add Error Boundaries
 const AudioPlayer = forwardRef((props, ref) => {
   const { className, url } = props
-  const { waveSurfer, playerConfig, durationConfig } = useWaveSurfer(url)
+  const { playerConfig, durationConfig, waveSurferRef } = useWaveSurfer(url)
 
   const { isPlaying, loading } = playerConfig
   const { totalDuration, currentDuration } = durationConfig
 
+  const [waveSurferInstance, setWaveSurferInstance] = useState(null)
+  useLayoutEffect(() => {
+    setWaveSurferInstance(waveSurferRef.current)
+  }, [waveSurferRef])
+
+  const playAudio = () => {
+    if (loading) return
+    if (window.wavesurfers?.length) {
+      window.wavesurfers.forEach((surfer) => {
+        if (surfer !== waveSurferInstance) {
+          surfer.pause()
+        }
+      })
+    }
+    waveSurferInstance?.playPause()
+  }
   return (
     <div
       className={`contacto-audio-player ${className ?? ''} ${loading ? 'loading' : ''}`}
@@ -27,7 +43,7 @@ const AudioPlayer = forwardRef((props, ref) => {
           className="audio-controls-play-pause"
           type="default"
           icon={loading ? <Icon.Loading size={30} /> : <PlayPauseIcon isPlaying={isPlaying} />}
-          onClick={() => !loading && waveSurfer?.playPause()}
+          onClick={() => playAudio()}
         />
         <div className="audio-controls-time left">
           <Text type="caption">{getDisplayTime(currentDuration)}</Text>
@@ -36,7 +52,7 @@ const AudioPlayer = forwardRef((props, ref) => {
         <div className="audio-controls-time right">
           <Text type="caption">{getDisplayTime(totalDuration)}</Text>
         </div>
-        <PlaybackSpeed waveSurfer={waveSurfer} />
+        <PlaybackSpeed waveSurfer={waveSurferInstance} />
       </div>
     </div>
   )
