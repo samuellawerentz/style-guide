@@ -17,7 +17,7 @@
   }
 
   &.contacto-button--table-action-link {
-    background-color: var(--background-highlight-color);
+    background-color: var(--background-highlight-color) !important;
 
     &:hover {
       background-color: var(--background-highlight-color) !important;
@@ -90,7 +90,7 @@
   }
 }
 
-.contacto-player-speed {
+.contacto-player-speed-popup {
   padding-top: 8px;
 
   .ant-popover-arrow {
@@ -119,10 +119,22 @@
         align-items: center;
         gap: 8px;
 
-        .contacto-player-speed {
+        .contacto-player-speed-popup {
           @include playback-speed-button;
         }
       }
     }
+  }
+}
+
+.contacto-player-speed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-left: 24px;
+
+  .contacto-player-speed-buttons {
+    @include playback-speed-button;
   }
 }

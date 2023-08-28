@@ -4,6 +4,7 @@ import { forwardRef, useState, useLayoutEffect } from 'react'
 import PlayPauseIcon from './components/PlayPauseIcon'
 import useWaveSurfer from './helpers/useWaveSurfer'
 import PlaybackSpeed from './components/PlaybackSpeed'
+import PlaybackSpeedPopup from './components/PlaybackSpeedPopup'
 import { Button } from '../Button/index'
 import { Icon } from '../Icon/index'
 import { getDisplayTime } from './helpers/utils'
@@ -11,7 +12,7 @@ import './styles.scss'
 
 // TODO: @Ritik Add Error Boundaries
 const AudioPlayer = forwardRef((props, ref) => {
-  const { className, url } = props
+  const { className, url, showSpeedInPopup = true } = props
   const { playerConfig, durationConfig, waveSurferRef } = useWaveSurfer(url)
 
   const { isPlaying, loading } = playerConfig
@@ -52,7 +53,11 @@ const AudioPlayer = forwardRef((props, ref) => {
         <div className="audio-controls-time right">
           <Text type="caption">{getDisplayTime(totalDuration)}</Text>
         </div>
-        <PlaybackSpeed waveSurfer={waveSurferInstance} />
+        {showSpeedInPopup ? (
+          <PlaybackSpeedPopup />
+        ) : (
+          <PlaybackSpeed waveSurfer={waveSurferInstance} />
+        )}
       </div>
     </div>
   )
