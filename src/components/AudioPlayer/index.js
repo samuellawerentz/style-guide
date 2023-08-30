@@ -54,7 +54,7 @@ const AudioPlayer = forwardRef((props, ref) => {
           <Text type="caption">{getDisplayTime(totalDuration)}</Text>
         </div>
         {showSpeedInPopup ? (
-          <PlaybackSpeedPopup />
+          <PlaybackSpeedPopup waveSurfer={waveSurferInstance} />
         ) : (
           <PlaybackSpeed waveSurfer={waveSurferInstance} />
         )}
