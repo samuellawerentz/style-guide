@@ -14,10 +14,15 @@ const iconMap = {
 /**
  * Component that is used to show alert messages on the UI
  */
-export const Alert = ({ className = '', type, message, ...props }) => {
+export const Alert = ({ className = '', type, message, variant = 'default', ...props }) => {
   return (
     <div
-      className={['sg contacto-alert', `contacto-alert--${type}`, className].join(' ')}
+      className={[
+        'sg contacto-alert',
+        `contacto-alert--${type}`,
+        `contacto-alert--${variant}`,
+        className,
+      ].join(' ')}
       {...props}
     >
       <div className="contacto-alert-icon">
@@ -43,6 +48,10 @@ Alert.propTypes = {
    * The alert message to be displayed
    */
   message: PropTypes.string,
+  /**
+   * Variant of alert (default/compact).
+   */
+  variant: PropTypes.string,
 }
 
 Alert.defaultProps = {}
