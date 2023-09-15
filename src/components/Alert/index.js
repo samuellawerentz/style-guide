@@ -14,7 +14,7 @@ const iconMap = {
 /**
  * Component that is used to show alert messages on the UI
  */
-export const Alert = ({ className = '', type, message, variant = 'default', ...props }) => {
+export const Alert = ({ className = '', type, message, variant, ...props }) => {
   return (
     <div
       className={[
