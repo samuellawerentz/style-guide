@@ -10,10 +10,13 @@
       gap: 16px;
   
       .sg.cnto-btn.contacto-button--small {
-        color: white;
+        color: white !important;
       }
       .sg.ant-btn.cnto-btn.contacto-button--link:hover {
-        color: white;
+        color: white !important;
+      }
+      .sg.cnto-btn.contacto-button[class*=link] {
+        background-color: transparent !important;
       }
     }
  
