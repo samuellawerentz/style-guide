@@ -114,8 +114,8 @@
     &[disabled],
     &[disabled]:hover {
       background-color: var(--gray-6);
-      border: 1px solid var(--border-color-1);
-      box-shadow: none;
+      border: 1px solid var(--border-color-1) !important;
+      box-shadow: none !important;
     }
 
     &--readonly:not(.increase-specificity) {
