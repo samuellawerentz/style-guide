@@ -14,6 +14,13 @@ export default {
 
 const Template = (args) => <Alert {...args} />
 
+export const Compact = Template.bind({})
+Compact.args = {
+  message: 'This is a warning banner of size compact',
+  type: 'info',
+  size: 'compact',
+}
+
 export const Default = Template.bind({})
 Default.args = {
   message: 'This is a warning banner',
