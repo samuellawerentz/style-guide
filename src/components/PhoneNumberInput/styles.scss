@@ -36,6 +36,18 @@
         &:hover, &.selected {
             background-color: var(--background-highlight-color);
         }
+
+        .sg-country-list-item-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &__country-name {
+                text-overflow: ellipsis;
+                max-width: 78%;
+                overflow: auto;
+            }
+        }
     }
     .sg-country-search {
         padding: 16px 16px 8px;
