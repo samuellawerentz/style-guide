@@ -10,6 +10,11 @@
     line-height: 0;
     color: var(--base-color);
     background-color: var(--bg-color);
+    
+    &--compact {
+        padding: 8px;
+        gap: 8px;
+    }
 
     &--success {
         --base-color: var(--success-color);
