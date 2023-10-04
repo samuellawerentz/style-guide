@@ -75,8 +75,9 @@ const CountryDropdown = ({
                 circle
                 size={20}
               />
-              <Text ellipsis type="caption">
-                {country[0]} (+{country[2]})
+              <Text className="sg-country-list-item-label" type="caption">
+                <span className="sg-country-list-item-label__country-name">{country[0]}</span>
+                <span className="sg-country-list-item-label__country-code">+{country[2]}</span>
               </Text>
             </Block>
           ))
