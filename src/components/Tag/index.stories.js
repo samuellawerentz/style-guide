@@ -63,3 +63,9 @@ Round.args = {
   closable: true,
   disableUppercase: true,
 }
+
+export const TeamName = Template.bind({})
+TeamName.args = {
+  label: 'Team Name',
+  type: 'teamname',
+}

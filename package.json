@@ -4,7 +4,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "repository": "git://github.com/contacto-io/contacto-console",
-  "version": "0.5.40",
+  "version": "0.5.41",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
