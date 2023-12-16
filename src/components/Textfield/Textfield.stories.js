@@ -142,3 +142,10 @@ CustomPassword.args = {
   readOnly: 'true',
   value: 'tests',
 }
+
+export const TextFieldWithValidation = InputWithValidation.bind({})
+TextFieldWithValidation.args = {
+  label: 'AI Chatbot Name',
+  placeholder: '',
+  onSuffixClick: () => console.log('suffix clicked'),
+}

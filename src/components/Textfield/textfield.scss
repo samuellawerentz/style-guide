@@ -198,3 +198,21 @@
     }
   }
 }
+
+.textbox {
+  &.has-error {
+    border: 1px solid var(--danger-color) !important;
+    .contacto-select:hover:not(.ant-select-disabled),
+    .contacto-select[class*='focused']:not(.ant-select-disabled) {
+      border: none;
+    }
+    .contacto-select {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .ant-input-password-icon {
+    color: var(--gray-1) !important;
+  }
+}
