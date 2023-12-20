@@ -4,10 +4,10 @@ import './styles.scss'
 
 export const ChatLoader = ({ height, width, color, dotRadius, dotPositions, className }) => {
   return (
-    <svg height={height} width={width} className={className}>
-      {dotPositions.map((pos, index) => (
+    <svg height={height} width={width} className={`sg typing-loader ${className}`}>
+      {dotPositions.map((pos) => (
         <circle
-          key={index}
+          key={`${pos.cx}-${pos.cy}`}
           className="dot"
           cx={pos.cx}
           cy={pos.cy}
@@ -17,6 +17,19 @@ export const ChatLoader = ({ height, width, color, dotRadius, dotPositions, clas
       ))}
     </svg>
   )
+}
+
+ChatLoader.defaultProps = {
+  className: '',
+  height: '8',
+  width: '36',
+  color: 'grey',
+  dotRadius: '4',
+  dotPositions: [
+    { cx: '4', cy: '4' },
+    { cx: '18', cy: '4' },
+    { cx: '32', cy: '4' },
+  ],
 }
 
 // Prop types for type checking (optional)
