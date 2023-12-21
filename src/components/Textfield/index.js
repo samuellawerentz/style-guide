@@ -135,7 +135,7 @@ const WithValidation = ({ wrapperClassName, errorMessage, validateFunction, ...p
   )
 }
 
-const InputWithValidation = React.forwardRef(function InputWithValidation(
+const InputWithErrorMsg = React.forwardRef(function InputWithValidation(
   { otherError = true, className, name, onBlur, ...props },
   ref,
 ) {
@@ -161,7 +161,7 @@ const InputWithValidation = React.forwardRef(function InputWithValidation(
 })
 
 TextField.WithValidation = WithValidation
-TextField.InputWithValidation = InputWithValidation
+TextField.InputWithErrorMsg = InputWithErrorMsg
 
 TextField.propTypes = {
   /**
