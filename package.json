@@ -4,10 +4,13 @@
     "registry": "https://npm.pkg.github.com"
   },
   "repository": "git://github.com/contacto-io/contacto-console",
-  "version": "0.5.60",
+  "version": "0.5.62",
   "main": "build/index.js",
   "module": "build/index.es.js",
-  "sideEffects": ["*.scss","*.css"],
+  "sideEffects": [
+    "*.scss",
+    "*.css"
+  ],
   "files": [
     "build"
   ],
