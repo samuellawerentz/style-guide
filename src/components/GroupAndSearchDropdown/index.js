@@ -7,15 +7,37 @@ import { Text } from '../Typography/index'
 import { TextField } from '../Textfield/index'
 import './groupAndSearchDropdown.scss'
 
+function insertText(newText, e) {
+  let cursorPosition = e.selectionStart
+  let textBeforeCursorPosition = e.value.substring(0, cursorPosition)
+  let textAfterCursorPosition = e.value.substring(cursorPosition, e.value.length)
+
+  const shouldIncludeBraces = textBeforeCursorPosition?.split('')?.at(-1) !== '|'
+  if (!shouldIncludeBraces) newText = newText.replace(/[{}]/g, '')
+
+  return textBeforeCursorPosition.replace(/{{$/, '') + newText + textAfterCursorPosition
+}
+
 export const GroupAndSearchDropdown = ({
   options,
-  value = '',
   onValueSelect,
   className,
+  mode,
+  onChange,
+  dropdownIcon,
+  openOnTextboxClick,
   ...props
 }) => {
   const [showDropdown, setShowDropdown] = useState(false)
   const textFieldRef = useRef()
+  const searchRef = useRef()
+
+  //To autofocus the search bar whenever the dropdown opens
+  useEffect(() => {
+    if (showDropdown) {
+      setTimeout(() => searchRef.current.focus(), 100)
+    }
+  }, [showDropdown])
 
   const OptionsDropdown = () => {
     const [searchString, setSearchString] = useState('')
@@ -29,6 +51,8 @@ export const GroupAndSearchDropdown = ({
             onChange={({ target }) => {
               setSearchString(target.value)
             }}
+            autoFocus={true}
+            ref={searchRef}
           />
         </div>
         {options?.map((option, index) => {
@@ -39,7 +63,7 @@ export const GroupAndSearchDropdown = ({
           return (
             <>
               <div className="group-header" key={index}>
-                <Text type="captions_bold" color="gray-2">
+                <Text type="caption-bold" color="gray-2">
                   {option?.title}
                 </Text>
               </div>
@@ -49,7 +73,16 @@ export const GroupAndSearchDropdown = ({
                   key={childIndex}
                   onClick={() => {
                     const finalValue = `{{${child?.value}}}`
-                    onValueSelect(finalValue)
+                    textFieldRef.current.focus()
+                    onChange({
+                      target: {
+                        value:
+                          mode === 'replacer'
+                            ? finalValue
+                            : insertText(finalValue, document.activeElement),
+                      },
+                      isSelection: true,
+                    })
                     setShowDropdown(false)
                     setSearchString('')
                   }}
@@ -64,15 +97,15 @@ export const GroupAndSearchDropdown = ({
     )
   }
 
-  useEffect(() => {
-    if (value[0] === '{' && value[1] === '{' && value?.length === 2) {
-      setShowDropdown(true)
-    } else setShowDropdown(false)
-  }, [value])
-
   return (
     <>
-      <Dropdown overlay={<OptionsDropdown />} trigger={['click']} visible={showDropdown}>
+      <Dropdown
+        overlay={<OptionsDropdown />}
+        trigger={['click']}
+        visible={showDropdown}
+        placement="bottomRight"
+        onVisibleChange={(visible) => setShowDropdown(visible)}
+      >
         <div className={`group-dropdown`}>
           <TextField
             type={'text'}
@@ -80,16 +113,37 @@ export const GroupAndSearchDropdown = ({
             className={className}
             suffix={
               <div
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation()
                   setShowDropdown(!showDropdown)
                 }}
                 className="contacto-icon--input-suffix-variable-dropdown"
               >
-                <Icon name="data_object" />
+                <Icon svg={dropdownIcon} size={20} />
               </div>
             }
-            value={value}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => !openOnTextboxClick && e.stopPropagation()}
+            onKeyUp={(e) => {
+              e.persist()
+              const value = e.target.value
+              // const keyPressed = String.fromCharCode(e.keyCode)
+              const caretEnd = e.target.selectionEnd
+              const keyPressed = value[caretEnd - 1]
+              const openDropdown =
+                value.slice(-2) === '{{' ||
+                (keyPressed === '|' && /\{\{[\w|]+\|$/g.test(value.substring(0, caretEnd)))
+              setShowDropdown(openDropdown)
+            }}
+            onChange={(e) => {
+              // So that the event is not lost
+              e.persist()
+              const caretStart = e.target.selectionStart
+              const caretEnd = e.target.selectionEnd
+              onChange(e)
+
+              // To preserve the caret position
+              setTimeout(() => e.target.setSelectionRange?.(caretStart, caretEnd), 0)
+            }}
             {...props}
           />
         </div>
@@ -106,4 +160,8 @@ GroupAndSearchDropdown.propTypes = {
   options: PropTypes.object,
   value: PropTypes.string,
   onValueSelect: PropTypes.func,
+  mode: PropTypes.string,
+  onChange: PropTypes.func,
+  dropdownIcon: PropTypes.any,
+  openOnTextboxClick: PropTypes.bool,
 }

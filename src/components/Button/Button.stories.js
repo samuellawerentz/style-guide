@@ -89,3 +89,10 @@ LinkDanger.args = {
   label: 'Button without border',
   type: 'link-danger',
 }
+
+export const LinkUnderline = Template.bind({})
+LinkUnderline.args = {
+  label: 'Button without border',
+  type: 'link',
+  variant: 'underline',
+}

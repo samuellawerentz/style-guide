@@ -70,6 +70,43 @@ WithSearch.args = {
   ],
 }
 
+export const WithGroups = Template.bind({})
+WithGroups.args = {
+  type: 'input',
+  size: 'default',
+  placeholder: 'A simple text field',
+  showSearch: true,
+  virtual: false,
+  options: [
+    {
+      label: 'Group 1',
+      options: [
+        { value: 'Apple' },
+        { value: 'Ball' },
+        { value: 'Cat' },
+        { value: 'Duck' },
+        { value: 'Egg' },
+        { value: 'Fish' },
+        { value: 'Goat' },
+        { value: 'Hen' },
+      ],
+    },
+    {
+      label: 'Group 2',
+      options: [
+        { value: 'Apple 1' },
+        { value: 'Ball 2' },
+        { value: 'Cat 3' },
+        { value: 'Duck 4' },
+        { value: 'Egg 5' },
+        { value: 'Fish 6' },
+        { value: 'Goat 7' },
+        { value: 'Hen 8' },
+      ],
+    },
+  ],
+}
+
 export const SearchWithClear = Template.bind({})
 SearchWithClear.args = {
   type: 'input',
@@ -141,6 +178,7 @@ MultipleSelect.args = {
   mode: 'multiple',
   maxTagCount: 'responsive',
   maxTagModalTitle: 'Select items',
+  showCloseTag: true,
   options: [
     { value: 'Apple' },
     { value: 'Ball' },

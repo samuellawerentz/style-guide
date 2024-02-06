@@ -20,6 +20,7 @@ export default {
 
 const Template = (args) => <TextField {...args} />
 const WithValidation = (args) => <TextField.WithValidation {...args} />
+const InputWithErrorMsg = (args) => <TextField.InputWithErrorMsg {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -141,4 +142,11 @@ CustomPassword.args = {
   suffixIcon: 'content_copy',
   readOnly: 'true',
   value: 'tests',
+}
+
+export const TextFieldWithValidation = InputWithErrorMsg.bind({})
+TextFieldWithValidation.args = {
+  label: 'AI Chatbot Name',
+  placeholder: '',
+  onSuffixClick: () => console.log('suffix clicked'),
 }

@@ -1,4 +1,9 @@
 .sg.contacto-jsoneditor {
+    .key {
+        .contacto-icon {
+           flex-shrink: 0;
+        }
+       }
     .schema-editor {
         
         .object .object .item::before {
@@ -9,58 +14,87 @@
             height: 2px;
             background-color: var(--primary-color-3);
         }
-    }
-    .add-item {
-        border: 1px solid var(--primary-color);
-        display: grid;
-        place-items: center;
-        width: 28px;
-        height: 28px;
-        cursor: pointer;
-        border-radius: 4px;
-        &-container {
-            flex-basis: 100%;
-        }
-    }
-    .key-menu {
-        padding: 4px 0;
-        & > div {
-            height: 44px;
-            &:hover {
-                background-color: var(--background-highlight-color);
+        .select-boxes {
+            flex: 1; 
+            align-items: center;
+            > div {
+                flex: 0 1 240px;
             }
         }
-    }
-    &.key-value {
-        .object .object .item::before, .object .object .item::after {
-            left: -22px;
+        .object .item {
+            align-items: flex-start;
         }
     }
+
+    .static-list-item {
+         > div:first-child {
+            display: none !important;
+        }
+        &:before, &:after {
+            display: none !important;
+        }
+        > .object {
+            margin-top: -24px;
+            .item {
+                &::before, &:after {
+                 transform: translateX(-32px);
+                }
+                .key {
+                 position: relative;
+                 left: -32px;
+                 .contacto-icon {
+                    flex-shrink: 0;
+                 }
+                }
+             }
+        }
+    }
+
     &.schema {
         .object .object .item:first-child::before {
-            height: calc(100% + 32px);
-            top: -16px;
+            height: calc(100% + 50px);
+            top: -18px;
         }
         .object .object .item:only-child::before {
-            height: 32px;
+            height: 36px;
+        }
+    }
+
+
+    .add-related-info {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex: 0 !important;
+        &:after {
+            content: '';
+            opacity: 0;
+            flex-shrink: 0;
+        }
+        &:hover {
+            > * {
+            color: var(--primary-color) !important;    
+            }
+            &:after {
+                content: 'Get related information';
+                opacity: 1;
+                font-size: 14px;
+                line-height: 20px;
+                color: var(--primary-color);
+
+            }
         }
     }
 }
-.key-menu {
-    border: 1px solid var(--primary-color-4);
-    padding: 4px 0;
-    box-shadow: var(--box-shadow1);
-    .menu-container {
-        & > div {
-            cursor: pointer;
-            height: 44px;
-            padding: 0 16px;
-            &:hover {
-                background-color: var(--background-highlight-color);
-            }
-            &:first-child {
-                border-bottom: 1px solid var(--border-color-1);
-            }
-        }
+
+.textfield-width {
+    width: 280px;
+}
+
+.related-value {
+    &:before {
+        top: -44px !important;
+        height: calc(100% + 24px) !important;
     }
 }

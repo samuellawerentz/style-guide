@@ -1,0 +1,39 @@
+.top-banner {
+    height: 36px;
+    gap: 4px;
+
+    .contacto-typography--body {
+      text-align: center;
+    }
+
+    &-buttons-container {
+      gap: 16px;
+  
+      .sg.cnto-btn.contacto-button--small {
+        color: white !important;
+      }
+      .sg.ant-btn.cnto-btn.contacto-button--link:hover {
+        color: white !important;
+      }
+      .sg.cnto-btn.contacto-button[class*=link] {
+        background-color: transparent !important;
+      }
+    }
+ 
+    &.default {
+        background-color: var(--primary-text-color);
+    }
+
+    &.success {
+      background-color: var(--success-color);
+    }
+  
+    &.danger {
+      background-color: var(--danger-color);
+    }
+  
+    &.warning {
+      background-color: var(--warning-color);
+    }
+  }
+  

@@ -1,5 +1,6 @@
 import React from 'react'
 import { GroupAndSearchDropdown } from '.'
+import { ReactComponent as BracketIcon } from '../../assets/ic-bracket.svg'
 
 export default {
   title: 'Components/GroupAndSearchDropdown',
@@ -10,17 +11,18 @@ export default {
       control: { type: 'select' },
     },
   },
-  decorators: [(story) => <div style={{ width: '280px' }}>{story()}</div>],
+  decorators: [(story) => <div style={{ width: '580px' }}>{story()}</div>],
 }
 
 const Template = (args) => <GroupAndSearchDropdown {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  type: 'input',
-  size: 'default',
+  dropdownIcon: BracketIcon,
   maxLength: 100,
+  mode: 'replacer',
   placeholder: 'A simple text field',
+  onChange: (e) => console.log(e.target.value),
   options: [
     {
       title: 'System Variables',

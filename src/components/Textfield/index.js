@@ -135,7 +135,33 @@ const WithValidation = ({ wrapperClassName, errorMessage, validateFunction, ...p
   )
 }
 
+const InputWithErrorMsg = React.forwardRef(function InputWithValidation(
+  { otherError = true, className, name, onBlur, ...props },
+  ref,
+) {
+  const [touched, settouched] = useState(false)
+  const errorCondition = props.word?.length || (!props.value && otherError)
+  const hasError = touched && errorCondition
+
+  return (
+    <>
+      <TextField
+        ref={ref}
+        className={`textbox ${hasError ? 'has-error' : ''} ${className}`}
+        onBlur={(e) => settouched(true) || (onBlur && onBlur(e))}
+        {...props}
+      />
+      {touched && !props.value && otherError && (
+        <Text color="danger-color" type="caption">
+          {props.label || name} is required
+        </Text>
+      )}
+    </>
+  )
+})
+
 TextField.WithValidation = WithValidation
+TextField.InputWithErrorMsg = InputWithErrorMsg
 
 TextField.propTypes = {
   /**

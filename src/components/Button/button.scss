@@ -94,6 +94,8 @@
   &--link {
     color: var(--primary-color);
     font-weight: 600;
+    background: none;
+    box-shadow: none;
 
     &:hover {
       color: var(--primary-color-6);
@@ -113,6 +115,8 @@
   &--link-danger {
     color: var(--danger-color);
     font-weight: 600;
+    background: none;
+    box-shadow: none;
 
     &:hover {
       color: var(--danger-color-5);
@@ -170,6 +174,8 @@
     padding: 8px 0px;
     padding-left: 0;
     min-width: auto;
+    background: none;
+    box-shadow: none;
 
     &:hover {
       color: var(--primary-color);
@@ -177,17 +183,24 @@
     }
   }
 
+  &--underline {
+    text-decoration: underline;
+    height: 24px;
+    padding: 0;
+    min-width: 0;
+  }
+
   .contacto-icon {
     margin-right: 8px
   }
 
   &--only-icon {
-    padding: 8px;
+    padding: 4px;
     min-width: auto;
     width: auto;
 
     .contacto-icon {
-      margin-right: 0;
+      margin-right: 0 !important;
 
       &.small {
         font-size: 20px;

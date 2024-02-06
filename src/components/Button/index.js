@@ -22,6 +22,7 @@ export const getButtonClassName = (
   onlyIcon,
   fullWidth,
   align,
+  variant,
 ) => {
   return [
     'sg',
@@ -34,6 +35,7 @@ export const getButtonClassName = (
     fullWidth ? 'contacto-button--full-width' : '',
     align ? `contacto-button--${align}` : '',
     className,
+    variant ? `contacto-button--${variant}` : '',
   ].join(' ')
 }
 /**
@@ -48,6 +50,7 @@ export const Button = ({
   align,
   className,
   children,
+  variant,
   ...props
 }) => {
   return (
@@ -60,6 +63,7 @@ export const Button = ({
         !(label || children) && icon,
         fullWidth,
         align,
+        variant,
       )}
       icon={icon ? <Icon name={icon} className={size} /> : null}
       {...props}
@@ -101,6 +105,7 @@ Button.propTypes = {
    */
   align: PropTypes.oneOf(['left', 'right', 'center']),
   children: PropTypes.any,
+  variant: PropTypes.string,
 }
 
 Button.defaultProps = {

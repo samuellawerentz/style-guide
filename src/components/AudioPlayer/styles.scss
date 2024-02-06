@@ -1,0 +1,140 @@
+@mixin playback-speed-button {
+  display: flex;
+  width: 32px;
+  height: 26px !important;
+  min-width: unset !important;
+  justify-content: center;
+  background: transparent;
+  border-radius: 4px !important;
+  align-items: center;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 400;
+  transition: none;
+
+  &:hover {
+    background: transparent !important;
+  }
+
+  &.contacto-button--table-action-link {
+    background-color: var(--background-highlight-color) !important;
+
+    &:hover {
+      background-color: var(--background-highlight-color) !important;
+    }
+  }
+}
+
+.contacto-audio-player {
+  .audio-controls {
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .audio-controls-play-pause {
+      min-width: 38px;
+      max-width: 38px;
+      height: 36px;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+
+      &::after {
+        display: none;
+      }
+    }
+    .audio-controls-wave-bar {
+      flex: 1;
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+
+    .audio-controls-time {
+      width: max-content;
+      min-width: max-content;
+
+      .ant-typography {
+        color: var(--gray-1);
+      }
+
+      &.left {
+        margin-left: 16px;
+      }
+    }
+
+    .audio-controls-wave-bar {
+      height: 24px;
+      background-color: transparent;
+      overflow: hidden;
+      transition: height 0.3s ease-in-out;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      div {
+        width: 100%;
+      }
+    }
+
+    .contacto-player-speed-trigger {
+      @include playback-speed-button;
+      margin-left: 32px;
+    }
+  }
+  &.loading {
+    .audio-controls-wave-bar {
+      height: 2px;
+      background-color: var(--gray-4);
+    }
+  }
+}
+
+.contacto-player-speed-popup {
+  padding-top: 8px;
+
+  .ant-popover-arrow {
+    display: none;
+  }
+  .ant-popover-inner {
+    padding: 16px;
+    box-shadow: var(--box-shadow-default);
+
+    .ant-popover-title {
+      height: unset;
+      min-height: unset;
+      border: none;
+      padding: 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary-text-color);
+      margin-bottom: 8px;
+    }
+    .ant-popover-inner-content {
+      padding: 0;
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        .contacto-player-speed-popup {
+          @include playback-speed-button;
+        }
+      }
+    }
+  }
+}
+
+.contacto-player-speed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-left: 24px;
+
+  .contacto-player-speed-buttons {
+    @include playback-speed-button;
+  }
+}

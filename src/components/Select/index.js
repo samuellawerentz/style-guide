@@ -29,6 +29,7 @@ export const Select = React.forwardRef(function Select(
     maxTagModalTitle,
     value,
     onChange,
+    showCloseTag = true,
     ...props
   },
   ref,
@@ -98,7 +99,15 @@ export const Select = React.forwardRef(function Select(
             dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
             mode="multiple"
             maxTagCount={maxTagCount}
-            tagRender={(tagProps) => <Tag type="select" disableUppercase closeIcon {...tagProps} />}
+            tagRender={(tagProps) => (
+              <Tag
+                type="select"
+                disableUppercase
+                {...tagProps}
+                closeIcon={showCloseTag}
+                closable={showCloseTag}
+              />
+            )}
             maxTagPlaceholder={(values) => (
               <Text className="max-tag-placeholder" onClick={onMaxTagClick} type="caption">
                 +{values.length} more
@@ -129,13 +138,20 @@ export const Select = React.forwardRef(function Select(
                 listHeight={listHeight || 220}
                 placeholder={placeholder}
                 tagRender={(tagProps) => (
-                  <Tag type="select" disableUppercase closeIcon {...tagProps} />
+                  <Tag
+                    type="select"
+                    disableUppercase
+                    {...tagProps}
+                    closeIcon={showCloseTag}
+                    closable={showCloseTag}
+                  />
                 )}
                 dropdownClassName={['sg contacto-select-listbox', dropdownClassName].join(' ')}
                 mode="multiple"
                 value={localValue}
                 onChange={onValueChange}
                 {...props}
+                getPopupContainer={undefined}
                 maxTagCount={null}
               />
             </div>
@@ -217,6 +233,10 @@ Select.propTypes = {
    * onChange handler for the select
    */
   onChange: PropTypes.func,
+  /**
+   * showCloseTag diable close icon on tags
+   */
+  showCloseTag: PropTypes.bool,
 }
 
 Select.defaultProps = {

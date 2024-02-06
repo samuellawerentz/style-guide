@@ -14,6 +14,8 @@ export const TAG_TYPES = [
   'warning',
   'secondary',
   'select',
+  'round',
+  'teamname',
 ]
 /**
  * Tag component that is used to specify status of a task
@@ -35,13 +37,17 @@ export const Tag = ({
           <span className="close-tag-icon">
             <Icon color="primary-color" name="close" size={14} />
           </span>
-        ) : (
-          ''
-        )
+        ) : null
       }
       {...props}
     >
-      <Text type={type === 'default' || disableUppercase ? 'caption' : 'caption-capital'}>
+      <Text
+        type={
+          ['default', 'round', 'teamname'].includes(type) || disableUppercase
+            ? 'caption'
+            : 'caption-capital'
+        }
+      >
         {label || children}
       </Text>
     </AntTag>

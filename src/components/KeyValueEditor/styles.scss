@@ -1,0 +1,53 @@
+.sg.contacto-keyvalueeditor {
+    display: flex;
+    flex-direction: column;
+    .heading-item {
+        margin-bottom: -6px;
+    }
+    .hide {
+        display: none;
+    }
+    gap: 16px;
+    .textfield-width {
+        width: 280px;
+    }
+    .key-controls {
+        align-items: center;
+        align-self: flex-start;
+        margin-top: 6px;
+        > *:not(:first-child) {
+            position: relative;
+            &:before {
+                content: '';
+                width: 1px;
+                height: 28px;
+                background-color: var(--gray-5);
+                display: block;
+                position: absolute;
+                top: -2px;
+                left: -12px;
+            }
+        }
+    }
+    .value-items {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .add-value, .remove {
+        cursor: pointer;
+        &.disabled-btn > * {
+            background-color: transparent;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+    }
+}
+.value-group {
+    align-items: center;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}

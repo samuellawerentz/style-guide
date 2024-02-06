@@ -1,36 +1,40 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import './styles.scss'
 import PropTypes from 'prop-types'
 import ItemRow from './ItemRow'
-import { forwardRef } from 'react'
 import { JsonEditor as JsonSchemaEditor } from 'rc-json-editor'
 
 /**
  * A JSON Editor component wrapped upon rc-json-editor
  */
-export const JSONEditor = forwardRef(function JSONEditor(
-  { options, className = '', data, mode = 'schema', fromTree, ...props },
-  ref,
-) {
-  const ItemRowWrapper = (props) => <ItemRow options={options} {...props} mode={mode} />
+
+export const JSONEditor = ({
+  className = '',
+  data,
+  mode = 'schema',
+  fromTree,
+  onNodeTypeChange,
+  onRelatedValueChange,
+  options,
+  ...props
+}) => {
+  const ItemRowWrapper = (props) => (
+    <ItemRow
+      {...props}
+      options={options}
+      onNodeTypeChange={onNodeTypeChange}
+      onRelatedValueChange={onRelatedValueChange}
+    />
+  )
   return (
     <div className={['sg contacto-jsoneditor', className, mode].join(' ')}>
-      <JsonSchemaEditor
-        data={data}
-        ItemComponent={ItemRowWrapper}
-        ref={ref}
-        fromTree={fromTree}
-        {...props}
-      />
+      <JsonSchemaEditor data={data} ItemComponent={ItemRowWrapper} fromTree={fromTree} {...props} />
     </div>
   )
-})
+}
 
 JSONEditor.propTypes = {
-  /**
-   * Array of dropdown options for the value
-   */
-  options: PropTypes.array,
   /**
    * Class to be added
    */
@@ -47,6 +51,9 @@ JSONEditor.propTypes = {
    * Whether the data is JSON or Tree data
    */
   fromTree: PropTypes.bool,
+  options: PropTypes.array,
+  onNodeTypeChange: PropTypes.func,
+  onRelatedValueChange: PropTypes.func,
 }
 
 JSONEditor.defaultProps = {}
