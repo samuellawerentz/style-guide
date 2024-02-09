@@ -35,10 +35,6 @@
     border-left: 4px solid var(--primary-color);
   }
 
-  .ant-notification-notice-message {
-    margin: 0 0 0 38px;
-    padding: 0;
-  }
 }
 
 .ant-notification {
@@ -59,6 +55,9 @@
     &-single-line-auto-margin {
       display: none;
     }
+  }
+  &-notice-with-icon {
+    display: initial !important;
   }
   &-notice-close-icon,
   &-close-icon {
