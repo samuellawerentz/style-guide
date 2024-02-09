@@ -22,7 +22,6 @@ export const showNotification = (type, message) => {
 
 export const Notification = ({ type, message }) => {
   useEffect(() => {
-    console.log('showNotification', showNotification)
     showNotification(type, message)
   }, [type])
   return <>This is notification of type {type}</>

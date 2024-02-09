@@ -46,8 +46,8 @@
    {
      &-notice-with-icon {
        display: flex;
-       align-items: center;
        gap: 8px;
+       flex-wrap: wrap;
      }
      &-notice-message {
       margin: 0 !important;

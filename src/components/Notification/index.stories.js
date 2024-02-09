@@ -1,15 +1,9 @@
 import React from 'react'
-import { Notification } from './'
+import { Notification, showNotification } from './'
 
 export default {
   title: 'Components/Notification',
-  component: Notification,
-  // argTypes: {
-  //  type: {
-  //    options:
-  //    control: { type: 'select' },
-  //  },
-  // },
+  component: showNotification,
 }
 
 const Template = (args) => <Notification {...args} />
