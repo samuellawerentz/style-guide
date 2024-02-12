@@ -91,6 +91,7 @@ export const Icon = ({ className = '', name, size, color, style, hoverColor, svg
         lineHeight: 1,
         width: size,
         height: size,
+        fill: svg ? iconColor : '',
       }}
       {...props}
       {...iconEventProps}
