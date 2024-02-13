@@ -18,7 +18,7 @@ export const showNotification = (type, message) => {
     closeIcon: (
       <Icon name="close" size={24} color="primary-text-color" hoverColor="primary-text-color" />
     ),
-    duration: 0,
+    duration: 5,
   })
 }
 
