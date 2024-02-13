@@ -53,6 +53,22 @@
             font-size: 14px;
         }
     }
+    &--teamname {
+        width: fit-content;
+        padding: 2px 8px;
+        background-color: var(--gray-6);
+        border-radius: 2px;
+        align-items: center;
+        gap: 10px;
+
+        .ant-typography {
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 16px;
+            letter-spacing: 0; 
+            color: var(--gray-1);
+        }
+    }
     .close-tag-icon {
         display: flex;
         align-items: center;
