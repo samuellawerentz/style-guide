@@ -3,27 +3,18 @@ import './styles.scss'
 import PropTypes from 'prop-types'
 import { Icon } from '../Icon/index'
 import { Text } from '../Typography/index'
-import { ReactComponent as CheckCircle } from '../../assets/ic-check-circle.svg'
 
 const iconMap = {
-  name: {
-    info: 'info',
-    warning: 'error',
-    danger: 'report',
-  },
-  svg: {
-    success: CheckCircle,
-  },
-  color: {
-    success: 'success-color',
-  },
+  info: 'info',
+  warning: 'error',
+  danger: 'report',
+  success: 'check_circle',
 }
 
 /**
  * Component that is used to show alert messages on the UI
  */
 export const Alert = ({ className = '', type, message, size = 'default', ...props }) => {
-  const iconColor = iconMap.svg[type] ? iconMap.color[type] : ''
   return (
     <div
       className={[
@@ -35,12 +26,7 @@ export const Alert = ({ className = '', type, message, size = 'default', ...prop
       {...props}
     >
       <div className="contacto-alert-icon">
-        <Icon
-          name={iconMap.name[type] || ''}
-          svg={iconMap.svg[type] || ''}
-          size={20}
-          color={iconColor}
-        />
+        <Icon name={iconMap[type]} size={20} />
       </div>
       <div className="contacto-alert-message">
         <Text>{message}</Text>
