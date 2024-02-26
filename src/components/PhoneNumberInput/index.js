@@ -7,10 +7,6 @@ import { Icon } from '../Icon/index'
 import './styles.scss'
 import { Popover } from 'antd'
 import CountryDropdown from './country-dropdown'
-import '@formatjs/intl-displaynames/polyfill'
-import '@formatjs/intl-displaynames/locale-data/en'
-import '@formatjs/intl-locale/polyfill'
-
 /**
  * This is used to get phone number input
  */
