@@ -4,9 +4,13 @@
     "registry": "https://npm.pkg.github.com"
   },
   "repository": "git://github.com/contacto-io/contacto-console",
-  "version": "0.5.74",
+  "version": "0.5.100",
   "main": "build/index.js",
   "module": "build/index.es.js",
+  "sideEffects": [
+    "*.scss",
+    "*.css"
+  ],
   "files": [
     "build"
   ],
@@ -108,5 +112,9 @@
     "react-sortable-hoc": "^2.0.0",
     "simplebar": "^5.3.5",
     "simplebar-react": "^2.3.5"
+  },
+  "dependencies": {
+    "@formatjs/intl-displaynames": "^6.6.6",
+    "@formatjs/intl-locale": "^3.4.5"
   }
 }
