@@ -15,6 +15,7 @@ export const TAG_TYPES = [
   'secondary',
   'select',
   'round',
+  'teamname',
 ]
 /**
  * Tag component that is used to specify status of a task
@@ -42,7 +43,9 @@ export const Tag = ({
     >
       <Text
         type={
-          ['default', 'round'].includes(type) || disableUppercase ? 'caption' : 'caption-capital'
+          ['default', 'round', 'teamname'].includes(type) || disableUppercase
+            ? 'caption'
+            : 'caption-capital'
         }
       >
         {label || children}
